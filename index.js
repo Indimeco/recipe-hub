@@ -1,7 +1,12 @@
+// TODO
+// Abstract repeated html elements into components, build pages using those instead (if possible)
+// Create data structure for application (login, local storage, server storage, format, etc)
+// Write CSS for layout of application
+// Add react for App HTML
+
 const express = require('express');
 
 const app = express();
-
 app.get('/', serveStatic('/static/home.html'));
 app.use(express.static(__dirname+'/'+'static'));
 

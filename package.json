@@ -4,15 +4,34 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "\u0016\u0016\u0016https://github.com/Indimeco/recipe-hub"
+    "url": "git+https://github.com/Indimeco/recipe-hub.git"
   },
-  "author": "Indimeco",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Indimeco/recipe-hub/issues"
+  },
+  "homepage": "https://github.com/Indimeco/recipe-hub#readme",
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "camelcase": "^5.0.0",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+    "webpack-dev-server": "^3.1.10"
+  },
   "dependencies": {
-    "express": "^4.16.3"
+    "g": "^2.0.1",
+    "webpack": "^4.23.1",
+    "webpack-cli": "^3.1.2"
   }
 }

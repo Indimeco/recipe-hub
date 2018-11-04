@@ -1,4 +1,5 @@
 module.exports = {
+  target: "web",
   module: {
     rules: [
       {
@@ -9,5 +10,9 @@ module.exports = {
         }
       }
     ]
+  },
+  output: {
+    filename: "bundle.js",
+    publicPath: "/assets/"
   }
 };

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
-    "dev": "webpack-dev-server",
+    "dev": "webpack-dev-server --open --mode development --content-base=dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,13 +25,14 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.4",
     "camelcase": "^5.0.0",
+    "fs": "0.0.1-security",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "webpack-dev-server": "^3.1.10"
   },
   "dependencies": {
     "g": "^2.0.1",
-    "webpack": "^4.23.1",
+    "webpack": "^4.24.0",
     "webpack-cli": "^3.1.2"
   }
 }

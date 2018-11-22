@@ -18,27 +18,28 @@ import Footer from './components/Footer';
 import RecipeItem from './components/RecipeItem';
 
 class App extends React.Component {
-	render() { return (
-		<div>
-			<Banner/>
-			<Nav/>
-			<section id='#recipes'>
-				{Object.keys(this.props.book).map(
-					recipe => <RecipeItem
-						name={recipe} 
-						link={recipe['recipe source']}
-						preview={this.props.book[recipe]['preview image']}
-						/>
-					)
-				}
-			</section>
-			
-			<Footer/>
-		</div>
-	)	}
+  render() {
+    return (
+      <div>
+        <Banner />
+        <Nav />
+        <section id="#recipes">
+          {Object.keys(this.props.book).map(recipe => (
+            <RecipeItem
+              name={recipe}
+              link={recipe['recipe source']}
+              preview={this.props.book[recipe]['preview image']}
+            />
+          ))}
+        </section>
+
+        <Footer />
+      </div>
+    );
+  }
 }
 
 ReactDOM.render(
-	<App book={utils.getData().myBook}/>,
-	document.getElementById('root')
+  <App book={utils.getData().myBook} />,
+  document.getElementById('root')
 );

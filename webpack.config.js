@@ -1,18 +1,18 @@
 module.exports = {
-  target: "web",
+  target: 'web',
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
+          loader: 'babel-loader'
         }
       }
     ]
   },
   output: {
-    filename: "bundle.js",
-    publicPath: "/assets/"
+    filename: 'bundle.js',
+    publicPath: '/assets/'
   }
 };

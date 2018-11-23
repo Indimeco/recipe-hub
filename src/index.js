@@ -12,10 +12,10 @@ import ReactDOM from 'react-dom';
 // Functionality
 import * as utils from './utils.js';
 // Components
-import Banner from './components/Banner';
-import Nav from './components/Navbar';
-import Footer from './components/Footer';
-import RecipeItem from './components/RecipeItem';
+import Banner from './components/Banner/Banner';
+import Nav from './components/Navbar/Navbar';
+import Footer from './components/Footer/Footer';
+import RecipeItem from './components/RecipeItem/RecipeItem';
 
 class App extends React.Component {
   render() {

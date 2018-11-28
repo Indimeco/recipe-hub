@@ -1,8 +1,12 @@
 import { css } from 'styled-components';
-export default () => css`
+import shared from '../../styles/shared';
+
+export default props => css`
   &,
   & * {
+    ${shared};
     display: block;
-    max-width: 100%;
   }
+
+  background-color: ${props.theme.colors.primary};
 `;

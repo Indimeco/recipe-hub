@@ -1,2 +1,4 @@
 import { css } from 'styled-components';
-export default () => css``;
+export default props => css`
+  color: ${props.theme.colors.primary};
+`;

@@ -1,14 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import componentStyle from './Banner.style';
+import Heading from '../Heading/Heading';
 
 class Banner extends React.Component {
   render() {
-    const { className, ...restProps } = this.props;
+    const { className, el, children, isDefault, ...restProps } = this.props;
     return (
-      <span id="banner" className={className}>
-        <h1>RecipeHub</h1>
-      </span>
+      <div
+        className={`${className} banner ${isDefault ? 'default' : ''}`}
+        {...restProps}
+      >
+        <Heading el={el}>{children}</Heading>
+      </div>
     );
   }
 }

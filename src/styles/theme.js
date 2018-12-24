@@ -1,10 +1,12 @@
 export default {
   recipeHub: {
     colors: {
-      primary: 'blue',
-      secondary: 'black',
-      tertiary: 'slategrey',
-      background: 'gray'
+      fg: 'black',
+      bg: 'white',
+      accent: 'slategrey',
+      fgAux: 'white',
+      bgAux: 'darkblue',
+      accentAux: 'lightblue'
     }
   },
   other: {

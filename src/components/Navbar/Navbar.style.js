@@ -22,13 +22,17 @@ export default props => css`
 
     .links {
       height: ${spacings.navHeight}px;
-      background-color: ${props.theme.colors.accent};
+      background-color: ${props.theme.colors.aux.bg};
+
+      ${props.theme.spacing.indent}
       padding-top: ${spacings.navPaddingTop}px;
       padding-bottom: ${spacings.navPaddingBottom}px;
-      padding-right: 25px;
-      padding-left: 25px;
+
       a {
-        color: ${props.theme.colors.primary};
+        color: ${props.theme.colors.aux.fg};
+        &:hover {
+          color: ${props.theme.colors.aux.fgAccent};
+        }
       }
     }
 

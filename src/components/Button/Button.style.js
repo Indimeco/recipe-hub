@@ -1,10 +1,7 @@
 import { css } from 'styled-components';
 export default props => css`
+  margin: 10px 10px;
+  padding: 20px;
   color: ${props.theme.colors.main.fg};
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-
-  button {
-    margin: 2px;
-  }
+  background-color: ${props.theme.colors.main.bg};
 `;

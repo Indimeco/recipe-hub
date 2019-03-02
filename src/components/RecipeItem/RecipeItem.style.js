@@ -11,6 +11,10 @@ export default props => css`
     display: grid;
     grid-template-rows: ${(1 / 6) * 100}% ${(2 / 3) * 100}% ${(1 / 6) * 100}%;
 
+    a {
+      height: 100%;
+    }
+
     .heading {
       margin: 5px;
       color: white;
@@ -26,9 +30,6 @@ export default props => css`
       :hover {
         color: ${props.theme.colors.main.fgAccent};
       }
-    }
-
-    .image {
     }
 
     .recipe-item-controls {

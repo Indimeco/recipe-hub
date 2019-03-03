@@ -4,6 +4,8 @@ import componentStyle from './RecipeItem.style';
 import Heading from '../Heading/Heading';
 import Image from '../Image/Image';
 import Form from '../Form/Form';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPen, faHeart, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
 class RecipeItem extends React.Component {
   render() {
@@ -18,9 +20,19 @@ class RecipeItem extends React.Component {
             <Image src={preview} alt="" />
           </a>
           <div className={`${className} recipe-item-controls`}>
-            <button onClick={e => <Form />}>Edit</button>
-            <button>Favorite</button>
-            <button>View</button>
+
+            <button onClick={e => <Form />}>
+              <FontAwesomeIcon icon={faPen} />
+            </button>
+
+            <button>
+              <FontAwesomeIcon icon={faHeart} />
+            </button>
+
+            <button>
+              <FontAwesomeIcon icon={faExternalLinkAlt} />
+            </button>
+            
           </div>
         </div>
       </div>

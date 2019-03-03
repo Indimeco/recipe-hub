@@ -4,6 +4,8 @@ import componentStyle from './RecipeItem.style';
 import Heading from '../Heading/Heading';
 import Image from '../Image/Image';
 import Form from '../Form/Form';
+import ModalButton from '../ModalButton/ModalButton';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faHeart, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
@@ -21,9 +23,7 @@ class RecipeItem extends React.Component {
           </a>
           <div className={`${className} recipe-item-controls`}>
 
-            <button onClick={e => <Form />}>
-              <FontAwesomeIcon icon={faPen} />
-            </button>
+            <ModalButton buttonContent={<FontAwesomeIcon icon={faPen} />} modalContent={<Form />} />
 
             <button>
               <FontAwesomeIcon icon={faHeart} />

@@ -1,16 +1,17 @@
 import { css } from 'styled-components';
 
-export default props => css`
+export default ({ subTheme, ...props }) => {
+  subTheme = props.theme.colors[subTheme] || props.theme.colors.root;
+
+  return css`
   &.default {
     height: 60px;
     ${props.theme.spacing.indent}
-    padding-top: 15px;
-    padding-bottom: 15px;
-    background-color: red;
+    padding-top: ${props.theme.spacing.medium};
+    padding-bottom: ${props.theme.spacing.medium};
   }
 
-  background-color: ${props.theme.colors.main.bg};
-  & .heading {
-    color: ${props.theme.colors.main.fg};
-  }
+  background-color: ${subTheme.bg};
+  color: ${subTheme.fg};
 `;
+};

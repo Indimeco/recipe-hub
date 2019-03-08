@@ -5,13 +5,26 @@ import Heading from '../Heading/Heading';
 import Image from '../Image/Image';
 import Form from '../Form/Form';
 import ModalButton from '../ModalButton/ModalButton';
+import Button from '../Button/Button';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPen, faHeart, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import {
+  faPen,
+  faHeart,
+  faExternalLinkAlt
+} from '@fortawesome/free-solid-svg-icons';
 
 class RecipeItem extends React.Component {
   render() {
-    const { className, key, link, name, preview, ...restProps } = this.props;
+    const {
+      className,
+      subTheme,
+      key,
+      link,
+      name,
+      preview,
+      ...restProps
+    } = this.props;
     return (
       <div className={className} key={key} {...restProps}>
         <div className="recipe-card">
@@ -22,17 +35,19 @@ class RecipeItem extends React.Component {
             <Image src={preview} alt="" />
           </a>
           <div className={`${className} recipe-item-controls`}>
+            <ModalButton
+              subTheme={subTheme}
+              buttonContent={<FontAwesomeIcon icon={faPen} />}
+              modalContent={<Form />}
+            />
 
-            <ModalButton buttonContent={<FontAwesomeIcon icon={faPen} />} modalContent={<Form />} />
-
-            <button>
+            <Button subTheme={subTheme}>
               <FontAwesomeIcon icon={faHeart} />
-            </button>
+            </Button>
 
-            <button>
+            <Button subTheme={subTheme}>
               <FontAwesomeIcon icon={faExternalLinkAlt} />
-            </button>
-            
+            </Button>
           </div>
         </div>
       </div>

@@ -6,20 +6,11 @@ import Heading from '../Heading/Heading';
 
 class RecipeArea extends React.Component {
   render() {
-    const { className, recipes, bookName } = this.props;
+    const { className, subTheme, bookName, children } = this.props;
     return (
       <div className={className}>
         <Heading el="h2">{bookName}</Heading>
-        <div className="recipe-list">
-          {Object.keys(recipes).map(recipe => (
-            <RecipeItem
-              key={recipe}
-              name={recipe}
-              link={recipes[recipe]['recipe source']}
-              preview={recipes[recipe]['preview image']}
-            />
-          ))}
-        </div>
+        <div className="recipe-list">{children}</div>
       </div>
     );
   }

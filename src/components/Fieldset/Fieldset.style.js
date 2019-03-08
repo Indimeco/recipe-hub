@@ -1,11 +1,15 @@
 import { css } from 'styled-components';
 
-export default props => css`
-  color: ${props.theme.colors.base.fg};
-  border: none;
+export default ({ subTheme, ...props }) => {
+  subTheme = props.theme.colors[subTheme] || props.theme.colors.root;
 
-  legend {
-    width: 100%;
-    box-shadow: 0 3px 3px -3px ${props.theme.colors.base.fg};
-  }
-`;
+  return css`
+    color: ${subTheme.fg};
+    border: none;
+
+    legend {
+      width: 100%;
+      box-shadow: 0 3px 3px -3px ${subTheme.fg};
+    }
+  `;
+};

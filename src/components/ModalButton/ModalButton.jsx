@@ -9,40 +9,44 @@ import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
 
 /* Todo: Fix visual of Modal shifting content when open because of hiding scrollbar */
 const StyledModal = Modal.styled`${modalStyle};`;
-const CloseButton = styled(Button)`${closeStyle};`;
+const CloseButton = styled(Button)`
+  ${closeStyle};
+`;
 
 class ModalButton extends React.Component {
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
 
     this.state = {
-      isOpen: false,
-    }
+      isOpen: false
+    };
 
-    this.toggleModal = this.toggleModal.bind(this)
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
-  toggleModal (e) {
-    this.setState((prevState) => ({ isOpen: !prevState.isOpen }))
+  toggleModal(e) {
+    this.setState(prevState => ({ isOpen: !prevState.isOpen }));
   }
 
-  render ({buttonContent, modalContent} = this.props) {
+  render({ buttonContent, modalContent, subTheme } = this.props) {
     return (
       <React.Fragment>
-        <button onClick={this.toggleModal}>{buttonContent}</button>
+        <Button subTheme={subTheme} onClick={this.toggleModal}>
+          {buttonContent}
+        </Button>
         <StyledModal
           isOpen={this.state.isOpen}
           onBackgroundClick={this.toggleModal}
-          onEscapeKeydown={this.toggleModal}>
+          onEscapeKeydown={this.toggleModal}
+        >
           <CloseButton onClick={this.toggleModal}>
             <FontAwesomeIcon icon={faWindowClose} />
           </CloseButton>
           {modalContent}
         </StyledModal>
       </React.Fragment>
-    )
+    );
   }
 }
-
 
 export default ModalButton;

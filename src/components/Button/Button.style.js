@@ -1,11 +1,16 @@
 import { css } from 'styled-components';
-export default props => css`
-  font-size: 16px;
-  border: 1px solid ${props.theme.colors.main.fg};
-  color: ${props.theme.colors.main.fg};
-  background-color: ${props.theme.colors.main.bg};
-  margin: 10px 2px;
-  &:hover {
-    background-color: ${props.theme.colors.main.bgAccent};
-  }
-`;
+
+export default ({ subTheme, ...props }) => {
+  subTheme = props.theme.colors[subTheme] || props.theme.colors.root;
+
+  return css`
+    border: 1px solid ${subTheme.fgAccent};
+    color: ${subTheme.fg};
+    background-color: ${subTheme.bg};
+    margin: ${props.theme.spacing.small} 2px;
+    &:hover {
+      color: ${subTheme.fgAccent};
+      background-color: ${subTheme.bgAccent};
+    }
+  `;
+};

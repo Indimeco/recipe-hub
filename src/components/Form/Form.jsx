@@ -9,7 +9,7 @@ import Button from '../Button/Button';
 
 class RecipeItemControls extends React.Component {
   render() {
-    const { className, ...restProps } = this.props;
+    const { className, subTheme, ...restProps } = this.props;
     return (
       <div className={className}>
         <Fieldset label="New Recipe">

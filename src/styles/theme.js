@@ -10,9 +10,11 @@ const palette = {
 export default {
   recipeHub: {
     colors: {
-      base: {
+      root: {
         fg: palette.raisinBlack,
-        bg: palette.ghostWhite
+        bg: palette.ghostWhite,
+        fgAccent: palette.absoluteZero,
+        bgAccent: palette.periwinkle
       },
       main: {
         fg: palette.ghostWhite,
@@ -29,7 +31,17 @@ export default {
     },
     spacing: {
       indent: `padding-left: 25px;
-        padding-right: 25px;`
+        padding-right: 25px;`,
+      small: '10px',
+      medium: '20px',
+      large: '30px'
+    },
+    fonts: {
+      small: '14px',
+      medium: '16px',
+      large: '18px',
+      fontFamily:
+        "'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande','Lucida Sans Unicode', Geneva, Verdana, sans-serif"
     }
   }
 };

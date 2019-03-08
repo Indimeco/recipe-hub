@@ -4,8 +4,8 @@ import componentStyle from './Button.style';
 
 class Button extends React.Component {
   render() {
-    const { className, children, ...restProps } = this.props;
-    return <button className={`${className} button`}>{children}</button>;
+    const { subTheme, ...restProps } = this.props;
+    return <button {...restProps} />;
   }
 }
 

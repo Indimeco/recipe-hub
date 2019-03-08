@@ -4,7 +4,7 @@ import componentStyle from './Footer.style';
 
 class Footer extends React.Component {
   render() {
-    const { className, ...restProps } = this.props;
+    const { className, subTheme, ...restProps } = this.props;
     return (
       <div id="footer" className={className}>
         <p>Footer text</p>

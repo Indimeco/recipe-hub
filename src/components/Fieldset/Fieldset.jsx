@@ -4,7 +4,7 @@ import componentStyle from './Fieldset.style';
 
 class Fieldset extends React.Component {
   render() {
-    const { className, label, children, ...restProps } = this.props;
+    const { className, subTheme, label, children, ...restProps } = this.props;
     return (
       <fieldset className={className} {...restProps}>
         <legend>{label}</legend>

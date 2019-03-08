@@ -1,7 +1,10 @@
 import { css } from 'styled-components';
-import shared from '../../styles/shared';
 
-export default props => css`
-  background-color: ${props.theme.colors.base.bg};
-  padding: 25px;
-`;
+export default ({ subTheme, ...props }) => {
+  subTheme = props.theme.colors[subTheme] || props.theme.colors.root;
+
+  return css`
+    background-color: ${subTheme.bg};
+    padding: ${props.theme.spacing.large};
+  `;
+};

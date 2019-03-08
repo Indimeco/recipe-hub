@@ -14,7 +14,10 @@ const totalSpace = Object.entries(spacings).reduce((total, pair) => {
   return total + value;
 }, 0);
 
-export default props => css`
+export default ({ subTheme, ...props }) => {
+  subTheme = props.theme.colors[subTheme] || props.theme.colors.root;
+
+  return css`
   .nav {
     position: fixed;
     width: 100%;
@@ -22,16 +25,16 @@ export default props => css`
 
     .links {
       height: ${spacings.navHeight}px;
-      background-color: ${props.theme.colors.aux.bg};
+      background-color: ${subTheme.bg};
 
       ${props.theme.spacing.indent}
       padding-top: ${spacings.navPaddingTop}px;
       padding-bottom: ${spacings.navPaddingBottom}px;
 
       a {
-        color: ${props.theme.colors.aux.fg};
+        color: ${subTheme.fg};
         &:hover {
-          color: ${props.theme.colors.aux.fgAccent};
+          color: ${subTheme.fgAccent};
         }
       }
     }
@@ -50,3 +53,4 @@ export default props => css`
     margin-top: ${totalSpace}px;
   }
 `;
+};

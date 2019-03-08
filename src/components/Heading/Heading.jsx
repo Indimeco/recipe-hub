@@ -4,9 +4,8 @@ import componentStyle from './Heading.style';
 
 class Header extends React.Component {
   render() {
-    const { className, children, el, ...restProps } = this.props;
-    const El = el;
-    return <El className={`${className} heading`}>{children}</El>;
+    const { el: El, subTheme, ...restProps } = this.props;
+    return <El {...restProps} />;
   }
 }
 

@@ -1,17 +1,21 @@
 import { css } from 'styled-components';
 
-export default props => css`
-  color: ${props.theme.colors.base.fg};
-  border: none;
-  display: block;
-  margin: 20px 0;
+export default ({ subTheme, ...props }) => {
+  subTheme = props.theme.colors[subTheme] || props.theme.colors.root;
 
-  label {
+  return css`
+    color: ${subTheme.fg};
+    border: none;
     display: block;
-    margin: 10px 0px;
-  }
+    margin: ${props.theme.spacing.medium} 0;
 
-  label + * {
-    display: block;
-  }
-`;
+    label {
+      display: block;
+      margin: ${props.theme.spacing.small} 0px;
+    }
+
+    label + * {
+      display: block;
+    }
+  `;
+};

@@ -4,10 +4,10 @@ import componentStyle from './Image.style';
 
 class Image extends React.Component {
   render() {
-    const { className, src, alt, ...restProps } = this.props;
+    const { className, subTheme, src, alt, ...restProps } = this.props;
     return (
       <div className={`${className} image`}>
-        <img src={src} alt={alt} {...restProps} />;
+        <img src={src} alt={alt} {...restProps} />
       </div>
     );
   }

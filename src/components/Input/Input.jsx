@@ -4,7 +4,7 @@ import componentStyle from './Input.style';
 
 class Input extends React.Component {
   render() {
-    const { className, placeHolder, ...restProps } = this.props;
+    const { className, subTheme, placeHolder, ...restProps } = this.props;
     return (
       <input className={className} placeholder={placeHolder} {...restProps} />
     );

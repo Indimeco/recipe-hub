@@ -4,7 +4,7 @@ import componentStyle from './Textarea.style';
 
 class Textarea extends React.Component {
   render() {
-    const { className, placeHolder, ...restProps } = this.props;
+    const { className, subTheme, placeHolder, ...restProps } = this.props;
     return (
       <textarea
         className={className}

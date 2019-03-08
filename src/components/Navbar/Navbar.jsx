@@ -6,11 +6,11 @@ import Banner from '../Banner/Banner';
 
 class Navbar extends React.Component {
   render() {
-    const { className, ...restProps } = this.props;
+    const { className, subTheme, banner, ...restProps } = this.props;
     return (
       <div className={className}>
         <div className="nav">
-          <Banner el="h1">Recipe Hub</Banner>
+          {banner}
           <div className="links">
             <a href="#">Login</a>
           </div>

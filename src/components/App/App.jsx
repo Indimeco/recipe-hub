@@ -6,7 +6,6 @@ import Banner from '../Banner/Banner';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import RecipeArea from '../RecipeArea/RecipeArea';
-import RecipeItem from '../RecipeItem/RecipeItem';
 
 class App extends React.Component {
   render() {
@@ -22,21 +21,7 @@ class App extends React.Component {
           }
         />
         <div className="content">
-          <section id="#recipes">
-            <RecipeArea bookName="myBook">
-              {Object.keys(book.myBook).map(recipe => {
-                return (
-                  <RecipeItem
-                    subTheme="root"
-                    key={recipe}
-                    name={recipe}
-                    link={book.myBook[recipe]['recipe source']}
-                    preview={book.myBook[recipe]['preview image']}
-                  />
-                );
-              })}
-            </RecipeArea>
-          </section>
+          <RecipeArea book={book} subTheme="main" />
         </div>
         <Footer subTheme="aux" />
       </div>

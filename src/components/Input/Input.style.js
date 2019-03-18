@@ -6,12 +6,13 @@ export default ({ subTheme, ...props }) => {
   return css`
     margin: ${props.theme.spacing.small} 0;
     padding: ${props.theme.spacing.small};
-    border: solid 1px ${subTheme.bg};
+    border: solid 1px ${subTheme.fg};
+
     &:hover,
     &:focus,
     &:active {
-      border: solid 1px ${subTheme.bgAccent};
-      box-shadow: 0 0 3px 1px ${subTheme.bgAccent};
+      border: solid 1px ${subTheme.fgAccent};
+      /* box-shadow: 0 0 3px 1px ${subTheme.bgAccent}; */
     }
   `;
 };

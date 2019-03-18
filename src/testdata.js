@@ -1,5 +1,10 @@
 export default {
-  myBook: {
+  meta: {
+    name: "Jake's Recipes",
+    views: 100,
+    favorites: 100
+  },
+  recipes: {
     'Chili Con Carne': {
       ingredients: {
         'yellow onion': { quantity: 2, unit: '' },

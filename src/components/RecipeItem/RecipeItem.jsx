@@ -3,9 +3,8 @@ import styled from 'styled-components';
 import componentStyle from './RecipeItem.style';
 import Heading from '../Heading/Heading';
 import Image from '../Image/Image';
-import Form from '../Form/Form';
-import ModalButton from '../ModalButton/ModalButton';
 import Button from '../Button/Button';
+import { Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -35,11 +34,11 @@ class RecipeItem extends React.Component {
             <Image src={preview} alt="" />
           </a>
           <div className={`${className} recipe-item-controls`}>
-            <ModalButton
-              subTheme={subTheme}
-              buttonContent={<FontAwesomeIcon icon={faPen} />}
-              modalContent={<Form />}
-            />
+            <Button subTheme={subTheme}>
+              <Link to="/new">
+                <FontAwesomeIcon icon={faPen} />
+              </Link>
+            </Button>
 
             <Button subTheme={subTheme}>
               <FontAwesomeIcon icon={faHeart} />

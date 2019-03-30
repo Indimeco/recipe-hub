@@ -1,14 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import componentStyle from './Navbar.style';
-
-import Banner from '../Banner/Banner';
+import withColor from '../../hocs/withColor';
 
 class Navbar extends React.Component {
   render() {
-    const { className, subTheme, banner, ...restProps } = this.props;
+    const { className, color, banner, ...restProps } = this.props;
     return (
-      <div className={className}>
+      <div color={color} className={className}>
         <div className="nav">
           {banner}
           <div className="links">
@@ -21,6 +20,8 @@ class Navbar extends React.Component {
   }
 }
 
-export default styled(Navbar)`
-  ${componentStyle}
-`;
+export default withColor(
+  styled(Navbar)`
+    ${componentStyle}
+  `
+);

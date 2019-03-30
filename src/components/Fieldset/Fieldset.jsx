@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import componentStyle from './Fieldset.style';
+import withColor from '../../hocs/withColor';
 
 class Fieldset extends React.Component {
   render() {
-    const { className, subTheme, label, children, ...restProps } = this.props;
+    const { className, color, label, children, ...restProps } = this.props;
     return (
       <fieldset className={className} {...restProps}>
         <legend>{label}</legend>
@@ -14,6 +15,8 @@ class Fieldset extends React.Component {
   }
 }
 
-export default styled(Fieldset)`
-  ${componentStyle}
-`;
+export default withColor(
+  styled(Fieldset)`
+    ${componentStyle}
+  `
+);

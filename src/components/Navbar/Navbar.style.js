@@ -14,9 +14,8 @@ const totalSpace = Object.entries(spacings).reduce((total, pair) => {
   return total + value;
 }, 0);
 
-export default ({ subTheme, ...props }) => {
-  subTheme = props.theme.colors[subTheme] || props.theme.colors.root;
-
+export default ({ color, ...props }) => {
+  console.log('Navbar color: ', color);
   return css`
   .nav {
     position: fixed;
@@ -25,16 +24,16 @@ export default ({ subTheme, ...props }) => {
 
     .links {
       height: ${spacings.navHeight}px;
-      background-color: ${subTheme.bg};
+      background-color: ${color.bg};
 
       ${props.theme.spacing.indent}
       padding-top: ${spacings.navPaddingTop}px;
       padding-bottom: ${spacings.navPaddingBottom}px;
 
       a {
-        color: ${subTheme.fg};
+        color: ${color.fg};
         &:hover {
-          color: ${subTheme.fgAccent};
+          color: ${color.fgAccent};
         }
       }
     }

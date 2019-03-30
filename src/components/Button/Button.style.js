@@ -1,16 +1,14 @@
 import { css } from 'styled-components';
 
-export default ({ subTheme, ...props }) => {
-  subTheme = props.theme.colors[subTheme] || props.theme.colors.root;
-
+export default ({ color, ...props }) => {
   return css`
-    border: 1px solid ${subTheme.fgAccent};
-    color: ${subTheme.fg};
-    background-color: ${subTheme.bg};
+    border: 1px solid ${color.fgAccent};
+    color: ${color.fg};
+    background-color: ${color.bg};
     margin: ${props.theme.spacing.small} 2px;
     &:hover {
-      color: ${subTheme.fgAccent};
-      background-color: ${subTheme.bgAccent};
+      color: ${color.fgAccent};
+      background-color: ${color.bgAccent};
     }
   `;
 };

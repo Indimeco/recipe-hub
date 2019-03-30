@@ -8,39 +8,39 @@ import Footer from '../Footer/Footer';
 import RecipeArea from '../RecipeArea/RecipeArea';
 import Form from '../Form/Form';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { ColorProvider } from '../../hocs/withColor';
+import withColor from '../../hocs/withColor';
 
 class App extends React.Component {
   render() {
-    const { className, book } = this.props;
+    const { className, book, ...restProps } = this.props;
     return (
       <Router>
         <div className={className}>
-          <ColorProvider.Provider value="main">
-            <Navbar
-              subTheme="aux"
-              banner={
-                <Banner subTheme="main" el="h1">
-                  Recipe Hub
-                </Banner>
-              }
-            />
-          </ColorProvider.Provider>
+          <Navbar
+            color="aux"
+            banner={
+              <Banner color="main" el="h1">
+                Recipe Hub
+              </Banner>
+            }
+          />
           <div className="content">
             <Route
               path="/"
               exact
-              render={() => <RecipeArea book={book} subTheme="main" />}
+              render={() => <RecipeArea book={book} color="main" />}
             />
             <Route path="/new" render={() => <Form />} />
           </div>
-          <Footer subTheme="aux" />
+          <Footer color="aux" />
         </div>
       </Router>
     );
   }
 }
 
-export default styled(App)`
-  ${componentStyle}
-`;
+export default withColor(
+  styled(App)`
+    ${componentStyle}
+  `
+);

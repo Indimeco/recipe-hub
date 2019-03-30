@@ -5,6 +5,7 @@ import Heading from '../Heading/Heading';
 import Image from '../Image/Image';
 import Button from '../Button/Button';
 import { Link } from 'react-router-dom';
+import withColor from '../../hocs/withColor';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -17,7 +18,7 @@ class RecipeItem extends React.Component {
   render() {
     const {
       className,
-      subTheme,
+      color,
       key,
       link,
       name,
@@ -34,17 +35,17 @@ class RecipeItem extends React.Component {
             <Image src={preview} alt="" />
           </a>
           <div className={`${className} recipe-item-controls`}>
-            <Button subTheme={subTheme}>
+            <Button color={color}>
               <Link to="/new">
                 <FontAwesomeIcon icon={faPen} />
               </Link>
             </Button>
 
-            <Button subTheme={subTheme}>
+            <Button color={color}>
               <FontAwesomeIcon icon={faHeart} />
             </Button>
 
-            <Button subTheme={subTheme}>
+            <Button color={color}>
               <FontAwesomeIcon icon={faExternalLinkAlt} />
             </Button>
           </div>
@@ -54,6 +55,8 @@ class RecipeItem extends React.Component {
   }
 }
 
-export default styled(RecipeItem)`
-  ${componentStyle}
-`;
+export default withColor(
+  styled(RecipeItem)`
+    ${componentStyle}
+  `
+);

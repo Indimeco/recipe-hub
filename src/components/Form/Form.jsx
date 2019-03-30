@@ -6,10 +6,11 @@ import Textarea from '../Textarea/Textarea';
 import Fieldset from '../Fieldset/Fieldset';
 import FieldWrapper from '../FieldWrapper/FieldWrapper';
 import Button from '../Button/Button';
+import withColor from '../../hocs/withColor';
 
 class RecipeItemControls extends React.Component {
   render() {
-    const { className, subTheme, ...restProps } = this.props;
+    const { className, color, ...restProps } = this.props;
     return (
       <div className={className}>
         <Fieldset label="New Recipe">
@@ -52,6 +53,8 @@ class RecipeItemControls extends React.Component {
   }
 }
 
-export default styled(RecipeItemControls)`
-  ${componentStyle}
-`;
+export default withColor(
+  styled(RecipeItemControls)`
+    ${componentStyle}
+  `
+);

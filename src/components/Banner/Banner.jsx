@@ -8,7 +8,7 @@ class Banner extends React.Component {
   render() {
     const {
       className,
-      subTheme,
+      color,
       el,
       children,
       isDefault,
@@ -25,6 +25,8 @@ class Banner extends React.Component {
   }
 }
 
-export default styled(withColor(Banner))`
-  ${componentStyle}
-`;
+export default withColor(
+  styled(Banner)`
+    ${componentStyle}
+  `
+);

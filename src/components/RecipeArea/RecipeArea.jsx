@@ -1,26 +1,27 @@
-import React from 'react';
-import styled from 'styled-components';
-import componentStyle from './RecipeArea.style';
-import RecipeItem from '../RecipeItem/RecipeItem';
-import Heading from '../Heading/Heading';
-import Filter from '../Filter/Filter';
+import React from "react";
+import styled from "styled-components";
+import componentStyle from "./RecipeArea.style";
+import RecipeItem from "../RecipeItem/RecipeItem";
+import Heading from "../Heading/Heading";
+import Filter from "../Filter/Filter";
+import withColor from "../../hocs/withColor";
 
 class RecipeArea extends React.Component {
   render() {
-    const { className, subTheme, book } = this.props;
+    const { className, color, book } = this.props;
     return (
       <section className={className}>
         <Heading el="h2">{book.meta.name}</Heading>
-        <Filter />
+        <Filter color="main" />
         <div className="recipe-list">
           {Object.keys(book.recipes).map(recipe => {
             return (
               <RecipeItem
-                subTheme={subTheme}
+                color={color}
                 key={recipe}
                 name={recipe}
-                link={book.recipes[recipe]['recipe source']}
-                preview={book.recipes[recipe]['preview image']}
+                link={book.recipes[recipe]["recipe source"]}
+                preview={book.recipes[recipe]["preview image"]}
               />
             );
           })}
@@ -30,6 +31,8 @@ class RecipeArea extends React.Component {
   }
 }
 
-export default styled(RecipeArea)`
-  ${componentStyle}
-`;
+export default withColor(
+  styled(RecipeArea)`
+    ${componentStyle}
+  `
+);

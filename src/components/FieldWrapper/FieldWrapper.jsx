@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import componentStyle from './FieldWrapper.style';
+import withColor from '../../hocs/withColor';
 
 class FieldWrapper extends React.Component {
   render() {
-    const { className, subTheme, label, children, ...restProps } = this.props;
+    const { className, color, label, children, ...restProps } = this.props;
     return (
       <div className={className} {...restProps}>
         <label>{label}</label>
@@ -14,6 +15,8 @@ class FieldWrapper extends React.Component {
   }
 }
 
-export default styled(FieldWrapper)`
-  ${componentStyle}
-`;
+export default withColor(
+  styled(FieldWrapper)`
+    ${componentStyle}
+  `
+);

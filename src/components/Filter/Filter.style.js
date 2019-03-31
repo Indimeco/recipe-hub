@@ -1,15 +1,11 @@
-import { css } from 'styled-components';
+import { css } from "styled-components";
 
-export default ({ subTheme, ...props }) => {
-  subTheme = props.theme.colors[subTheme] || props.theme.colors.root;
-
+export default ({ color, ...props }) => {
   return css`
-    color: ${subTheme.fg};
-    background-color: ${subTheme.bg};
+    color: ${color.fg};
     display: grid;
     grid-template-columns: 1fr;
     grid-column-gap: 1rem;
-
     text-align: center;
 
     @media screen and (min-width: 768px) {

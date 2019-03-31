@@ -1,18 +1,16 @@
-import { css } from 'styled-components';
+import { css } from "styled-components";
 
-export default ({ subTheme, ...props }) => {
-  subTheme = props.theme.colors[subTheme] || props.theme.colors.root;
-
+export default ({ color, ...props }) => {
   return css`
     margin: ${props.theme.spacing.small} 0;
     padding: ${props.theme.spacing.small};
-    border: solid 1px ${subTheme.fg};
+    border: solid 1px ${color.fg};
 
     &:hover,
     &:focus,
     &:active {
-      border: solid 1px ${subTheme.fgAccent};
-      /* box-shadow: 0 0 3px 1px ${subTheme.bgAccent}; */
+      border: solid 1px ${color.fgAccent};
+      box-shadow: 0 0 3px 1px ${color.bgAccent};
     }
   `;
 };

@@ -6,12 +6,13 @@ import Modal from 'styled-react-modal';
 import Button from '../Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
+import withColor from '../../hocs/withColor';
 
 /* Todo: Fix visual of Modal shifting content when open because of hiding scrollbar */
-const StyledModal = Modal.styled`${modalStyle};`;
+const StyledModal = Modal.styled`${modalStyle};
 const CloseButton = styled(Button)`
   ${closeStyle};
-`;
+
 
 class ModalButton extends React.Component {
   constructor(props) {
@@ -28,10 +29,10 @@ class ModalButton extends React.Component {
     this.setState(prevState => ({ isOpen: !prevState.isOpen }));
   }
 
-  render({ buttonContent, modalContent, subTheme } = this.props) {
+  render({ buttonContent, modalContent, color } = this.props) {
     return (
       <React.Fragment>
-        <Button subTheme={subTheme} onClick={this.toggleModal}>
+        <Button color={color} onClick={this.toggleModal}>
           {buttonContent}
         </Button>
         <StyledModal
@@ -49,4 +50,4 @@ class ModalButton extends React.Component {
   }
 }
 
-export default ModalButton;
+export default withColor(ModalButton);

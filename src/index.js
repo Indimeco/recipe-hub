@@ -12,7 +12,7 @@ import App from './components/App/App';
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
-    <ColorProvider.Provider>
+    <ColorProvider.Provider value={'root'}>
       <ModalProvider>
         <App book={utils.getData()} />
       </ModalProvider>

@@ -1,18 +1,18 @@
-import React from 'react';
-import styled from 'styled-components';
-import componentStyle from './RecipeItem.style';
-import Heading from '../Heading/Heading';
-import Image from '../Image/Image';
-import Button from '../Button/Button';
-import { Link } from 'react-router-dom';
-import withColor from '../../hocs/withColor';
+import React from "react";
+import styled from "styled-components";
+import componentStyle from "./RecipeItem.style";
+import Heading from "../Heading/Heading";
+import Image from "../Image/Image";
+import Button from "../Button/Button";
+import { Link } from "react-router-dom";
+import withColor from "../../hocs/withColor";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPen,
   faHeart,
   faExternalLinkAlt
-} from '@fortawesome/free-solid-svg-icons';
+} from "@fortawesome/free-solid-svg-icons";
 
 class RecipeItem extends React.Component {
   render() {

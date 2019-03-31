@@ -1,30 +1,41 @@
-import React from 'react';
-import theme from '../styles/theme';
+import React from "react";
+import theme from "../styles/theme";
 
 export const ColorProvider = React.createContext(theme.colors.root);
 
 export const withColor = WrappedComponent => {
   return class coloredComponent extends React.Component {
+    // getColor :: A, String -> Object
+    getColor(color, context) {
+      try {
+        if (color) {
+          if (typeof color === "object") {
+            return color;
+          } else if (typeof color === "string") {
+            return theme.colors[color];
+          }
+        }
+
+        if (typeof context === "object") {
+          return context;
+        } else if (typeof context === "string") {
+          return theme.colors[context];
+        }
+        throw `Unhandled context type in withColor: ${context}`;
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
     render() {
       const { color: propColor, ...restProps } = this.props;
-
       return (
         <ColorProvider.Consumer>
           {contextColor => {
-            {
-              console.log('____', WrappedComponent.name, '____');
-              console.log('\tcontext:\t', theme.colors[contextColor]);
-              console.log('\tprop:\t', theme.colors[propColor]);
-              console.log('\n\n');
-            }
             return (
               <WrappedComponent
-                color={
-                  propColor
-                    ? theme.colors[propColor]
-                    : theme.colors[contextColor]
-                }
-                {...this.props}
+                {...restProps}
+                color={this.getColor(propColor, contextColor)}
               />
             );
           }}

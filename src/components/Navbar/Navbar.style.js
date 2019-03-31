@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import { css } from "styled-components";
 
 const spacings = {
   bannerHeight: 60,
@@ -15,41 +15,40 @@ const totalSpace = Object.entries(spacings).reduce((total, pair) => {
 }, 0);
 
 export default ({ color, ...props }) => {
-  console.log('Navbar color: ', color);
   return css`
-  .nav {
-    position: fixed;
-    width: 100%;
-    top: 0;
+    .nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
 
-    .links {
-      height: ${spacings.navHeight}px;
-      background-color: ${color.bg};
+      .links {
+        height: ${spacings.navHeight}px;
+        background-color: ${color.bg};
 
-      ${props.theme.spacing.indent}
-      padding-top: ${spacings.navPaddingTop}px;
-      padding-bottom: ${spacings.navPaddingBottom}px;
+        ${props.theme.spacing.indent}
+        padding-top: ${spacings.navPaddingTop}px;
+        padding-bottom: ${spacings.navPaddingBottom}px;
 
-      a {
-        color: ${color.fg};
-        &:hover {
-          color: ${color.fgAccent};
+        a {
+          color: ${color.fg};
+          &:hover {
+            color: ${color.fgAccent};
+          }
         }
+      }
+
+      .banner {
+        height: ${spacings.bannerHeight}px;
+        padding-top: ${spacings.bannerPaddingTop}px;
+        padding-bottom: ${spacings.bannerPaddingBottom}px;
+        padding-right: 25px;
+        padding-left: 25px;
       }
     }
 
-    .banner {
-      height: ${spacings.bannerHeight}px;
-      padding-top: ${spacings.bannerPaddingTop}px;
-      padding-bottom: ${spacings.bannerPaddingBottom}px;
-      padding-right: 25px;
-      padding-left: 25px;
+    .navbar-spacing {
+      display: block;
+      margin-top: ${totalSpace}px;
     }
-  }
-
-  .navbar-spacing {
-    display: block;
-    margin-top: ${totalSpace}px;
-  }
-`;
+  `;
 };

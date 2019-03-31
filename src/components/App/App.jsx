@@ -1,14 +1,14 @@
-import React from 'react';
-import styled from 'styled-components';
-import componentStyle from './App.style';
+import React from "react";
+import styled from "styled-components";
+import componentStyle from "./App.style";
 
-import Banner from '../Banner/Banner';
-import Navbar from '../Navbar/Navbar';
-import Footer from '../Footer/Footer';
-import RecipeArea from '../RecipeArea/RecipeArea';
-import Form from '../Form/Form';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import withColor from '../../hocs/withColor';
+import Banner from "../Banner/Banner";
+import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
+import RecipeArea from "../RecipeArea/RecipeArea";
+import Form from "../Form/Form";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import withColor from "../../hocs/withColor";
 
 class App extends React.Component {
   render() {
@@ -30,7 +30,7 @@ class App extends React.Component {
               exact
               render={() => <RecipeArea book={book} color="main" />}
             />
-            <Route path="/new" render={() => <Form />} />
+            <Route path="/new" render={() => <Form color="main" />} />
           </div>
           <Footer color="aux" />
         </div>

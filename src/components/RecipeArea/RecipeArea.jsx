@@ -1,10 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
-import componentStyle from './RecipeArea.style';
-import RecipeItem from '../RecipeItem/RecipeItem';
-import Heading from '../Heading/Heading';
-import Filter from '../Filter/Filter';
-import withColor from '../../hocs/withColor';
+import React from "react";
+import styled from "styled-components";
+import componentStyle from "./RecipeArea.style";
+import RecipeItem from "../RecipeItem/RecipeItem";
+import Heading from "../Heading/Heading";
+import Filter from "../Filter/Filter";
+import withColor from "../../hocs/withColor";
 
 class RecipeArea extends React.Component {
   render() {
@@ -12,7 +12,7 @@ class RecipeArea extends React.Component {
     return (
       <section className={className}>
         <Heading el="h2">{book.meta.name}</Heading>
-        {/* <Filter color="main" /> */}
+        <Filter color="main" />
         <div className="recipe-list">
           {Object.keys(book.recipes).map(recipe => {
             return (
@@ -20,8 +20,8 @@ class RecipeArea extends React.Component {
                 color={color}
                 key={recipe}
                 name={recipe}
-                link={book.recipes[recipe]['recipe source']}
-                preview={book.recipes[recipe]['preview image']}
+                link={book.recipes[recipe]["recipe source"]}
+                preview={book.recipes[recipe]["preview image"]}
               />
             );
           })}

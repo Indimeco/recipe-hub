@@ -9,7 +9,6 @@ import { ThemeProvider } from 'styled-components';
 import { ModalProvider } from 'styled-react-modal';
 import { ColorProvider } from './hocs/withColor';
 import App from './components/App/App';
-console.log(App);
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>

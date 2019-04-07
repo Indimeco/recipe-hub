@@ -19,8 +19,8 @@ class RecipeArea extends React.Component {
               <RecipeItem
                 color={color}
                 key={recipe}
-                name={recipe}
-                link={book.recipes[recipe]["recipe source"]}
+                name={book.recipes[recipe]["name"]}
+                link={`/view/${recipe}`}
                 preview={book.recipes[recipe]["preview image"]}
               />
             );

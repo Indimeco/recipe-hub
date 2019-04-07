@@ -43,6 +43,7 @@ export default ({ color, ...props }) => {
         color: ${props.theme.colors.main.fg};
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
+        grid-column-gap: 5px;
       }
     }
   `;

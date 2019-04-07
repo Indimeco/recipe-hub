@@ -28,12 +28,12 @@ class RecipeItem extends React.Component {
     return (
       <div className={className} key={key} {...restProps}>
         <div className="recipe-card">
-          <a href={link}>
+          <Link to={link}>
             <Heading el="h3">{name}</Heading>
-          </a>
-          <a href={link}>
+          </Link>
+          <Link to={link}>
             <Image src={preview} alt="" />
-          </a>
+          </Link>
           <div className={`${className} recipe-item-controls`}>
             <Button color={color}>
               <Link to="/new">

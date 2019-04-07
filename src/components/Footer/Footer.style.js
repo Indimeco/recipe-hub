@@ -8,6 +8,11 @@ export default ({ color, ...props }) => {
 
     color: ${color.fg};
     background-color: ${color.bg};
+
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     p {
       margin: 0;
     }

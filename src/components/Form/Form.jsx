@@ -3,8 +3,7 @@ import styled from "styled-components";
 import componentStyle from "./Form.style";
 import Input from "../Input/Input";
 import Textarea from "../Textarea/Textarea";
-import Fieldset from "../Fieldset/Fieldset";
-import FieldWrapper from "../FieldWrapper/FieldWrapper";
+import Heading from "../Heading/Heading";
 import Button from "../Button/Button";
 import withColor, { ColorProvider } from "../../hocs/withColor";
 
@@ -12,11 +11,11 @@ class FormWrapper extends React.Component {
   render() {
     const { className, color, ...restProps } = this.props;
     return (
-      <div className={className}>
-        <ColorProvider.Provider value={color}>
+      <ColorProvider.Provider value={color}>
+        <div className={className}>
           <Form color={color} />
-        </ColorProvider.Provider>
-      </div>
+        </div>
+      </ColorProvider.Provider>
     );
   }
 }
@@ -26,43 +25,42 @@ const Form = withColor(
     render() {
       const { className, color, ...restProps } = this.props;
       return (
-        <div className={className}>
-          <Fieldset label="New Recipe">
-            <FieldWrapper label="Recipe Name">
-              <Input placeHolder="Recipe Name" />
-            </FieldWrapper>
-
-            <FieldWrapper label="Preview Image">
-              <Input placeHolder="Preview Image" />
-            </FieldWrapper>
-
-            <FieldWrapper label="Recipe Source">
-              <Input placeHolder="Recipe Source" />
-            </FieldWrapper>
-
-            <FieldWrapper label="Ingredients">
-              <Textarea placeHolder="Ingredients" />
-            </FieldWrapper>
-
-            <FieldWrapper label="Recipe">
-              <Textarea placeHolder="Recipe" />
-            </FieldWrapper>
-
-            <FieldWrapper label="Cook Time">
-              <Input placeHolder="Cook Time" />
-            </FieldWrapper>
-
-            <FieldWrapper label="Method">
-              <Input placeHolder="Method" />
-            </FieldWrapper>
-
-            <FieldWrapper label="Tags">
-              <Textarea placeHolder="Tags" />
-            </FieldWrapper>
-
-            <Button>Save</Button>
-          </Fieldset>
-        </div>
+        <>
+          <Heading el="h2">New Recipe</Heading>
+          <label>
+            Recipe Name
+            <Input placeHolder="Recipe Name" />
+          </label>
+          <label>
+            Preview Image
+            <Input placeHolder="Preview Image" />
+          </label>
+          <label>
+            Recipe Source
+            <Input placeHolder="Recipe Source" />
+          </label>
+          <label>
+            Ingredients
+            <Textarea placeHolder="Ingredients" />
+          </label>
+          <label>
+            Recipe
+            <Textarea placeHolder="Recipe" />
+          </label>
+          <label>
+            Cook Time
+            <Input placeHolder="Cook Time" />
+          </label>
+          <label>
+            Method
+            <Input placeHolder="Method" />
+          </label>
+          <label>
+            Tags
+            <Textarea placeHolder="Tags" />
+          </label>
+          <Button type="Submit">Save</Button>
+        </>
       );
     }
   }

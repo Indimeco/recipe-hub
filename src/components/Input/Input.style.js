@@ -2,9 +2,10 @@ import { css } from "styled-components";
 
 export default ({ color, ...props }) => {
   return css`
-    margin: ${props.theme.spacing.small} 0;
+    margin: 0 0 ${props.theme.spacing.small} 0;
     padding: ${props.theme.spacing.small};
     border: solid 1px ${color.fg};
+    width: 100%;
 
     &:hover,
     &:focus,

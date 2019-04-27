@@ -1,11 +1,11 @@
-export default {
+const book1 = {
   meta: {
     name: "Jake's Recipes",
     views: 100,
     favorites: 100
   },
-  recipes: {
-    1: {
+  recipes: [
+    {
       name: "Chili Con Carne",
       ingredients: {
         "yellow onion": { quantity: 2, unit: "" },
@@ -31,7 +31,7 @@ export default {
       method: "Slow Cooked",
       categories: ["Meal"]
     },
-    2: {
+    {
       name: "Mac & Cheese",
       ingredients: {
         "yellow onion": { quantity: 2, unit: "" },
@@ -57,7 +57,7 @@ export default {
       method: "Baked",
       categories: ["Meal"]
     },
-    3: {
+    {
       name: "Fluffiest Pancakes",
       ingredients: {
         "yellow onion": { quantity: 2, unit: "" },
@@ -82,7 +82,7 @@ export default {
       method: "Slow Cooked",
       categories: ["Meal"]
     },
-    4: {
+    {
       name: "Test 1 with a really long that might break layout",
       ingredients: {
         "yellow onion": { quantity: 2, unit: "" },
@@ -108,7 +108,7 @@ export default {
       method: "Slow Cooked",
       categories: ["Meal"]
     },
-    5: {
+    {
       name: "Chili Con Carne",
       ingredients: {
         "yellow onion": { quantity: 2, unit: "" },
@@ -134,7 +134,7 @@ export default {
       method: "Slow Cooked",
       categories: ["Meal"]
     },
-    6: {
+    {
       name: "Chili Con Carne",
       ingredients: {
         "yellow onion": { quantity: 2, unit: "" },
@@ -160,7 +160,7 @@ export default {
       method: "Slow Cooked",
       categories: ["Meal"]
     },
-    7: {
+    {
       name: "Chili Con Carne",
       ingredients: {
         "yellow onion": { quantity: 2, unit: "" },
@@ -186,5 +186,7 @@ export default {
       method: "Slow Cooked",
       categories: ["Meal"]
     }
-  }
+  ]
 };
+
+module.exports = book1;

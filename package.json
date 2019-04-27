@@ -29,6 +29,7 @@
     "babel-loader": "^8.0.4",
     "camelcase": "^5.0.0",
     "fs": "0.0.1-security",
+    "mongodb": "^3.2.3",
     "mysql": "^2.16.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",

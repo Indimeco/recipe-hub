@@ -3,12 +3,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 // Functionality
-import { getData } from "./db/utils.js";
+import { getData } from "../db/utils.js";
 import theme from "./styles/theme";
 import { ThemeProvider } from "styled-components";
 import { ModalProvider } from "styled-react-modal";
 import { ColorProvider } from "./hocs/withColor";
-import App from "./App/App/App";
+import App from "./components/App/App";
 
 console.log(getData());
 

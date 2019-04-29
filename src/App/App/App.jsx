@@ -1,15 +1,15 @@
-import React from "react";
-import styled from "styled-components";
-import componentStyle from "./App.style";
+import React from 'react';
+import styled from 'styled-components';
+import componentStyle from './App.style';
 
-import Banner from "../../components/Banner/Banner";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
-import RecipeArea from "../../components/RecipeArea/RecipeArea";
-import Form from "../../components/Form/Form";
-import RecipeDetail from "../RecipeDetail/RecipeDetail";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import withColor from "../../hocs/withColor";
+import Banner from '../../components/Banner/Banner';
+import Navbar from '../../components/Navbar/Navbar';
+import Footer from '../../components/Footer/Footer';
+import RecipeArea from '../../components/RecipeArea/RecipeArea';
+import Form from '../../components/Form/Form';
+import RecipeDetail from '../RecipeDetail/RecipeDetail';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import withColor from '../../hocs/withColor';
 
 class App extends React.Component {
   render() {
@@ -34,7 +34,9 @@ class App extends React.Component {
             <Route path="/new" render={() => <Form color="main" />} />
             <Route
               path="/view/:name"
-              render={props => <RecipeDetail {...props} color="root" />}
+              render={props => (
+                <RecipeDetail {...props} book={book} color="root" />
+              )}
             />
           </div>
           <Footer color="aux" />

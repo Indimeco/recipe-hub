@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import withColor from "../../hocs/withColor";
-import componentStyle from "./RecipeDetail.style.js";
-import Heading from "../../components/Heading/Heading";
-import Image from "../../components/Image/Image";
+import React from 'react';
+import styled from 'styled-components';
+import withColor from '../../hocs/withColor';
+import { recipeDetailStyle, recipeIntroStyle } from './RecipeDetail.style.js';
+import Heading from '../../components/Heading/Heading';
+import Image from '../../components/Image/Image';
 
 const CookTime = ({ active, ready, className, ...restProps }) => {
   return (
@@ -27,18 +27,37 @@ const IngredientsList = ({ ingredients, className, ...restProps }) => {
   );
 };
 
+const RecipeDirections = ({ directions, ...restProps }) => {
+  return (
+    <div>
+      {directions.split('\n').map((x, y) => (
+        <p key={'directions' + y}>{x}</p>
+      ))}
+    </div>
+  );
+};
+
+const RecipeIntro = styled.div`
+  ${recipeIntroStyle}
+`;
+
 class RecipeDetail extends React.Component {
   render() {
-    const { className, match, book, ...restProps } = this.props;
+    const { className, match, book, color, ...restProps } = this.props;
     const recipe = book.recipes[match.params.name];
 
     return (
       <div className={className}>
-        <Heading el="h2">{recipe.name}</Heading>
-        <CookTime active={recipe["active time"]} ready={recipe["ready time"]} />
-        <Image src={recipe["preview image"]} />
-        <IngredientsList ingredients={recipe.ingredients} />
-        <p id="directions">{recipe.directions}</p>
+        <RecipeIntro color={color}>
+          <Heading el="h2">{recipe.name}</Heading>
+          <CookTime
+            active={recipe['active time']}
+            ready={recipe['ready time']}
+          />
+          <Image src={recipe['preview image']} />
+          <IngredientsList ingredients={recipe.ingredients} />
+        </RecipeIntro>
+        <RecipeDirections directions={recipe.directions} />
       </div>
     );
   }
@@ -46,6 +65,6 @@ class RecipeDetail extends React.Component {
 
 export default withColor(
   styled(RecipeDetail)`
-    ${componentStyle}
+    ${recipeDetailStyle}
   `
 );

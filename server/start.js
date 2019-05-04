@@ -1,68 +1,71 @@
-"use strict";
+'use strict';
 
-const Hapi = require("@hapi/hapi");
-const Path = require("path");
+const Hapi = require('@hapi/hapi');
+const Path = require('path');
 
-const MongoClient = require("mongodb").MongoClient;
-const assert = require("assert");
+const MongoClient = require('mongodb').MongoClient;
+const assert = require('assert');
 
-const url = "mongodb://localhost:27017"; // Database Connection URL
-const dbName = "recipehub"; // Database Name
+const dbUrl = 'mongodb://localhost:27017'; // Database Connection
+const dbName = 'recipehub'; // Database Name
 
-const init = async () => {
+const init = async db => {
   const server = await Hapi.server({
     port: 146,
     routes: {
       files: {
-        relativeTo: Path.join(__dirname, "../dist")
+        relativeTo: Path.join(__dirname, '../dist')
       }
     }
   });
 
-  await server.register(require("@hapi/inert"));
+  await server.register(require('@hapi/inert'));
 
   server.route([
-    ({
-      method: "GET",
-      path: "/",
+    {
+      method: 'GET',
+      path: '/',
       handler: {
-        file: "index.html"
+        file: 'index.html'
       }
     },
     {
-      method: "GET",
-      path: "/assets/bundle.js",
+      method: 'GET',
+      path: '/assets/bundle.js',
       handler: {
-        file: "bundle.js"
+        file: 'bundle.js'
       }
     },
     {
-      method: "GET",
-      path: "/api/books/{name}",
-      handler: function(request, reply) {
-        collection.findOne({ _id: request.params.name }, function(error, book) {
-          assert.equal(null, error);
-          reply(book);
-        });
+      method: 'GET',
+      path: '/api/books/{name}',
+      handler: async function(request, h) {
+        const collection = db.collection('books');
+        const book = await collection.findOne({ _id: request.params.name });
+        const response = h.response({ book: book });
+        return response;
       }
-    })
+    }
   ]);
 
   await server.start();
-  console.log("Server running on %ss", server.info.uri);
+  console.log('Server running on %s', server.info.uri);
 };
 
-process.on("unhandledRejection", err => {
+process.on('unhandledRejection', err => {
+  console.log('Encountered an unhandled rejectection: ');
   console.log(err);
   process.exit(1);
 });
 
 // Use connect method to connect to the server
-MongoClient.connect(url, { useNewUrlParser: true }, function(err, client) {
+MongoClient.connect(dbUrl, { useNewUrlParser: true }, async function(
+  err,
+  client
+) {
   assert.equal(null, err);
   const db = client.db(dbName);
-  const collection = db.collection("books");
-  console.log("Connected successfully to server");
+  console.log(`Mongo initiated database ${dbName} at ${dbUrl}`);
 
-  init();
+  init(db);
 });

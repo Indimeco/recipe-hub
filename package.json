@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack-dev-server --open --mode development --content-base=dist",
-    "start": "webpack --mode development && node ./server/start.js"
+    "start": "node ./server/start.js",
+    "dev-server": "webpack --mode development && node ./server/start.js"
   },
   "repository": {
     "type": "git",

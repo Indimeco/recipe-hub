@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
-export default ({ color, ...props }) => {
-  return css`
+export default ({ color }) => {
+	return css`
     margin: 0;
     padding: 0;
     color: inherit;

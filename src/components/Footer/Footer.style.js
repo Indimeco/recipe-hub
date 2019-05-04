@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 export const footerStyle = ({ color, ...props }) => {
-  return css`
+	return css`
     ${props.theme.spacing.indent}
     padding-top: ${props.theme.spacing.small};
     padding-bottom: ${props.theme.spacing.small};
@@ -19,7 +19,7 @@ export const footerStyle = ({ color, ...props }) => {
   `;
 };
 
-export const spacingStyle = ({ color, ...props }) =>
-  css`
+export const spacingStyle = ({ ...props }) =>
+	css`
     padding: ${props.theme.spacing.large} 0;
   `;

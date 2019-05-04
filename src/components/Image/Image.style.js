@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
-export default ({ color, ...props }) => {
-  return css`
+export default () => {
+	return css`
     background-color: black;
     width: 100%;
     height: 100%;

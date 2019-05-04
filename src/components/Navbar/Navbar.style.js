@@ -1,21 +1,21 @@
-import { css } from "styled-components";
+import { css } from 'styled-components';
 
 const spacings = {
-  bannerHeight: 60,
-  bannerPaddingTop: 15,
-  bannerPaddingBottom: 5,
-  navHeight: 25,
-  navPaddingTop: 5,
-  navPaddingBottom: 5
+	bannerHeight: 60,
+	bannerPaddingTop: 15,
+	bannerPaddingBottom: 5,
+	navHeight: 25,
+	navPaddingTop: 5,
+	navPaddingBottom: 5
 };
 
 const totalSpace = Object.entries(spacings).reduce((total, pair) => {
-  const [key, value] = pair;
-  return total + value;
+	const [key, value] = pair;
+	return total + value;
 }, 0);
 
 export default ({ color, ...props }) => {
-  return css`
+	return css`
     .nav {
       position: fixed;
       width: 100%;

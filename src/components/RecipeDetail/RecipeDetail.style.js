@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export const recipeIntroStyle = ({ color, ...props }) => css`
+export const recipeIntroStyle = ({ color }) => css`
   color: ${color.fg};
   background-color: ${color.bg};
   display: block;
@@ -12,7 +12,7 @@ export const recipeIntroStyle = ({ color, ...props }) => css`
   }
 `;
 
-export const recipeDetailStyle = ({ color, ...props }) => css`
+export const recipeDetailStyle = ({ color }) => css`
   color: ${color.fg};
   background-color: ${color.bg};
 `;

@@ -30,9 +30,11 @@ const IngredientsList = ({ ingredients, className, ...restProps }) => {
 const RecipeDirections = ({ directions, ...restProps }) => {
   return (
     <div>
-      {directions.split('\n').map((x, y) => (
-        <p key={'directions' + y}>{x}</p>
-      ))}
+      {directions ? (
+        directions.split('\n').map((x, y) => <p key={'directions' + y}>{x}</p>)
+      ) : (
+        <p>No directions needed? No problem!</p>
+      )}
     </div>
   );
 };

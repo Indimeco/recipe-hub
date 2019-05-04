@@ -1,9 +1,9 @@
-const testData = require("./testData.js");
+const testData = require('./testData.js');
 
 function getData() {
-  return testData;
+	return testData;
 }
 
 module.exports = {
-  getData
+	getData
 };

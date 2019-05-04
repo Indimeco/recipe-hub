@@ -1,7 +1,7 @@
-import { css } from "styled-components";
+import { css } from 'styled-components';
 
 export default ({ color, ...props }) => {
-  return css`
+	return css`
     color: ${color.fg};
     background-color: ${color.bg};
     padding: ${props.theme.spacing.small};

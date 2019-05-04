@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
-export default ({ color, ...props }) => {
-  return css`
+export default () => {
+	return css`
     .recipe-list {
       display: grid;
       grid-template-columns: 1fr;

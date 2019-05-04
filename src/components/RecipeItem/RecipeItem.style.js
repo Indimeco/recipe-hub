@@ -1,7 +1,7 @@
-import { css } from "styled-components";
+import { css } from 'styled-components';
 
 export default ({ color, ...props }) => {
-  return css`
+	return css`
     .recipe-card {
       box-sizing: border-box;
       height: 300px;

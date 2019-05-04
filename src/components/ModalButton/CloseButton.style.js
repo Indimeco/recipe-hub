@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export default props => css`
+export default () => css`
   float: right;
   cursor: pointer;
 `;

@@ -1,7 +1,7 @@
-import { css } from "styled-components";
+import { css } from 'styled-components';
 
-export default ({ color, ...props }) => {
-  return css`
+export default ({ color }) => {
+	return css`
     color: ${color.fg};
     border: none;
 

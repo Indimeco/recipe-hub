@@ -25,42 +25,42 @@ const Form = withColor(
 		render() {
 			const { className, color, ...restProps } = this.props;
 			return (
-        <>
-          <Heading el="h2">New Recipe</Heading>
-          <label>
-            Recipe Name
-          	<Input placeHolder="Recipe Name" />
-          </label>
-          <label>
-            Preview Image
-          	<Input placeHolder="Preview Image" />
-          </label>
-          <label>
-            Recipe Source
-          	<Input placeHolder="Recipe Source" />
-          </label>
-          <label>
-            Ingredients
-          	<Textarea placeHolder="Ingredients" />
-          </label>
-          <label>
-            Recipe
-          	<Textarea placeHolder="Recipe" />
-          </label>
-          <label>
-            Cook Time
-          	<Input placeHolder="Cook Time" />
-          </label>
-          <label>
-            Method
-          	<Input placeHolder="Method" />
-          </label>
-          <label>
-            Tags
-          	<Textarea placeHolder="Tags" />
-          </label>
-          <Button type="Submit">Save</Button>
-        </>
+<>
+<Heading el="h2">New Recipe</Heading>
+<label>
+Recipe Name
+	<Input placeHolder="Recipe Name" />
+</label>
+<label>
+Preview Image
+	<Input placeHolder="Preview Image" />
+</label>
+<label>
+Recipe Source
+	<Input placeHolder="Recipe Source" />
+</label>
+<label>
+Ingredients
+	<Textarea placeHolder="Ingredients" />
+</label>
+<label>
+Recipe
+	<Textarea placeHolder="Recipe" />
+</label>
+<label>
+Cook Time
+	<Input placeHolder="Cook Time" />
+</label>
+<label>
+Method
+	<Input placeHolder="Method" />
+</label>
+<label>
+Tags
+	<Textarea placeHolder="Tags" />
+</label>
+<Button type="Submit">Save</Button>
+</>
 			);
 		}
 	}

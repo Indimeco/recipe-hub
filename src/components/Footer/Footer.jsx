@@ -12,17 +12,17 @@ const Spacing = styled.div`
 `;
 
 class Footer extends React.Component {
-  render() {
-    const { className, color, ...restProps } = this.props;
-    return (
-      <div>
-        <Spacing />
-        <StickyBar color={color} id="footer">
-          <p>Footer text</p>
-        </StickyBar>
-      </div>
-    );
-  }
+	render() {
+		const { className, color, ...restProps } = this.props;
+		return (
+			<div>
+				<Spacing />
+				<StickyBar color={color} id="footer">
+					<p>Footer text</p>
+				</StickyBar>
+			</div>
+		);
+	}
 }
 
 export default withColor(Footer);

@@ -23,8 +23,8 @@ const init = async db => {
 
 	server.route([
 		{
-			method: 'GET',
-			path: '/',
+			method: '*',
+			path: '/{p*}',
 			handler: {
 				file: 'index.html'
 			}
@@ -39,11 +39,10 @@ const init = async db => {
 		{
 			method: 'GET',
 			path: '/api/books/{name}',
-			handler: async function(request, h) {
+			handler: async function (request) {
 				const collection = db.collection('books');
 				const book = await collection.findOne({ _id: request.params.name });
-				const response = h.response({ book: book });
-				return response;
+				return book;
 			}
 		}
 	]);
@@ -59,7 +58,7 @@ process.on('unhandledRejection', err => {
 });
 
 // Use connect method to connect to the server
-MongoClient.connect(dbUrl, { useNewUrlParser: true }, async function(
+MongoClient.connect(dbUrl, { useNewUrlParser: true }, async function (
 	err,
 	client
 ) {

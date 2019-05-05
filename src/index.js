@@ -13,7 +13,7 @@ ReactDOM.render(
 	<ThemeProvider theme={theme}>
 		<ColorProvider.Provider value={'root'}>
 			<ModalProvider>
-				<App book={'1'} />
+				<App bookId={'1'} />
 			</ModalProvider>
 		</ColorProvider.Provider>
 	</ThemeProvider>,

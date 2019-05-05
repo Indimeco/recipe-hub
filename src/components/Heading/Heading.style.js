@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export default ({ color }) => {
+export default () => {
 	return css`
     margin: 0;
     padding: 0;

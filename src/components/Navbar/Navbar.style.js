@@ -10,7 +10,7 @@ const spacings = {
 };
 
 const totalSpace = Object.entries(spacings).reduce((total, pair) => {
-	const [key, value] = pair;
+	const [, value] = pair;
 	return total + value;
 }, 0);
 

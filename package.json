@@ -6,9 +6,8 @@
 	"scripts": {
 		"prebuild": "eslint --ext .js,.jsx ./src ./server ./db",
 		"build": "webpack --mode production",
-		"dev": "webpack-dev-server --open --mode development --content-base=dist",
 		"start": "node ./server/start.js",
-		"dev-server": "webpack --mode development && node ./server/start.js",
+		"dev": "webpack --watch --mode development | nodemon ./server/start.js",
 		"lint": "eslint --fix --ext .js,.jsx ./src ./server ./db"
 	},
 	"repository": {
@@ -39,10 +38,10 @@
 		"eslint": "^5.16.0",
 		"eslint-plugin-react": "^7.13.0",
 		"mongodb": "^3.2.3",
+		"nodemon": "^1.19.0",
 		"react": "^16.8.6",
 		"react-dom": "^16.8.6",
-		"styled-components": "^4.2.0",
-		"webpack-dev-server": "^3.3.1"
+		"styled-components": "^4.2.0"
 	},
 	"dependencies": {
 		"@babel/plugin-transform-runtime": "^7.4.4",

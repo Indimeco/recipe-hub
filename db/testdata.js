@@ -27,7 +27,7 @@ const book1 = {
         2)Add the garlic, chili powder, and cumin, stir to coat the vegetables, and cook until fragrant, about 1 minute. Add the ground beef and measured salt and cook, breaking the meat into small pieces with a wooden spoon, until the beef is no longer pink, about 7 minutes.
         3)Transfer the mixture to the slow cooker, add the diced tomatoes and their juices, tomato sauce, and beans, and stir to combine. Cover and cook until the chili thickens and the flavors meld, about 8 hours on low or 6 hours on high.
         4)Stir in the jalapeños or green chiles. Taste and season with salt as needed, and serve with the cheese, scallions, and sour cream.`,
-			'ready time': 360,
+			'waiting time': 360,
 			'active time': 45,
 			'preview image':
         'https://c-7npsfqifvt34x24tfbsdix2edipx78x2edpn.g00.chowhound.com/g00/3_c-7x78x78x78.dipx78ipvoe.dpn_/c-7NPSFQIFVT34x24iuuqtx3ax2fx2ftfbsdi.dipx78.dpnx2fuivncobjmx2f2391x2f1x2fx78x78x78.dipx78tubujd.dpnx2fbttfutx2f3125x2f10x2f41770_tqjdz_tmpx78_dpplfs_cffg_dijmj_4111y3111.kqhx3fj21d.nbslx3djnbhf_$/$/$/$/$/$/$/$/$',
@@ -53,7 +53,7 @@ const book1 = {
 				tortilla: { quantity: 8, unit: '' },
 				'tortilla chips': { quantity: 500, unit: 'g' }
 			},
-			'ready time': 360,
+			'waiting time': 360,
 			'active time': 45,
 			'preview image':
         'https://images.media-allrecipes.com/userphotos/560x315/5193809.jpg',
@@ -79,7 +79,7 @@ const book1 = {
 				tortilla: { quantity: 8, unit: '' },
 				'tortilla chips': { quantity: 500, unit: 'g' }
 			},
-			'ready time': 360,
+			'waiting time': 360,
 			'active time': 45,
 			'preview image':
         'https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/167797.jpg',
@@ -104,7 +104,7 @@ const book1 = {
 				tortilla: { quantity: 8, unit: '' },
 				'tortilla chips': { quantity: 500, unit: 'g' }
 			},
-			'ready time': 360,
+			'waiting time': 360,
 			'active time': 45,
 			'preview image':
         'https://c-7npsfqifvt34x24tfbsdix2edipx78x2edpn.g00.chowhound.com/g00/3_c-7x78x78x78.dipx78ipvoe.dpn_/c-7NPSFQIFVT34x24iuuqtx3ax2fx2ftfbsdi.dipx78.dpnx2fuivncobjmx2f2391x2f1x2fx78x78x78.dipx78tubujd.dpnx2fbttfutx2f3125x2f10x2f41770_tqjdz_tmpx78_dpplfs_cffg_dijmj_4111y3111.kqhx3fj21d.nbslx3djnbhf_$/$/$/$/$/$/$/$/$',
@@ -130,7 +130,7 @@ const book1 = {
 				tortilla: { quantity: 8, unit: '' },
 				'tortilla chips': { quantity: 500, unit: 'g' }
 			},
-			'ready time': 360,
+			'waiting time': 360,
 			'active time': 45,
 			'preview image':
         'https://c-7npsfqifvt34x24tfbsdix2edipx78x2edpn.g00.chowhound.com/g00/3_c-7x78x78x78.dipx78ipvoe.dpn_/c-7NPSFQIFVT34x24iuuqtx3ax2fx2ftfbsdi.dipx78.dpnx2fuivncobjmx2f2391x2f1x2fx78x78x78.dipx78tubujd.dpnx2fbttfutx2f3125x2f10x2f41770_tqjdz_tmpx78_dpplfs_cffg_dijmj_4111y3111.kqhx3fj21d.nbslx3djnbhf_$/$/$/$/$/$/$/$/$',
@@ -156,7 +156,7 @@ const book1 = {
 				tortilla: { quantity: 8, unit: '' },
 				'tortilla chips': { quantity: 500, unit: 'g' }
 			},
-			'ready time': 360,
+			'waiting time': 360,
 			'active time': 45,
 			'preview image':
         'https://c-7npsfqifvt34x24tfbsdix2edipx78x2edpn.g00.chowhound.com/g00/3_c-7x78x78x78.dipx78ipvoe.dpn_/c-7NPSFQIFVT34x24iuuqtx3ax2fx2ftfbsdi.dipx78.dpnx2fuivncobjmx2f2391x2f1x2fx78x78x78.dipx78tubujd.dpnx2fbttfutx2f3125x2f10x2f41770_tqjdz_tmpx78_dpplfs_cffg_dijmj_4111y3111.kqhx3fj21d.nbslx3djnbhf_$/$/$/$/$/$/$/$/$',
@@ -182,7 +182,7 @@ const book1 = {
 				tortilla: { quantity: 8, unit: '' },
 				'tortilla chips': { quantity: 500, unit: 'g' }
 			},
-			'ready time': 360,
+			'waiting time': 360,
 			'active time': 45,
 			'preview image':
         'https://c-7npsfqifvt34x24tfbsdix2edipx78x2edpn.g00.chowhound.com/g00/3_c-7x78x78x78.dipx78ipvoe.dpn_/c-7NPSFQIFVT34x24iuuqtx3ax2fx2ftfbsdi.dipx78.dpnx2fuivncobjmx2f2391x2f1x2fx78x78x78.dipx78tubujd.dpnx2fbttfutx2f3125x2f10x2f41770_tqjdz_tmpx78_dpplfs_cffg_dijmj_4111y3111.kqhx3fj21d.nbslx3djnbhf_$/$/$/$/$/$/$/$/$',

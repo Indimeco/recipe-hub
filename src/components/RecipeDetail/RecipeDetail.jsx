@@ -24,7 +24,8 @@ class RecipeDetail extends React.Component {
 					<CookTime
 						color="main"
 						active={recipe['active time']}
-						ready={recipe['ready time']}
+						// this will change next time i re-source the db
+						waiting={recipe['ready time']}
 					/>
 					<Image src={recipe['preview image']} />
 					<IngredientsList ingredients={recipe.ingredients} />

@@ -4,7 +4,7 @@ import theme from '../styles/theme';
 export const ColorProvider = React.createContext(theme.colors.root);
 
 export const withColor = WrappedComponent => {
-	return class coloredComponent extends React.Component {
+	return class ColoredComponent extends React.Component {
 		// getColor :: A, String -> Object
 		getColor(color, context) {
 			try {

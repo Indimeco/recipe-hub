@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import withColor from '../../../hocs/withColor';
 import { timeBoxStyle } from './CookTime.style';
 import Input from '../../Input/Input';
+import FieldWrapper from '../../FieldWrapper/FieldWrapper';
+import ToggleEdit from '../../ToggleEdit/ToggleEdit';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -12,12 +14,10 @@ import {
 	faHourglass,
 	faEquals,
 	faPlus,
-	faTimes,
-	faEdit,
 } from '@fortawesome/free-solid-svg-icons';
 
-// TODO : Make new close button component
 // TODO : Configure how DB will be updated given changed data (everything should flow back to a state store)
+// TODO : FieldWrapper causing a rendering issue which makes input lose focus
 
 
 const TimeBox = styled.span`${timeBoxStyle}`;
@@ -69,25 +69,28 @@ class CookTime extends React.Component {
 	}
 
 	handleChange(e) {
-		this.setState({ [e.target.name]: Number(e.target.value) });
+		const val = Number(e.target.value) == 0 ? 0 : Number(e.target.value);
+		if (val >= 0) { this.setState({ [e.target.name]: val }); }
 	}
 
 	render() {
 		const { color, ...restProps } = this.props;
 		return (
 			<TimeBox color={color} {...restProps}>
-				<FontAwesomeIcon icon={this.state.edit ? faTimes : faEdit} onClick={this.toggleEdit.bind(this)} />
+				<ToggleEdit color={color} edit={this.state.edit} onClick={this.toggleEdit.bind(this)} />
 				<FontAwesomeIcon icon={faClock} />{this.timeString(this.adaptTime({ total: this.state.activeTotal + this.state.waitingTotal }))}
 				<FontAwesomeIcon icon={faEquals} />
 				<FontAwesomeIcon icon={faRunning} />
 				{this.state.edit
 					?
-					<span>
-						<Input name="activeCalcHrs" value={this.state.activeCalcHrs} onChange={this.handleChange.bind(this)} />
-						hours
-						<Input name="activeCalcMins" value={this.state.activeCalcMins} onChange={this.handleChange.bind(this)} />
-						minutes
-					</span>
+					<>
+						<FieldWrapper label="hours" inline color={color}>
+							<Input name="activeCalcHrs" value={this.state.activeCalcHrs} onChange={this.handleChange.bind(this)} inline />
+						</FieldWrapper>
+						<FieldWrapper label="minutes" inline color={color}>
+							<Input name="activeCalcMins" value={this.state.activeCalcMins} onChange={this.handleChange.bind(this)} inline />
+						</FieldWrapper>
+					</>
 					:
 					<span>
 						{this.timeString({ calcMins: this.state.activeCalcMins, calcHrs: this.state.activeCalcHrs })}
@@ -97,12 +100,14 @@ class CookTime extends React.Component {
 				<FontAwesomeIcon icon={faHourglass} />
 				{this.state.edit
 					?
-					<span>
-						<Input name="waitingCalcHrs" value={this.state.waitingCalcHrs} onChange={this.handleChange.bind(this)} />
-						hours
-						<Input name="waitingCalcMins" value={this.state.waitingCalcMins} onChange={this.handleChange.bind(this)} />
-						minutes
-					</span>
+					<>
+						<FieldWrapper label="hours" inline color={color}>
+							<Input name="waitingCalcHrs" value={this.state.waitingCalcHrs} onChange={this.handleChange.bind(this)} inline />
+						</FieldWrapper>
+						<FieldWrapper label="minutes" inline color={color}>
+							<Input name="waitingCalcMins" value={this.state.waitingCalcMins} onChange={this.handleChange.bind(this)} inline />
+						</FieldWrapper>
+					</>
 					: <span>
 						{this.timeString({ calcMins: this.state.waitingCalcMins, calcHrs: this.state.waitingCalcHrs })}
 					</span>

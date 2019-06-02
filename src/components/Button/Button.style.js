@@ -1,16 +1,30 @@
 import { css } from 'styled-components';
 
-export default ({ color }) => {
+export default ({ inline, color }) => {
 	return css`
+	box-sizing: border-box;
+	${inline ? inlineVariant : regular};
     border: 1px solid ${color.fgAccent};
     color: ${color.fg};
     background-color: ${color.bg};
-    width: 100%;
-    margin: 10px 0;
+
+	padding: 5px;
 
     &:hover {
-      color: ${color.fgAccent};
-      background-color: ${color.bgAccent};
+		cursor: pointer;
+		color: ${color.fgAccent};
+		background-color: ${color.bgAccent};
     }
   `;
 };
+
+const inlineVariant = () => css`
+	width: auto;
+	margin: 5px;
+`;
+
+const regular = () => css`
+	width: 100%;
+	margin: 10px 0;
+`;
+

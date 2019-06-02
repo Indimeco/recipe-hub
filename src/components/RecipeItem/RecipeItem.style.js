@@ -42,7 +42,7 @@ export default ({ color, ...props }) => {
       .recipe-item-controls {
         color: ${props.theme.colors.main.fg};
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
         grid-column-gap: 5px;
       }
     }

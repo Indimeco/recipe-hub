@@ -30,7 +30,8 @@ export const theme = {
 	},
 	spacing: {
 		indent: `padding-left: 25px;
-        padding-right: 25px;`,
+		padding-right: 25px;`,
+		tiny: '5px',
 		small: '10px',
 		medium: '20px',
 		large: '30px'

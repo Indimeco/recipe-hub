@@ -35,11 +35,6 @@ class RecipeItem extends React.Component {
 						<Image src={preview} alt="" />
 					</Link>
 					<div className={`${className} recipe-item-controls`}>
-						<Button color={color}>
-							<Link to="/new">
-								<FontAwesomeIcon icon={faPen} />
-							</Link>
-						</Button>
 
 						<Button color={color}>
 							<FontAwesomeIcon icon={faHeart} />

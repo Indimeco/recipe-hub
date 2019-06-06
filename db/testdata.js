@@ -8,21 +8,21 @@ const book1 = {
 	recipes: [
 		{
 			name: 'Chili Con Carne',
-			ingredients: {
-				'yellow onion': { quantity: 2, unit: '' },
-				'red capsicum': { quantity: 1, unit: '' },
-				'garlic cloves': { quantity: 6, unit: '' },
-				'chili powder': { quantity: 0.25, unit: 'cup' },
-				'ground cumin': { quantity: 1, unit: 'tbsp' },
-				'ground beef': { quantity: 1, unit: 'kg' },
-				'diced tomato': { quantity: 800, unit: 'g' },
-				'tomato sauce': { quantity: 400, unit: 'g' },
-				'kidney beans': { quantity: 850, unit: 'g' },
-				'shredded cheddar': { quantity: 0, unit: '' },
-				'sour cream': { quantity: 250, unit: 'g' },
-				tortilla: { quantity: 8, unit: '' },
-				'tortilla chips': { quantity: 500, unit: 'g' }
-			},
+			ingredients: [
+				{ name: 'yellow onion', quantity: 2, unit: '' },
+				{ name: 'red capsicum', quantity: 1, unit: '' },
+				{ name: 'garlic cloves', quantity: 6, unit: '' },
+				{ name: 'chili powder', quantity: 0.25, unit: 'cup' },
+				{ name: 'ground cumin', quantity: 1, unit: 'tbsp' },
+				{ name: 'ground beef', quantity: 1, unit: 'kg' },
+				{ name: 'diced tomato', quantity: 800, unit: 'g' },
+				{ name: 'tomato sauce', quantity: 400, unit: 'g' },
+				{ name: 'kidney beans', quantity: 850, unit: 'g' },
+				{ name: 'shredded cheddar', quantity: 0, unit: '' },
+				{ name: 'sour cream', quantity: 250, unit: 'g' },
+				{ name: 'tortilla', quantity: 8, unit: '' },
+				{ name: 'tortilla chips', quantity: 500, unit: 'g' }
+			],
 			directions: `1) Heat the oil in a large frying pan over medium heat until shimmering. Add the onions and bell pepper, season with salt, and cook, stirring occasionally, until softened, about 8 minutes.
         2)Add the garlic, chili powder, and cumin, stir to coat the vegetables, and cook until fragrant, about 1 minute. Add the ground beef and measured salt and cook, breaking the meat into small pieces with a wooden spoon, until the beef is no longer pink, about 7 minutes.
         3)Transfer the mixture to the slow cooker, add the diced tomatoes and their juices, tomato sauce, and beans, and stir to combine. Cover and cook until the chili thickens and the flavors meld, about 8 hours on low or 6 hours on high.
@@ -38,21 +38,21 @@ const book1 = {
 		},
 		{
 			name: 'Mac & Cheese',
-			ingredients: {
-				'yellow onion': { quantity: 2, unit: '' },
-				'red capsicum': { quantity: 1, unit: '' },
-				'garlic cloves': { quantity: 6, unit: '' },
-				'chili powder': { quantity: 0.25, unit: 'cup' },
-				'ground cumin': { quantity: 1, unit: 'tbsp' },
-				'ground beef': { quantity: 1, unit: 'kg' },
-				'diced tomato': { quantity: 800, unit: 'g' },
-				'tomato sauce': { quantity: 400, unit: 'g' },
-				'kidney beans': { quantity: 850, unit: 'g' },
-				'shredded cheddar': { quantity: 0, unit: '' },
-				'sour cream': { quantity: 250, unit: 'g' },
-				tortilla: { quantity: 8, unit: '' },
-				'tortilla chips': { quantity: 500, unit: 'g' }
-			},
+			ingredients: [
+				{ name: 'yellow onion', quantity: 2, unit: '' },
+				{ name: 'red capsicum', quantity: 1, unit: '' },
+				{ name: 'garlic cloves', quantity: 6, unit: '' },
+				{ name: 'chili powder', quantity: 0.25, unit: 'cup' },
+				{ name: 'ground cumin', quantity: 1, unit: 'tbsp' },
+				{ name: 'ground beef', quantity: 1, unit: 'kg' },
+				{ name: 'diced tomato', quantity: 800, unit: 'g' },
+				{ name: 'tomato sauce', quantity: 400, unit: 'g' },
+				{ name: 'kidney beans', quantity: 850, unit: 'g' },
+				{ name: 'shredded cheddar', quantity: 0, unit: '' },
+				{ name: 'sour cream', quantity: 250, unit: 'g' },
+				{ name: 'tortilla', quantity: 8, unit: '' },
+				{ name: 'tortilla chips', quantity: 500, unit: 'g' }
+			],
 			'waiting time': 360,
 			'active time': 45,
 			'preview image':
@@ -64,21 +64,21 @@ const book1 = {
 		},
 		{
 			name: 'Fluffiest Pancakes',
-			ingredients: {
-				'yellow onion': { quantity: 2, unit: '' },
-				'red capsicum': { quantity: 1, unit: '' },
-				'garlic cloves': { quantity: 6, unit: '' },
-				'chili powder': { quantity: 0.25, unit: 'cup' },
-				'ground cumin': { quantity: 1, unit: 'tbsp' },
-				'ground beef': { quantity: 1, unit: 'kg' },
-				'diced tomato': { quantity: 800, unit: 'g' },
-				'tomato sauce': { quantity: 400, unit: 'g' },
-				'kidney beans': { quantity: 850, unit: 'g' },
-				'shredded cheddar': { quantity: 0, unit: '' },
-				'sour cream': { quantity: 250, unit: 'g' },
-				tortilla: { quantity: 8, unit: '' },
-				'tortilla chips': { quantity: 500, unit: 'g' }
-			},
+			ingredients: [
+				{ name: 'yellow onion', quantity: 2, unit: '' },
+				{ name: 'red capsicum', quantity: 1, unit: '' },
+				{ name: 'garlic cloves', quantity: 6, unit: '' },
+				{ name: 'chili powder', quantity: 0.25, unit: 'cup' },
+				{ name: 'ground cumin', quantity: 1, unit: 'tbsp' },
+				{ name: 'ground beef', quantity: 1, unit: 'kg' },
+				{ name: 'diced tomato', quantity: 800, unit: 'g' },
+				{ name: 'tomato sauce', quantity: 400, unit: 'g' },
+				{ name: 'kidney beans', quantity: 850, unit: 'g' },
+				{ name: 'shredded cheddar', quantity: 0, unit: '' },
+				{ name: 'sour cream', quantity: 250, unit: 'g' },
+				{ name: 'tortilla', quantity: 8, unit: '' },
+				{ name: 'tortilla chips', quantity: 500, unit: 'g' }
+			],
 			'waiting time': 360,
 			'active time': 45,
 			'preview image':
@@ -89,21 +89,21 @@ const book1 = {
 		},
 		{
 			name: 'Test 1 with a really long that might break layout',
-			ingredients: {
-				'yellow onion': { quantity: 2, unit: '' },
-				'red capsicum': { quantity: 1, unit: '' },
-				'garlic cloves': { quantity: 6, unit: '' },
-				'chili powder': { quantity: 0.25, unit: 'cup' },
-				'ground cumin': { quantity: 1, unit: 'tbsp' },
-				'ground beef': { quantity: 1, unit: 'kg' },
-				'diced tomato': { quantity: 800, unit: 'g' },
-				'tomato sauce': { quantity: 400, unit: 'g' },
-				'kidney beans': { quantity: 850, unit: 'g' },
-				'shredded cheddar': { quantity: 0, unit: '' },
-				'sour cream': { quantity: 250, unit: 'g' },
-				tortilla: { quantity: 8, unit: '' },
-				'tortilla chips': { quantity: 500, unit: 'g' }
-			},
+			ingredients: [
+				{ name: 'yellow onion', quantity: 2, unit: '' },
+				{ name: 'red capsicum', quantity: 1, unit: '' },
+				{ name: 'garlic cloves', quantity: 6, unit: '' },
+				{ name: 'chili powder', quantity: 0.25, unit: 'cup' },
+				{ name: 'ground cumin', quantity: 1, unit: 'tbsp' },
+				{ name: 'ground beef', quantity: 1, unit: 'kg' },
+				{ name: 'diced tomato', quantity: 800, unit: 'g' },
+				{ name: 'tomato sauce', quantity: 400, unit: 'g' },
+				{ name: 'kidney beans', quantity: 850, unit: 'g' },
+				{ name: 'shredded cheddar', quantity: 0, unit: '' },
+				{ name: 'sour cream', quantity: 250, unit: 'g' },
+				{ name: 'tortilla', quantity: 8, unit: '' },
+				{ name: 'tortilla chips', quantity: 500, unit: 'g' }
+			],
 			'waiting time': 360,
 			'active time': 45,
 			'preview image':
@@ -115,21 +115,21 @@ const book1 = {
 		},
 		{
 			name: 'Chili Con Carne',
-			ingredients: {
-				'yellow onion': { quantity: 2, unit: '' },
-				'red capsicum': { quantity: 1, unit: '' },
-				'garlic cloves': { quantity: 6, unit: '' },
-				'chili powder': { quantity: 0.25, unit: 'cup' },
-				'ground cumin': { quantity: 1, unit: 'tbsp' },
-				'ground beef': { quantity: 1, unit: 'kg' },
-				'diced tomato': { quantity: 800, unit: 'g' },
-				'tomato sauce': { quantity: 400, unit: 'g' },
-				'kidney beans': { quantity: 850, unit: 'g' },
-				'shredded cheddar': { quantity: 0, unit: '' },
-				'sour cream': { quantity: 250, unit: 'g' },
-				tortilla: { quantity: 8, unit: '' },
-				'tortilla chips': { quantity: 500, unit: 'g' }
-			},
+			ingredients: [
+				{ name: 'yellow onion', quantity: 2, unit: '' },
+				{ name: 'red capsicum', quantity: 1, unit: '' },
+				{ name: 'garlic cloves', quantity: 6, unit: '' },
+				{ name: 'chili powder', quantity: 0.25, unit: 'cup' },
+				{ name: 'ground cumin', quantity: 1, unit: 'tbsp' },
+				{ name: 'ground beef', quantity: 1, unit: 'kg' },
+				{ name: 'diced tomato', quantity: 800, unit: 'g' },
+				{ name: 'tomato sauce', quantity: 400, unit: 'g' },
+				{ name: 'kidney beans', quantity: 850, unit: 'g' },
+				{ name: 'shredded cheddar', quantity: 0, unit: '' },
+				{ name: 'sour cream', quantity: 250, unit: 'g' },
+				{ name: 'tortilla', quantity: 8, unit: '' },
+				{ name: 'tortilla chips', quantity: 500, unit: 'g' }
+			],
 			'waiting time': 360,
 			'active time': 45,
 			'preview image':
@@ -141,21 +141,21 @@ const book1 = {
 		},
 		{
 			name: 'Chili Con Carne',
-			ingredients: {
-				'yellow onion': { quantity: 2, unit: '' },
-				'red capsicum': { quantity: 1, unit: '' },
-				'garlic cloves': { quantity: 6, unit: '' },
-				'chili powder': { quantity: 0.25, unit: 'cup' },
-				'ground cumin': { quantity: 1, unit: 'tbsp' },
-				'ground beef': { quantity: 1, unit: 'kg' },
-				'diced tomato': { quantity: 800, unit: 'g' },
-				'tomato sauce': { quantity: 400, unit: 'g' },
-				'kidney beans': { quantity: 850, unit: 'g' },
-				'shredded cheddar': { quantity: 0, unit: '' },
-				'sour cream': { quantity: 250, unit: 'g' },
-				tortilla: { quantity: 8, unit: '' },
-				'tortilla chips': { quantity: 500, unit: 'g' }
-			},
+			ingredients: [
+				{ name: 'yellow onion', quantity: 2, unit: '' },
+				{ name: 'red capsicum', quantity: 1, unit: '' },
+				{ name: 'garlic cloves', quantity: 6, unit: '' },
+				{ name: 'chili powder', quantity: 0.25, unit: 'cup' },
+				{ name: 'ground cumin', quantity: 1, unit: 'tbsp' },
+				{ name: 'ground beef', quantity: 1, unit: 'kg' },
+				{ name: 'diced tomato', quantity: 800, unit: 'g' },
+				{ name: 'tomato sauce', quantity: 400, unit: 'g' },
+				{ name: 'kidney beans', quantity: 850, unit: 'g' },
+				{ name: 'shredded cheddar', quantity: 0, unit: '' },
+				{ name: 'sour cream', quantity: 250, unit: 'g' },
+				{ name: 'tortilla', quantity: 8, unit: '' },
+				{ name: 'tortilla chips', quantity: 500, unit: 'g' }
+			],
 			'waiting time': 360,
 			'active time': 45,
 			'preview image':
@@ -167,21 +167,21 @@ const book1 = {
 		},
 		{
 			name: 'Chili Con Carne',
-			ingredients: {
-				'yellow onion': { quantity: 2, unit: '' },
-				'red capsicum': { quantity: 1, unit: '' },
-				'garlic cloves': { quantity: 6, unit: '' },
-				'chili powder': { quantity: 0.25, unit: 'cup' },
-				'ground cumin': { quantity: 1, unit: 'tbsp' },
-				'ground beef': { quantity: 1, unit: 'kg' },
-				'diced tomato': { quantity: 800, unit: 'g' },
-				'tomato sauce': { quantity: 400, unit: 'g' },
-				'kidney beans': { quantity: 850, unit: 'g' },
-				'shredded cheddar': { quantity: 0, unit: '' },
-				'sour cream': { quantity: 250, unit: 'g' },
-				tortilla: { quantity: 8, unit: '' },
-				'tortilla chips': { quantity: 500, unit: 'g' }
-			},
+			ingredients: [
+				{ name: 'yellow onion', quantity: 2, unit: '' },
+				{ name: 'red capsicum', quantity: 1, unit: '' },
+				{ name: 'garlic cloves', quantity: 6, unit: '' },
+				{ name: 'chili powder', quantity: 0.25, unit: 'cup' },
+				{ name: 'ground cumin', quantity: 1, unit: 'tbsp' },
+				{ name: 'ground beef', quantity: 1, unit: 'kg' },
+				{ name: 'diced tomato', quantity: 800, unit: 'g' },
+				{ name: 'tomato sauce', quantity: 400, unit: 'g' },
+				{ name: 'kidney beans', quantity: 850, unit: 'g' },
+				{ name: 'shredded cheddar', quantity: 0, unit: '' },
+				{ name: 'sour cream', quantity: 250, unit: 'g' },
+				{ name: 'tortilla', quantity: 8, unit: '' },
+				{ name: 'tortilla chips', quantity: 500, unit: 'g' }
+			],
 			'waiting time': 360,
 			'active time': 45,
 			'preview image':

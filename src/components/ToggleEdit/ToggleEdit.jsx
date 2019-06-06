@@ -9,9 +9,9 @@ import { faTimes, faPen } from '@fortawesome/free-solid-svg-icons';
 
 const ToggleButtonWrapper = styled.div`${componentStyle}`;
 
-const ToggleEdit = ({ edit, color, ...restProps }) => ( 
+const ToggleEdit = ({ edit, color, onClick, ...restProps }) => ( 
 	<ToggleButtonWrapper color={color} {...restProps}>
-		<Button color={color} inline>
+		<Button onClick={onClick} color={color} inline>
 			<FontAwesomeIcon icon={edit ? faTimes : faPen}/>
 		</Button>
 	</ToggleButtonWrapper>
@@ -20,6 +20,7 @@ const ToggleEdit = ({ edit, color, ...restProps }) => (
 ToggleEdit.propTypes = {
 	color: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 	edit: PropTypes.bool,
+	onClick: PropTypes.func
 };
 
 export default withColor(ToggleEdit);

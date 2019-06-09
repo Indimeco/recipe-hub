@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ToggleEdit from '../../ToggleEdit/ToggleEdit';
 import styled from 'styled-components';
 import Input from '../../Input/Input';
+import { css } from 'styled-components';
 
 const EditContainer = styled.div`
 	div {
@@ -10,6 +11,13 @@ const EditContainer = styled.div`
 		grid-template-columns: 1fr 1fr 1fr;
 	}
 `;
+
+const ingredientsBoxStyle = (props) => css`
+	padding: ${props.theme.spacing.small};
+`;
+
+const IngredientsBox = styled.div`${ingredientsBoxStyle}`;
+
 
 export class IngredientsList extends React.Component {
 	constructor(props) {
@@ -33,10 +41,10 @@ export class IngredientsList extends React.Component {
 
 
 	render() {
-		const { ingredients, ...restProps } = this.props;
+		const { ingredients, color, ...restProps } = this.props;
 		return (
-			<div {...restProps}>
-				<ToggleEdit edit={this.state.edit} onClick={() => this.setState({ edit: !this.state.edit })} />
+			<IngredientsBox {...restProps}>
+				<ToggleEdit color={color} edit={this.state.edit} onClick={() => this.setState({ edit: !this.state.edit })} />
 				{this.state.edit
 					? <div>
 						<EditContainer>
@@ -62,13 +70,14 @@ export class IngredientsList extends React.Component {
 						))}
 					</ul>
 				}
-			</div>
+			</IngredientsBox>
 		);
 	}
 }
 
 IngredientsList.propTypes = {
 	ingredients: PropTypes.array,
+	color: PropTypes.object,
 };
 
 export default IngredientsList;

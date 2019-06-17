@@ -1,5 +1,9 @@
 import { css } from 'styled-components';
 
+const textareaStyles = () => css`
+  height: 400px;
+`;
+
 export default ({ color, inline, ...props }) => {
 	return css`
     margin: 0 0 ${props.theme.spacing.small} 0;
@@ -13,5 +17,7 @@ export default ({ color, inline, ...props }) => {
       border: solid 1px ${color.fgAccent};
       box-shadow: 0 0 3px 1px ${color.bgAccent};
     }
+
+    ${props.el === 'textarea' ? textareaStyles : ''}
   `;
 };

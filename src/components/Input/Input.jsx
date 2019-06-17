@@ -6,9 +6,10 @@ import PropTypes from 'prop-types';
 
 class Input extends React.Component {
 	render() {
-		const { className, color, placeHolder, inline, ...restProps } = this.props;
+		const { className, el, type, placeHolder, inline, ...restProps } = this.props;
+		let El = el || 'input';
 		return (
-			<input className={className} placeholder={placeHolder} {...restProps} />
+			<El type={type || 'text'} className={className} placeholder={placeHolder} {...restProps} />
 		);
 	}
 }
@@ -18,6 +19,8 @@ Input.propTypes = {
 	placeHolder: PropTypes.string,
 	className: PropTypes.string,
 	inline: PropTypes.bool,
+	type: PropTypes.string,
+	el: PropTypes.string
 };
 
 export default withColor(

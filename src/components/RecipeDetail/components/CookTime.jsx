@@ -20,7 +20,7 @@ import {
 // TODO : FieldWrapper causing a rendering issue which makes input lose focus
 
 
-const TimeBox = styled.span`${timeBoxStyle}`;
+const TimeBox = styled.div`${timeBoxStyle}`;
 
 class CookTime extends React.Component {
 

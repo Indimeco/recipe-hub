@@ -49,15 +49,30 @@ export class IngredientsList extends React.Component {
 					? <div>
 						<EditContainer>
 							<div>
-								<span>Name</span>
-								<span>Quantity</span>
-								<span>Unit</span>
+								<span id="ingredientslist-name">Name</span>
+								<span id="ingredientslist-quantity">Quantity</span>
+								<span id="ingredientslist-unit">Unit</span>
 							</div>
 							{Object.keys(ingredients).map((x, y) => (
 								<div key={`ingredient-${y}`}>
-									<Input name="name" onChange={this.updateIngredient.bind(this, y)} value={ingredients[x].name} />
-									<Input name="quantity" onChange={this.updateIngredient.bind(this, y)} value={ingredients[x].quantity} />
-									<Input name="unit" onChange={this.updateIngredient.bind(this, y)} value={ingredients[x].unit} />
+									<Input 
+										name="name" 
+										aria-labelledby="ingredientslist-name" 
+										onChange={this.updateIngredient.bind(this, y)} 
+										value={ingredients[x].name} 
+									/>
+									<Input 
+										name="quantity" 
+										aria-labelledby="ingredientslist-quantity" 
+										onChange={this.updateIngredient.bind(this, y)} 
+										value={ingredients[x].quantity} 
+									/>
+									<Input 
+										name="unit" 
+										aria-labelledby="ingredientslist-unit" 
+										onChange={this.updateIngredient.bind(this, y)} 
+										value={ingredients[x].unit} 
+									/>
 								</div>
 							))}
 						</EditContainer>

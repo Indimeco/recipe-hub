@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ToggleEdit from '../../ToggleEdit/ToggleEdit';
 import Input from '../../Input/Input';
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const container = (props) => css`
 	padding: ${props.theme.spacing.small};

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import componentStyle from './App.style';
 
 import Banner from '../../components/Banner/Banner';
@@ -25,7 +26,7 @@ class App extends React.Component {
 	}
 
 	render() {
-		const { className, bookId, ...restProps } = this.props;
+		const { className } = this.props;
 		return (
 			<Router>
 				<div className={className}>
@@ -49,8 +50,8 @@ class App extends React.Component {
 
 							<Route
 								path="/view/:name"
-								render={props => (
-									this.state.book ? <RecipeDetail {...props} book={this.state.book} color="root" /> : 'Loading...'
+								render={ ({match}) => (
+									this.state.book ? <RecipeDetail match={match} book={this.state.book} color="root" /> : 'Loading...'
 								)}
 							/>
 
@@ -65,6 +66,11 @@ class App extends React.Component {
 		);
 	}
 }
+
+App.propTypes = {
+	bookId: PropTypes.string,
+	className: PropTypes.string
+};
 
 export default withColor(
 	styled(App)`

@@ -13,13 +13,15 @@ const RecipeIntro = styled.div`
   ${recipeIntroStyle}
 `;
 
+const RecipeWrapper = styled.div`${recipeDetailStyle}`;
+
 class RecipeDetail extends React.Component {
 	render() {
-		const { match, book, color, ...restProps } = this.props;
+		const { match, book, color } = this.props;
 		const recipe = book.recipes[match.params.name];
 
 		return (
-			<div {...restProps}>
+			<RecipeWrapper color={color}>
 				<RecipeIntro color={color}>
 					<Heading el="h2">{recipe.name}</Heading>
 					<CookTime
@@ -31,20 +33,15 @@ class RecipeDetail extends React.Component {
 					<IngredientsList ingredients={recipe.ingredients} />
 				</RecipeIntro>
 				<RecipeDirections directions={recipe.directions} />
-			</div>
+			</RecipeWrapper>
 		);
 	}
 }
 
 RecipeDetail.propTypes = {
-	className: PropTypes.string,
 	match: PropTypes.object,
 	book: PropTypes.object,
 	color: PropTypes.object,
 };
 
-export default withColor(
-	styled(RecipeDetail)`
-    ${recipeDetailStyle}
-  `
-);
+export default withColor(RecipeDetail);

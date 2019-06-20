@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import componentStyle from './RecipeItem.style';
 import Heading from '../Heading/Heading';
 import Image from '../Image/Image';
@@ -9,7 +10,6 @@ import withColor from '../../hocs/withColor';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-	faPen,
 	faHeart,
 	faExternalLinkAlt
 } from '@fortawesome/free-solid-svg-icons';
@@ -23,10 +23,9 @@ class RecipeItem extends React.Component {
 			link,
 			name,
 			preview,
-			...restProps
 		} = this.props;
 		return (
-			<div className={className} key={key} {...restProps}>
+			<div className={className} key={key}>
 				<div className="recipe-card">
 					<Link to={link}>
 						<Heading el="h3">{name}</Heading>
@@ -49,6 +48,15 @@ class RecipeItem extends React.Component {
 		);
 	}
 }
+
+RecipeItem.propTypes = {
+	className: PropTypes.string,
+	color: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+	preview: PropTypes.string,
+	key: PropTypes.string,
+	link: PropTypes.string,
+	name: PropTypes.string,
+};
 
 export default withColor(
 	styled(RecipeItem)`

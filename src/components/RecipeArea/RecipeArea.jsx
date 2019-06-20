@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import componentStyle from './RecipeArea.style';
 import RecipeItem from '../RecipeItem/RecipeItem';
 import Heading from '../Heading/Heading';
@@ -30,6 +31,12 @@ class RecipeArea extends React.Component {
 		);
 	}
 }
+
+RecipeArea.propTypes = {
+	color: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+	book: PropTypes.object,
+	className: PropTypes.string,
+};
 
 export default withColor(
 	styled(RecipeArea)`

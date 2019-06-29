@@ -9,13 +9,27 @@ export const footerStyle = ({ color, ...props }) => {
     color: ${color.fg};
     background-color: ${color.bg};
 
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    p {
+    ul {
+      list-style-type: none;
+      text-align: right;
+      padding: 0;
       margin: 0;
     }
+
+    ul > li {
+      display: inline-block;
+      padding: ${props.theme.spacing.small};
+    }
+
+    a {
+      &, &:visited {
+        color: ${color.fg};
+      }
+      &:hover {
+          color: ${color.fgAccent};
+      }
+    }
+
   `;
 };
 

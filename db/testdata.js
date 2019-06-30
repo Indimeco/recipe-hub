@@ -7,6 +7,7 @@ const book1 = {
 	},
 	recipes: [
 		{
+			id: '1',
 			name: 'Chili Con Carne',
 			ingredients: [
 				{ name: 'yellow onion', quantity: 2, unit: '' },
@@ -37,6 +38,7 @@ const book1 = {
 			categories: ['Meal']
 		},
 		{
+			id: '2',
 			name: 'Mac & Cheese',
 			ingredients: [
 				{ name: 'yellow onion', quantity: 2, unit: '' },
@@ -63,6 +65,7 @@ const book1 = {
 			categories: ['Meal']
 		},
 		{
+			id: '3',
 			name: 'Fluffiest Pancakes',
 			ingredients: [
 				{ name: 'yellow onion', quantity: 2, unit: '' },
@@ -88,6 +91,7 @@ const book1 = {
 			categories: ['Meal']
 		},
 		{
+			id: '4',
 			name: 'Test 1 with a really long that might break layout',
 			ingredients: [
 				{ name: 'yellow onion', quantity: 2, unit: '' },
@@ -114,6 +118,7 @@ const book1 = {
 			categories: ['Meal']
 		},
 		{
+			id: '5',
 			name: 'Chili Con Carne',
 			ingredients: [
 				{ name: 'yellow onion', quantity: 2, unit: '' },
@@ -140,6 +145,7 @@ const book1 = {
 			categories: ['Meal']
 		},
 		{
+			id: '6',
 			name: 'Chili Con Carne',
 			ingredients: [
 				{ name: 'yellow onion', quantity: 2, unit: '' },
@@ -166,6 +172,7 @@ const book1 = {
 			categories: ['Meal']
 		},
 		{
+			id: '7',
 			name: 'Chili Con Carne',
 			ingredients: [
 				{ name: 'yellow onion', quantity: 2, unit: '' },

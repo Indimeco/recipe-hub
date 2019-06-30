@@ -44,6 +44,26 @@ const init = async db => {
 				const book = await collection.findOne({ _id: request.params.name });
 				return book;
 			}
+		},
+		// TODO: request.payload for large JSON e.g., ingredients
+		{
+			method: 'PUT',
+			path: '/api/books/{name}/{recipe}',
+			handler: async function (request) {
+				const recipeKey = request.query.key;
+				const recipeValue = request.query.value;
+
+				if ( recipeKey && recipeValue ){
+					const collection = db.collection('books');
+					await collection.findOneAndUpdate(
+						{ _id: request.params.name, 'recipes.id': request.params.recipe }, 
+						{ $set : { [`recipes.$.${recipeKey}`]: recipeValue } },
+					);
+
+					// TODO: What to return?
+					return 'OK';
+				}
+			}
 		}
 	]);
 
@@ -52,7 +72,7 @@ const init = async db => {
 };
 
 process.on('unhandledRejection', err => {
-	console.log('Encountered an unhandled rejectection: ');
+	console.log('Encountered an unhandled rejection: ');
 	console.log(err);
 	process.exit(1);
 });

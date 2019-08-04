@@ -15,33 +15,32 @@ const RecipeIntro = styled.div`
 
 const RecipeWrapper = styled.div`${recipeDetailStyle}`;
 
-class RecipeDetail extends React.Component {
-	render() {
-		const { match, book, color } = this.props;
-		const recipe = book.recipes[match.params.name];
+const RecipeDetail = ({ match: { params: { id } }, book, color, handleSubmit }) => {
+	const recipe = book.recipes.find(recipe => recipe.id === id);
 
-		return (
-			<RecipeWrapper color={color}>
-				<RecipeIntro color={color}>
-					<Heading el="h2">{recipe.name}</Heading>
-					<CookTime
-						color="main"
-						active={recipe['active time']}
-						waiting={recipe['waiting time']}
-					/>
-					<Image src={recipe['preview image']} />
-					<IngredientsList ingredients={recipe.ingredients} />
-				</RecipeIntro>
-				<RecipeDirections directions={recipe.directions} />
-			</RecipeWrapper>
-		);
-	}
-}
+	return (
+		<RecipeWrapper color={color}>
+			<RecipeIntro color={color}>
+				<Heading el="h2">{recipe.name.value}</Heading>
+				<CookTime
+					color="main"
+					active={recipe.activeTime.value}
+					waiting={recipe.waitingTime.value}
+					handleSubmit={handleSubmit.bind(null, id)}
+				/>
+				<Image src={recipe.previewImage.value} />
+				<IngredientsList ingredients={recipe.ingredients.value} />
+			</RecipeIntro>
+			<RecipeDirections directions={recipe.directions.value} />
+		</RecipeWrapper>
+	);
+};
 
 RecipeDetail.propTypes = {
 	match: PropTypes.object,
 	book: PropTypes.object,
 	color: PropTypes.object,
+	handleSubmit: PropTypes.func
 };
 
 export default withColor(RecipeDetail);

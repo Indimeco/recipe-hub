@@ -16,14 +16,10 @@ import {
 	faPlus,
 } from '@fortawesome/free-solid-svg-icons';
 
-// TODO : Configure how DB will be updated given changed data (everything should flow back to a state store)
-// TODO : FieldWrapper causing a rendering issue which makes input lose focus
-
 
 const TimeBox = styled.div`${timeBoxStyle}`;
 
 class CookTime extends React.Component {
-
 	constructor(props) {
 		super(props);
 		const activeTime = this.adaptTime({ total: this.props.active });
@@ -68,6 +64,11 @@ class CookTime extends React.Component {
 		});
 	}
 
+	submit() {
+		this.props.handleSubmit('activeTime', { value: this.state.activeTotal });
+		this.props.handleSubmit('waitingTime', { value: this.state.waitingTotal });
+	}
+
 	handleChange(e) {
 		const val = Number(e.target.value) == 0 ? 0 : Number(e.target.value);
 		if (val >= 0) { this.setState({ [e.target.name]: val }); }
@@ -77,7 +78,7 @@ class CookTime extends React.Component {
 		const { color, ...restProps } = this.props;
 		return (
 			<TimeBox color={color} {...restProps}>
-				<ToggleEdit color={color} edit={this.state.edit} onClick={this.toggleEdit.bind(this)} />
+				<ToggleEdit color={color} onSave={this.submit.bind(this)} edit={this.state.edit} onClick={this.toggleEdit.bind(this)} />
 				<FontAwesomeIcon icon={faClock} />{this.timeString(this.adaptTime({ total: this.state.activeTotal + this.state.waitingTotal }))}
 				<FontAwesomeIcon icon={faEquals} />
 				<FontAwesomeIcon icon={faRunning} />
@@ -121,6 +122,7 @@ CookTime.propTypes = {
 	active: PropTypes.number,
 	waiting: PropTypes.number,
 	color: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+	handleSubmit: PropTypes.func
 };
 
 export default withColor(CookTime);

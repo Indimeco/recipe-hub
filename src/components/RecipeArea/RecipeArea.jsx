@@ -15,14 +15,15 @@ class RecipeArea extends React.Component {
 				<Heading el="h2">{book.meta.name}</Heading>
 				<Filter color="main" />
 				<div className="recipe-list">
-					{Object.keys(book.recipes).map(recipe => {
+					{Object.keys(book.recipes).map(index => {
+						const recipe = book.recipes[index];
 						return (
 							<RecipeItem
 								color={color}
-								key={recipe}
-								name={book.recipes[recipe]['name']}
-								link={`/view/${recipe}`}
-								preview={book.recipes[recipe]['preview image']}
+								key={`recipe${index}`}
+								name={recipe.name.value}
+								link={`/view/${recipe.id}`}
+								preview={recipe.previewImage.value}
 							/>
 						);
 					})}

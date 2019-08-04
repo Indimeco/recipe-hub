@@ -25,6 +25,17 @@ class App extends React.Component {
 		this.setState({ book: book });
 	}
 
+	updateRecipe() {
+		return async (id, key, payload) => await fetch(`/api/books/${this.props.bookId}/${id}?key=${key}`, {
+			method: 'PUT',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(payload)
+		});
+	}
+
 	render() {
 		const { className } = this.props;
 		return (
@@ -49,14 +60,14 @@ class App extends React.Component {
 							<Route path="/new" render={() => <Form color="main" />} />
 
 							<Route
-								path="/view/:name"
-								render={ ({match}) => (
-									this.state.book ? <RecipeDetail match={match} book={this.state.book} color="root" /> : 'Loading...'
+								path="/view/:id"
+								render={({ match }) => (
+									this.state.book ? <RecipeDetail match={match} book={this.state.book} handleSubmit={this.updateRecipe()} color="root" /> : 'Loading...'
 								)}
 							/>
 
 							<Route
-								render={() => <ErrorPage/>}
+								render={() => <ErrorPage />}
 							/>
 						</Switch>
 					</div>

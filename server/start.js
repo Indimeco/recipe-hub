@@ -45,19 +45,19 @@ const init = async db => {
 				return book;
 			}
 		},
-		// TODO: request.payload for large JSON e.g., ingredients
+
 		{
 			method: 'PUT',
 			path: '/api/books/{name}/{recipe}',
 			handler: async function (request) {
 				const recipeKey = request.query.key;
-				const recipeValue = request.query.value;
+				const recipeValue = request.payload;
 
-				if ( recipeKey && recipeValue ){
+				if (recipeKey && recipeValue) {
 					const collection = db.collection('books');
 					await collection.findOneAndUpdate(
-						{ _id: request.params.name, 'recipes.id': request.params.recipe }, 
-						{ $set : { [`recipes.$.${recipeKey}`]: recipeValue } },
+						{ _id: request.params.name, 'recipes.id': request.params.recipe },
+						{ $set: { [`recipes.$.${recipeKey}`]: recipeValue } },
 					);
 
 					// TODO: What to return?

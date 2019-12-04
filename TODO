@@ -1,0 +1,10 @@
+// TODO
+Port to Next
+Refactor state updates to use the Context/Reducer pattern
+Refactor out withColor hoc
+Update hapi/switch
+Add GraphQL
+
+
+// FIXME
+View with footer not 100vh

@@ -2,7 +2,6 @@
 
 const Hapi = require('@hapi/hapi');
 const Path = require('path');
-
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 

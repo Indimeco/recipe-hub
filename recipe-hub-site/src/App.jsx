@@ -3,15 +3,15 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import componentStyle from './App.style';
 
-import Banner from '../../components/Banner/Banner';
-import Navbar from '../../components/Navbar/Navbar';
-import Footer from '../../components/Footer/Footer';
-import RecipeArea from '../../components/RecipeArea/RecipeArea';
-import Form from '../../components/Form/Form';
-import RecipeDetail from '../RecipeDetail/RecipeDetail';
-import ErrorPage from '../ErrorPage/ErrorPage';
+import Banner from './components/Banner/Banner';
+import Navbar from './components/Navbar/Navbar';
+import Footer from './components/Footer/Footer';
+import RecipeArea from './components/RecipeArea/RecipeArea';
+import Form from './components/Form/Form';
+import RecipeDetail from './components/RecipeDetail/RecipeDetail';
+import ErrorPage from './components/ErrorPage/ErrorPage';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import withColor from '../../hocs/withColor';
+import withColor from './hocs/withColor';
 
 class App extends React.Component {
 	constructor(props) {

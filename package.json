@@ -1,44 +1,47 @@
 {
-  "name": "recipe-hub",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Indimeco/recipe-hub.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Indimeco/recipe-hub/issues"
-  },
-  "homepage": "https://github.com/Indimeco/recipe-hub#readme",
-  "devDependencies": {
-    "@commitlint/cli": "^8.2.0",
-    "@commitlint/config-conventional": "^8.2.0",
-    "@indimeco/eslint-config-indimeco": "^1.0.0",
-    "babel-eslint": "^10.0.3",
-    "eslint": "^6.5.1",
-    "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-prettier": "^6.4.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^22.19.0",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-react": "^7.16.0",
-    "eslint-plugin-react-hooks": "^2.1.2",
-    "prettier": "^1.19.1"
-  },
-  "dependencies": {
-    "husky": "^3.1.0",
-    "pretty-quick": "^2.0.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  }
+	"name": "recipe-hub",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Indimeco/recipe-hub.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Indimeco/recipe-hub/issues"
+	},
+	"homepage": "https://github.com/Indimeco/recipe-hub#readme",
+	"devDependencies": {
+		"@commitlint/cli": "^8.2.0",
+		"@commitlint/config-conventional": "^8.2.0",
+		"@indimeco/eslint-config-indimeco": "^1.0.0",
+		"babel-eslint": "^10.0.3",
+		"eslint": "^6.5.1",
+		"eslint-config-airbnb": "^18.0.1",
+		"eslint-config-prettier": "^6.4.0",
+		"eslint-plugin-import": "^2.18.2",
+		"eslint-plugin-jest": "^22.19.0",
+		"eslint-plugin-jsx-a11y": "^6.2.3",
+		"eslint-plugin-prettier": "^3.1.1",
+		"eslint-plugin-react": "^7.16.0",
+		"eslint-plugin-react-hooks": "^2.1.2",
+		"lint-staged": "^9.5.0",
+		"prettier": "^1.19.1"
+	},
+	"dependencies": {
+		"husky": "^3.1.0"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged",
+			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+		}
+	},
+	"lint-staged": {
+		"*.{js,jsx}": "eslint --fix"
+	}
 }

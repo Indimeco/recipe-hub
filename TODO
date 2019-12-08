@@ -1,5 +1,4 @@
 // TODO
-Lint staged & husky & prettier (shared?)
 Refactor state updates to use the Context/Reducer pattern || Apollo Link
 Refactor out withColor hoc
 Update hapi/switch

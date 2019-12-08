@@ -5,7 +5,7 @@ const textareaStyles = () => css`
 `;
 
 export default ({ color, inline, ...props }) => {
-	return css`
+  return css`
     margin: 0 0 ${props.theme.spacing.small} 0;
     padding: ${props.theme.spacing.small};
     border: solid 1px ${color.fg};

@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export const wrapperStyle = ({inline, theme}) => css`
+export const wrapperStyle = ({ inline, theme }) => css`
 	border: none;
 	padding: 0;
 	margin: 0;
@@ -9,13 +9,12 @@ export const wrapperStyle = ({inline, theme}) => css`
 	display: ${inline ? 'inline' : 'block'};
 `;
 
-export const labelStyle = ({color, inline}) => css`
-	border: none;
-	padding: 0;
-	margin: 0;
-	font-weight: 400;
+export const labelStyle = ({ color, inline }) => css`
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-weight: 400;
 
-	display: ${inline ? 'inline' : 'block'};
-	color: ${color.fg};
+  display: ${inline ? 'inline' : 'block'};
+  color: ${color.fg};
 `;
-

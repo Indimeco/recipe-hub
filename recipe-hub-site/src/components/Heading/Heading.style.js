@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
-export default ({theme}) => {
-	return css`
+export default ({ theme }) => {
+  return css`
     margin: ${theme.spacing.small} 0;
     padding: 0;
     color: inherit;

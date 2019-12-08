@@ -18,7 +18,7 @@
 	"devDependencies": {
 		"@commitlint/cli": "^8.2.0",
 		"@commitlint/config-conventional": "^8.2.0",
-		"@indimeco/eslint-config-indimeco": "^1.0.0",
+		"@indimeco/eslint-config-indimeco": "^1.0.1",
 		"babel-eslint": "^10.0.3",
 		"eslint": "^6.5.1",
 		"eslint-config-airbnb": "^18.0.1",

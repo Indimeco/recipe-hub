@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 export default ({ color }) => {
-	return css`
+  return css`
     color: ${color.fg};
     display: grid;
     grid-template-columns: 1fr;

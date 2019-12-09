@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 export default ({ color, ...props }) => {
-	return css`
+  return css`
     font-family: ${props.theme.fonts.fontFamily};
     font-size: ${props.theme.fonts.medium};
     color: ${color.fg};

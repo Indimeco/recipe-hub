@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 export default ({ color, ...props }) => {
-	return css`
+  return css`
     &.default {
       height: 60px;
       ${props.theme.spacing.indent}

@@ -1,5 +1,5 @@
 {
-	"name": "@recipe-hub/site",
+	"name": "@recipe-hub/app",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
@@ -28,7 +28,7 @@
 	},
 	"proxy": "http://localhost:146",
 	"eslintConfig": {
-		"extends": "../.eslintrc.js"
+		"extends": "../../.eslintrc.js"
 	},
 	"browserslist": {
 		"production": [

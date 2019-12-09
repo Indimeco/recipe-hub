@@ -1,6 +1,5 @@
 // TODO
-Port to Next
-Refactor state updates to use the Context/Reducer pattern
+Refactor state updates to use the Context/Reducer pattern || Apollo Link
 Refactor out withColor hoc
 Update hapi/switch
 Add GraphQL

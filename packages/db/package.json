@@ -1,11 +1,10 @@
 {
-	"name": "@recipe-hub/server",
+	"name": "@recipe-hub/db",
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start": "nodemon ./index.js",
-		"test": "echo add tests to server"
+		"start": "node ./index.js"
 	},
 	"repository": {
 		"type": "git",
@@ -20,10 +19,6 @@
 	"homepage": "https://github.com/Indimeco/recipe-hub#readme",
 	"devDependencies": {},
 	"dependencies": {
-		"apollo-datasource-mongodb": "^0.2.0",
-		"apollo-server": "^2.9.13",
-		"graphql": "^14.5.8",
-		"mongodb": "^3.2.7",
-		"nodemon": "^2.0.2"
+		"mongodb": "^3.2.7"
 	}
 }

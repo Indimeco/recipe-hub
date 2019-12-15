@@ -28,24 +28,14 @@ const typeDefs = gql`
 
   type Ingredient {
     name: String!
-    quantity: Int
+    quantity: Float
     unit: String
   }
 
   type Query {
-    books: [Book]!
+    # books: [Book]!
     book(bookId: String): Book
   }
-
-  # type Mutation {
-  #   # if false, signup failed -- check errors
-  #   bookTrips(launchIds: [ID]!): TripUpdateResponse!
-
-  #   # if false, cancellation failed -- check errors
-  #   cancelTrip(launchId: ID!): TripUpdateResponse!
-
-  #   login(email: String): String # login token
-  # }
 `;
 
 module.exports = typeDefs;

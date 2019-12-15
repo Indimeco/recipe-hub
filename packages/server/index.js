@@ -18,23 +18,23 @@ const dataSources = () => ({
 // Set up Apollo Server
 const init = db =>
   new ApolloServer({
-    dataSources: { hubApi: new HubAPI(db.collection('books')) },
+    dataSources: () => ({ hubApi: new HubAPI(db.collection('books')) }),
     resolvers,
     typeDefs,
   });
 
 // Use connect method to connect to the server
-MongoClient.connect(dbUrl, { useNewUrlParser: true }, async (err, client) => {
+MongoClient.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true }, async (err, client) => {
   assert.equal(null, err);
   const db = client.db(dbName);
-  console.log(`Mongo initiated database ${dbName} at ${dbUrl}`);
+  console.log(`🥭Mongo initiated database ${dbName} at ${dbUrl}`);
 
   const server = init(db);
 
   // Start our server if we're not in a test env.
   // if we're in a test env, we'll manually start it in a test
   if (process.env.NODE_ENV !== 'test')
-    server.listen({ port: 4000 }).then(({ url }) => console.log(`server running at ${url}`));
+    server.listen({ port: 4000 }).then(({ url }) => console.log(`☕Server running at ${url}`));
 });
 
 // export all the important pieces for integration/e2e tests to use

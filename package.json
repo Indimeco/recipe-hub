@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install": "lerna run install --stream"
+    "install": "lerna exec npm install --stream"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
     "@indimeco/eslint-config-indimeco": "^1.0.1",
+    "babel-eslint": "*",
     "eslint": "^6.5.1",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.4.0",

@@ -23,7 +23,7 @@ export class RecipeDirections extends React.Component {
   }
 
   handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({ [e.target.name]: e.target });
   }
 
   render() {
@@ -41,14 +41,14 @@ export class RecipeDirections extends React.Component {
             />
           </>
         ) : (
-          <>
-            {this.state.directions ? (
-              this.state.directions.split('\n').map((x, y) => <p key={`directions${y}`}>{x}</p>)
-            ) : (
-              <p>No directions needed? No problem!</p>
-            )}
-          </>
-        )}
+            <>
+              {this.state.directions ? (
+                this.state.directions.split('\n').map((x, y) => <p key={`directions${y}`}>{x}</p>)
+              ) : (
+                  <p>No directions needed? No problem!</p>
+                )}
+            </>
+          )}
       </DirectionsBox>
     );
   }

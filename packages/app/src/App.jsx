@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -17,7 +17,7 @@ import withColor from "./hocs/withColor";
 
 const queryBook = (bookId) => gql`
 {
-  book(bookId: ${bookId}) {
+  book(bookId: "${bookId}") {
     meta {
       name
     }
@@ -40,8 +40,9 @@ const queryBook = (bookId) => gql`
 `;
 
 const App = ({ className, bookId }) => {
-  const { loading, error, book } = useQuery(queryBook(bookId));
-  const updateRecipe = () => null;
+  const { loading, error, data } = useQuery(queryBook(bookId));
+  const book = data?.book;
+  const updateRecipe = () => () => null;
   return (
     <Router>
       <div className={className}>
@@ -72,11 +73,11 @@ const App = ({ className, bookId }) => {
             <Route
               path="/view/:id"
               render={({ match }) =>
-                this.state.book ? (
+                book ? (
                   <RecipeDetail
                     match={match}
                     book={book}
-                    handleSubmit={this.updateRecipe()}
+                    handleSubmit={updateRecipe()}
                     color="root"
                   />
                 ) : (

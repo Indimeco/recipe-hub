@@ -2,10 +2,10 @@
 Mutations for GraphQL server
 Tests for GraphQL?
 Remove index-old in server when finished
-Refactor App to use new GraphQL book query
 Refactor App to use new GraphQL recipe mutation query
 Refactor state updates to use the Context/Reducer pattern || Apollo Link
 Refactor out withColor hoc
+Refactor route pages + error/loading ( react suspense )
 
 
 

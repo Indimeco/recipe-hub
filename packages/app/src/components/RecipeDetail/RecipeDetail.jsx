@@ -32,17 +32,17 @@ const RecipeDetail = ({
   return (
     <RecipeWrapper color={color}>
       <RecipeIntro color={color}>
-        <Heading el="h2">{recipe.name.value}</Heading>
+        <Heading el="h2">{recipe.name}</Heading>
         <CookTime
           color="main"
-          active={recipe.activeTime.value}
-          waiting={recipe.waitingTime.value}
+          active={recipe.activeTime}
+          waiting={recipe.waitingTime}
           handleSubmit={handleSubmit.bind(null, id)}
         />
-        <Image src={recipe.previewImage.value} />
-        <IngredientsList ingredients={recipe.ingredients.value} />
+        <Image src={recipe.previewImage} />
+        <IngredientsList ingredients={recipe.ingredients} />
       </RecipeIntro>
-      <RecipeDirections directions={recipe.directions.value} />
+      <RecipeDirections directions={recipe.directions} />
     </RecipeWrapper>
   );
 };

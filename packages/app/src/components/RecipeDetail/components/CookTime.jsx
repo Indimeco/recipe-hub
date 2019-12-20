@@ -75,7 +75,7 @@ class CookTime extends React.Component {
   }
 
   handleChange(e) {
-    const val = Number(e.target.value) == 0 ? 0 : Number(e.target.value);
+    const val = Number(e.target) == 0 ? 0 : Number(e.target);
     if (val >= 0) {
       this.setState({ [e.target.name]: val });
     }
@@ -119,13 +119,13 @@ class CookTime extends React.Component {
             </FieldWrapper>
           </>
         ) : (
-          <span>
-            {this.timeString({
-              calcMins: this.state.activeCalcMins,
-              calcHrs: this.state.activeCalcHrs,
-            })}
-          </span>
-        )}
+            <span>
+              {this.timeString({
+                calcMins: this.state.activeCalcMins,
+                calcHrs: this.state.activeCalcHrs,
+              })}
+            </span>
+          )}
         <FontAwesomeIcon icon={faPlus} />
         <FontAwesomeIcon icon={faHourglass} />
         {this.state.edit ? (
@@ -148,13 +148,13 @@ class CookTime extends React.Component {
             </FieldWrapper>
           </>
         ) : (
-          <span>
-            {this.timeString({
-              calcMins: this.state.waitingCalcMins,
-              calcHrs: this.state.waitingCalcHrs,
-            })}
-          </span>
-        )}
+            <span>
+              {this.timeString({
+                calcMins: this.state.waitingCalcMins,
+                calcHrs: this.state.waitingCalcHrs,
+              })}
+            </span>
+          )}
       </TimeBox>
     );
   }

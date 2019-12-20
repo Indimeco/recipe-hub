@@ -21,12 +21,12 @@
 		"styled-react-modal": "^1.2.4"
 	},
 	"scripts": {
+		"install": "npm install",
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},
-	"proxy": "http://localhost:146",
 	"eslintConfig": {
 		"extends": "../../.eslintrc.js"
 	},

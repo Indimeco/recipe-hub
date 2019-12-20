@@ -34,7 +34,7 @@ export class IngredientsList extends React.Component {
     const { target } = e;
     this.setState(state => {
       const { ingredients } = state;
-      ingredients[index][target.name] = target.value;
+      ingredients[index][target.name] = target;
 
       return { ingredients };
     });
@@ -78,12 +78,12 @@ export class IngredientsList extends React.Component {
             </EditContainer>
           </div>
         ) : (
-          <ul>
-            {Object.keys(ingredients).map(x => (
-              <li key={`recipes${x}`}>{`${ingredients[x].quantity}${ingredients[x].unit} ${ingredients[x].name}`}</li>
-            ))}
-          </ul>
-        )}
+            <ul>
+              {Object.keys(ingredients).map(x => (
+                <li key={`recipes${x}`}>{`${ingredients[x].quantity}${ingredients[x].unit} ${ingredients[x].name}`}</li>
+              ))}
+            </ul>
+          )}
       </IngredientsBox>
     );
   }

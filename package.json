@@ -20,8 +20,11 @@
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
-    "@indimeco/eslint-config-indimeco": "^1.0.1",
-    "babel-eslint": "*",
+    "@indimeco/eslint-config-indimeco": "^1.1.2",
+    "@typescript-eslint/eslint-plugin": "^2.12.0",
+    "@typescript-eslint/parser": "^2.12.0",
+    "husky": "^3.1.0",
+    "typescript": "^3.7.4",
     "eslint": "^6.5.1",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.4.0",
@@ -34,9 +37,6 @@
     "lerna": "^3.19.0",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1"
-  },
-  "dependencies": {
-    "husky": "^3.1.0"
   },
   "husky": {
     "hooks": {

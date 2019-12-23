@@ -1,24 +1,24 @@
-const assert = require('assert');
+import assert from 'assert';
 
-const { ApolloServer } = require('apollo-server');
-const { MongoClient } = require('mongodb');
+import { ApolloServer } from 'apollo-server';
+import { MongoClient } from 'mongodb';
 
-const typeDefs = require('./src/schema');
-const resolvers = require('./src/resolvers');
-const HubAPI = require('./src/datasources/hub');
+import typeDefs from './schema';
+import resolvers from './resolvers';
+import { HubApi } from './datasources/hub';
 
 const dbUrl = 'mongodb://localhost:27017'; // Database Connection
 const dbName = 'recipehub'; // Database Name
 
 // set up any dataSources our resolvers need
 const dataSources = () => ({
-  hubAPI: new HubAPI(),
+  hubAPI: new HubApi(),
 });
 
 // Set up Apollo Server
 const init = db =>
   new ApolloServer({
-    dataSources: () => ({ hubApi: new HubAPI(db.collection('books')) }),
+    dataSources: () => ({ hubApi: new HubApi(db.collection('books')) }),
     resolvers,
     typeDefs,
   });
@@ -38,9 +38,9 @@ MongoClient.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true }, 
 });
 
 // export all the important pieces for integration/e2e tests to use
-module.exports = {
+export = {
   ApolloServer,
-  HubAPI,
+  HubApi,
   dataSources,
   resolvers,
   typeDefs,

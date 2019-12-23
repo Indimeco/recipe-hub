@@ -4,8 +4,9 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start": "nodemon ./index.js",
-		"test": "echo add tests to server"
+		"start": "nodemon ./src/index.ts",
+		"test": "echo add tests to server",
+		"generateTypes": "npx graphql-codegen --config codegen.yml"
 	},
 	"repository": {
 		"type": "git",
@@ -18,8 +19,18 @@
 		"url": "https://github.com/Indimeco/recipe-hub/issues"
 	},
 	"homepage": "https://github.com/Indimeco/recipe-hub#readme",
-	"devDependencies": {},
+	"devDependencies": {
+		"@graphql-codegen/cli": "^1.9.1",
+		"@graphql-codegen/introspection": "^1.0.0",
+		"@graphql-codegen/typescript": "^1.0.0",
+		"@graphql-codegen/typescript-mongodb": "^1.0.0",
+		"@graphql-codegen/typescript-resolvers": "^1.0.0",
+		"@types/mongodb": "^3.3.13",
+		"ts-node": "^8.5.4",
+		"typescript": "^3.7.4"
+	},
 	"dependencies": {
+		"apollo-datasource": "^0.6.3",
 		"apollo-datasource-mongodb": "^0.2.0",
 		"apollo-server": "^2.9.13",
 		"graphql": "^14.5.8",

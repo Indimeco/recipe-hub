@@ -43,6 +43,7 @@ const App = ({ className, bookId }: { className: string; bookId: string }): any 
   const { loading, error, data } = useQuery(queryBook(bookId));
   const { dispatch } = useGlobalState();
 
+  // TODO make all components rely on stored activeBook state rather than book being passed down
   const book = data?.book;
   useEffect(() => {
     if (book) {

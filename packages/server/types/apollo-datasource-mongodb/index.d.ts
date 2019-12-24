@@ -8,6 +8,8 @@ declare module 'apollo-datasource-mongodb' {
 
     findOneById(id: string): any;
 
+    collection: any;
+
     initialize?(config: DataSourceConfig<TContext>): void;
   }
 }

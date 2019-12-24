@@ -6,6 +6,7 @@ Refactor App to use new GraphQL recipe mutation query
 Refactor state updates to use the Context/Reducer pattern || Apollo Link
 Refactor out withColor hoc
 Refactor route pages + error/loading ( react suspense )
+Add last modified to recipe via $currentData in mongodb
 
 
 

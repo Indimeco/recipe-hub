@@ -19,7 +19,6 @@ export class HubApi extends MongoDataSource {
     Object.entries(rest).forEach(([key, value]) => {
       updatePayload[`recipes.$.${key}`] = value;
     });
-    console.log('Update payload: ', updatePayload);
 
     const update = this.collection.findOneAndUpdate(
       { _id: bookId, 'recipes.id': id },

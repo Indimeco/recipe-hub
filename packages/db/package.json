@@ -4,7 +4,8 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"reset": "node ./testdb"
+		"reset": "node ./testdb",
+		"start": "mongod --dbpath ./data"
 	},
 	"repository": {
 		"type": "git",

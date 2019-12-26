@@ -2,7 +2,6 @@ import React, { ReactElement, useEffect } from 'react';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
 
 import componentStyle from './App.style';
 import Banner from './components/Banner/Banner';
@@ -14,30 +13,7 @@ import RecipeDetail from './components/RecipeDetail/RecipeDetail';
 import ErrorPage from './components/ErrorPage/ErrorPage';
 import withColor from './hocs/withColor';
 import { useGlobalState } from './store';
-
-const queryBook = (bookId: string): any => gql`
-{
-  book(bookId: "${bookId}") {
-    meta {
-      name
-    }
-    recipes {
-      id
-      name
-      ingredients {
-        name
-        quantity
-        unit
-      }
-      directions
-      waitingTime
-      activeTime
-      previewImage
-      recipeSource
-    }
-  }
-}
-`;
+import { queryBook } from './hooks/data';
 
 const App = ({ className, bookId }: { className: string; bookId: string }): any => {
   const { loading, error, data } = useQuery(queryBook(bookId));

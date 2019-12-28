@@ -6,11 +6,14 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 
 import './index.css';
-import App from './App';
-import { StateProvider } from './store';
 import * as serviceWorker from './serviceWorker';
 import theme from './styles/theme';
 import { ColorProvider } from './hocs/withColor';
+import Banner from './components/Banner/Banner';
+import Navbar from './components/Navbar/Navbar';
+import Footer from './components/Footer/Footer';
+import Layout from './components/Layout/Layout';
+import Pages from './pages';
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000',
@@ -19,13 +22,22 @@ const client = new ApolloClient({
 ReactDOM.render(
   <ApolloProvider client={client}>
     <ThemeProvider theme={theme}>
-      <StateProvider>
-        <ColorProvider.Provider value="root">
-          <ModalProvider>
-            <App bookId="1" />
-          </ModalProvider>
-        </ColorProvider.Provider>
-      </StateProvider>
+      <ColorProvider.Provider value="root">
+        <ModalProvider>
+          <Navbar
+            color="aux"
+            banner={
+              <Banner color="main" el="h1">
+                Recipe Hub
+              </Banner>
+            }
+          />
+          <Layout>
+            <Pages />
+          </Layout>
+          <Footer color="aux" />
+        </ModalProvider>
+      </ColorProvider.Provider>
     </ThemeProvider>
   </ApolloProvider>,
   document.getElementById('root'),

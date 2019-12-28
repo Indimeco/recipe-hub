@@ -12,7 +12,9 @@ export const Pages = (): unknown => (
     <Switch>
       <Route
         path="/book/:bookId"
-        render={({ match }: { match: unknown }): ReactElement => <RecipeArea match={match} color="main" />}
+        render={({ match }: { match: { params: { bookId: string } } }): ReactElement => (
+          <RecipeArea match={match} color="main" />
+        )}
       />
 
       <Route path="/new" render={(): ReactElement => <Form color="main" />} />

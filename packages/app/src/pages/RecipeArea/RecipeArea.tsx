@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { useQuery } from '@apollo/react-hooks';
 
 import RecipeItem from '../../components/RecipeItem/RecipeItem';
@@ -10,7 +9,7 @@ import { GET_BOOK } from '../../hooks/data';
 import Loading from '../../components/Loading/Loading';
 import ErrorPage from '../../components/ErrorPage/ErrorPage';
 
-import componentStyle from './RecipeArea.style';
+import { RecipesLayout } from './RecipeArea.style';
 
 const RecipeArea = ({
   color,
@@ -31,10 +30,10 @@ const RecipeArea = ({
   const { book } = data;
   if (!book) return <ErrorPage />;
   return (
-    <section className={className}>
+    <section>
       <Heading el="h2">{book.meta.name}</Heading>
-      <Filter color="main" />
-      <div className="recipe-list">
+      <Filter />
+      <RecipesLayout>
         {book?.recipes?.map((recipe: Recipe) => {
           return (
             <RecipeItem
@@ -46,13 +45,9 @@ const RecipeArea = ({
             />
           );
         })}
-      </div>
+      </RecipesLayout>
     </section>
   );
 };
 
-export default withColor(
-  styled(RecipeArea)`
-    ${componentStyle}
-  `,
-);
+export default RecipeArea;

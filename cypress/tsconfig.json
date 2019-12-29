@@ -1,0 +1,22 @@
+{
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "target": "es5",
+        "baseUrl": "../node_modules",
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "esnext",
+            "es6"
+        ],
+        "jsx": "react",
+        "types": [
+            "cypress",
+            "testing-library__cypress"
+        ],
+    },
+    "include": [
+        "**/*.spec.tsx",
+        "**/*.spec.ts",
+    ]
+}

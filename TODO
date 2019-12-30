@@ -1,14 +1,31 @@
-// TODO
-Mutations for GraphQL server
-Tests for GraphQL?
-Remove index-old in server when finished
-Refactor App to use new GraphQL recipe mutation query
-Refactor state updates to use the Context/Reducer pattern || Apollo Link
-Refactor out withColor hoc
-Refactor route pages + error/loading ( react suspense )
-Add last modified to recipe via $currentData in mongodb
+// TODO Add last modified to recipe via $currentData in mongodb
+// TODO Style Loading component
+// TODO Make ErrorPage dynamic
+// TODO Test coverage tech
+// TODO Auto semantic versioning with lerna
+// TODO Performance testing tech
+// TODO Accessibility checking
 
+// SECTION Create books list home page
+    * viewing all books owned by a user
+        * new user collection in db
+        * new schema/query
+    * selecting a book to view
+    * creating a new book
+        * new mutation
+    * deleting a book
+        * new mutation
 
+// REVIEW Refactor App to use new GraphQL recipe mutation query
+// REVIEW Refactor state updates to use the Apollo client store
+// REVIEW Refactor out withColor hoc
+// REVIEW Refactor frontend patterns to use imported css snippets
+// REVIEW Refactor new recipe form to use dynamic layout
 
-// FIXME
-View with footer not 100vh
+// FIXME View with footer not 100vh
+// FIXME RecipeDetails not rendering due to architecture changes
+
+// SECTION Future Tasks
+    * Host the database
+    * Authentication
+

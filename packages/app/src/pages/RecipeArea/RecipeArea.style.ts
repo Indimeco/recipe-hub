@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { MEDIA_1, MEDIA_2 } from '../../styles/base';
+import { heading } from '../../styles/utils';
 
 export const RecipesLayout = styled.div`
   display: grid;
@@ -15,4 +16,8 @@ export const RecipesLayout = styled.div`
   @media screen and (min-width: ${MEDIA_2}) {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
+`;
+
+export const RecipeHeading = styled.h2`
+  ${heading}
 `;

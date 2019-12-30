@@ -22,7 +22,7 @@ export const heading = () => css`
   color: ${palette.fg};
   font-size: ${FONT_HUGE};
   font-family: ${FONT_HEADING};
-  margin: 0 0 ${SPACE_HUGE} 0;
+  margin: 0;
 `;
 
 export const text = () => css`

@@ -1,16 +1,16 @@
-const ghostBlue = '#c4ebff';
-const spectre = '#232f35';
+const darkCerulean = '#003B7A';
+const absoluteZero = '#0056B3';
+const periwinkle = '#CAE5FF';
 const raisinBlack = '#262626';
 const gunMetal = '#30343F';
 const ghostWhite = '#FAFAFF';
-const paleMalachite = '#08f3bb';
 
 export const palette = {
-  aux: ghostBlue,
-  auxAccent: spectre,
+  aux: darkCerulean,
+  auxAccent: periwinkle,
   bg: ghostWhite,
   bgAccent: gunMetal,
-  brand: paleMalachite,
+  brand: absoluteZero,
   fg: raisinBlack,
 };
 

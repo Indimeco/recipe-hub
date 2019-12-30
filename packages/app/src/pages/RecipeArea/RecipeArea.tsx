@@ -1,23 +1,20 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 
-import RecipeItem from '../../components/RecipeItem/RecipeItem';
-import Heading from '../../components/Heading/Heading';
 import Filter from '../../components/Filter/Filter';
 import { Recipe } from '../../../../../types';
 import { GET_BOOK } from '../../hooks/data';
 import Loading from '../../components/Loading/Loading';
 import ErrorPage from '../../components/ErrorPage/ErrorPage';
 
-import { RecipesLayout } from './RecipeArea.style';
+import { RecipesLayout, RecipeHeading } from './RecipeArea.style';
+import RecipeItem from './components/RecipeItem/RecipeItem';
 
 const RecipeArea = ({
-  color,
   match: {
     params: { bookId },
   },
 }: {
-  color: string;
   match: { params: { bookId: string } };
 }): React.ReactElement => {
   const { loading, error, data } = useQuery(GET_BOOK, {
@@ -31,14 +28,13 @@ const RecipeArea = ({
   if (!book) return <ErrorPage />;
   return (
     <section>
-      <Heading el="h2">{book.meta.name}</Heading>
+      <RecipeHeading>{book.meta.name}</RecipeHeading>
       <Filter />
       <RecipesLayout>
         {book?.recipes?.map((recipe: Recipe) => {
           return (
             <RecipeItem
-              color={color}
-              key={`recipe${recipe}`}
+              key={`recipe${recipe.id}`}
               name={recipe.name}
               link={`/view/${recipe.id}`}
               preview={recipe.previewImage}

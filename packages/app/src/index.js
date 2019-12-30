@@ -22,22 +22,20 @@ const client = new ApolloClient({
 ReactDOM.render(
   <ApolloProvider client={client}>
     <ThemeProvider theme={theme}>
-      <ColorProvider.Provider value="root">
-        <ModalProvider>
-          <Navbar
-            color="aux"
-            banner={
-              <Banner color="main" el="h1">
-                Recipe Hub
-              </Banner>
-            }
-          />
-          <Layout>
-            <Pages />
-          </Layout>
-          <Footer color="aux" />
-        </ModalProvider>
-      </ColorProvider.Provider>
+      <ModalProvider>
+        <Navbar
+          color="aux"
+          banner={
+            <Banner color="main" el="h1">
+              Recipe Hub
+            </Banner>
+          }
+        />
+        <Layout>
+          <Pages />
+        </Layout>
+        <Footer color="aux" />
+      </ModalProvider>
     </ThemeProvider>
   </ApolloProvider>,
   document.getElementById('root'),

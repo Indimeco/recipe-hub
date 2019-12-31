@@ -23,7 +23,6 @@
 // REVIEW Refactor new recipe form to use dynamic layout
 
 // FIXME View with footer not 100vh
-// FIXME RecipeDetails not rendering due to architecture changes
 
 // SECTION Future Tasks
     * Host the database

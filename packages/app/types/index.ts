@@ -1,15 +1,7 @@
-import { Book } from '../../../types';
+export interface RecipeAreaMatch {
+  match: { params: { bookId: string } };
+}
 
-export type StoreAction = {
-  type: string;
-  payload: { [x: string]: any };
-};
-
-export type State = {
-  activeBook: Book;
-};
-
-export type Store = {
-  dispatch: React.Dispatch<any>;
-  state: State;
-};
+export interface RecipeDetailMatch {
+  match: { params: { bookId: string; recipeId: string } };
+}

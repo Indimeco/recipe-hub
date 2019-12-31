@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import ToggleEdit from '../../ToggleEdit/ToggleEdit';
-import Input from '../../Input/Input';
+import ToggleEdit from '../../../components/ToggleEdit/ToggleEdit';
+import Input from '../../../components/Input/Input';
 
 const container = props => css`
   padding: ${props.theme.spacing.small};
@@ -41,14 +41,14 @@ export class RecipeDirections extends React.Component {
             />
           </>
         ) : (
-            <>
-              {this.state.directions ? (
-                this.state.directions.split('\n').map((x, y) => <p key={`directions${y}`}>{x}</p>)
-              ) : (
-                  <p>No directions needed? No problem!</p>
-                )}
-            </>
-          )}
+          <>
+            {this.state.directions ? (
+              this.state.directions.split('\n').map((x, y) => <p key={`directions${y}`}>{x}</p>)
+            ) : (
+              <p>No directions needed? No problem!</p>
+            )}
+          </>
+        )}
       </DirectionsBox>
     );
   }

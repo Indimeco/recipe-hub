@@ -5,9 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faRunning, faHourglass, faEquals, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import withColor from '../../../hocs/withColor';
-import Input from '../../Input/Input';
-import FieldWrapper from '../../FieldWrapper/FieldWrapper';
-import ToggleEdit from '../../ToggleEdit/ToggleEdit';
+import Input from '../../../components/Input/Input';
+import FieldWrapper from '../../../components/FieldWrapper/FieldWrapper';
+import ToggleEdit from '../../../components/ToggleEdit/ToggleEdit';
 
 import { timeBoxStyle } from './CookTime.style';
 

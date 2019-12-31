@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import ToggleEdit from '../../ToggleEdit/ToggleEdit';
-import Input from '../../Input/Input';
+import ToggleEdit from '../../../components/ToggleEdit/ToggleEdit';
+import Input from '../../../components/Input/Input';
 
 const EditContainer = styled.div`
   div {

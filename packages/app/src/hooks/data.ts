@@ -24,26 +24,23 @@ export const GET_BOOK = gql`
   }
 `;
 
-export const GET_RECIPE = gql`
-  query Book($bookId: String!, $recipeId: String!) {
-    book(bookId: $bookId) {
-      meta {
+export const EDIT_RECIPE = gql`
+  mutation EditRecipe($recipeFragment: UpdateRecipe!) {
+    editRecipe(recipeFragment: $recipeFragment) {
+      id
+      name
+      ingredients {
         name
+        quantity
+        unit
       }
-      recipes(recipeId: $recipeId) {
-        id
-        name
-        ingredients {
-          name
-          quantity
-          unit
-        }
-        directions
-        waitingTime
-        activeTime
-        previewImage
-        recipeSource
-      }
+      directions
+      waitingTime
+      activeTime
+      previewImage
+      recipeSource
+      method
+      categories
     }
   }
 `;

@@ -1,3 +1,4 @@
+// TODO Investigate apollo forcing rerender when mutation fixes or coverup
 // TODO Add last modified to recipe via $currentData in mongodb
 // TODO Style Loading component
 // TODO Make ErrorPage dynamic

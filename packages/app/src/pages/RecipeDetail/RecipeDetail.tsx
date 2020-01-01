@@ -1,8 +1,8 @@
 import React from 'react';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 
-import { Book } from '../../../../../types';
-import { GET_BOOK } from '../../hooks/data';
+import { Book, UpdateRecipe } from '../../../../../types';
+import { GET_BOOK, EDIT_RECIPE } from '../../hooks/data';
 import Heading from '../../components/Heading/Heading';
 import Image from '../../components/Image/Image';
 import Loading from '../../components/Loading/Loading';
@@ -19,12 +19,17 @@ const RecipeDetail = ({
     params: { bookId, recipeId },
   },
 }: RecipeDetailMatch) => {
-  const { loading, error, data } = useQuery(GET_BOOK, {
+  const { loading: bookLoading, error: bookError, data } = useQuery(GET_BOOK, {
     variables: { bookId },
   });
 
-  if (loading) return <Loading />;
-  if (error) return <ErrorPage />;
+  const [editRecipe, { loading: editLoading, error: editError }] = useMutation(EDIT_RECIPE);
+  const mergePayloadAndEditRecipe = (payload: Partial<UpdateRecipe>) => {
+    editRecipe({ variables: { recipeFragment: { bookId, id: recipeId, ...payload } } });
+  };
+
+  if (bookLoading || editLoading) return <Loading />;
+  if (bookError || editError) return <ErrorPage />;
 
   const { book }: { book: Book } = data;
   if (!book) return <ErrorPage />;
@@ -35,7 +40,11 @@ const RecipeDetail = ({
     <RecipeWrapper>
       <RecipeIntro>
         <Heading el="h2">{recipe.name}</Heading>
-        <CookTime active={recipe.activeTime} waiting={recipe.waitingTime} />
+        <CookTime
+          activeTime={recipe.activeTime}
+          waitingTime={recipe.waitingTime}
+          handleSave={mergePayloadAndEditRecipe}
+        />
         <Image src={recipe.previewImage} />
         <IngredientsList ingredients={recipe.ingredients} />
       </RecipeIntro>

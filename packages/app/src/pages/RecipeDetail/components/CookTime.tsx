@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faRunning, faHourglass, faEquals, faPlus } from '@fortawesome/free-solid-svg-icons';
 
@@ -8,9 +8,18 @@ import ToggleEdit from '../../../components/ToggleEdit/ToggleEdit';
 
 import { TimeBox } from './CookTime.style';
 
+// TODO Test changing input changes the number
+// TODO Test saving input shows number in normal view
+// TODO Test minutesToTimeUnits/timeUnitsToMinutes functionality given some numerical test cases
+
 interface TimeUnits {
   hours: number;
   minutes: number;
+}
+
+interface RecipeFragment {
+  activeTime: number | undefined;
+  waitingTime: number | undefined;
 }
 
 const minutesToTimeUnits = (minutes: number): TimeUnits => ({
@@ -18,43 +27,55 @@ const minutesToTimeUnits = (minutes: number): TimeUnits => ({
   minutes: Math.round(minutes % 60),
 });
 
+const timeUnitsToMinutes = (timeUnits: TimeUnits) => timeUnits.minutes + timeUnits.hours * 60;
+
 const timeUnitsString = ({ hours, minutes }: TimeUnits) =>
   `${hours ? `${hours}hr` : ''}${hours && minutes ? ' ' : ''}${minutes ? `${minutes}m` : ''}`;
 
-interface CookTimeProps {
-  active: number | undefined;
-  waiting: number | undefined;
+interface CookTimeProps extends RecipeFragment {
+  handleSave: (payload: RecipeFragment) => void;
 }
-const CookTime = ({ active = 0, waiting = 0 }: CookTimeProps) => {
+const CookTime = ({ activeTime = 0, waitingTime = 0, handleSave }: CookTimeProps) => {
   const [isEditMode, toggleEdit] = useState(false);
 
   // convert stored minutes to time units
-  const { minutes: activeMinutes, hours: activeHours } = minutesToTimeUnits(active);
-  const { minutes: waitingMinutes, hours: waitingHours } = minutesToTimeUnits(waiting);
+  const { minutes: activeMinutes, hours: activeHours } = minutesToTimeUnits(activeTime);
+  const { minutes: waitingMinutes, hours: waitingHours } = minutesToTimeUnits(waitingTime);
 
   // setup stateful values for inputs
   const [inputActiveMinutes, setInputActiveMinutes] = useState(activeMinutes);
   const [inputActiveHours, setInputActiveHours] = useState(activeHours);
   const [inputWaitingMinutes, setInputWaitingMinutes] = useState(waitingMinutes);
   const [inputWaitingHours, setInputWaitingHours] = useState(waitingHours);
+  const updateTimeInput = (setStateAction: React.Dispatch<React.SetStateAction<number>>) => (
+    e: ChangeEvent<HTMLInputElement>,
+  ) => setStateAction(parseInt(e.target.value, 10) || 0);
 
-  // TODO apply mutation
-  const submit = () => console.log('submit');
+  const save = () =>
+    handleSave({
+      activeTime: timeUnitsToMinutes({ hours: inputActiveHours, minutes: inputActiveMinutes }),
+      waitingTime: timeUnitsToMinutes({ hours: inputWaitingHours, minutes: inputWaitingMinutes }),
+    });
 
   return (
     <TimeBox>
-      <ToggleEdit onSave={submit} edit={isEditMode} onClick={() => toggleEdit(!isEditMode)} />
+      <ToggleEdit onSave={save} edit={isEditMode} onClick={() => toggleEdit(!isEditMode)} />
       <FontAwesomeIcon icon={faClock} />
-      {timeUnitsString(minutesToTimeUnits(active + waiting))}
+      {timeUnitsString(minutesToTimeUnits(activeTime + waitingTime))}
       <FontAwesomeIcon icon={faEquals} />
       <FontAwesomeIcon icon={faRunning} />
       {isEditMode ? (
         <>
           <FieldWrapper label="hours" inline>
-            <Input name="activeHrs" value={inputActiveHours} onChange={setInputActiveHours} inline />
+            <Input name="activeHrs" value={inputActiveHours} onChange={updateTimeInput(setInputActiveHours)} inline />
           </FieldWrapper>
           <FieldWrapper label="minutes" inline>
-            <Input name="activeMins" value={inputActiveMinutes} onChange={setInputActiveMinutes} inline />
+            <Input
+              name="activeMins"
+              value={inputActiveMinutes}
+              onChange={updateTimeInput(setInputActiveMinutes)}
+              inline
+            />
           </FieldWrapper>
         </>
       ) : (
@@ -70,10 +91,20 @@ const CookTime = ({ active = 0, waiting = 0 }: CookTimeProps) => {
       {isEditMode ? (
         <>
           <FieldWrapper label="hours" inline>
-            <Input name="waitingHrs" value={inputWaitingHours} onChange={setInputWaitingHours} inline />
+            <Input
+              name="waitingHrs"
+              value={inputWaitingHours}
+              onChange={updateTimeInput(setInputWaitingHours)}
+              inline
+            />
           </FieldWrapper>
           <FieldWrapper label="minutes" inline>
-            <Input name="waitingMins" value={inputWaitingMinutes} onChange={setInputWaitingMinutes} inline />
+            <Input
+              name="waitingMins"
+              value={inputWaitingMinutes}
+              onChange={updateTimeInput(setInputWaitingMinutes)}
+              inline
+            />
           </FieldWrapper>
         </>
       ) : (

@@ -35,11 +35,11 @@ export default gql`
   input UpdateRecipe {
     bookId: ID!
     id: String!
-    name: String!
+    name: String
     ingredients: [UpdateIngredient]
     directions: String
-    waitingTime: Int!
-    activeTime: Int!
+    waitingTime: Int
+    activeTime: Int
     previewImage: String
     recipeSource: String
     method: String

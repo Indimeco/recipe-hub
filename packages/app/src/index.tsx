@@ -1,14 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ThemeProvider } from 'styled-components';
-import { ModalProvider } from 'styled-react-modal';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import theme from './styles/theme';
-import { ColorProvider } from './hocs/withColor';
 import Banner from './components/Banner/Banner';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
@@ -22,20 +20,18 @@ const client = new ApolloClient({
 ReactDOM.render(
   <ApolloProvider client={client}>
     <ThemeProvider theme={theme}>
-      <ModalProvider>
-        <Navbar
-          color="aux"
-          banner={
-            <Banner color="main" el="h1">
-              Recipe Hub
-            </Banner>
-          }
-        />
-        <Layout>
-          <Pages />
-        </Layout>
-        <Footer color="aux" />
-      </ModalProvider>
+      <Navbar
+        color="aux"
+        banner={
+          <Banner color="main" el="h1">
+            Recipe Hub
+          </Banner>
+        }
+      />
+      <Layout>
+        <Pages />
+      </Layout>
+      <Footer color="aux" />
     </ThemeProvider>
   </ApolloProvider>,
   document.getElementById('root'),

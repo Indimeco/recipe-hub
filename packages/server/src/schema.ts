@@ -18,8 +18,8 @@ export default gql`
     name: String!
     ingredients: [Ingredient]
     directions: String
-    waitingTime: Int
-    activeTime: Int
+    waitingTime: Int!
+    activeTime: Int!
     previewImage: String
     recipeSource: String
     method: String
@@ -38,8 +38,8 @@ export default gql`
     name: String!
     ingredients: [UpdateIngredient]
     directions: String
-    waitingTime: Int
-    activeTime: Int
+    waitingTime: Int!
+    activeTime: Int!
     previewImage: String
     recipeSource: String
     method: String

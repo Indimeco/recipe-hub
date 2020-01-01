@@ -8,7 +8,7 @@ import { RecipeAreaMatch, RecipeDetailMatch } from '../../types';
 import RecipeDetail from './RecipeDetail/RecipeDetail';
 import RecipeArea from './RecipeArea/RecipeArea';
 
-export const Pages = (): unknown => (
+export const Pages = () => (
   <Router>
     <Switch>
       <Route

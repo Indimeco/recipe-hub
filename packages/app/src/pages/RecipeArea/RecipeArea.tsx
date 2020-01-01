@@ -35,7 +35,7 @@ const RecipeArea = ({
             <RecipeItem
               key={`recipe-${recipe.id}`}
               name={recipe.name}
-              link={`/book/${bookId}/view/${recipe.id}`}
+              link={`/book/${bookId}/${recipe.id}`}
               preview={recipe.previewImage}
             />
           );

@@ -11,6 +11,7 @@ import { TimeBox } from './CookTime.style';
 // TODO Test changing input changes the number
 // TODO Test saving input shows number in normal view
 // TODO Test minutesToTimeUnits/timeUnitsToMinutes functionality given some numerical test cases
+// TODO Test svgs for active/waiting don't render if value is 0
 
 interface TimeUnits {
   hours: number;
@@ -61,7 +62,7 @@ const CookTime = ({ activeTime = 0, waitingTime = 0, handleSave }: CookTimeProps
     <TimeBox>
       <ToggleEdit onSave={save} edit={isEditMode} onClick={() => toggleEdit(!isEditMode)} />
       <FontAwesomeIcon icon={faClock} />
-      {timeUnitsString(minutesToTimeUnits(activeTime + waitingTime))}
+      <span data-testid="CookTime-total">{timeUnitsString(minutesToTimeUnits(activeTime + waitingTime))}</span>
       <FontAwesomeIcon icon={faEquals} />
       <FontAwesomeIcon icon={faRunning} />
       {isEditMode ? (
@@ -79,7 +80,7 @@ const CookTime = ({ activeTime = 0, waitingTime = 0, handleSave }: CookTimeProps
           </FieldWrapper>
         </>
       ) : (
-        <span>
+        <span data-testid="CookTime-active">
           {timeUnitsString({
             hours: inputActiveHours,
             minutes: inputActiveMinutes,
@@ -108,7 +109,7 @@ const CookTime = ({ activeTime = 0, waitingTime = 0, handleSave }: CookTimeProps
           </FieldWrapper>
         </>
       ) : (
-        <span>
+        <span data-testid="CookTime-waiting">
           {timeUnitsString({
             hours: inputWaitingHours,
             minutes: inputWaitingMinutes,

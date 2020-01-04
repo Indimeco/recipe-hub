@@ -3,12 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
 
 import Input from '../../../components/Input/Input';
-import FieldWrapper from '../../../components/FieldWrapper/FieldWrapper';
 import ToggleEdit from '../../../components/ToggleEdit/ToggleEdit';
 
 import { TimeBox } from './CookTime.style';
 
-// TODO Test changing input changes the number
+// TODO Test changing to 0 or negative doesn't break
 // TODO Test saving input shows number in normal view
 // TODO Test svgs for active/waiting don't render if value is 0
 // TODO Restyle CookTime
@@ -62,32 +61,50 @@ const EditCookTime = ({
   return (
     <>
       <div>
-        <span>Active time: </span>
-        <FieldWrapper label="hours" inline>
-          <Input name="activeHrs" value={inputActiveHours} onChange={updateTimeInput(setInputActiveHours)} inline />
-        </FieldWrapper>
-        <FieldWrapper label="minutes" inline>
-          <Input
-            name="activeMins"
-            value={inputActiveMinutes}
-            onChange={updateTimeInput(setInputActiveMinutes)}
-            inline
-          />
-        </FieldWrapper>
+        <span data-testid="CookTime__activeInputs">
+          Active time:
+          <label htmlFor="CookTime__activeInputs__hours">
+            <Input
+              id="CookTime__activeInputs__hours"
+              value={inputActiveHours}
+              onChange={updateTimeInput(setInputActiveHours)}
+              inline
+            />
+            hours
+          </label>
+          <label htmlFor="CookTime__activeInputs__minutes">
+            <Input
+              id="CookTime__activeInputs__minutes"
+              value={inputActiveMinutes}
+              onChange={updateTimeInput(setInputActiveMinutes)}
+              inline
+            />
+            minutes
+          </label>
+        </span>
       </div>
       <div>
-        <span>Waiting time: </span>
-        <FieldWrapper label="hours" inline>
-          <Input name="waitingHrs" value={inputWaitingHours} onChange={updateTimeInput(setInputWaitingHours)} inline />
-        </FieldWrapper>
-        <FieldWrapper label="minutes" inline>
-          <Input
-            name="waitingMins"
-            value={inputWaitingMinutes}
-            onChange={updateTimeInput(setInputWaitingMinutes)}
-            inline
-          />
-        </FieldWrapper>
+        <span data-testid="CookTime__waitingInputs">
+          Waiting time:
+          <label htmlFor="CookTime__waitingInputs__hours">
+            <Input
+              id="CookTime__waitingInputs__hours"
+              value={inputWaitingHours}
+              onChange={updateTimeInput(setInputWaitingHours)}
+              inline
+            />
+            hours
+          </label>
+          <label htmlFor="CookTime__waitingInputs__minutes">
+            <Input
+              id="CookTime__waitingInputs__minutes"
+              value={inputWaitingMinutes}
+              onChange={updateTimeInput(setInputWaitingMinutes)}
+              inline
+            />
+            minutes
+          </label>
+        </span>
       </div>
     </>
   );
@@ -134,9 +151,9 @@ const CookTime = ({ activeTime = 0, waitingTime = 0, handleSave }: CookTimeProps
       ) : (
         <>
           <FontAwesomeIcon icon={faClock} />
-          <span data-testid="CookTime-total">{timeUnitsString(minutesToTimeUnits(activeTime + waitingTime))}</span>
+          <span data-testid="CookTime__total">{timeUnitsString(minutesToTimeUnits(activeTime + waitingTime))}</span>
           <span> ( </span>
-          <span data-testid="CookTime-active">
+          <span data-testid="CookTime__active">
             {timeUnitsString({
               hours: inputActiveHours,
               minutes: inputActiveMinutes,
@@ -144,7 +161,7 @@ const CookTime = ({ activeTime = 0, waitingTime = 0, handleSave }: CookTimeProps
             active
           </span>
           {(inputActiveHours || inputActiveMinutes) && (inputWaitingHours || inputWaitingMinutes) && <span> : </span>}
-          <span data-testid="CookTime-waiting">
+          <span data-testid="CookTime__waiting">
             {timeUnitsString({
               hours: inputWaitingHours,
               minutes: inputWaitingMinutes,

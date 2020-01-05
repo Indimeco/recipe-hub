@@ -1,5 +1,4 @@
 node_modules
 dist/bundle.js
-types/generated
 packages/db/data
 packages/server/graphql.schema.json

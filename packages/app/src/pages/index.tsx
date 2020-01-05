@@ -5,12 +5,15 @@ import Form from '../components/Form/Form';
 import ErrorPage from '../components/ErrorPage/ErrorPage';
 import { RecipeAreaMatch, RecipeDetailMatch } from '../../types';
 
+import BookArea from './BookArea/BookArea';
 import RecipeDetail from './RecipeDetail/RecipeDetail';
 import RecipeArea from './RecipeArea/RecipeArea';
 
 export const Pages = () => (
   <Router>
     <Switch>
+      <Route path="/" exact render={(): ReactElement => <BookArea />} />
+
       <Route
         path="/book/:bookId"
         exact

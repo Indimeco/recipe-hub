@@ -2,7 +2,7 @@ import { MongoDataSource } from 'apollo-datasource-mongodb';
 
 import { Book, Recipe, UpdateRecipe } from '../../../../types';
 
-export class HubApi extends MongoDataSource {
+export class BooksApi extends MongoDataSource {
   getBook(bookId: string): Promise<Book> {
     return this.findOneById(bookId);
   }

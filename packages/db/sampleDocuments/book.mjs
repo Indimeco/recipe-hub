@@ -1,4 +1,4 @@
-const book1 = {
+export default {
   _id: '1',
   meta: {
     favorites: 100,
@@ -337,5 +337,3 @@ const book1 = {
     },
   ],
 };
-
-module.exports = book1;

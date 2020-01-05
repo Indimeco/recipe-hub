@@ -5,20 +5,23 @@ import { MongoClient } from 'mongodb';
 
 import typeDefs from './schema';
 import resolvers from './resolvers';
-import { HubApi } from './datasources/hub';
+import { BooksApi, UsersApi } from './datasources';
 
 const dbUrl = 'mongodb://localhost:27017'; // Database Connection
 const dbName = 'recipehub'; // Database Name
 
 // set up any dataSources our resolvers need
 const dataSources = () => ({
-  hubAPI: new HubApi(),
+  hubAPI: new BooksApi(),
 });
 
 // Set up Apollo Server
 const init = db =>
   new ApolloServer({
-    dataSources: () => ({ hubApi: new HubApi(db.collection('books')) }),
+    dataSources: () => ({
+      booksApi: new BooksApi(db.collection('books')),
+      usersApi: new UsersApi(db.collection('users')),
+    }),
     resolvers,
     typeDefs,
   });
@@ -40,7 +43,7 @@ MongoClient.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true }, 
 // export all the important pieces for integration/e2e tests to use
 export = {
   ApolloServer,
-  HubApi,
+  BooksApi,
   dataSources,
   resolvers,
   typeDefs,

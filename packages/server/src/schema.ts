@@ -52,9 +52,22 @@ export default gql`
     unit: String
   }
 
+  type User {
+    _id: ID!
+    username: String!
+    books: [ListedBook]
+  }
+
+  type ListedBook {
+    _id: ID!
+    name: String!
+    favorites: Int!
+    views: Int!
+  }
+
   type Query {
-    # books: [Book]!
     book(bookId: String): Book
+    user(userId: String): User
   }
 
   type Mutation {

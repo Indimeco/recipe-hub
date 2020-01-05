@@ -24,6 +24,18 @@ export const GET_BOOK = gql`
   }
 `;
 
+export const GET_USERS_BOOKS = gql`
+  query UserBooks($userId: String!) {
+    user(userId: $userId) {
+      username
+      books {
+        _id
+        name
+      }
+    }
+  }
+`;
+
 export const EDIT_RECIPE = gql`
   mutation EditRecipe($recipeFragment: UpdateRecipe!) {
     editRecipe(recipeFragment: $recipeFragment) {

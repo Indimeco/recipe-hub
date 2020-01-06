@@ -20,14 +20,7 @@ const client = new ApolloClient({
 ReactDOM.render(
   <ApolloProvider client={client}>
     <ThemeProvider theme={theme}>
-      <Navbar
-        color="aux"
-        banner={
-          <Banner color="main" el="h1">
-            Recipe Hub
-          </Banner>
-        }
-      />
+      <Navbar color="aux" banner={<Banner>Recipe Hub</Banner>} />
       <Layout>
         <Pages />
       </Layout>

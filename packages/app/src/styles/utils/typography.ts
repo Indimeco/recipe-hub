@@ -19,14 +19,14 @@ export const title = () => css`
 `;
 
 export const heading = () => css`
-  color: ${palette.fg};
+  color: inherit;
   font-size: ${FONT_HUGE};
   font-family: ${FONT_HEADING};
   margin: 0;
 `;
 
 export const text = () => css`
-  color: ${palette.fg};
+  color: inherit;
   font-size: ${FONT_MEDIUM};
   font-family: ${FONT_CONTENT};
   margin: 0 0 ${SPACE_SMALL} 0;

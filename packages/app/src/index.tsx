@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { ThemeProvider } from 'styled-components';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import './index.css';
 import * as serviceWorker from './serviceWorker';
@@ -20,11 +21,14 @@ const client = new ApolloClient({
 ReactDOM.render(
   <ApolloProvider client={client}>
     <ThemeProvider theme={theme}>
-      <Navbar color="aux" banner={<Banner>Recipe Hub</Banner>} />
-      <Layout>
-        <Pages />
-      </Layout>
-      <Footer color="aux" />
+      <Router>
+        <Banner>Recipe Hub</Banner>
+        <Navbar />
+        <Layout>
+          <Pages />
+        </Layout>
+        <Footer color="aux" />
+      </Router>
     </ThemeProvider>
   </ApolloProvider>,
   document.getElementById('root'),

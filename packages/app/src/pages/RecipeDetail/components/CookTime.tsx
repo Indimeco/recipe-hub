@@ -69,6 +69,7 @@ const EditCookTime = ({
               value={inputActiveHours}
               onChange={updateTimeInput(setInputActiveHours)}
               inline
+              width="small"
             />
             hours
           </label>
@@ -78,6 +79,7 @@ const EditCookTime = ({
               value={inputActiveMinutes}
               onChange={updateTimeInput(setInputActiveMinutes)}
               inline
+              width="small"
             />
             minutes
           </label>
@@ -92,6 +94,7 @@ const EditCookTime = ({
               value={inputWaitingHours}
               onChange={updateTimeInput(setInputWaitingHours)}
               inline
+              width="small"
             />
             hours
           </label>
@@ -101,6 +104,7 @@ const EditCookTime = ({
               value={inputWaitingMinutes}
               onChange={updateTimeInput(setInputWaitingMinutes)}
               inline
+              width="small"
             />
             minutes
           </label>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
 import ToggleEdit from '../../../components/ToggleEdit/ToggleEdit';
-import Input from '../../../components/Input/Input';
+import Textarea from '../../../components/Textarea/Textarea';
 
 const container = props => css`
   padding: ${props.theme.spacing.small};
@@ -33,7 +33,7 @@ export class RecipeDirections extends React.Component {
         <ToggleEdit edit={this.state.edit} onClick={() => this.setState({ edit: !this.state.edit })} />
         {this.state.edit ? (
           <>
-            <Input
+            <Textarea
               name="directions"
               el="textarea"
               value={this.state.directions}
@@ -41,14 +41,14 @@ export class RecipeDirections extends React.Component {
             />
           </>
         ) : (
-          <>
-            {this.state.directions ? (
-              this.state.directions.split('\n').map((x, y) => <p key={`directions${y}`}>{x}</p>)
-            ) : (
-              <p>No directions needed? No problem!</p>
-            )}
-          </>
-        )}
+            <>
+              {this.state.directions ? (
+                this.state.directions.split('\n').map((x, y) => <p key={`directions${y}`}>{x}</p>)
+              ) : (
+                  <p>No directions needed? No problem!</p>
+                )}
+            </>
+          )}
       </DirectionsBox>
     );
   }

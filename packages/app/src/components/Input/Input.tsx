@@ -6,8 +6,8 @@ interface InputProps {
   inline: boolean;
   width?: 'small' | 'large';
 }
-const Input = ({ placeholder, inline, onChange, width }: React.InputHTMLAttributes<HTMLInputElement> & InputProps) => (
-  <StyledInput {...{ placeholder, inline, onChange, width }} />
+const Input = ({ placeholder, id, inline, onChange, value, width }: React.InputHTMLAttributes<HTMLInputElement> & InputProps) => (
+  <StyledInput {...{ placeholder, id, inline, onChange, value, width }} />
 );
 
 export default Input;

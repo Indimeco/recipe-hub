@@ -48,7 +48,7 @@ const RecipeDetail = ({
         <Image src={recipe.previewImage} />
         <IngredientsList ingredients={recipe.ingredients} />
       </RecipeIntro>
-      <RecipeDirections directions={recipe.directions} />
+      <RecipeDirections directions={recipe.directions} handleSave={mergePayloadAndEditRecipe} />
     </RecipeWrapper>
   );
 };

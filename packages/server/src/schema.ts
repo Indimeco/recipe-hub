@@ -17,7 +17,7 @@ export default gql`
     id: String!
     name: String!
     ingredients: [Ingredient]
-    directions: String
+    directions: String!
     waitingTime: Int!
     activeTime: Int!
     previewImage: String

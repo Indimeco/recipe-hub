@@ -4,6 +4,7 @@ import { faClock } from '@fortawesome/free-solid-svg-icons';
 
 import Input from '../../../components/Input/Input';
 import ToggleEdit from '../../../components/ToggleEdit/ToggleEdit';
+import { Recipe } from '../../../../../../types'
 
 import { TimeBox } from './CookTime.style';
 
@@ -18,8 +19,8 @@ interface TimeUnits {
 }
 
 interface RecipeFragment {
-  activeTime: number | undefined;
-  waitingTime: number | undefined;
+  activeTime: Recipe['activeTime'];
+  waitingTime: Recipe['waitingTime'];
 }
 
 const minutesToTimeUnits = (minutes: number): TimeUnits => ({
@@ -153,28 +154,28 @@ const CookTime = ({ activeTime = 0, waitingTime = 0, handleSave }: CookTimeProps
           }}
         />
       ) : (
-        <>
-          <FontAwesomeIcon icon={faClock} />
-          <span data-testid="CookTime__total">{timeUnitsString(minutesToTimeUnits(activeTime + waitingTime))}</span>
-          <span> ( </span>
-          <span data-testid="CookTime__active">
-            {timeUnitsString({
-              hours: inputActiveHours,
-              minutes: inputActiveMinutes,
-            })}{' '}
-            active
+          <>
+            <FontAwesomeIcon icon={faClock} />
+            <span data-testid="CookTime__total">{timeUnitsString(minutesToTimeUnits(activeTime + waitingTime))}</span>
+            <span> ( </span>
+            <span data-testid="CookTime__active">
+              {timeUnitsString({
+                hours: inputActiveHours,
+                minutes: inputActiveMinutes,
+              })}{' '}
+              active
           </span>
-          {(inputActiveHours || inputActiveMinutes) && (inputWaitingHours || inputWaitingMinutes) && <span> : </span>}
-          <span data-testid="CookTime__waiting">
-            {timeUnitsString({
-              hours: inputWaitingHours,
-              minutes: inputWaitingMinutes,
-            })}{' '}
-            waiting
+            {(inputActiveHours || inputActiveMinutes) && (inputWaitingHours || inputWaitingMinutes) && <span> : </span>}
+            <span data-testid="CookTime__waiting">
+              {timeUnitsString({
+                hours: inputWaitingHours,
+                minutes: inputWaitingMinutes,
+              })}{' '}
+              waiting
           </span>
-          <span> ) </span>
-        </>
-      )}
+            <span> ) </span>
+          </>
+        )}
     </TimeBox>
   );
 };

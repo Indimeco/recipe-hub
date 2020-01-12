@@ -4,13 +4,10 @@ import { faClock } from '@fortawesome/free-solid-svg-icons';
 
 import Input from '../../../components/Input/Input';
 import ToggleEdit from '../../../components/ToggleEdit/ToggleEdit';
-import { Recipe } from '../../../../../../types'
+import { Recipe } from '../../../../../../types';
 
 import { TimeBox } from './CookTime.style';
 
-// TODO Test changing to 0 or negative doesn't break
-// TODO Test saving input shows number in normal view
-// TODO Test svgs for active/waiting don't render if value is 0
 // TODO Restyle CookTime
 
 interface TimeUnits {
@@ -57,7 +54,10 @@ const EditCookTime = ({
 }: InputValues & InputStateDispatches) => {
   const updateTimeInput = (setStateAction: React.Dispatch<React.SetStateAction<number>>) => (
     e: ChangeEvent<HTMLInputElement>,
-  ) => setStateAction(parseInt(e.target.value, 10) || 0);
+  ) => {
+    const value = parseInt(e.target.value, 10) || 0; // cast NaN to 0
+    setStateAction(value >= 0 ? value : 0); // cast negative numbers to 0
+  };
 
   return (
     <>
@@ -137,6 +137,16 @@ const CookTime = ({ activeTime = 0, waitingTime = 0, handleSave }: CookTimeProps
       waitingTime: timeUnitsToMinutes({ hours: inputWaitingHours, minutes: inputWaitingMinutes }),
     });
 
+  const activeTimeString = timeUnitsString({
+    hours: inputActiveHours,
+    minutes: inputActiveMinutes,
+  });
+
+  const waitingTimeString = timeUnitsString({
+    hours: inputWaitingHours,
+    minutes: inputWaitingMinutes,
+  });
+
   return (
     <TimeBox>
       <ToggleEdit onSave={save} edit={isEditMode} onClick={() => toggleEdit(!isEditMode)} />
@@ -154,28 +164,20 @@ const CookTime = ({ activeTime = 0, waitingTime = 0, handleSave }: CookTimeProps
           }}
         />
       ) : (
-          <>
-            <FontAwesomeIcon icon={faClock} />
-            <span data-testid="CookTime__total">{timeUnitsString(minutesToTimeUnits(activeTime + waitingTime))}</span>
-            <span> ( </span>
-            <span data-testid="CookTime__active">
-              {timeUnitsString({
-                hours: inputActiveHours,
-                minutes: inputActiveMinutes,
-              })}{' '}
-              active
+        <>
+          <FontAwesomeIcon icon={faClock} />
+          <span data-testid="CookTime__total">
+            {activeTime || waitingTime
+              ? timeUnitsString(minutesToTimeUnits(activeTime + waitingTime))
+              : 'Done in a pinch!'}
           </span>
-            {(inputActiveHours || inputActiveMinutes) && (inputWaitingHours || inputWaitingMinutes) && <span> : </span>}
-            <span data-testid="CookTime__waiting">
-              {timeUnitsString({
-                hours: inputWaitingHours,
-                minutes: inputWaitingMinutes,
-              })}{' '}
-              waiting
-          </span>
-            <span> ) </span>
-          </>
-        )}
+          {activeTime || waitingTime ? <span> ( </span> : null}
+          <span data-testid="CookTime__active">{activeTimeString ? `${activeTimeString} active` : ''}</span>
+          {activeTimeString && waitingTimeString && <span> : </span>}
+          <span data-testid="CookTime__waiting">{waitingTimeString ? `${waitingTimeString} waiting` : ''}</span>
+          {activeTime || waitingTime ? <span> ) </span> : null}
+        </>
+      )}
     </TimeBox>
   );
 };

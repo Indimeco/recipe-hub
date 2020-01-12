@@ -12,7 +12,7 @@ const timeValues = {
 };
 
 describe('CookTime', () => {
-  it('Renders separated time values', async () => {
+  it('renders separated time values', async () => {
     const { getByTestId } = render(
       <CookTime
         activeTime={timeValues.suppliedActive}
@@ -26,6 +26,54 @@ describe('CookTime', () => {
     expect(getByTestId('CookTime__active').textContent).toStrictEqual(timeValues.expectedActive);
     expect(getByTestId('CookTime__waiting').textContent).toStrictEqual(timeValues.expectedWaiting);
     expect(getByTestId('CookTime__total').textContent).toStrictEqual(timeValues.expectedTotal);
+  });
+
+  it('does not render svg or text for 0 time values', async () => {
+    const zeroTimeValues = {
+      expectedActive: '',
+      expectedTotal: '2hr 10m',
+      expectedWaiting: '2hr 10m waiting',
+      suppliedActive: 0,
+      suppliedWaiting: 130,
+    };
+
+    const { getByTestId } = render(
+      <CookTime
+        activeTime={zeroTimeValues.suppliedActive}
+        waitingTime={zeroTimeValues.suppliedWaiting}
+        handleSave={() => {
+          console.log('handleSave called');
+        }}
+      />,
+    );
+
+    expect(getByTestId('CookTime__active').textContent).toStrictEqual(zeroTimeValues.expectedActive);
+    expect(getByTestId('CookTime__waiting').textContent).toStrictEqual(zeroTimeValues.expectedWaiting);
+    expect(getByTestId('CookTime__total').textContent).toStrictEqual(zeroTimeValues.expectedTotal);
+  });
+
+  it('renders a message if all times are zero', async () => {
+    const zeroTimeValues = {
+      expectedActive: '',
+      expectedTotal: 'Done in a pinch!',
+      expectedWaiting: '',
+      suppliedActive: 0,
+      suppliedWaiting: 0,
+    };
+
+    const { getByTestId } = render(
+      <CookTime
+        activeTime={zeroTimeValues.suppliedActive}
+        waitingTime={zeroTimeValues.suppliedWaiting}
+        handleSave={() => {
+          console.log('handleSave called');
+        }}
+      />,
+    );
+
+    expect(getByTestId('CookTime__active').textContent).toStrictEqual(zeroTimeValues.expectedActive);
+    expect(getByTestId('CookTime__waiting').textContent).toStrictEqual(zeroTimeValues.expectedWaiting);
+    expect(getByTestId('CookTime__total').textContent).toStrictEqual(zeroTimeValues.expectedTotal);
   });
 
   it('changes time when edited', async () => {
@@ -43,5 +91,26 @@ describe('CookTime', () => {
     const activeInputs = getByTestId('CookTime__activeInputs');
     fireEvent.change(within(activeInputs).getByLabelText('hours'), { target: { value: '123' } });
     expect(within(activeInputs).getByLabelText('hours')).toHaveValue('123');
+  });
+
+  it('cannot receive negative or nonstring value', async () => {
+    const { getByText, getByTestId } = render(
+      <CookTime
+        activeTime={timeValues.suppliedActive}
+        waitingTime={timeValues.suppliedWaiting}
+        handleSave={() => {
+          console.log('handleSave called');
+        }}
+      />,
+    );
+
+    getByText('Edit').click();
+    const activeHour = within(getByTestId('CookTime__activeInputs')).getByLabelText('hours');
+    fireEvent.change(activeHour, { target: { value: '-123' } });
+    expect(activeHour).toHaveValue('0');
+    fireEvent.change(activeHour, { target: { value: 'abc' } });
+    expect(activeHour).toHaveValue('0');
+    fireEvent.change(activeHour, { target: { value: '123a' } });
+    expect(activeHour).toHaveValue('123');
   });
 });

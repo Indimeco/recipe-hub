@@ -9,7 +9,6 @@ const container = () => css`
   padding: 10px;
 `;
 
-
 const DirectionsBox = styled.div`
   ${container}
 `;
@@ -20,7 +19,7 @@ interface RecipeDirectionsProps {
 }
 export const RecipeDirections: React.FunctionComponent<RecipeDirectionsProps> = ({ directions, handleSave }) => {
   const [isEditMode, toggleEdit] = useState(false);
-  const [inputDirections, setInputDirections] = useState(directions);
+  const [inputDirections, setInputDirections] = useState(directions || '');
 
   const save = () =>
     handleSave({
@@ -36,20 +35,20 @@ export const RecipeDirections: React.FunctionComponent<RecipeDirectionsProps> = 
           <Textarea
             id="RecipeDirections__textarea"
             value={inputDirections}
-            onChange={(e) => setInputDirections(e.target.value)}
+            onChange={e => setInputDirections(e.target.value)}
           />
         </label>
       ) : (
-          <>
-            {inputDirections ? (
-              inputDirections.split('\n').map((x, y) => <p key={`directions${y}`}>{x}</p>)
-            ) : (
-                <p>No directions needed? No problem!</p>
-              )}
-          </>
-        )}
+        <>
+          {inputDirections ? (
+            inputDirections.split('\n').map((x, y) => <p key={`directions${y}`}>{x}</p>)
+          ) : (
+            <p>No directions needed? No problem!</p>
+          )}
+        </>
+      )}
     </DirectionsBox>
-  )
-}
+  );
+};
 
 export default RecipeDirections;

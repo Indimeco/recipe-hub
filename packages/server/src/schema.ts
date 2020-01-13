@@ -4,7 +4,7 @@ export default gql`
   type Book {
     _id: ID!
     meta: Meta!
-    recipes: [Recipe!]
+    recipes: [Recipe]
   }
 
   type Meta {
@@ -17,9 +17,9 @@ export default gql`
     id: String!
     name: String!
     ingredients: [Ingredient]
-    directions: String!
-    waitingTime: Int!
-    activeTime: Int!
+    directions: String
+    waitingTime: Int
+    activeTime: Int
     previewImage: String
     recipeSource: String
     method: String
@@ -28,8 +28,8 @@ export default gql`
 
   type Ingredient {
     name: String!
-    quantity: Float
-    unit: String
+    quantity: String!
+    unit: String!
   }
 
   input UpdateRecipe {
@@ -48,7 +48,7 @@ export default gql`
 
   input UpdateIngredient {
     name: String!
-    quantity: Float
+    quantity: String
     unit: String
   }
 

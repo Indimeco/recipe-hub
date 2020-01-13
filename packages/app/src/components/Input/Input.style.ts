@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { SPACE_SMALL, palette } from '../../styles/base';
 
 interface StyledInputProps {
-  inline: boolean;
+  inline?: boolean;
   width?: 'small' | 'large';
 }
 export const StyledInput = styled.input<StyledInputProps>`

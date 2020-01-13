@@ -34,7 +34,7 @@ const RecipeDetail = ({
   const { book }: { book: Book } = data;
   if (!book) return <ErrorPage />;
 
-  const recipe = book.recipes?.find(x => x.id === recipeId);
+  const recipe = book.recipes?.find(x => x?.id === recipeId);
   if (!recipe) return <ErrorPage />;
   return (
     <RecipeWrapper>
@@ -46,7 +46,7 @@ const RecipeDetail = ({
           handleSave={mergePayloadAndEditRecipe}
         />
         <Image src={recipe.previewImage} />
-        <IngredientsList ingredients={recipe.ingredients} />
+        <IngredientsList ingredients={recipe.ingredients} handleSave={mergePayloadAndEditRecipe} />
       </RecipeIntro>
       <RecipeDirections directions={recipe.directions} handleSave={mergePayloadAndEditRecipe} />
     </RecipeWrapper>

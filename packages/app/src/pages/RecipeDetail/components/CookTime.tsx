@@ -122,8 +122,8 @@ const CookTime = ({ activeTime = 0, waitingTime = 0, handleSave }: CookTimeProps
   const [isEditMode, toggleEdit] = useState(false);
 
   // convert stored minutes to time units
-  const { minutes: activeMinutes, hours: activeHours } = minutesToTimeUnits(activeTime);
-  const { minutes: waitingMinutes, hours: waitingHours } = minutesToTimeUnits(waitingTime);
+  const { minutes: activeMinutes, hours: activeHours } = minutesToTimeUnits(activeTime || 0);
+  const { minutes: waitingMinutes, hours: waitingHours } = minutesToTimeUnits(waitingTime || 0);
 
   // setup stateful values for inputs
   const [inputActiveMinutes, setInputActiveMinutes] = useState(activeMinutes);
@@ -168,7 +168,7 @@ const CookTime = ({ activeTime = 0, waitingTime = 0, handleSave }: CookTimeProps
           <FontAwesomeIcon icon={faClock} />
           <span data-testid="CookTime__total">
             {activeTime || waitingTime
-              ? timeUnitsString(minutesToTimeUnits(activeTime + waitingTime))
+              ? timeUnitsString(minutesToTimeUnits(activeMinutes + activeHours + waitingMinutes + waitingHours))
               : 'Done in a pinch!'}
           </span>
           {activeTime || waitingTime ? <span> ( </span> : null}

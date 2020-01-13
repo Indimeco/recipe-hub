@@ -32,12 +32,14 @@ const RecipeArea = ({
       <RecipesLayout>
         {book?.recipes?.map(recipe => {
           return (
-            <RecipeItem
-              key={`recipe-${recipe.id}`}
-              name={recipe.name}
-              link={`/book/${bookId}/${recipe.id}`}
-              preview={recipe.previewImage}
-            />
+            recipe && (
+              <RecipeItem
+                key={`recipe-${recipe.id}`}
+                name={recipe.name}
+                link={`/book/${bookId}/${recipe.id}`}
+                preview={recipe?.previewImage}
+              />
+            )
           );
         })}
       </RecipesLayout>

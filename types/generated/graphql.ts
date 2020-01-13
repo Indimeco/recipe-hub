@@ -25,7 +25,7 @@ export type AdditionalEntityFields = {
 export type Book = {
   _id: Scalars['ID'],
   meta: Meta,
-  recipes?: Maybe<Array<Recipe>>,
+  recipes?: Maybe<Array<Maybe<Recipe>>>,
 };
 
 export enum CacheControlScope {
@@ -35,8 +35,8 @@ export enum CacheControlScope {
 
 export type Ingredient = {
   name: Scalars['String'],
-  quantity?: Maybe<Scalars['Float']>,
-  unit?: Maybe<Scalars['String']>,
+  quantity: Scalars['String'],
+  unit: Scalars['String'],
 };
 
 export type ListedBook = {
@@ -80,9 +80,9 @@ export type Recipe = {
   id: Scalars['String'],
   name: Scalars['String'],
   ingredients?: Maybe<Array<Maybe<Ingredient>>>,
-  directions: Scalars['String'],
-  waitingTime: Scalars['Int'],
-  activeTime: Scalars['Int'],
+  directions?: Maybe<Scalars['String']>,
+  waitingTime?: Maybe<Scalars['Int']>,
+  activeTime?: Maybe<Scalars['Int']>,
   previewImage?: Maybe<Scalars['String']>,
   recipeSource?: Maybe<Scalars['String']>,
   method?: Maybe<Scalars['String']>,
@@ -91,7 +91,7 @@ export type Recipe = {
 
 export type UpdateIngredient = {
   name: Scalars['String'],
-  quantity?: Maybe<Scalars['Float']>,
+  quantity?: Maybe<Scalars['String']>,
   unit?: Maybe<Scalars['String']>,
 };
 
@@ -203,13 +203,13 @@ export type MapDirectiveResolver<Result, Parent, Context = any, Args = {   path?
 export type BookResolvers<Context = any, ParentType = Book> = {
   _id?: Resolver<Scalars['ID'], ParentType, Context>,
   meta?: Resolver<Meta, ParentType, Context>,
-  recipes?: Resolver<Maybe<ArrayOrIterable<Recipe>>, ParentType, Context>,
+  recipes?: Resolver<Maybe<ArrayOrIterable<Maybe<Recipe>>>, ParentType, Context>,
 };
 
 export type IngredientResolvers<Context = any, ParentType = Ingredient> = {
   name?: Resolver<Scalars['String'], ParentType, Context>,
-  quantity?: Resolver<Maybe<Scalars['Float']>, ParentType, Context>,
-  unit?: Resolver<Maybe<Scalars['String']>, ParentType, Context>,
+  quantity?: Resolver<Scalars['String'], ParentType, Context>,
+  unit?: Resolver<Scalars['String'], ParentType, Context>,
 };
 
 export type ListedBookResolvers<Context = any, ParentType = ListedBook> = {
@@ -238,9 +238,9 @@ export type RecipeResolvers<Context = any, ParentType = Recipe> = {
   id?: Resolver<Scalars['String'], ParentType, Context>,
   name?: Resolver<Scalars['String'], ParentType, Context>,
   ingredients?: Resolver<Maybe<ArrayOrIterable<Maybe<Ingredient>>>, ParentType, Context>,
-  directions?: Resolver<Scalars['String'], ParentType, Context>,
-  waitingTime?: Resolver<Scalars['Int'], ParentType, Context>,
-  activeTime?: Resolver<Scalars['Int'], ParentType, Context>,
+  directions?: Resolver<Maybe<Scalars['String']>, ParentType, Context>,
+  waitingTime?: Resolver<Maybe<Scalars['Int']>, ParentType, Context>,
+  activeTime?: Resolver<Maybe<Scalars['Int']>, ParentType, Context>,
   previewImage?: Resolver<Maybe<Scalars['String']>, ParentType, Context>,
   recipeSource?: Resolver<Maybe<Scalars['String']>, ParentType, Context>,
   method?: Resolver<Maybe<Scalars['String']>, ParentType, Context>,

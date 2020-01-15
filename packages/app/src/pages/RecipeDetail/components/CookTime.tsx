@@ -168,7 +168,7 @@ const CookTime = ({ activeTime = 0, waitingTime = 0, handleSave }: CookTimeProps
           <FontAwesomeIcon icon={faClock} />
           <span data-testid="CookTime__total">
             {activeTime || waitingTime
-              ? timeUnitsString(minutesToTimeUnits(activeMinutes + activeHours + waitingMinutes + waitingHours))
+              ? timeUnitsString({ minutes: activeMinutes + waitingMinutes, hours: activeHours + waitingHours})
               : 'Done in a pinch!'}
           </span>
           {activeTime || waitingTime ? <span> ( </span> : null}

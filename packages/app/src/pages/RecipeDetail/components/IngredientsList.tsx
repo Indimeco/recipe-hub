@@ -6,25 +6,43 @@ import Input from '../../../components/Input/Input';
 
 import { IngredientsBox, EditContainer } from './IngredientsList.style';
 
+// FIXME Edit mode of IngredientsList is very unperformant
+// TODO Add ingredient
+// TODO Remove ingrediant
+// TODO Reorder ingredient
+// TODO tests
 interface IngredientsListProps {
   ingredients: Recipe['ingredients'];
   handleSave: (payload: { ingredients: Recipe['ingredients'] }) => void;
 }
 const IngredientsList: React.FunctionComponent<IngredientsListProps> = ({ ingredients, handleSave }) => {
+  // sanitize graphql typenames
+  const initializeIngredients = (raw: Recipe['ingredients']) =>
+    raw
+      ? raw.map((item, index) => ({
+          name: item?.name || '',
+          quantity: item?.quantity || '',
+          unit: item?.unit || '',
+          [Symbol('key')]: `ingredient-${index}`,
+        }))
+      : [];
+
   const [isEditMode, toggleEdit] = useState(false);
-  const [inputIngredients, setInputIngredients] = useState(ingredients);
+  const [inputIngredients, setInputIngredients] = useState(initializeIngredients(ingredients));
 
   const updateIngredient = (index: number, e: ChangeEvent<HTMLInputElement>) => {
     const {
       target: { name, value },
     } = e;
-  
-    inputIngredients[index][name] = value;
-    setInputIngredients(inputIngredients);
-  };
-  const save = () => {
-    console.log(inputIngredients);
 
+    setInputIngredients([
+      ...inputIngredients.slice(0, index),
+      { ...inputIngredients[index], [name]: value },
+      ...inputIngredients.slice(index + 1),
+    ]);
+  };
+
+  const save = () => {
     handleSave({
       ingredients: inputIngredients,
     });
@@ -42,8 +60,9 @@ const IngredientsList: React.FunctionComponent<IngredientsListProps> = ({ ingred
               <span id="ingredientslist-unit">Unit</span>
             </div>
             {inputIngredients &&
+              // TODO give ingredients a unique id to use as keys
               inputIngredients.map((item, index) => (
-                <div key={`ingredient__edit${index}`}>
+                <div key={`ingredientlist__edit-${item?.key}`}>
                   <Input
                     name="name"
                     aria-labelledby="ingredientslist-name"
@@ -69,9 +88,7 @@ const IngredientsList: React.FunctionComponent<IngredientsListProps> = ({ ingred
       ) : (
         <ul>
           {inputIngredients &&
-            inputIngredients.map((item, index) => (
-              <li key={`ingredient${index}`}> {`${item?.quantity}${item?.unit} ${item?.name}`}</li>
-            ))}
+            inputIngredients.map(item => <li key={item?.key}> {`${item?.quantity}${item?.unit} ${item?.name}`}</li>)}
         </ul>
       )}
     </IngredientsBox>

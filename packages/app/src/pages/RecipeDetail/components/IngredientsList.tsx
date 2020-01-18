@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, useReducer, Reducer } from 'react';
 
 import { Recipe } from '../../../../../../types';
 import ToggleEdit from '../../../components/ToggleEdit/ToggleEdit';
@@ -6,45 +6,60 @@ import Input from '../../../components/Input/Input';
 
 import { IngredientsBox, EditContainer } from './IngredientsList.style';
 
-// FIXME Edit mode of IngredientsList is very unperformant
 // TODO Add ingredient
 // TODO Remove ingrediant
 // TODO Reorder ingredient
 // TODO tests
+
+type MutatedIngredient = {
+  name: string;
+  quantity: string;
+  unit: string;
+  key: string;
+};
+
+type IngredientAction = {
+  type: string;
+  index: number;
+  [x: string]: any;
+};
+
 interface IngredientsListProps {
   ingredients: Recipe['ingredients'];
   handleSave: (payload: { ingredients: Recipe['ingredients'] }) => void;
 }
 const IngredientsList: React.FunctionComponent<IngredientsListProps> = ({ ingredients, handleSave }) => {
-  // sanitize graphql typenames
-  const initializeIngredients = (raw: Recipe['ingredients']) =>
+  // sanitize graphql typenames and prep data
+  const initializeIngredients = (raw: Recipe['ingredients']): MutatedIngredient[] =>
     raw
       ? raw.map((item, index) => ({
           name: item?.name || '',
           quantity: item?.quantity || '',
           unit: item?.unit || '',
-          [Symbol('key')]: `ingredient-${index}`,
+          key: `ingredient-${index}`,
         }))
       : [];
 
-  const [isEditMode, toggleEdit] = useState(false);
-  const [inputIngredients, setInputIngredients] = useState(initializeIngredients(ingredients));
+  const handleChange: Reducer<MutatedIngredient[], IngredientAction> = (state, action) => {
+    console.log(action);
+    switch (action.type) {
+      case 'update':
+        const { index, value } = action;
 
-  const updateIngredient = (index: number, e: ChangeEvent<HTMLInputElement>) => {
-    const {
-      target: { name, value },
-    } = e;
+        return [...state.slice(0, index), value, ...state.slice(index + 1)];
 
-    setInputIngredients([
-      ...inputIngredients.slice(0, index),
-      { ...inputIngredients[index], [name]: value },
-      ...inputIngredients.slice(index + 1),
-    ]);
+      default:
+        throw new Error(`Unhandled reducer action: ${action.type}`);
+    }
   };
 
+  const [isEditMode, toggleEdit] = useState(false);
+  const [state, dispatch] = useReducer(handleChange, ingredients, initializeIngredients);
+
   const save = () => {
+    const payload = state.map(item => ({ name: item.name, quantity: item.quantity, unit: item.unit }));
     handleSave({
-      ingredients: inputIngredients,
+      ingredients: payload,
     });
   };
 
@@ -59,26 +74,31 @@ const IngredientsList: React.FunctionComponent<IngredientsListProps> = ({ ingred
               <span id="ingredientslist-quantity">Quantity</span>
               <span id="ingredientslist-unit">Unit</span>
             </div>
-            {inputIngredients &&
-              // TODO give ingredients a unique id to use as keys
-              inputIngredients.map((item, index) => (
-                <div key={`ingredientlist__edit-${item?.key}`}>
+            {state &&
+              state.map((item, index) => (
+                <div key={`ingredientlist__edit-${item.key}`}>
                   <Input
                     name="name"
                     aria-labelledby="ingredientslist-name"
-                    onChange={e => updateIngredient(index, e)}
+                    onChange={event =>
+                      dispatch({ type: 'update', index, value: { ...item, name: event.target.value } })
+                    }
                     value={item?.name}
                   />
                   <Input
                     name="quantity"
                     aria-labelledby="ingredientslist-quantity"
-                    onChange={e => updateIngredient(index, e)}
+                    onChange={event =>
+                      dispatch({ type: 'update', index, value: { ...item, quantity: event.target.value } })
+                    }
                     value={item?.quantity}
                   />
                   <Input
                     name="unit"
                     aria-labelledby="ingredientslist-unit"
-                    onChange={e => updateIngredient(index, e)}
+                    onChange={event =>
+                      dispatch({ type: 'update', index, value: { ...item, unit: event.target.value } })
+                    }
                     value={item?.unit}
                   />
                 </div>
@@ -86,10 +106,7 @@ const IngredientsList: React.FunctionComponent<IngredientsListProps> = ({ ingred
           </EditContainer>
         </div>
       ) : (
-        <ul>
-          {inputIngredients &&
-            inputIngredients.map(item => <li key={item?.key}> {`${item?.quantity}${item?.unit} ${item?.name}`}</li>)}
-        </ul>
+        <ul>{state && state.map(item => <li key={item.key}> {`${item?.quantity}${item?.unit} ${item?.name}`}</li>)}</ul>
       )}
     </IngredientsBox>
   );

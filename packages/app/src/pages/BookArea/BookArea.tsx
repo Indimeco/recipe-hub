@@ -16,8 +16,6 @@ const RecipeArea = (): React.ReactElement => {
   if (error) return <ErrorPage />;
 
   const { user }: { user: User } = data;
-  console.log(user);
-
   if (!user.books) return <div>Add a book!</div>;
 
   return (

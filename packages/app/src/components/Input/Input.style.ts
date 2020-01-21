@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { SPACE_SMALL, palette } from '../../styles/base';
 
@@ -6,13 +6,18 @@ interface StyledInputProps {
   inline?: boolean;
   width?: 'small' | 'large';
 }
+
+const inlineStyles = css`
+  margin: 0 ${SPACE_SMALL};
+  display: inline;
+  text-align: center;
+`;
+
 export const StyledInput = styled.input<StyledInputProps>`
   background-color: ${palette.bg};
-  margin: 0 0 ${SPACE_SMALL} 0;
   border: none;
   border-bottom: 2px solid ${palette.brand};
-  margin: 0 10px;
-  display: ${({ inline }) => (inline ? 'inline' : 'block')};
+  margin: ${SPACE_SMALL} 0;
   width: ${({ width }) => {
     if (width) {
       return width === 'large' ? '10vw' : '5vw';
@@ -20,11 +25,15 @@ export const StyledInput = styled.input<StyledInputProps>`
     return '100%';
   }};
 
-  /* TODO add better focus */
+  ${({ inline }) => (inline ? inlineStyles : null)}
+
+  transition: transform 0.1s ease-in;
+
   &:focus,
   &:active {
     border: none;
     border-bottom: 2px solid ${palette.fg};
     outline: none;
+    transform: skewX(10deg);
   }
 `;

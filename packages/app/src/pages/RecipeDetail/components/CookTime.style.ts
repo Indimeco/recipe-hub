@@ -8,3 +8,7 @@ export const TimeBox = styled.div`
   padding: ${SPACE_SMALL};
   text-align: center;
 `;
+
+export const ClockWrapper = styled.span`
+  margin: 0 ${SPACE_SMALL};
+`;

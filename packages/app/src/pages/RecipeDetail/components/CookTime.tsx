@@ -6,7 +6,7 @@ import Input from '../../../components/Input/Input';
 import ToggleEdit from '../../../components/ToggleEdit/ToggleEdit';
 import { Recipe } from '../../../../../../types';
 
-import { TimeBox } from './CookTime.style';
+import { TimeBox, ClockWrapper } from './CookTime.style';
 
 // TODO Restyle CookTime
 
@@ -165,7 +165,7 @@ const CookTime = ({ activeTime = 0, waitingTime = 0, handleSave }: CookTimeProps
           />
         ) : (
           <>
-            <FontAwesomeIcon icon={faClock} />
+            <ClockWrapper><FontAwesomeIcon icon={faClock} /></ClockWrapper>
             <span data-testid="CookTime__total">
               {activeTime || waitingTime
                 ? timeUnitsString({ minutes: activeMinutes + waitingMinutes, hours: activeHours + waitingHours })

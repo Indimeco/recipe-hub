@@ -7,8 +7,4 @@ export const TimeBox = styled.div`
   background-color: ${palette.bg};
   padding: ${SPACE_SMALL};
   text-align: center;
-
-  svg {
-    margin: 0 5px;
-  }
 `;

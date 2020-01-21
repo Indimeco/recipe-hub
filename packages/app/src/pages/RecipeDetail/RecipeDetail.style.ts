@@ -25,8 +25,4 @@ export const TimeBox = styled.div`
   padding: ${SPACE_SMALL};
   margin: ${SPACE_SMALL};
   text-align: center;
-
-  svg {
-    margin: 0 5px;
-  }
 `;

@@ -63,52 +63,55 @@ const IngredientsList: React.FunctionComponent<IngredientsListProps> = ({ ingred
 
   return (
     <IngredientsBox>
-      <ToggleEdit edit={isEditMode} onSave={save} onClick={() => toggleEdit(!isEditMode)} />
-      {isEditMode ? (
-        <div>
-          <EditContainer>
-            <div>
-              <label id="ingredientslist__name">Name</label>
-              <label id="ingredientslist__quantity">Quantity</label>
-              <label id="ingredientslist__unit">Unit</label>
-            </div>
-            {state &&
-              state.map((item, index) => (
-                <div key={`ingredientlist__edit-${item.key}`}>
-                  <Input
-                    name="name"
-                    aria-labelledby="ingredientslist__name"
-                    data-testid="ingredientslist__name__input"
-                    onChange={event =>
-                      dispatch({ type: 'update', index, value: { ...item, name: event.target.value } })
-                    }
-                    value={item?.name}
-                  />
-                  <Input
-                    name="quantity"
-                    aria-labelledby="ingredientslist__quantity"
-                    data-testid="ingredientslist__quantity__input"
-                    onChange={event =>
-                      dispatch({ type: 'update', index, value: { ...item, quantity: event.target.value } })
-                    }
-                    value={item?.quantity}
-                  />
-                  <Input
-                    name="unit"
-                    aria-labelledby="ingredientslist__unit"
-                    data-testid="ingredientslist__unit__input"
-                    onChange={event =>
-                      dispatch({ type: 'update', index, value: { ...item, unit: event.target.value } })
-                    }
-                    value={item?.unit}
-                  />
-                </div>
-              ))}
-          </EditContainer>
-        </div>
-      ) : (
-        <ul>{state && state.map(item => <li key={item.key}> {`${item?.quantity}${item?.unit} ${item?.name}`}</li>)}</ul>
-      )}
+      <ToggleEdit edit={isEditMode} onSave={save} onClick={() => toggleEdit(!isEditMode)}>
+        {isEditMode ? (
+          <div>
+            <EditContainer>
+              <div>
+                <label id="ingredientslist__name">Name</label>
+                <label id="ingredientslist__quantity">Quantity</label>
+                <label id="ingredientslist__unit">Unit</label>
+              </div>
+              {state &&
+                state.map((item, index) => (
+                  <div key={`ingredientlist__edit-${item.key}`}>
+                    <Input
+                      name="name"
+                      aria-labelledby="ingredientslist__name"
+                      data-testid="ingredientslist__name__input"
+                      onChange={event =>
+                        dispatch({ type: 'update', index, value: { ...item, name: event.target.value } })
+                      }
+                      value={item?.name}
+                    />
+                    <Input
+                      name="quantity"
+                      aria-labelledby="ingredientslist__quantity"
+                      data-testid="ingredientslist__quantity__input"
+                      onChange={event =>
+                        dispatch({ type: 'update', index, value: { ...item, quantity: event.target.value } })
+                      }
+                      value={item?.quantity}
+                    />
+                    <Input
+                      name="unit"
+                      aria-labelledby="ingredientslist__unit"
+                      data-testid="ingredientslist__unit__input"
+                      onChange={event =>
+                        dispatch({ type: 'update', index, value: { ...item, unit: event.target.value } })
+                      }
+                      value={item?.unit}
+                    />
+                  </div>
+                ))}
+            </EditContainer>
+          </div>
+        ) : (
+          <ul>
+            {state && state.map(item => <li key={item.key}> {`${item?.quantity}${item?.unit} ${item?.name}`}</li>)}
+          </ul>
+        )}
+      </ToggleEdit>
     </IngredientsBox>
   );
 };

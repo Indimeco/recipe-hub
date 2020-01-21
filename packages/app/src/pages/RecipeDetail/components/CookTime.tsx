@@ -149,35 +149,36 @@ const CookTime = ({ activeTime = 0, waitingTime = 0, handleSave }: CookTimeProps
 
   return (
     <TimeBox>
-      <ToggleEdit onSave={save} edit={isEditMode} onClick={() => toggleEdit(!isEditMode)} />
-      {isEditMode ? (
-        <EditCookTime
-          {...{
-            inputActiveHours,
-            inputActiveMinutes,
-            inputWaitingHours,
-            inputWaitingMinutes,
-            setInputActiveHours,
-            setInputActiveMinutes,
-            setInputWaitingHours,
-            setInputWaitingMinutes,
-          }}
-        />
-      ) : (
-        <>
-          <FontAwesomeIcon icon={faClock} />
-          <span data-testid="CookTime__total">
-            {activeTime || waitingTime
-              ? timeUnitsString({ minutes: activeMinutes + waitingMinutes, hours: activeHours + waitingHours})
-              : 'Done in a pinch!'}
-          </span>
-          {activeTime || waitingTime ? <span> ( </span> : null}
-          <span data-testid="CookTime__active">{activeTimeString ? `${activeTimeString} active` : ''}</span>
-          {activeTimeString && waitingTimeString && <span> : </span>}
-          <span data-testid="CookTime__waiting">{waitingTimeString ? `${waitingTimeString} waiting` : ''}</span>
-          {activeTime || waitingTime ? <span> ) </span> : null}
-        </>
-      )}
+      <ToggleEdit onSave={save} edit={isEditMode} onClick={() => toggleEdit(!isEditMode)}>
+        {isEditMode ? (
+          <EditCookTime
+            {...{
+              inputActiveHours,
+              inputActiveMinutes,
+              inputWaitingHours,
+              inputWaitingMinutes,
+              setInputActiveHours,
+              setInputActiveMinutes,
+              setInputWaitingHours,
+              setInputWaitingMinutes,
+            }}
+          />
+        ) : (
+          <>
+            <FontAwesomeIcon icon={faClock} />
+            <span data-testid="CookTime__total">
+              {activeTime || waitingTime
+                ? timeUnitsString({ minutes: activeMinutes + waitingMinutes, hours: activeHours + waitingHours })
+                : 'Done in a pinch!'}
+            </span>
+            {activeTime || waitingTime ? <span> ( </span> : null}
+            <span data-testid="CookTime__active">{activeTimeString ? `${activeTimeString} active` : ''}</span>
+            {activeTimeString && waitingTimeString && <span> : </span>}
+            <span data-testid="CookTime__waiting">{waitingTimeString ? `${waitingTimeString} waiting` : ''}</span>
+            {activeTime || waitingTime ? <span> ) </span> : null}
+          </>
+        )}
+      </ToggleEdit>
     </TimeBox>
   );
 };

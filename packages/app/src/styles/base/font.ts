@@ -1,4 +1,4 @@
-export const FONT_SMALL = '14px;';
+export const FONT_SMALL = 'calc(0.4vw + 0.4vh + .4vmin);';
 export const FONT_MEDIUM = 'calc(0.6vw + 0.6vh + .4vmin);';
 export const FONT_LARGE = 'calc(1.1vw + 1.1vh + .4vmin);';
 export const FONT_HUGE = 'calc(1.5vw + 1.5vh + .5vmin)';

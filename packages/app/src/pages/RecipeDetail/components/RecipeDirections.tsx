@@ -28,25 +28,26 @@ export const RecipeDirections: React.FunctionComponent<RecipeDirectionsProps> = 
 
   return (
     <DirectionsBox>
-      <ToggleEdit edit={isEditMode} onSave={save} onClick={() => toggleEdit(!isEditMode)} />
-      {isEditMode ? (
-        <label htmlFor="RecipeDirections__textarea">
-          Directions
-          <Textarea
-            id="RecipeDirections__textarea"
-            value={inputDirections}
-            onChange={e => setInputDirections(e.target.value)}
-          />
-        </label>
-      ) : (
-        <>
-          {inputDirections ? (
-            inputDirections.split('\n').map((x, y) => <p key={`directions${y}`}>{x}</p>)
-          ) : (
-            <p>No directions needed? No problem!</p>
-          )}
-        </>
-      )}
+      <ToggleEdit edit={isEditMode} onSave={save} onClick={() => toggleEdit(!isEditMode)}>
+        {isEditMode ? (
+          <label htmlFor="RecipeDirections__textarea">
+            Directions
+            <Textarea
+              id="RecipeDirections__textarea"
+              value={inputDirections}
+              onChange={e => setInputDirections(e.target.value)}
+            />
+          </label>
+        ) : (
+          <>
+            {inputDirections ? (
+              inputDirections.split('\n').map((x, y) => <p key={`directions${y}`}>{x}</p>)
+            ) : (
+              <p>No directions needed? No problem!</p>
+            )}
+          </>
+        )}
+      </ToggleEdit>
     </DirectionsBox>
   );
 };

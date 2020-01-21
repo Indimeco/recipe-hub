@@ -47,12 +47,12 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
+      "pre-commit": "npx lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-push": "set CI=true && lerna run test"
     }
   },
   "lint-staged": {
-    "*.{js,jsx}": "eslint --fix"
+    "*.{js,jsx, ts, tsx}": "eslint --fix"
   }
 }

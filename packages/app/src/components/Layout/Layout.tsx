@@ -1,10 +1,11 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 
-import { FONT_CONTENT, FONT_MEDIUM, palette, SPACE_MEDIUM } from '../../styles/base';
+import { FONT_CONTENT, FONT_MEDIUM, palette, SPACE_MEDIUM, SPACE_BODY } from '../../styles/base';
 import { indent, link } from '../../styles/utils';
 
 export const Wrapper = styled.div`
+  min-height: ${SPACE_BODY};
   font-family: ${FONT_CONTENT};
   font-size: ${FONT_MEDIUM};
   color: ${palette.fg};

@@ -6,6 +6,7 @@ import { User } from '../../../../../types';
 import { GET_USERS_BOOKS } from '../../hooks/data';
 import Loading from '../../components/Loading/Loading';
 import ErrorPage from '../../components/ErrorPage/ErrorPage';
+import Heading from '../../components/Heading/Heading';
 
 const RecipeArea = (): React.ReactElement => {
   const { loading, error, data } = useQuery(GET_USERS_BOOKS, {
@@ -20,7 +21,7 @@ const RecipeArea = (): React.ReactElement => {
 
   return (
     <section>
-      <h2>Hello {user.username}!</h2>
+      <Heading el="h2">Hello {user.username}!</Heading>
       <div>Your recipe books</div>
       <div>
         {user?.books?.map(book => (

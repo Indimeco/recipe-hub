@@ -27,7 +27,7 @@ ReactDOM.render(
         <Layout>
           <Pages />
         </Layout>
-        <Footer color="aux" />
+        <Footer />
       </Router>
     </ThemeProvider>
   </ApolloProvider>,

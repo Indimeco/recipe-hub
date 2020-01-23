@@ -1,7 +1,6 @@
 import React, { ReactElement } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Form from '../components/Form/Form';
 import ErrorPage from '../components/ErrorPage/ErrorPage';
 import { RecipeAreaMatch, RecipeDetailMatch } from '../../types';
 
@@ -24,8 +23,6 @@ export const Pages = () => (
       exact
       render={({ match }: RecipeDetailMatch): ReactElement => <RecipeDetail match={match} />}
     />
-
-    <Route path="/new" render={(): ReactElement => <Form color="main" />} />
 
     <Route render={(): ReactElement => <ErrorPage />} />
   </Switch>

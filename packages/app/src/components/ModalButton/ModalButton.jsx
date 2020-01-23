@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
 
 import Button from '../Button/Button';
-import withColor from '../../hocs/withColor';
 
 import closeStyle from './CloseButton.style';
 import modalStyle from './Modal.style';
@@ -48,4 +47,4 @@ class ModalButton extends React.Component {
   }
 }
 
-export default withColor(ModalButton);
+export default ModalButton;

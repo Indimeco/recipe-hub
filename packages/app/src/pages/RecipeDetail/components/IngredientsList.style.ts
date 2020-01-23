@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { SPACE_SMALL } from '../../../styles/base';
 
 export const EditContainer = styled.div`
   div {
@@ -8,6 +7,4 @@ export const EditContainer = styled.div`
   }
 `;
 
-export const IngredientsBox = styled.div`
-    padding: ${SPACE_SMALL};
-`
+export const IngredientsBox = styled.div``;

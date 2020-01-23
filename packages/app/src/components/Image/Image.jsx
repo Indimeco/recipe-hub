@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import withColor from '../../hocs/withColor';
-
 import componentStyle from './Image.style';
 
 class Image extends React.Component {
@@ -16,8 +14,6 @@ class Image extends React.Component {
   }
 }
 
-export default withColor(
-  styled(Image)`
-    ${componentStyle}
-  `,
-);
+export default styled(Image)`
+  ${componentStyle}
+`;

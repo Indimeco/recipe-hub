@@ -2,30 +2,24 @@
 // TODO Add last modified to recipe via $currentData in mongodb
 // TODO Style Loading component
 // TODO Make ErrorPage dynamic content
-// TODO Test coverage tech
 // TODO Auto semantic versioning with lerna
 // TODO Performance testing tech
 // TODO Accessibility checking
+// TODO add new recipe
+// TODO delete recipe
+// TODO creating a new book
+// TODO deleting a book
 
-// SECTION Create books list home page
-    * viewing all books owned by a user
-        * new user collection in db
-        * new schema/query
-    * selecting a book to view
-    * creating a new book
-        * new mutation
-    * deleting a book
-        * new mutation
+// TODO filter functionality
 
-// REVIEW Refactor App to use new GraphQL recipe mutation query
 // REVIEW Refactor state updates to use the Apollo client store
-// REVIEW Refactor out withColor hoc
 // REVIEW Refactor frontend patterns to use imported css snippets
-// REVIEW Refactor new recipe form to use dynamic layout
-
-// FIXME View with footer not 100vh
 
 // SECTION Future Tasks
     * Host the database
     * Authentication
+    * Browse hot books
+    * Copy other user's recipes
+    
+
 

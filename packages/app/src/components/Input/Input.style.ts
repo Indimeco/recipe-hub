@@ -27,13 +27,13 @@ export const StyledInput = styled.input<StyledInputProps>`
 
   ${({ inline }) => (inline ? inlineStyles : null)}
 
-  transition: transform 0.1s ease-in;
+  transition: transform 0.05s ease-in;
 
   &:focus,
   &:active {
     border: none;
     border-bottom: 2px solid ${palette.fg};
     outline: none;
-    transform: skewX(10deg);
+    transform: skewX(-10deg);
   }
 `;

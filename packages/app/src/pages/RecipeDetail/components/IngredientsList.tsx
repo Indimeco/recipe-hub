@@ -1,8 +1,12 @@
 import React, { useState, useReducer, Reducer } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import { Recipe } from '../../../../../../types';
 import ToggleEdit from '../../../components/ToggleEdit/ToggleEdit';
 import Input from '../../../components/Input/Input';
+import Button from '../../../components/Button/Button';
+import SrText from '../../../components/SrText/SrText';
 
 import { IngredientsBox, EditContainer } from './IngredientsList.style';
 
@@ -41,10 +45,14 @@ const IngredientsList: React.FunctionComponent<IngredientsListProps> = ({ ingred
       : [];
 
   const handleChange: Reducer<MutatedIngredient[], IngredientAction> = (state, action) => {
-    switch (action.type) {
+    const { type, index } = action;
+    switch (type) {
       case 'update':
-        const { index, value } = action;
+        const { value } = action;
         return [...state.slice(0, index), value, ...state.slice(index + 1)];
+
+      case 'remove':
+        return [...state.slice(0, index), ...state.slice(index + 1)];
 
       default:
         throw new Error(`Unhandled reducer action: ${action.type}`);
@@ -102,6 +110,10 @@ const IngredientsList: React.FunctionComponent<IngredientsListProps> = ({ ingred
                       }
                       value={item?.unit}
                     />
+                    <Button inlineStyle onClick={() => dispatch({ type: 'remove', index })}>
+                      <FontAwesomeIcon icon={faTimes} />
+                      <SrText>Delete</SrText>
+                    </Button>
                   </div>
                 ))}
             </EditContainer>

@@ -5,12 +5,12 @@ export const ToggleButtonWrapper = styled.div`
 `;
 
 export const ButtonVisibilityWrapper = styled.div`
-  & button {
+  & .toggle-button {
     opacity: 0;
     transition: 0.3s opacity 3s ease-out;
   }
 
-  &:hover button {
+  &:hover .toggle-button {
     opacity: 1;
     transition: none;
   }

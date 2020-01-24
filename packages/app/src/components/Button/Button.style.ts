@@ -1,18 +1,17 @@
 import styled, { css } from 'styled-components';
 
-import { palette, FONT_SMALL, SPACE_TINY } from '../../styles/base';
+import { palette, FONT_SMALL, SPACE_TINY, MEDIA_1 } from '../../styles/base';
 
 const inlineVariant = css`
-  width: 25px;
-  height: 25px;
-  line-height: 0.8;
-
-  padding: 0;
-  margin: 5px;
+  width: auto;
 `;
 
 const regular = css`
+  width: 100%;
   margin: 10px 0;
+  @media screen and (min-width: ${MEDIA_1}) {
+    width: 200px;
+  }
 `;
 
 interface StyledProps {
@@ -26,6 +25,7 @@ export const StyledButton = styled.button<StyledProps>`
   color: ${palette.fg};
   background-color: ${palette.bg};
   padding: ${SPACE_TINY};
+  margin: 10px 0;
 
   &:hover {
     cursor: pointer;

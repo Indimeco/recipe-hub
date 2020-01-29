@@ -47,4 +47,19 @@ describe('IngredientsList', () => {
     fireEvent.change(thirdUnit, { target: { value: '123' } });
     expect(thirdUnit).toHaveValue('123');
   });
+
+  it('deletes ingredient when delete is actioned', () => {
+    const { getByText, getAllByText, getAllByTestId } = render(
+      <IngredientsList ingredients={initialIngredients} handleSave={() => {}} />,
+    );
+
+    getByText('Edit').click();
+
+    const initialFirstNameInputs = getAllByTestId('ingredientslist__name__input');
+
+    getAllByText('Delete')[0].click();
+
+    expect(getAllByTestId('ingredientslist__name__input')).toHaveLength(initialFirstNameInputs.length - 1);
+    expect(initialFirstNameInputs[0]).not.toBeInTheDocument();
+  });
 });

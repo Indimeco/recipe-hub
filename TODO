@@ -1,25 +1,25 @@
+// SECTION MVP
 // TODO Investigate apollo forcing rerender when mutation fixes or coverup
 // TODO Add last modified to recipe via $currentData in mongodb
 // TODO Style Loading component
-// TODO Make ErrorPage dynamic content
 // TODO Auto semantic versioning with lerna
-// TODO Performance testing tech
-// TODO Accessibility checking
 // TODO add new recipe
 // TODO delete recipe
 // TODO creating a new book
 // TODO deleting a book
-
 // TODO filter functionality
-
+// TODO Authentication
+// TODO Host database
 // REVIEW Refactor state updates to use the Apollo client store
 // REVIEW Refactor frontend patterns to use imported css snippets
 
-// SECTION Future Tasks
-    * Host the database
-    * Authentication
-    * Browse hot books
-    * Copy other user's recipes
+
+// SECTION FUTURE
+// TODO IngredientList re-ordering
+// TODO Performance testing tech
+// TODO Accessibility checking
+// TODO Browse hot books
+// TODO Copy other user's recipes
     
 
 

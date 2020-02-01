@@ -12,10 +12,12 @@ export const RecipeDirections: React.FunctionComponent<RecipeDirectionsProps> = 
   const [isEditMode, toggleEdit] = useState(false);
   const [inputDirections, setInputDirections] = useState(directions || '');
 
-  const save = () =>
+  const save = () => {
     handleSave({
       directions: inputDirections || '',
     });
+    toggleEdit(false);
+  };
 
   return (
     <ToggleEdit edit={isEditMode} onSave={save} onClick={() => toggleEdit(!isEditMode)}>
@@ -31,7 +33,8 @@ export const RecipeDirections: React.FunctionComponent<RecipeDirectionsProps> = 
       ) : (
         <>
           {inputDirections ? (
-            inputDirections.split('\n').map((x, y) => <p key={`directions-${y}`}>{x}</p>)
+            // eslint-disable-next-line
+            inputDirections.split('\n').map((x, index) => <p key={`directions-${index}`}>{x}</p>)
           ) : (
             <p>No directions needed? No problem!</p>
           )}

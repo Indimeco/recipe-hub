@@ -11,9 +11,7 @@ import SrText from '../../../components/SrText/SrText';
 import { IngredientsBox, EditContainer } from './IngredientsList.style';
 
 // TODO Add ingredient
-// TODO Remove ingrediant
 // TODO Reorder ingredient
-// TODO tests
 
 type MutatedIngredient = {
   name: string;
@@ -67,6 +65,7 @@ const IngredientsList: React.FunctionComponent<IngredientsListProps> = ({ ingred
     handleSave({
       ingredients: payload,
     });
+    toggleEdit(false);
   };
 
   return (

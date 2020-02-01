@@ -131,11 +131,13 @@ const CookTime = ({ activeTime = 0, waitingTime = 0, handleSave }: CookTimeProps
   const [inputWaitingMinutes, setInputWaitingMinutes] = useState(waitingMinutes);
   const [inputWaitingHours, setInputWaitingHours] = useState(waitingHours);
 
-  const save = () =>
+  const save = () => {
     handleSave({
       activeTime: timeUnitsToMinutes({ hours: inputActiveHours, minutes: inputActiveMinutes }),
       waitingTime: timeUnitsToMinutes({ hours: inputWaitingHours, minutes: inputWaitingMinutes }),
     });
+    toggleEdit(false);
+  };
 
   const activeTimeString = timeUnitsString({
     hours: inputActiveHours,
@@ -165,7 +167,9 @@ const CookTime = ({ activeTime = 0, waitingTime = 0, handleSave }: CookTimeProps
           />
         ) : (
           <>
-            <ClockWrapper><FontAwesomeIcon icon={faClock} /></ClockWrapper>
+            <ClockWrapper>
+              <FontAwesomeIcon icon={faClock} />
+            </ClockWrapper>
             <span data-testid="CookTime__total">
               {activeTime || waitingTime
                 ? timeUnitsString({ minutes: activeMinutes + waitingMinutes, hours: activeHours + waitingHours })

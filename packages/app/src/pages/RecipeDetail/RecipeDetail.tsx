@@ -21,6 +21,7 @@ const RecipeDetail = ({
 }: RecipeDetailMatch) => {
   const { loading: bookLoading, error: bookError, data } = useQuery(GET_BOOK, {
     variables: { bookId },
+    partialRefetch: true,
   });
 
   const [editRecipe, { loading: editLoading, error: editError }] = useMutation(EDIT_RECIPE);
@@ -28,7 +29,7 @@ const RecipeDetail = ({
     editRecipe({ variables: { recipeFragment: { bookId, id: recipeId, ...payload } } });
   };
 
-  if (bookLoading || editLoading) return <Loading />;
+  if ((bookLoading || editLoading) && !data) return <Loading />;
   if (bookError || editError) return <ErrorPage />;
 
   const { book }: { book: Book } = data;

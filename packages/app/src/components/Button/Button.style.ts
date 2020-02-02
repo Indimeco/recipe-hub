@@ -10,7 +10,7 @@ const regular = css`
   width: 100%;
   margin: 10px 0;
   @media screen and (min-width: ${MEDIA_1}) {
-    width: 200px;
+    max-width: 200px;
   }
 `;
 

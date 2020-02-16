@@ -1,15 +1,19 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "sourceMap": true,
+    "rootDir": "./",
+    "noEmitOnError": true,
+    "noEmit": false,
+    "outDir": "./dist",
     "module": "commonjs",
     "lib": ["dom","es6"],
-    "outDir": "dist",
-    "rootDir": "src",
     "strict": false,
-    "typeRoots" : ["./node_modules/@types", "types"],
-    "target": "ES2016"
+    "target": "ES2016",
+    "typeRoots" : ["./node_modules/@types", "./types"],
   },
   "include": [
-    "src"
-  ]
+    "src/**/*"
+  ],
+  "exclude": ["node_modules", "**/*.spec.ts"]
 }

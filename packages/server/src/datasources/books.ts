@@ -1,6 +1,6 @@
 import { MongoDataSource } from 'apollo-datasource-mongodb';
 
-import { Book, Recipe, UpdateRecipe } from '../../../../types';
+import { Book, Recipe, UpdateRecipe } from '../../generated/graphql';
 
 export class BooksApi extends MongoDataSource {
   getBook(bookId: string): Promise<Book> {

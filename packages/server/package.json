@@ -2,7 +2,7 @@
 	"name": "@recipe-hub/server",
 	"version": "1.0.0",
 	"description": "",
-	"main": "graphql",
+	"main": "./dist/graphql",
 	"scripts": {
 		"start": "serverless offline start",
 		"test": "echo add tests to server",
@@ -28,14 +28,14 @@
 		"@types/mongodb": "^3.3.13",
 		"serverless-plugin-typescript": "^1.1.9",
 		"ts-node": "^8.5.4",
-		"typescript": "^3.7.5"
+		"typescript": "^3.7.5",
+		"serverless-offline": "^5.12.1"
 	},
 	"dependencies": {
 		"apollo-datasource": "^0.6.3",
 		"apollo-datasource-mongodb": "^0.2.0",
 		"apollo-server-lambda": "^2.10.1",
 		"graphql": "^14.5.8",
-		"mongodb": "^3.2.7",
-		"serverless-offline": "^5.12.1"
+		"mongodb": "^3.2.7"
 	}
 }

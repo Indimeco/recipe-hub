@@ -1,7 +1,7 @@
 import { ApolloServer } from 'apollo-server-lambda';
 import { MongoClient } from 'mongodb';
 
-import { Book, Recipe, User } from '../../../types';
+import { Book, Recipe, User } from '../generated/graphql';
 
 import typeDefs from './schema';
 import { BooksApi, UsersApi } from './datasources'; // Database Name

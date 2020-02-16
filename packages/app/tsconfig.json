@@ -8,9 +8,13 @@
       "esnext",
       "es6"
     ],
-    "typeRoots" : ["./node_modules/@types", "types"],
+    "typeRoots": [
+      "./node_modules/@types",
+      "types"
+    ],
+    "noEmit": true
   },
   "include": [
     "src"
-  ],
+  ]
 }

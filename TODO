@@ -1,4 +1,5 @@
 // SECTION MVP
+// TODO Make generated graphql types copy to individual packages so rootDir works
 // TODO Add last modified to recipe via $currentData in mongodb
 // TODO Style Loading component
 // TODO Auto semantic versioning with lerna

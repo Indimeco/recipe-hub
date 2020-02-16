@@ -4,6 +4,7 @@ import { Book, Recipe, UpdateRecipe } from '../../generated/graphql';
 
 export class BooksApi extends MongoDataSource {
   getBook(bookId: string): Promise<Book> {
+    console.log(this);
     return this.findOneById(bookId);
   }
 

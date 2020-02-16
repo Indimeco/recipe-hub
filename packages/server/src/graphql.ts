@@ -6,49 +6,49 @@ import { Book, Recipe, User } from '../generated/graphql';
 import typeDefs from './schema';
 import { BooksApi, UsersApi } from './datasources'; // Database Name
 
-const dbUrl = 'mongodb://localhost:27017'; // Database Connection
-const dbName = 'recipehub';
-
 let cachedDb = null;
 
-function connectToDatabase(uri) {
-  console.log('=> connect to database');
+function connectToDatabase() {
+  const dbUrl = 'mongodb://localhost:27017'; // Database Connection
+  const dbName = 'recipehub';
 
   if (cachedDb) {
     console.log('=> using cached database instance');
     return Promise.resolve(cachedDb);
   }
 
-  return MongoClient.connect(uri).then(db => {
+  return MongoClient.connect(dbUrl).then(db => {
     const recipeHub = db.db(dbName);
     cachedDb = recipeHub;
     return cachedDb;
   });
 }
 
-const server = async () => {
-  const db = await connectToDatabase(dbUrl);
-  const booksApi = new BooksApi(db.collection('books'));
-  const usersApi = new UsersApi(db.collection('users'));
-
-  return new ApolloServer({
-    resolvers: {
-      Mutation: {
-        editRecipe: async (_source, { recipeFragment }): Promise<Recipe> => {
-          return booksApi.editRecipe(recipeFragment);
-        },
-      },
-      Query: {
-        book: async (_source, { bookId }): Promise<Book> => {
-          return booksApi.getBook(bookId);
-        },
-        user: async (_source, { userId }): Promise<User> => {
-          return usersApi.getUser(userId);
-        },
+const server = new ApolloServer({
+  resolvers: {
+    Mutation: {
+      editRecipe: async (_source, { recipeFragment }, { db }): Promise<Recipe> => {
+        const booksApi = new BooksApi(db.collection('books'));
+        return booksApi.editRecipe(recipeFragment);
       },
     },
-    typeDefs,
-  });
-};
+    Query: {
+      book: async (_source, { bookId }, { db }): Promise<Book> => {
+        const booksApi = new BooksApi(db.collection('books'));
+        return booksApi.getBook(bookId);
+      },
+      user: async (_source, { userId }, { db }): Promise<User> => {
+        const usersApi = new UsersApi(db.collection('users'));
+        return usersApi.getUser(userId);
+      },
+    },
+  },
+  context: async ({ context }) => {
+    // eslint-disable-next-line
+    context.callbackWaitsForEmptyEventLoop = false;
+    return { db: await connectToDatabase() };
+  },
+  typeDefs,
+});
 
-export const graphqlHandler = server().then(s => s.createHandler());
+export const graphqlHandler = server.createHandler();

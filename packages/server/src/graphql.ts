@@ -4,41 +4,39 @@ import { MongoClient } from 'mongodb';
 import typeDefs from './schema';
 import resolvers from './resolvers';
 
-let cachedDb = null; // FIXME cant work in lambda
-// FIXME Really bad performance about 2.5s
+let cachedDb = null;
 
-function connectToDatabase(context) {
+function connectToDatabase() {
   const dbUrl = 'mongodb://localhost:27017'; // Database Connection
   const dbName = 'recipehub';
 
-  // console.log('context is ', context);
-
-  if (cachedDb) {
-    console.log('=> using cached database instance');
-    return Promise.resolve(cachedDb);
-  }
+  if (cachedDb) return Promise.resolve(cachedDb);
 
   return MongoClient.connect(dbUrl).then(db => {
     const recipeHub = db.db(dbName);
-    cachedDb = recipeHub; // TODO
-    return recipeHub;
+    cachedDb = recipeHub;
+    return cachedDb;
   });
 }
 
-const server = new ApolloServer({
-  resolvers,
-  context: async ({ event, context }) => {
-    // eslint-disable-next-line
-    context.callbackWaitsForEmptyEventLoop = false;
-    return {
-      headers: event.headers,
-      functionName: context.functionName,
-      event,
-      context,
-      db: await connectToDatabase(event),
-    };
-  },
-  typeDefs,
-});
+// REVIEW if this abstraction from the inner ApolloServer is truly beneficial
+export const graphqlHandler = (event, context, callback) => {
+  // eslint-disable-next-line
+  context.callbackWaitsForEmptyEventLoop = false;
 
-export const graphqlHandler = server.createHandler();
+  connectToDatabase().then(connection =>
+    new ApolloServer({
+      resolvers,
+      context: ({ event: e }) => {
+        return {
+          headers: e.headers,
+          functionName: context.functionName,
+          event: e,
+          context,
+          db: connection,
+        };
+      },
+      typeDefs,
+    }).createHandler()(event, context, callback),
+  );
+};

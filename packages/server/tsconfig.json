@@ -1,16 +1,23 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "sourceMap": true,
-    "rootDir": "./",
+    "rootDir": "./src",
+    "sourceRoot": "/",
     "noEmitOnError": true,
     "noEmit": false,
-    "outDir": "./dist",
+    "outDir": ".build",
     "module": "commonjs",
     "lib": ["dom","es6"],
     "strict": false,
     "target": "ES2016",
     "typeRoots" : ["./node_modules/@types", "./types"],
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "preserveConstEnums": true,
+    "strictNullChecks": true,
+    "inlineSources": true,
+    "inlineSourceMap": true,
+    "resolveJsonModule": true
   },
   "include": [
     "src/**/*"

@@ -2,7 +2,7 @@
 	"name": "@recipe-hub/server",
 	"version": "1.0.0",
 	"description": "",
-	"main": "./dist/graphql",
+	"main": "./src/graphql",
 	"scripts": {
 		"start": "serverless offline start",
 		"test": "echo add tests to server",
@@ -26,17 +26,22 @@
 		"@graphql-codegen/typescript-mongodb": "^1.0.0",
 		"@graphql-codegen/typescript-resolvers": "^1.0.0",
 		"@types/mongodb": "^3.3.13",
-		"serverless-plugin-typescript": "^1.1.9",
-		"ts-node": "^8.5.4",
 		"typescript": "^3.7.5",
-		"serverless-offline": "^5.12.1"
+		"serverless-webpack": "^5.3.1",
+		"serverless-plugin-typescript": "^1.1.9",
+		"serverless-offline": "^5.12.1",
+		"@babel/core": "^7.5.5",
+		"@babel/preset-env": "^7.5.5",
+		"@babel/preset-typescript": "^7.3.3",
+		"babel-loader": "^8.0.6",
+		"cache-loader": "^4.1.0",
+		"fork-ts-checker-webpack-plugin": "^1.4.3",
+		"webpack": "^4.38.0",
+		"webpack-node-externals": "^1.7.2"
 	},
 	"dependencies": {
-		"apollo-datasource": "^0.6.3",
-		"apollo-datasource-mongodb": "^0.2.0",
 		"apollo-server-lambda": "^2.10.1",
 		"graphql": "^14.5.8",
-		"mongodb": "^3.2.7",
-		"ramda": "^0.27.0"
+		"mongodb": "^3.2.7"
 	}
 }

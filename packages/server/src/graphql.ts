@@ -4,8 +4,7 @@ import { MongoClient } from 'mongodb';
 import typeDefs from './schema';
 import resolvers from './resolvers';
 
-let cachedDb = null;
-
+let cachedDb;
 function connectToDatabase() {
   const dbUrl = 'mongodb://localhost:27017'; // Database Connection
   const dbName = 'recipehub';

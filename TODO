@@ -1,5 +1,7 @@
 // SECTION MVP
-// TODO Make generated graphql types copy to individual packages so rootDir works
+// TODO Create a simple test all workflow
+// TODO Tests for lambda
+// TODO Tests for db
 // TODO Add last modified to recipe via $currentData in mongodb
 // TODO Style Loading component
 // TODO Auto semantic versioning with lerna
@@ -12,7 +14,6 @@
 // TODO Decide on AWS Cognito or Roll my own Auth
 // TODO Protect user operations based on book ownership
 // TODO Decide on hosted database or moving to DynamoDb
-// TODO Decide on server or serverless
 // REVIEW Refactor state updates to use the Apollo client store
 // REVIEW Refactor frontend patterns to use imported css snippets
 

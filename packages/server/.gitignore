@@ -2,4 +2,6 @@ node_modules
 .webpack
 .webpackCache
 .build
+.serverless
 graphql.schema.json
+src/types/generated

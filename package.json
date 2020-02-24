@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install": "lerna exec npm install --stream"
+    "preinstall": "copyTypes.sh",
+    "install": "lerna exec npm install --stream",
+    "build": "lerna exec npm run build --stream"
   },
   "repository": {
     "type": "git",

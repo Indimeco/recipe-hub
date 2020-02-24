@@ -8,6 +8,7 @@
 		"@fortawesome/free-brands-svg-icons": "^5.10.1",
 		"@fortawesome/free-solid-svg-icons": "^5.10.1",
 		"@fortawesome/react-fontawesome": "^0.1.4",
+		"@types/mongodb": "^3.3.16",
 		"apollo-boost": "^0.4.7",
 		"graphql": "^14.5.8",
 		"react": "^16.12.0",

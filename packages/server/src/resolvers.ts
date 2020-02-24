@@ -1,4 +1,4 @@
-import { Book, Recipe, User } from './generated/graphql';
+import { Book, Recipe, User } from './types/generated/graphql';
 
 export default {
   Mutation: {

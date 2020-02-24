@@ -5,7 +5,7 @@
 	"main": "testdb.mjs",
 	"type": "module",
 	"scripts": {
-		"reset": "node ./index.mjs",
+		"build": "node ./index.mjs",
 		"start": "mongod --dbpath ./data"
 	},
 	"repository": {

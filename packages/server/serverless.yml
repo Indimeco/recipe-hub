@@ -9,9 +9,11 @@ functions:
     handler: src/graphql.graphqlHandler
     events:
     - http:
+        path: /
         method: post
         cors: true
     - http:
+        path: /
         method: get
         cors: true
 plugins:

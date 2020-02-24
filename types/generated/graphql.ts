@@ -5,7 +5,6 @@ export type Scalars = {
   Boolean: boolean,
   Int: number,
   Float: number,
-  Upload: any,
 };
 
 
@@ -109,7 +108,6 @@ export type UpdateRecipe = {
   categories?: Maybe<Array<Maybe<Scalars['String']>>>,
 };
 
-
 export type User = {
   _id: Scalars['ID'],
   username: Scalars['String'],
@@ -117,7 +115,7 @@ export type User = {
 };
 
 
-import { GraphQLResolveInfo, GraphQLScalarType, GraphQLScalarTypeConfig } from 'graphql';
+import { GraphQLResolveInfo } from 'graphql';
 
 export type ArrayOrIterable<T> = Array<T> | Iterable<T>;
 
@@ -247,10 +245,6 @@ export type RecipeResolvers<Context = any, ParentType = Recipe> = {
   categories?: Resolver<Maybe<ArrayOrIterable<Maybe<Scalars['String']>>>, ParentType, Context>,
 };
 
-export interface UploadScalarConfig extends GraphQLScalarTypeConfig<Scalars['Upload'], any> {
-  name: 'Upload'
-}
-
 export type UserResolvers<Context = any, ParentType = User> = {
   _id?: Resolver<Scalars['ID'], ParentType, Context>,
   username?: Resolver<Scalars['String'], ParentType, Context>,
@@ -265,7 +259,6 @@ export type IResolvers<Context = any> = {
   Mutation?: MutationResolvers<Context>,
   Query?: QueryResolvers<Context>,
   Recipe?: RecipeResolvers<Context>,
-  Upload?: GraphQLScalarType,
   User?: UserResolvers<Context>,
 };
 

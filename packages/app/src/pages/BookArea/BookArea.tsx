@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { User } from '../../../../../types';
 import { GET_USERS_BOOKS } from '../../hooks/data';
-import Loading from '../../components/Loading/Loading';
+import Loading from '../Loading/Loading';
 import ErrorPage from '../../components/ErrorPage/ErrorPage';
 import Heading from '../../components/Heading/Heading';
 

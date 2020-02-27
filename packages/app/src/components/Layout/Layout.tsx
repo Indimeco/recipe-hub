@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
   font-size: ${FONT_MEDIUM};
   color: ${palette.fg};
   background-color: ${palette.bg};
+  display: flex;
 
   padding-top: ${SPACE_MEDIUM};
   padding-bottom: ${SPACE_MEDIUM};
@@ -21,6 +22,7 @@ export const Wrapper = styled.div`
 
 export const Indent = styled.div`
   ${indent}
+  width: 100%;
 `;
 
 interface LayoutProps {

@@ -5,7 +5,7 @@ import { Book, UpdateRecipe } from '../../../../../types';
 import { GET_BOOK, EDIT_RECIPE } from '../../hooks/data';
 import Heading from '../../components/Heading/Heading';
 import Image from '../../components/Image/Image';
-import Loading from '../../components/Loading/Loading';
+import Loading from '../Loading/Loading';
 import ErrorPage from '../../components/ErrorPage/ErrorPage';
 import { RecipeDetailMatch } from '../../../types';
 

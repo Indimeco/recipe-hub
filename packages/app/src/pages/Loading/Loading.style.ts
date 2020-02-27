@@ -17,5 +17,12 @@ export const Spinner = styled.div`
   border-radius: 100%;
   border: 4px solid;
   border-color: ${palette.aux} ${palette.aux} ${palette.aux} transparent;
-  animation: 1.6s ${spin} cubic-bezier(0, 0.7, 0.72, 1) infinite;
+  animation: 1.6s ${spin} cubic-bezier(0.1, 1, 0.7, 0.5) infinite;
+`;
+
+export const LoadingArea = styled.section`
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

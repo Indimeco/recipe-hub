@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/react-hooks';
 import Filter from '../../components/Filter/Filter';
 import { Book } from '../../../../../types';
 import { GET_BOOK } from '../../hooks/data';
-import Loading from '../../components/Loading/Loading';
+import Loading from '../Loading/Loading';
 import ErrorPage from '../../components/ErrorPage/ErrorPage';
 import { RecipeAreaMatch } from '../../../types';
 

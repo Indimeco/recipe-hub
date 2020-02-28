@@ -1,14 +1,20 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBook } from '@fortawesome/free-solid-svg-icons';
 
 import { User } from '../../../../../types';
 import { GET_USERS_BOOKS } from '../../hooks/data';
 import Loading from '../Loading/Loading';
 import ErrorPage from '../../components/ErrorPage/ErrorPage';
 import Heading from '../../components/Heading/Heading';
+import ModalButton from '../../components/ModalButton/ModalButton';
 
-const RecipeArea = (): React.ReactElement => {
+import { BookTile, BookText, BookButtonText, UnstyledLi, UnstyledUl } from './BookArea.style';
+import { ModalContent } from './components/NewBookModal';
+
+const BookArea = (): React.ReactElement => {
   const { loading, error, data } = useQuery(GET_USERS_BOOKS, {
     variables: { userId: '0' }, // TODO get userId from cookie
   });
@@ -21,17 +27,26 @@ const RecipeArea = (): React.ReactElement => {
 
   return (
     <section>
-      <Heading el="h2">Hello {user.username}!</Heading>
-      <div>Your recipe books</div>
-      <div>
+      <Heading el="h2">{user.username}&apos;s Recipe Books!</Heading>
+      <UnstyledUl>
         {user?.books?.map(book => (
-          <div key={`recipe-${book?._id}`}>
-            <Link to={`/book/${book?._id}`}>{book?.name}</Link>
-          </div>
+          <UnstyledLi key={book?._id}>
+            <Link to={`/book/${book?._id}`}>
+              <BookTile key={`recipe-${book?._id}`}>
+                <BookText>
+                  <FontAwesomeIcon icon={faBook} />
+                </BookText>
+                <BookText>{book?.name}</BookText>
+              </BookTile>
+            </Link>
+          </UnstyledLi>
         ))}
-      </div>
+      </UnstyledUl>
+      <ModalButton modalContent={ModalContent}>
+        <BookButtonText>Create new book</BookButtonText>
+      </ModalButton>
     </section>
   );
 };
 
-export default RecipeArea;
+export default BookArea;

@@ -1,9 +1,26 @@
 export default {
-  _id: '1',
-  username: 'Indimeco',
+  username: 'TestUser',
   books: [
-    { _id: '0', name: "Jake's Recipes0", favorites: '0', views: '100' },
-    { _id: '1', name: "Jake's Recipes1", favorites: '0', views: '100' },
-    { _id: '2', name: "Jake's Recipes2", favorites: '0', views: '100' },
+    {
+      meta: {
+        name: "Baby Bear's Jam Catalogue",
+        favorites: '2',
+        views: '100',
+      },
+    },
+    {
+      meta: {
+        name: 'My recipes',
+        favorites: '40',
+        views: '2000',
+      },
+    },
+    {
+      meta: {
+        name: "Chef John's Foodwishes Collection",
+        favorites: '9999',
+        views: '9999999',
+      },
+    },
   ],
 };

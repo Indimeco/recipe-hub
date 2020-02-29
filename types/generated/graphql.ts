@@ -40,9 +40,7 @@ export type Ingredient = {
 
 export type ListedBook = {
   _id: Scalars['ID'],
-  name: Scalars['String'],
-  favorites: Scalars['Int'],
-  views: Scalars['Int'],
+  meta?: Maybe<Meta>,
 };
 
 export type Meta = {
@@ -53,11 +51,17 @@ export type Meta = {
 
 export type Mutation = {
   editRecipe?: Maybe<Recipe>,
+  createBook?: Maybe<Book>,
 };
 
 
 export type MutationEditRecipeArgs = {
   recipeFragment?: Maybe<UpdateRecipe>
+};
+
+
+export type MutationCreateBookArgs = {
+  bookName?: Maybe<Scalars['String']>
 };
 
 export type Query = {
@@ -212,9 +216,7 @@ export type IngredientResolvers<Context = any, ParentType = Ingredient> = {
 
 export type ListedBookResolvers<Context = any, ParentType = ListedBook> = {
   _id?: Resolver<Scalars['ID'], ParentType, Context>,
-  name?: Resolver<Scalars['String'], ParentType, Context>,
-  favorites?: Resolver<Scalars['Int'], ParentType, Context>,
-  views?: Resolver<Scalars['Int'], ParentType, Context>,
+  meta?: Resolver<Maybe<Meta>, ParentType, Context>,
 };
 
 export type MetaResolvers<Context = any, ParentType = Meta> = {
@@ -225,6 +227,7 @@ export type MetaResolvers<Context = any, ParentType = Meta> = {
 
 export type MutationResolvers<Context = any, ParentType = Mutation> = {
   editRecipe?: Resolver<Maybe<Recipe>, ParentType, Context, MutationEditRecipeArgs>,
+  createBook?: Resolver<Maybe<Book>, ParentType, Context, MutationCreateBookArgs>,
 };
 
 export type QueryResolvers<Context = any, ParentType = Query> = {

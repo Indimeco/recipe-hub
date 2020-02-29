@@ -60,9 +60,7 @@ export default gql`
 
   type ListedBook {
     _id: ID!
-    name: String!
-    favorites: Int!
-    views: Int!
+    meta: Meta
   }
 
   type Query {
@@ -72,5 +70,6 @@ export default gql`
 
   type Mutation {
     editRecipe(recipeFragment: UpdateRecipe): Recipe
+    createBook(userId: String!, bookName: String!): User
   }
 `;

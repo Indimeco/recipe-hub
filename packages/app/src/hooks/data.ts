@@ -27,10 +27,15 @@ export const GET_BOOK = gql`
 export const GET_USERS_BOOKS = gql`
   query UserBooks($userId: String!) {
     user(userId: $userId) {
+      _id
       username
       books {
         _id
-        name
+        meta {
+          name
+          favorites
+          views
+        }
       }
     }
   }

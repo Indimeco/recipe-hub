@@ -1,5 +1,4 @@
 export default {
-  _id: '1',
   meta: {
     favorites: 100,
     name: "Jake's Recipes",

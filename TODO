@@ -1,4 +1,8 @@
 // SECTION MVP
+// TODO Ensure correct use of ObjectIds across recipes/books/users
+// FIXME Recipe Details cancel doesn't revert state changes
+// TODO tests for BookArea
+// TODO handle Apollo Errors via ErrorPage
 // TODO Create a simple test all workflow
 // TODO Tests for lambda
 // TODO Tests for db
@@ -14,6 +18,7 @@
 // TODO Decide on AWS Cognito or Roll my own Auth
 // TODO Protect user operations based on book ownership
 // TODO Decide on hosted database or moving to DynamoDb
+// TODO Enable editing for remaining recipe details
 // REVIEW Refactor state updates to use the Apollo client store
 // REVIEW Refactor frontend patterns to use imported css snippets
 

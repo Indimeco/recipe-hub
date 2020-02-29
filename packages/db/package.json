@@ -2,10 +2,11 @@
 	"name": "@recipe-hub/db",
 	"version": "1.0.0",
 	"description": "",
-	"main": "testdb.mjs",
+	"main": "index.mjs",
 	"type": "module",
 	"scripts": {
 		"build": "node ./index.mjs",
+		"prestart": "if not exist \"./data\" mkdir data/db",
 		"start": "mongod --dbpath ./data"
 	},
 	"repository": {

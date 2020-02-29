@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import Modal from 'react-modal';
@@ -10,17 +10,17 @@ import { modalStyle, CloseContainer, CloseButton } from './Modal.style';
 Modal.setAppElement('#root');
 
 interface ModalButtonProps {
-  modalContent: React.FunctionComponent<any>;
+  ModalContent: React.FunctionComponent<any>;
   isOpen?: boolean;
+  setIsOpen: (newState: boolean) => void;
 }
 
 export const ModalButton: React.FunctionComponent<ModalButtonProps> = ({
-  isOpen: propsIsOpen = false,
+  isOpen = false,
+  setIsOpen,
   children,
-  modalContent: ModalContent,
+  ModalContent,
 }) => {
-  const [isOpen, setIsOpen] = useState(propsIsOpen);
-
   return (
     <>
       <Button type="button" onClick={() => setIsOpen(true)}>

@@ -1,5 +1,7 @@
 // SECTION MVP
-// TODO Ensure correct use of ObjectIds across recipes/books/users
+// TODO Improve dropdown component
+// FIXME RecipeArea card text breaking the box model
+// REVIEW Ensure correct use of ObjectIds across recipes/books/users
 // FIXME Recipe Details cancel doesn't revert state changes
 // TODO tests for BookArea
 // TODO handle Apollo Errors via ErrorPage
@@ -7,11 +9,9 @@
 // TODO Tests for lambda
 // TODO Tests for db
 // TODO Add last modified to recipe via $currentData in mongodb
-// TODO Style Loading component
 // TODO Auto semantic versioning with lerna
 // TODO add new recipe
 // TODO delete recipe
-// TODO creating a new book
 // TODO deleting a book
 // TODO filter functionality
 // TODO Create login page
@@ -25,6 +25,7 @@
 
 // SECTION FUTURE
 // TODO IngredientList re-ordering
+// TODO Book sorting/reordering
 // TODO Recipe reordering
 // TODO Performance testing tech
 // TODO Accessibility checking

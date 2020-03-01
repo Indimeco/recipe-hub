@@ -1,3 +1,4 @@
+export const FONT_TINY = 'calc(0.4vw + 0.4vh + .4vmin);';
 export const FONT_SMALL = 'calc(0.4vw + 0.4vh + .4vmin);';
 export const FONT_MEDIUM = 'calc(0.6vw + 0.6vh + .4vmin);';
 export const FONT_LARGE = 'calc(1.1vw + 1.1vh + .4vmin);';

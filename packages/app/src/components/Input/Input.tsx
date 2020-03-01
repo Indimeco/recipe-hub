@@ -6,6 +6,7 @@ interface InputProps {
   inline?: boolean;
   width?: 'small' | 'large';
   'data-testid'?: string;
+  forwardedRef?: any;
 }
 const Input = ({
   placeholder,
@@ -15,9 +16,13 @@ const Input = ({
   value,
   width,
   name,
+  forwardedRef,
   ...rest
 }: React.InputHTMLAttributes<HTMLInputElement> & InputProps) => (
-  <StyledInput {...{ placeholder, id, inline, onChange, value, width, name, 'data-testid': rest['data-testid'] }} />
+  <StyledInput
+    {...{ placeholder, id, inline, onChange, value, width, name, 'data-testid': rest['data-testid'] }}
+    ref={forwardedRef}
+  />
 );
 
 export default Input;

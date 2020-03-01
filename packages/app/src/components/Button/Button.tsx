@@ -6,7 +6,7 @@ export interface ButtonProps {
   inlineStyle?: boolean;
 }
 
-const Button = ({
+export const Button = ({
   inlineStyle,
   type,
   onClick,

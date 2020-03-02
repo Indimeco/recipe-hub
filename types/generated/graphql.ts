@@ -40,7 +40,7 @@ export type Ingredient = {
 
 export type ListedBook = {
   _id: Scalars['ID'],
-  meta?: Maybe<Meta>,
+  meta: Meta,
 };
 
 export type Meta = {
@@ -51,7 +51,7 @@ export type Meta = {
 
 export type Mutation = {
   editRecipe?: Maybe<Recipe>,
-  createBook?: Maybe<Book>,
+  createBook?: Maybe<User>,
 };
 
 
@@ -61,7 +61,8 @@ export type MutationEditRecipeArgs = {
 
 
 export type MutationCreateBookArgs = {
-  bookName?: Maybe<Scalars['String']>
+  userId: Scalars['String'],
+  bookName: Scalars['String']
 };
 
 export type Query = {
@@ -115,7 +116,7 @@ export type UpdateRecipe = {
 export type User = {
   _id: Scalars['ID'],
   username: Scalars['String'],
-  books?: Maybe<Array<Maybe<ListedBook>>>,
+  books?: Maybe<Array<ListedBook>>,
 };
 
 
@@ -216,7 +217,7 @@ export type IngredientResolvers<Context = any, ParentType = Ingredient> = {
 
 export type ListedBookResolvers<Context = any, ParentType = ListedBook> = {
   _id?: Resolver<Scalars['ID'], ParentType, Context>,
-  meta?: Resolver<Maybe<Meta>, ParentType, Context>,
+  meta?: Resolver<Meta, ParentType, Context>,
 };
 
 export type MetaResolvers<Context = any, ParentType = Meta> = {
@@ -227,7 +228,7 @@ export type MetaResolvers<Context = any, ParentType = Meta> = {
 
 export type MutationResolvers<Context = any, ParentType = Mutation> = {
   editRecipe?: Resolver<Maybe<Recipe>, ParentType, Context, MutationEditRecipeArgs>,
-  createBook?: Resolver<Maybe<Book>, ParentType, Context, MutationCreateBookArgs>,
+  createBook?: Resolver<Maybe<User>, ParentType, Context, MutationCreateBookArgs>,
 };
 
 export type QueryResolvers<Context = any, ParentType = Query> = {
@@ -251,7 +252,7 @@ export type RecipeResolvers<Context = any, ParentType = Recipe> = {
 export type UserResolvers<Context = any, ParentType = User> = {
   _id?: Resolver<Scalars['ID'], ParentType, Context>,
   username?: Resolver<Scalars['String'], ParentType, Context>,
-  books?: Resolver<Maybe<ArrayOrIterable<Maybe<ListedBook>>>, ParentType, Context>,
+  books?: Resolver<Maybe<ArrayOrIterable<ListedBook>>, ParentType, Context>,
 };
 
 export type IResolvers<Context = any> = {

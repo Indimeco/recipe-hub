@@ -55,12 +55,12 @@ export default gql`
   type User {
     _id: ID!
     username: String!
-    books: [ListedBook]
+    books: [ListedBook!]
   }
 
   type ListedBook {
     _id: ID!
-    meta: Meta
+    meta: Meta!
   }
 
   type Query {

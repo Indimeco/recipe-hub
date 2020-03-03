@@ -35,6 +35,7 @@ export const BookInformation: React.FC<BookInformationProps> = ({ views, favorit
         </Button>
         <Dropdown
           isOpen={isBookSettingsOpen}
+          onRequestClose={() => setBookSettingsOpen(false)}
           content={[
             { text: 'Change name', to: '/' },
             { text: 'Test', to: '/' },

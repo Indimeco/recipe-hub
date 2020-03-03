@@ -12,6 +12,7 @@ export const BookInformationWrapper = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   justify-items: center;
+  position: relative;
   @media screen and (min-width: ${MEDIA_1}) {
     grid-template-columns: 10vw 10vw 10vw;
   }

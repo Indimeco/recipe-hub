@@ -2,11 +2,11 @@ import React, { useRef, useEffect } from 'react';
 
 import { Link } from '../Link/Link';
 
-import { DropdownWrapper, DropdownItem } from './Dropdown.style';
+import { DropdownWrapper, DropdownItem, RelativeContext } from './Dropdown.style';
 
 interface DropdownProps {
   isOpen: boolean;
-  content: { text: string; href?: string; to?: any }[];
+  content: { text: string; href?: string; to?: any; onClick?: (props: any) => any }[];
   onRequestClose: () => void;
 }
 
@@ -27,15 +27,15 @@ const Dropdown: React.FunctionComponent<DropdownProps> = ({ isOpen, onRequestClo
   if (!isOpen) return null;
 
   return (
-    <DropdownWrapper ref={dropdownNode}>
-      {content.map(({ text, href, to }) => (
-        <DropdownItem key={`dropdown-${text}`}>
-          <Link to={to} href={href}>
-            {text}
-          </Link>
-        </DropdownItem>
-      ))}
-    </DropdownWrapper>
+    <RelativeContext>
+      <DropdownWrapper ref={dropdownNode}>
+        {content.map(({ text, ...restProps }) => (
+          <DropdownItem key={`dropdown-${text}`}>
+            <Link {...restProps}>{text}</Link>
+          </DropdownItem>
+        ))}
+      </DropdownWrapper>
+    </RelativeContext>
   );
 };
 

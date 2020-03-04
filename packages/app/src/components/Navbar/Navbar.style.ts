@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
-import { palette, SPACE_SMALL, FONT_SMALL, SPACE_NAV } from '../../styles/base';
+import { palette, SPACE_NAV, SPACE_TINY } from '../../styles/base';
 import { indent } from '../../styles/utils';
 
 export const NavWrapper = styled.nav`
@@ -21,14 +20,6 @@ export const NavLinkList = styled.ul`
   list-style-type: none;
 `;
 
-export const NavLink = styled(Link)`
-  color: ${palette.bg};
-  font-size: ${FONT_SMALL};
-  margin-right: ${SPACE_SMALL};
-  text-decoration: none;
-
-  &:hover {
-    color: ${palette.aux};
-    text-decoration: underline;
-  }
+export const NavLink = styled.li`
+  margin-right: ${SPACE_TINY};
 `;

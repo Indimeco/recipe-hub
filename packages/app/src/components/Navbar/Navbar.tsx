@@ -1,16 +1,22 @@
 import React from 'react';
 
+import { Link } from '../Link/Link';
+
 import { NavWrapper, NavLinkList, NavLink } from './Navbar.style';
 
 const Navbar = () => (
   <NavWrapper>
     <NavLinkList>
-      <li>
-        <NavLink to="/">My Books</NavLink>
-      </li>
-      <li>
-        <NavLink to="/">Hot</NavLink>
-      </li>
+      <NavLink>
+        <Link aux to="/">
+          My Books
+        </Link>
+      </NavLink>
+      <NavLink>
+        <Link aux to="/">
+          Hot
+        </Link>
+      </NavLink>
     </NavLinkList>
   </NavWrapper>
 );

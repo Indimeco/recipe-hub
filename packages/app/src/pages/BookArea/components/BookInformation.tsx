@@ -37,7 +37,7 @@ export const BookInformation: React.FC<BookInformationProps> = ({ views, favorit
           isOpen={isBookSettingsOpen}
           onRequestClose={() => setBookSettingsOpen(false)}
           content={[
-            { text: 'Change name', to: '/' },
+            { text: 'Change name', onClick: () => console.log('clicked') },
             { text: 'Test', to: '/' },
             { text: 'Potato', href: '#' },
           ]}

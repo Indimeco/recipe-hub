@@ -3,11 +3,16 @@ import { LinkProps as RouterLinkProps } from 'react-router-dom';
 
 import { StyledAnchor, StyledLinkButton, StyledLink } from './Link.style';
 
+interface LinkProps {
+  aux?: boolean;
+}
+
 export const Link = ({
   children,
   type,
+  aux,
   ...restProps
-}: AnchorHTMLAttributes<any> | ButtonHTMLAttributes<any> | RouterLinkProps<any>) => {
+}: (AnchorHTMLAttributes<any> | ButtonHTMLAttributes<any> | RouterLinkProps<any>) & LinkProps) => {
   if ('href' in restProps) {
     return (
       <StyledAnchor type={type} {...restProps}>

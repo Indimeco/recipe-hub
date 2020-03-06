@@ -16,11 +16,14 @@ export const DropdownWrapper = styled.div`
 `;
 
 export const DropdownItem = styled.div`
-  padding: ${SPACE_TINY};
   &:hover,
   &:focus {
     background-color: ${palette.aux};
     color: ${palette.brand};
+  }
+
+  & > * {
+    padding: ${SPACE_TINY};
   }
 `;
 

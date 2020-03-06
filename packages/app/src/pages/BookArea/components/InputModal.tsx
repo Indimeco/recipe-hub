@@ -5,12 +5,14 @@ import Input from '../../../components/Input/Input';
 
 import { InputLabel, ContentWrapper } from './ModalContent.style';
 
-interface NewBookModalProps {
+interface InputModalProps {
   onSubmit: (bookName: string) => any;
+  label: string;
+  button: string;
 }
 
-export const NewBookModal: React.FunctionComponent<NewBookModalProps> = ({ onSubmit }) => {
-  const [newBookName, setNewBookName] = useState('');
+export const InputModal: React.FunctionComponent<InputModalProps> = ({ label, button, onSubmit }) => {
+  const [inputValue, setInputValue] = useState('');
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
@@ -20,17 +22,17 @@ export const NewBookModal: React.FunctionComponent<NewBookModalProps> = ({ onSub
   return (
     <ContentWrapper>
       <form>
-        <InputLabel>New book name</InputLabel>
-        <Input value={newBookName} onChange={e => setNewBookName(e.target.value)} forwardedRef={inputRef} />
+        <InputLabel>{label}</InputLabel>
+        <Input value={inputValue} onChange={e => setInputValue(e.target.value)} forwardedRef={inputRef} />
         <Button
           type="submit"
           inlineStyle
           onClick={e => {
             e.preventDefault();
-            onSubmit(newBookName);
+            onSubmit(inputValue);
           }}
         >
-          Create
+          {button}
         </Button>
       </form>
     </ContentWrapper>

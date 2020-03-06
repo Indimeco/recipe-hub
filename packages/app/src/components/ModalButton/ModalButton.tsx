@@ -1,19 +1,14 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import Modal from 'react-modal';
 
 import { Button, ButtonProps } from '../Button/Button';
+import { Modal, ModalProps } from '../Modal/Modal';
 
-import { modalStyle, CloseContainer, CloseButton } from './Modal.style';
-
-Modal.setAppElement('#root');
-
-interface ModalButtonProps extends ButtonProps {
-  ModalContent: React.FunctionComponent<any>;
-  isOpen?: boolean;
-  setIsOpen: (newState: boolean) => void;
-}
+type ModalButtonProps = ButtonProps &
+  ModalProps & {
+    ModalContent: React.FunctionComponent<any>;
+    isOpen?: boolean;
+    setIsOpen: (newState: boolean) => void;
+  };
 
 export const ModalButton: React.FunctionComponent<ModalButtonProps> = ({
   isOpen = false,
@@ -27,12 +22,7 @@ export const ModalButton: React.FunctionComponent<ModalButtonProps> = ({
       <Button type="button" onClick={() => setIsOpen(true)} {...restProps}>
         {children}
       </Button>
-      <Modal isOpen={isOpen} onRequestClose={() => setIsOpen(false)} style={modalStyle}>
-        <CloseContainer>
-          <CloseButton type="button" onClick={() => setIsOpen(false)}>
-            <FontAwesomeIcon icon={faTimes} />
-          </CloseButton>
-        </CloseContainer>
+      <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
         <ModalContent />
       </Modal>
     </>

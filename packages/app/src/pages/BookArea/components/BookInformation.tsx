@@ -4,16 +4,22 @@ import { faEye, faHeart, faCog } from '@fortawesome/free-solid-svg-icons';
 
 import Button from '../../../components/Button/Button';
 import Dropdown from '../../../components/Dropdown/Dropdown';
+import Modal from '../../../components/Modal/Modal';
 
+import { InputModal } from './InputModal';
 import { BookSubText, SettingsWrapper, BookInformationWrapper } from './BookInformation.style';
 
 interface BookInformationProps {
   views: number;
   favorites: number;
+  id: string;
+  name: string;
+  editName: any;
 }
 
-export const BookInformation: React.FC<BookInformationProps> = ({ views, favorites }) => {
+export const BookInformation: React.FC<BookInformationProps> = ({ id, name, views, favorites, editName }) => {
   const [isBookSettingsOpen, setBookSettingsOpen] = useState(false);
+  const [changeModalIsOpen, setChangeModalIsOpen] = useState(false);
 
   return (
     <BookInformationWrapper>
@@ -37,12 +43,27 @@ export const BookInformation: React.FC<BookInformationProps> = ({ views, favorit
           isOpen={isBookSettingsOpen}
           onRequestClose={() => setBookSettingsOpen(false)}
           content={[
-            { text: 'Change name', onClick: () => console.log('clicked') },
-            { text: 'Test', to: '/' },
-            { text: 'Potato', href: '#' },
+            {
+              text: 'Change name',
+              onClick: () => {
+                setBookSettingsOpen(false);
+                setChangeModalIsOpen(true);
+              },
+            },
           ]}
         />
-      </SettingsWrapper>{' '}
+
+        <Modal isOpen={changeModalIsOpen} setIsOpen={setChangeModalIsOpen}>
+          <InputModal
+            label={`Change book name for ${name}`}
+            button="Confirm"
+            onSubmit={val => {
+              setChangeModalIsOpen(false);
+              editName({ bookId: id, newName: val });
+            }}
+          />
+        </Modal>
+      </SettingsWrapper>
     </BookInformationWrapper>
   );
 };

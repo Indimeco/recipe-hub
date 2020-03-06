@@ -11,10 +11,11 @@ import ErrorPage from '../../components/ErrorPage/ErrorPage';
 import Heading from '../../components/Heading/Heading';
 import ModalButton from '../../components/ModalButton/ModalButton';
 import { CREATE_BOOK } from '../../hooks/create';
+import { EDIT_BOOKNAME } from '../../hooks/edit';
 
 import { BookInformation } from './components/BookInformation';
 import { BookTile, BookText, UnstyledLi, UnstyledUl, BookButtonText } from './BookArea.style';
-import { NewBookModal } from './components/NewBookModal';
+import { InputModal } from './components/InputModal';
 
 const BookArea = (): React.ReactElement => {
   const userId = '746573747573657269644030'; // TODO get userId from cookie
@@ -26,13 +27,16 @@ const BookArea = (): React.ReactElement => {
     partialRefetch: true,
   });
   const [addBook, { loading: addLoading, error: addError }] = useMutation(CREATE_BOOK);
+
+  const [editName, { loading: editLoading, error: editError }] = useMutation(EDIT_BOOKNAME);
+
   const handleCreation = (bookName: string) => {
     setNewBookOpen(false);
     addBook({ variables: { userId, bookName } });
   };
 
-  const loading = getLoading || addLoading;
-  const error = getError || addError;
+  const loading = getLoading || addLoading || editLoading;
+  const error = getError || addError || editError;
 
   if (loading) return <Loading />;
   if (error) return <ErrorPage />;
@@ -53,7 +57,13 @@ const BookArea = (): React.ReactElement => {
                 </BookText>
                 <BookText>{book.meta.name}</BookText>
               </Link>
-              <BookInformation favorites={book.meta.favorites} views={book.meta.views} />
+              <BookInformation
+                id={book._id}
+                name={book.meta.name}
+                favorites={book.meta.favorites}
+                views={book.meta.views}
+                editName={editName}
+              />
             </BookTile>
           </UnstyledLi>
         ))}
@@ -61,7 +71,7 @@ const BookArea = (): React.ReactElement => {
       <ModalButton
         isOpen={isNewBookOpen}
         setIsOpen={setNewBookOpen}
-        ModalContent={() => <NewBookModal onSubmit={handleCreation} />}
+        ModalContent={() => <InputModal label="Create new book" button="Create" onSubmit={handleCreation} />}
       >
         <BookButtonText>Create new book</BookButtonText>
       </ModalButton>

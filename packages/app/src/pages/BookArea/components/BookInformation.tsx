@@ -14,10 +14,10 @@ interface BookInformationProps {
   favorites: number;
   id: string;
   name: string;
-  editName: any;
+  onSubmit: any;
 }
 
-export const BookInformation: React.FC<BookInformationProps> = ({ id, name, views, favorites, editName }) => {
+export const BookInformation: React.FC<BookInformationProps> = ({ id, name, views, favorites, onSubmit }) => {
   const [isBookSettingsOpen, setBookSettingsOpen] = useState(false);
   const [changeModalIsOpen, setChangeModalIsOpen] = useState(false);
 
@@ -59,7 +59,7 @@ export const BookInformation: React.FC<BookInformationProps> = ({ id, name, view
             button="Confirm"
             onSubmit={val => {
               setChangeModalIsOpen(false);
-              editName({ bookId: id, newName: val });
+              onSubmit({ bookId: id, newBookName: val });
             }}
           />
         </Modal>

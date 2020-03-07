@@ -66,14 +66,14 @@ export default {
       }
     },
 
-    // FIXME WIP
     editBookName: async (_source, { userId, bookId, newBookName }, { db }): Promise<User> => {
       try {
-        await db.collection(books).updateOne({ _id: oId(bookId) }, { $set: { 'meta.name': 'munchass' } });
-        await db
+        const updateBook = db.collection(books).updateOne({ _id: oId(bookId) }, { $set: { 'meta.name': newBookName } });
+
+        const updateUser = db
           .collection(users)
-          .updateOne({ _id: oId(userId), 'books.id': oId(bookId) }, { $set: { 'meta.name': newBookName } });
-        return db.collection(users).findOne({ _id: oId(userId) });
+          .updateOne({ _id: oId(userId), 'books._id': oId(bookId) }, { $set: { 'books.$.meta.name': newBookName } });
+        return Promise.all([updateBook, updateUser]).then(() => db.collection(users).findOne({ _id: oId(userId) }));
       } catch (err) {
         throw new Error(err);
       }

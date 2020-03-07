@@ -1,11 +1,14 @@
 import { gql } from 'apollo-boost';
 
 export const EDIT_BOOKNAME = gql`
-  mutation EditBookName($bookId: String!, $newName: String!) {
-    editBookName(bookId: $bookId) {
-      id
-      meta {
-        name
+  mutation EditBookName($userId: String!, $bookId: String!, $newBookName: String!) {
+    editBookName(userId: $userId, bookId: $bookId, newBookName: $newBookName) {
+      _id
+      books {
+        _id
+        meta {
+          name
+        }
       }
     }
   }

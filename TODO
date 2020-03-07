@@ -1,4 +1,5 @@
 // SECTION MVP
+// REVIEW Graphql implementation of resolvers and schema
 // TODO Tests for dropdown
 // FIXME RecipeArea card text breaking the box model
 // REVIEW Ensure correct use of ObjectIds across recipes/books/users

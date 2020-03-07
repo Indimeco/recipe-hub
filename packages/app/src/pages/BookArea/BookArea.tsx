@@ -35,6 +35,9 @@ const BookArea = (): React.ReactElement => {
     addBook({ variables: { userId, bookName } });
   };
 
+  const handleEditName = ({ bookId, newBookName }: { bookId: string; newBookName: string }) =>
+    editName({ variables: { userId, bookId, newBookName } });
+
   const loading = getLoading || addLoading || editLoading;
   const error = getError || addError || editError;
 
@@ -62,7 +65,7 @@ const BookArea = (): React.ReactElement => {
                 name={book.meta.name}
                 favorites={book.meta.favorites}
                 views={book.meta.views}
-                editName={editName}
+                onSubmit={handleEditName}
               />
             </BookTile>
           </UnstyledLi>

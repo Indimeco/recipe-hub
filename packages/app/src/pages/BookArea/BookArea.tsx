@@ -74,7 +74,7 @@ const BookArea = (): React.ReactElement => {
       <ModalButton
         isOpen={isNewBookOpen}
         setIsOpen={setNewBookOpen}
-        ModalContent={() => <InputModal label="Create new book" button="Create" onSubmit={handleCreation} />}
+        ModalContent={() => <InputModal label="New book name" button="Create" onSubmit={handleCreation} />}
       >
         <BookButtonText>Create new book</BookButtonText>
       </ModalButton>

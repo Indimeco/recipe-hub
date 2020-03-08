@@ -4,7 +4,6 @@
 // FIXME RecipeArea card text breaking the box model
 // REVIEW Ensure correct use of ObjectIds across recipes/books/users
 // FIXME Recipe Details cancel doesn't revert state changes
-// TODO tests for BookArea
 // TODO handle Apollo Errors via ErrorPage
 // TODO Create a simple test all workflow
 // TODO Tests for lambda

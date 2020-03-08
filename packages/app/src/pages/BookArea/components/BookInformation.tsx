@@ -5,6 +5,7 @@ import { faEye, faHeart, faCog } from '@fortawesome/free-solid-svg-icons';
 import Button from '../../../components/Button/Button';
 import Dropdown from '../../../components/Dropdown/Dropdown';
 import Modal from '../../../components/Modal/Modal';
+import SrText from '../../../components/SrText/SrText';
 
 import { InputModal } from './InputModal';
 import { BookSubText, SettingsWrapper, BookInformationWrapper } from './BookInformation.style';
@@ -27,16 +28,23 @@ export const BookInformation: React.FC<BookInformationProps> = ({ id, name, view
         <BookSubText>
           <FontAwesomeIcon icon={faEye} />
         </BookSubText>
-        <BookSubText>{views}</BookSubText>
+        <BookSubText>
+          <SrText>{`Views for ${name}: `}</SrText>
+          {views}
+        </BookSubText>
       </div>
       <div>
         <BookSubText>
           <FontAwesomeIcon icon={faHeart} />
         </BookSubText>
-        <BookSubText>{favorites}</BookSubText>
+        <BookSubText>
+          <SrText>{`Favorites for ${name}: `}</SrText>
+          {favorites}
+        </BookSubText>
       </div>
       <SettingsWrapper>
         <Button onClick={() => setBookSettingsOpen(!isBookSettingsOpen)}>
+          <SrText>{`Settings for ${name}`}</SrText>
           <FontAwesomeIcon icon={faCog} />
         </Button>
         <Dropdown

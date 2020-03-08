@@ -5,7 +5,8 @@ import BareModal from 'react-modal';
 
 import { modalStyle, CloseContainer, CloseButton } from './Modal.style';
 
-BareModal.setAppElement('#root');
+const isTest = process.env.NODE_ENV === 'test';
+if (!isTest) BareModal.setAppElement('#root');
 
 export interface ModalProps {
   isOpen?: boolean;
@@ -13,7 +14,7 @@ export interface ModalProps {
 }
 
 export const Modal: React.FC<ModalProps> = ({ isOpen = false, setIsOpen, children }) => (
-  <BareModal isOpen={isOpen} onRequestClose={() => setIsOpen(false)} style={modalStyle}>
+  <BareModal isOpen={isOpen} onRequestClose={() => setIsOpen(false)} style={modalStyle} ariaHideApp={!isTest}>
     <CloseContainer>
       <CloseButton type="button" onClick={() => setIsOpen(false)}>
         <FontAwesomeIcon icon={faTimes} />

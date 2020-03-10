@@ -1,5 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import Filter from '../../components/Filter/Filter';
 import { Book } from '../../../../../types';
@@ -7,8 +9,9 @@ import { GET_BOOK } from '../../hooks/data';
 import Loading from '../Loading/Loading';
 import ErrorPage from '../../components/ErrorPage/ErrorPage';
 import { RecipeAreaMatch } from '../../../types';
+import Button from '../../components/Button/Button';
 
-import { RecipesLayout, RecipeHeading } from './RecipeArea.style';
+import { HeadingLayout, RecipesLayout, RecipeHeading, ToolsLayout, ToolsText } from './RecipeArea.style';
 import RecipeItem from './components/RecipeItem/RecipeItem';
 
 const RecipeArea = ({
@@ -27,8 +30,16 @@ const RecipeArea = ({
   if (!book) return <ErrorPage />;
   return (
     <section>
-      <RecipeHeading>{book.meta.name}</RecipeHeading>
-      <Filter />
+      <HeadingLayout>
+        <RecipeHeading>{book.meta.name}</RecipeHeading>
+        <Filter />
+      </HeadingLayout>
+      <ToolsLayout>
+        <ToolsText>Add a recipe</ToolsText>
+        <Button circle>
+          <FontAwesomeIcon icon={faPlus} />
+        </Button>
+      </ToolsLayout>
       <RecipesLayout>
         {book?.recipes?.map(recipe => {
           return (

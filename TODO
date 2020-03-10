@@ -1,4 +1,6 @@
 // SECTION MVP
+// TODO investigate extraneous db connections (gql cleanup?)
+// FIXME Apollo doesn't update bookName in RecipeArea view
 // REVIEW Graphql implementation of resolvers and schema
 // FIXME RecipeArea card text breaking the box model
 // REVIEW Ensure correct use of ObjectIds across recipes/books/users
@@ -23,6 +25,7 @@
 
 
 // SECTION FUTURE
+// TODO List view for recipes
 // TODO IngredientList re-ordering
 // TODO Book sorting/reordering
 // TODO Recipe reordering

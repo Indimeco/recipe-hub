@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { palette, FONT_SMALL, SPACE_TINY, MEDIA_1 } from '../../styles/base';
+import { palette, FONT_SMALL, SPACE_TINY, SPACE_LARGE, MEDIA_1 } from '../../styles/base';
 
 const inlineVariant = css`
   width: auto;
@@ -14,13 +14,21 @@ const regular = css`
   }
 `;
 
-interface StyledProps {
+const circular = css`
+  border-radius: 100%;
+  width: ${SPACE_LARGE};
+  height: ${SPACE_LARGE};
+`;
+
+interface ButtonProps {
   inlineStyle?: boolean;
+  circle?: boolean;
 }
-export const StyledButton = styled.button<StyledProps>`
+export const StyledButton = styled.button<ButtonProps>`
   box-sizing: border-box;
   font-size: ${FONT_SMALL};
   ${props => (props.inlineStyle ? inlineVariant : regular)};
+  ${props => (props.circle ? circular : null)}
   border: 1px solid ${palette.auxAccent};
   color: ${palette.fg};
   background-color: ${palette.bg};

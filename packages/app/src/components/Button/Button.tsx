@@ -4,16 +4,17 @@ import { StyledButton } from './Button.style';
 
 export interface ButtonProps {
   inlineStyle?: boolean;
+  circle?: boolean;
 }
 
 export const Button = ({
   inlineStyle,
-  type,
+  circle,
   onClick,
   children,
-  className,
+  ...restProps
 }: ButtonProps & ButtonHTMLAttributes<any>): React.ReactElement => (
-  <StyledButton inlineStyle={inlineStyle} type={type} onClick={onClick} className={className}>
+  <StyledButton inlineStyle={inlineStyle} circle={circle} onClick={onClick} {...restProps}>
     {children}
   </StyledButton>
 );

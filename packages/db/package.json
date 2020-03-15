@@ -6,8 +6,8 @@
 	"type": "module",
 	"scripts": {
 		"build": "node ./index.mjs",
-		"prestart": "if not exist \"./data\" mkdir data/db",
-		"start": "mongod --dbpath ./data"
+		"prestart": "[ -d ./data/db ] || mkdir -p data/db",
+		"start": "mongod --dbpath ~/data/db"
 	},
 	"repository": {
 		"type": "git",

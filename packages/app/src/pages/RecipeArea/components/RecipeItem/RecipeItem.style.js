@@ -1,10 +1,13 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-import { palette, SPACE_SMALL } from '../../../../styles/base';
+import { palette, SPACE_TINY, FONT_MEDIUM } from '../../../../styles/base';
+import { heading } from '../../../../styles/utils';
 
 export const RecipeCard = styled.div`
   box-sizing: border-box;
-  height: 300px;
+  border-radius: 2%;
+  height: 30vh;
   background-color: ${palette.aux};
   color: ${palette.fg};
   box-shadow: 1px 0 0 ${palette.auxAccent};
@@ -14,13 +17,21 @@ export const RecipeCard = styled.div`
   text-align: center;
 `;
 
+export const CenteringLink = styled(Link)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: ${SPACE_TINY};
+`;
+
 export const RecipeHeading = styled.h3`
-  margin: ${SPACE_SMALL};
+  ${heading};
+  font-size: ${FONT_MEDIUM};
+  margin: 0;
   color: ${palette.bg};
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
   text-align: center;
   overflow: hidden;
   text-decoration: none;

@@ -7,7 +7,7 @@
     "preinstall": "npm run copyTypes",
     "install": "lerna exec npm install --stream",
     "build": "lerna exec npm run build --stream",
-    "copyTypes": "copyTypes.sh"
+    "copyTypes": "./copyTypes.sh"
   },
   "repository": {
     "type": "git",

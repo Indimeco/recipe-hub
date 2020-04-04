@@ -1,8 +1,7 @@
 // SECTION MVP
+// TODO Redesign recipeitems view to have circle buttons and less elongated responsive views
 // TODO investigate extraneous db connections (gql cleanup?)
-// FIXME Apollo doesn't update bookName in RecipeArea view
 // REVIEW Graphql implementation of resolvers and schema
-// FIXME RecipeArea card text breaking the box model
 // REVIEW Ensure correct use of ObjectIds across recipes/books/users
 // FIXME Recipe Details cancel doesn't revert state changes
 // TODO handle Apollo Errors via ErrorPage

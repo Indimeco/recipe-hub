@@ -1,6 +1,5 @@
 // SECTION MVP
 // TODO Dockerize 
-// TODO Retheme palette
 // TODO Redesign recipeitems view less elongated responsive views
 // TODO investigate extraneous db connections (gql cleanup?)
 // REVIEW Graphql implementation of resolvers and schema

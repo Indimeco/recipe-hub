@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { SPACE_SMALL, palette } from '../../styles/base';
+import { secondaryInteractable } from '../../styles/utils';
 
 export const CloseContainer = styled.div`
   position: absolute;
@@ -11,13 +12,10 @@ export const CloseContainer = styled.div`
 export const CloseButton = styled.button`
   margin: 0;
   padding: ${SPACE_SMALL};
-  cursor: pointer;
   background: transparent;
   border: none;
-  color: ${palette.brand};
-  &:hover {
-    color: ${palette.aux};
-  }
+
+  ${secondaryInteractable};
 `;
 
 export const modalStyle = {
@@ -28,6 +26,10 @@ export const modalStyle = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
+    backgroundColor: palette.bg,
+    color: palette.fg,
+    border: 'none',
+    boxShadow: `0 0 4px ${palette.bgAccent}`,
   },
 };
 

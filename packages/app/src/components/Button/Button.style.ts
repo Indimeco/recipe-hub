@@ -11,6 +11,7 @@ import {
   SPACE_LARGE,
   SPACE_TINY,
 } from '../../styles/base';
+import { secondaryInteractable } from '../../styles/utils';
 
 const inlineVariant = css`
   width: auto;
@@ -55,22 +56,23 @@ interface ButtonProps {
 
 export const StyledButton = styled.button<ButtonProps>`
   box-sizing: border-box;
-  position: relative;
 
   display: inline-flex;
   justify-content: center;
   align-items: center;
 
-  border: 1px solid ${palette.auxAccent};
-  border-radius: 2%;
-  color: ${palette.fg};
-  background-color: ${palette.bg};
   padding: ${SPACE_TINY};
+  border-radius: 3%;
+  border: 1px solid;
 
-  &:hover {
-    cursor: pointer;
-    color: ${palette.auxAccent};
-    background-color: ${palette.bgAccent};
+  border-color: ${palette.aux};
+  background-color: ${palette.auxAccent};
+  ${secondaryInteractable};
+
+  &:hover,
+  &:focus {
+    border-color: ${palette.bgAccent};
+    background-color: ${palette.bg};
   }
 
   ${props => (props.inlineStyle ? inlineVariant : regular)};

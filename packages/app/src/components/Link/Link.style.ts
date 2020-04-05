@@ -4,23 +4,23 @@ import { Link } from 'react-router-dom';
 import { link } from '../../styles/utils';
 import { palette } from '../../styles/base';
 
-const auxStyle = ({ aux }: { aux?: boolean }) =>
-  aux &&
+const invertColors = ({ invert }: { invert?: boolean }) =>
+  invert &&
   css`
-    color: ${palette.aux};
+    color: ${palette.auxAccent};
     &:hover {
-      color: ${palette.auxAccent};
+      color: ${palette.brand};
     }
   `;
 
 export const StyledAnchor = styled.a`
   ${link}
-  ${auxStyle}
+  ${invertColors}
 `;
 
 export const StyledLink = styled(Link)`
   ${link}
-  ${auxStyle}
+  ${invertColors}
 `;
 
 export const StyledLinkButton = styled.button`
@@ -28,5 +28,5 @@ export const StyledLinkButton = styled.button`
   margin: 0;
   font-size: inherit;
   ${link}
-  ${auxStyle}
+  ${invertColors}
 `;

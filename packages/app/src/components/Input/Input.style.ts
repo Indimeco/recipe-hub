@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
-import { SPACE_SMALL, palette } from '../../styles/base';
+import { SPACE_SMALL, palette, FONT_SMALL } from '../../styles/base';
+import { secondaryInteractable } from '../../styles/utils';
 
 interface StyledInputProps {
   inline?: boolean;
@@ -14,9 +15,10 @@ const inlineStyles = css`
 `;
 
 export const StyledInput = styled.input<StyledInputProps>`
-  background-color: ${palette.bg};
   border: none;
-  border-bottom: 2px solid ${palette.brand};
+  border-bottom: 2px solid;
+
+  font-size: ${FONT_SMALL};
   margin: ${SPACE_SMALL} 0;
   width: ${({ width }) => {
     if (width) {
@@ -24,16 +26,17 @@ export const StyledInput = styled.input<StyledInputProps>`
     }
     return '100%';
   }};
-
   ${({ inline }) => (inline ? inlineStyles : null)}
 
-  transition: transform 0.05s ease-in;
-
+  background-color: transparent;
+  border-color: ${palette.aux};
+  ${secondaryInteractable};
   &:focus,
   &:active {
-    border: none;
-    border-bottom: 2px solid ${palette.fg};
-    outline: none;
+    border-color: ${palette.brand};
     transform: skewX(-10deg);
+  }
+  &::placeholder {
+    color: ${palette.auxAccent};
   }
 `;

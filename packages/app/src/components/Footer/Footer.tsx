@@ -2,6 +2,8 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons';
 
+import { Link } from '../Link/Link';
+
 import { FooterWrapper, FooterContent } from './Footer.style';
 
 const Footer: React.FunctionComponent = () => (
@@ -9,21 +11,21 @@ const Footer: React.FunctionComponent = () => (
     <FooterContent>
       <ul>
         <li>
-          <a href="https://twitter.com/">
+          <Link invert href="https://twitter.com/">
             <FontAwesomeIcon icon={faTwitter} />
-          </a>
+          </Link>
         </li>
 
         <li>
-          <a href="https://facebook.com/">
+          <Link invert href="https://facebook.com/">
             <FontAwesomeIcon icon={faFacebook} />
-          </a>
+          </Link>
         </li>
 
         <li>
-          <a href="https://github.com/">
+          <Link invert href="https://github.com/">
             <FontAwesomeIcon icon={faGithub} />
-          </a>
+          </Link>
         </li>
       </ul>
     </FooterContent>

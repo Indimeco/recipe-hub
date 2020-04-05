@@ -8,12 +8,12 @@ const Navbar = () => (
   <NavWrapper>
     <NavLinkList>
       <NavLink>
-        <Link aux to="/">
+        <Link invert to="/">
           My Books
         </Link>
       </NavLink>
       <NavLink>
-        <Link aux to="/">
+        <Link invert to="/">
           Hot
         </Link>
       </NavLink>

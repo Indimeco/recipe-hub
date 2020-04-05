@@ -11,6 +11,8 @@ import {
   palette,
 } from '../base';
 
+import { mainInteractable } from './interactions';
+
 export const title = () => css`
   color: ${palette.fg};
   font-size: ${FONT_HUGE};
@@ -33,16 +35,8 @@ export const text = () => css`
 `;
 
 export const link = () => css`
-  cursor: pointer;
   background-color: transparent;
-  color: ${palette.brand};
   border: none;
   text-decoration: none;
-  transition: color 0.1s ease-in, transform 0.1s ease-in;
-
-  &:hover,
-  &:focus {
-    color: ${palette.aux};
-    text-decoration: none;
-  }
+  ${mainInteractable};
 `;

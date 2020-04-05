@@ -16,7 +16,7 @@ export const Spinner = styled.div`
   height: 5vw;
   border-radius: 100%;
   border: 4px solid;
-  border-color: ${palette.aux} ${palette.aux} ${palette.aux} transparent;
+  border-color: ${palette.brand} ${palette.brand} ${palette.brand} transparent;
   animation: 1.6s ${spin} cubic-bezier(0.1, 1, 0.7, 0.5) infinite;
 `;
 

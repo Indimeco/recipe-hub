@@ -18,15 +18,6 @@ export const FooterContent = styled.div`
       display: inline-block;
       padding: ${SPACE_SMALL};
     }
-
-    a {
-      &, &:visited {
-        color: ${palette.bg};
-      }
-      &:hover {
-          color:  ${palette.aux};
-      }
-    }
 `;
 
 export const FooterWrapper = styled.div`

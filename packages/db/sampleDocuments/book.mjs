@@ -31,7 +31,7 @@ export default {
       method: 'Slow Cooked',
       name: 'Chili Con Carne',
       previewImage:
-        'https://c-7npsfqifvt34x24tfbsdix2edipx78x2edpn.g00.chowhound.com/g00/3_c-7x78x78x78.dipx78ipvoe.dpn_/c-7NPSFQIFVT34x24iuuqtx3ax2fx2ftfbsdi.dipx78.dpnx2fuivncobjmx2f2391x2f1x2fx78x78x78.dipx78tubujd.dpnx2fbttfutx2f3125x2f10x2f41770_tqjdz_tmpx78_dpplfs_cffg_dijmj_4111y3111.kqhx3fj21d.nbslx3djnbhf_$/$/$/$/$/$/$/$/$',
+        'https://chowhound1.cbsistatic.com/thumbnail/640/0/chowhound1.cbsistatic.com/assets/2014/09/30669_spicy_slow_cooker_beef_chili_3000x2000.jpg',
       recipeSource: 'https://www.chowhound.com/recipes/spicy-slow-cooker-beef-chili-30669',
       waitingTime: 360,
     },
@@ -120,7 +120,7 @@ export default {
       method: 'Slow Cooked',
       name: 'Chili Con Carne',
       previewImage:
-        'https://c-7npsfqifvt34x24tfbsdix2edipx78x2edpn.g00.chowhound.com/g00/3_c-7x78x78x78.dipx78ipvoe.dpn_/c-7NPSFQIFVT34x24iuuqtx3ax2fx2ftfbsdi.dipx78.dpnx2fuivncobjmx2f2391x2f1x2fx78x78x78.dipx78tubujd.dpnx2fbttfutx2f3125x2f10x2f41770_tqjdz_tmpx78_dpplfs_cffg_dijmj_4111y3111.kqhx3fj21d.nbslx3djnbhf_$/$/$/$/$/$/$/$/$',
+        'https://chowhound1.cbsistatic.com/thumbnail/640/0/chowhound1.cbsistatic.com/assets/2014/09/30669_spicy_slow_cooker_beef_chili_3000x2000.jpg',
       recipeSource: 'https://www.chowhound.com/recipes/spicy-slow-cooker-beef-chili-30669',
       waitingTime: 360,
     },
@@ -150,7 +150,7 @@ export default {
       method: 'Slow Cooked',
       name: 'Chili Con Carne',
       previewImage:
-        'https://c-7npsfqifvt34x24tfbsdix2edipx78x2edpn.g00.chowhound.com/g00/3_c-7x78x78x78.dipx78ipvoe.dpn_/c-7NPSFQIFVT34x24iuuqtx3ax2fx2ftfbsdi.dipx78.dpnx2fuivncobjmx2f2391x2f1x2fx78x78x78.dipx78tubujd.dpnx2fbttfutx2f3125x2f10x2f41770_tqjdz_tmpx78_dpplfs_cffg_dijmj_4111y3111.kqhx3fj21d.nbslx3djnbhf_$/$/$/$/$/$/$/$/$',
+        'https://chowhound1.cbsistatic.com/thumbnail/640/0/chowhound1.cbsistatic.com/assets/2014/09/30669_spicy_slow_cooker_beef_chili_3000x2000.jpg',
       recipeSource: 'https://www.chowhound.com/recipes/spicy-slow-cooker-beef-chili-30669',
       waitingTime: 360,
     },
@@ -180,7 +180,7 @@ export default {
       method: 'Slow Cooked',
       name: 'Chili Con Carne',
       previewImage:
-        'https://c-7npsfqifvt34x24tfbsdix2edipx78x2edpn.g00.chowhound.com/g00/3_c-7x78x78x78.dipx78ipvoe.dpn_/c-7NPSFQIFVT34x24iuuqtx3ax2fx2ftfbsdi.dipx78.dpnx2fuivncobjmx2f2391x2f1x2fx78x78x78.dipx78tubujd.dpnx2fbttfutx2f3125x2f10x2f41770_tqjdz_tmpx78_dpplfs_cffg_dijmj_4111y3111.kqhx3fj21d.nbslx3djnbhf_$/$/$/$/$/$/$/$/$',
+        'https://chowhound1.cbsistatic.com/thumbnail/640/0/chowhound1.cbsistatic.com/assets/2014/09/30669_spicy_slow_cooker_beef_chili_3000x2000.jpg',
       recipeSource: 'https://www.chowhound.com/recipes/spicy-slow-cooker-beef-chili-30669',
       waitingTime: 360,
     },
@@ -210,7 +210,7 @@ export default {
       method: 'Slow Cooked',
       name: 'Chili Con Carne',
       previewImage:
-        'https://c-7npsfqifvt34x24tfbsdix2edipx78x2edpn.g00.chowhound.com/g00/3_c-7x78x78x78.dipx78ipvoe.dpn_/c-7NPSFQIFVT34x24iuuqtx3ax2fx2ftfbsdi.dipx78.dpnx2fuivncobjmx2f2391x2f1x2fx78x78x78.dipx78tubujd.dpnx2fbttfutx2f3125x2f10x2f41770_tqjdz_tmpx78_dpplfs_cffg_dijmj_4111y3111.kqhx3fj21d.nbslx3djnbhf_$/$/$/$/$/$/$/$/$',
+        'https://chowhound1.cbsistatic.com/thumbnail/640/0/chowhound1.cbsistatic.com/assets/2014/09/30669_spicy_slow_cooker_beef_chili_3000x2000.jpg',
       recipeSource: 'https://www.chowhound.com/recipes/spicy-slow-cooker-beef-chili-30669',
       waitingTime: 360,
     },
@@ -240,7 +240,7 @@ export default {
       method: 'Slow Cooked',
       name: 'Chili Con Carne',
       previewImage:
-        'https://c-7npsfqifvt34x24tfbsdix2edipx78x2edpn.g00.chowhound.com/g00/3_c-7x78x78x78.dipx78ipvoe.dpn_/c-7NPSFQIFVT34x24iuuqtx3ax2fx2ftfbsdi.dipx78.dpnx2fuivncobjmx2f2391x2f1x2fx78x78x78.dipx78tubujd.dpnx2fbttfutx2f3125x2f10x2f41770_tqjdz_tmpx78_dpplfs_cffg_dijmj_4111y3111.kqhx3fj21d.nbslx3djnbhf_$/$/$/$/$/$/$/$/$',
+        'https://chowhound1.cbsistatic.com/thumbnail/640/0/chowhound1.cbsistatic.com/assets/2014/09/30669_spicy_slow_cooker_beef_chili_3000x2000.jpg',
       recipeSource: 'https://www.chowhound.com/recipes/spicy-slow-cooker-beef-chili-30669',
       waitingTime: 360,
     },
@@ -270,7 +270,7 @@ export default {
       method: 'Slow Cooked',
       name: 'Chili Con Carne',
       previewImage:
-        'https://c-7npsfqifvt34x24tfbsdix2edipx78x2edpn.g00.chowhound.com/g00/3_c-7x78x78x78.dipx78ipvoe.dpn_/c-7NPSFQIFVT34x24iuuqtx3ax2fx2ftfbsdi.dipx78.dpnx2fuivncobjmx2f2391x2f1x2fx78x78x78.dipx78tubujd.dpnx2fbttfutx2f3125x2f10x2f41770_tqjdz_tmpx78_dpplfs_cffg_dijmj_4111y3111.kqhx3fj21d.nbslx3djnbhf_$/$/$/$/$/$/$/$/$',
+        'https://chowhound1.cbsistatic.com/thumbnail/640/0/chowhound1.cbsistatic.com/assets/2014/09/30669_spicy_slow_cooker_beef_chili_3000x2000.jpg',
       recipeSource: 'https://www.chowhound.com/recipes/spicy-slow-cooker-beef-chili-30669',
       waitingTime: 360,
     },
@@ -300,7 +300,7 @@ export default {
       method: 'Slow Cooked',
       name: 'Chili Con Carne',
       previewImage:
-        'https://c-7npsfqifvt34x24tfbsdix2edipx78x2edpn.g00.chowhound.com/g00/3_c-7x78x78x78.dipx78ipvoe.dpn_/c-7NPSFQIFVT34x24iuuqtx3ax2fx2ftfbsdi.dipx78.dpnx2fuivncobjmx2f2391x2f1x2fx78x78x78.dipx78tubujd.dpnx2fbttfutx2f3125x2f10x2f41770_tqjdz_tmpx78_dpplfs_cffg_dijmj_4111y3111.kqhx3fj21d.nbslx3djnbhf_$/$/$/$/$/$/$/$/$',
+        'https://chowhound1.cbsistatic.com/thumbnail/640/0/chowhound1.cbsistatic.com/assets/2014/09/30669_spicy_slow_cooker_beef_chili_3000x2000.jpg',
       recipeSource: 'https://www.chowhound.com/recipes/spicy-slow-cooker-beef-chili-30669',
       waitingTime: 360,
     },
@@ -330,7 +330,7 @@ export default {
       method: 'Slow Cooked',
       name: 'Chili Con Carne',
       previewImage:
-        'https://c-7npsfqifvt34x24tfbsdix2edipx78x2edpn.g00.chowhound.com/g00/3_c-7x78x78x78.dipx78ipvoe.dpn_/c-7NPSFQIFVT34x24iuuqtx3ax2fx2ftfbsdi.dipx78.dpnx2fuivncobjmx2f2391x2f1x2fx78x78x78.dipx78tubujd.dpnx2fbttfutx2f3125x2f10x2f41770_tqjdz_tmpx78_dpplfs_cffg_dijmj_4111y3111.kqhx3fj21d.nbslx3djnbhf_$/$/$/$/$/$/$/$/$',
+        'https://chowhound1.cbsistatic.com/thumbnail/640/0/chowhound1.cbsistatic.com/assets/2014/09/30669_spicy_slow_cooker_beef_chili_3000x2000.jpg',
       recipeSource: 'https://www.chowhound.com/recipes/spicy-slow-cooker-beef-chili-30669',
       waitingTime: 360,
     },

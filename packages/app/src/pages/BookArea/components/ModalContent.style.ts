@@ -9,3 +9,8 @@ export const ContentWrapper = styled.div`
 export const InputLabel = styled.label`
   font-size: ${FONT_MEDIUM};
 `;
+
+export const ButtonPosition = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;

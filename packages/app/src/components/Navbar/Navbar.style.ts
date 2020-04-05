@@ -4,7 +4,7 @@ import { palette, SPACE_NAV, SPACE_TINY } from '../../styles/base';
 import { indent } from '../../styles/utils';
 
 export const NavWrapper = styled.nav`
-  background-color: ${palette.aux};
+  background-color: ${palette.bgAccent};
   min-height: ${SPACE_NAV};
   display: flex;
   align-items: center;

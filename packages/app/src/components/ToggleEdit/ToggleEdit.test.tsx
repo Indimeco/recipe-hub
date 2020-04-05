@@ -27,7 +27,7 @@ describe('SrText', () => {
     const { getByText } = render(<TestComponent />);
     getByText('Edit').click();
     expect(getByText('Save')).toBeInTheDocument();
-    expect(getByText('Cancel')).toBeInTheDocument();
+    expect(getByText('Undo')).toBeInTheDocument();
     getByText('Save').click();
     expect(mockSave).toHaveBeenCalledTimes(1);
     mockSave.mockReset();

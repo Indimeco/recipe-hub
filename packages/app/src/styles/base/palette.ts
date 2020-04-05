@@ -1,16 +1,16 @@
-const darkCerulean = '#003B7A';
-const absoluteZero = '#0056B3';
-const periwinkle = '#CAE5FF';
 const raisinBlack = '#262626';
-const gunMetal = '#30343F';
-const ghostWhite = '#FAFAFF';
+const paper = '#F0DBC0';
+const graniteCountertop = '#394648';
+const redLeather = '#d83e40';
+const coffee = '#a85805';
+const coffeeCream = '#ceac83';
 
 export const palette = {
-  aux: darkCerulean,
-  auxAccent: periwinkle,
-  bg: ghostWhite,
-  bgAccent: gunMetal,
-  brand: absoluteZero,
+  aux: coffee,
+  auxAccent: coffeeCream,
+  bg: paper,
+  bgAccent: graniteCountertop,
+  brand: redLeather,
   fg: raisinBlack,
 };
 

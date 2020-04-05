@@ -1,11 +1,12 @@
 import React from 'react';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import Filter from '../../components/Filter/Filter';
 import { Book } from '../../../../../types';
 import { GET_BOOK } from '../../hooks/data';
+import { CREATE_RECIPE } from '../../hooks/create';
 import Loading from '../Loading/Loading';
 import ErrorPage from '../../components/ErrorPage/ErrorPage';
 import { RecipeAreaMatch } from '../../../types';
@@ -23,8 +24,10 @@ const RecipeArea = ({
     variables: { bookId },
   });
 
-  if (loading) return <Loading />;
-  if (error) return <ErrorPage />;
+  const [createRecipe, { loading: createLoading, error: createError }] = useMutation(CREATE_RECIPE);
+
+  if (loading || createLoading) return <Loading />;
+  if (error || createError) return <ErrorPage />;
 
   const { book }: { book: Book } = data;
   if (!book) return <ErrorPage />;
@@ -36,7 +39,7 @@ const RecipeArea = ({
       </HeadingLayout>
       <ToolsLayout>
         <ToolsText>Add a recipe</ToolsText>
-        <Button circle>
+        <Button circle onClick={() => createRecipe({ variables: { bookId: book._id } })}>
           <FontAwesomeIcon icon={faPlus} />
         </Button>
       </ToolsLayout>

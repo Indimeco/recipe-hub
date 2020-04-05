@@ -3,6 +3,7 @@
 export default {
   data: {
     book: {
+      _id: 'potato',
       meta: {
         name: "Jake's Recipes",
         __typename: 'Meta',

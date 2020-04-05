@@ -1,5 +1,6 @@
 // SECTION MVP
-// TODO Dockerize 
+// TODO Rate limit or prevent infinite recipes/books creation spam
+// REVIEW New Recipe would be nice to open as soon as created
 // TODO Redesign recipeitems view less elongated responsive views
 // TODO investigate extraneous db connections (gql cleanup?)
 // REVIEW Graphql implementation of resolvers and schema
@@ -11,7 +12,6 @@
 // TODO Tests for db
 // TODO Add last modified to recipe via $currentData in mongodb
 // TODO Auto semantic versioning with lerna
-// TODO add new recipe
 // TODO delete recipe
 // TODO deleting a book
 // TODO filter functionality
@@ -25,6 +25,8 @@
 
 
 // SECTION FUTURE
+// TODO Demo recipe hub without sign updates
+// TODO Bulk import recipes from csv
 // TODO List view for recipes
 // TODO IngredientList re-ordering
 // TODO Book sorting/reordering

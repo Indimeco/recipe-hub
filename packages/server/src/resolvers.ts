@@ -5,10 +5,31 @@ import { Book, Recipe, User } from './types/generated/graphql';
 const books = 'books';
 const users = 'users';
 
-const oId = (id: string) => new ObjectID(id);
+const oId = (id?: string) => new ObjectID(id);
 
 export default {
   Mutation: {
+    createRecipe: async (_source, { bookId }, { db }): Promise<Recipe> => {
+      try {
+        const newId = oId();
+        const blankRecipe = {
+          name: 'New Recipe',
+          id: newId,
+        };
+
+        const update = db.collection(books).updateOne(
+          { _id: oId(bookId) },
+          {
+            $addToSet: { recipes: blankRecipe },
+          },
+        );
+
+        return update.then(() => db.collection(books).findOne({ _id: oId(bookId) }));
+      } catch (err) {
+        throw new Error(err);
+      }
+    },
+
     editRecipe: async (_source, { recipeFragment }, { db }): Promise<Recipe> => {
       try {
         const { bookId, id, ...rest } = recipeFragment;
@@ -56,7 +77,7 @@ export default {
         await db.collection(users).updateOne(
           { _id: oId(userId) },
           {
-            $push: { books: { _id: generatedId, ...blankBook } },
+            $addToSet: { books: { _id: generatedId, ...blankBook } },
           },
         );
 

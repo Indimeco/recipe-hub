@@ -16,3 +16,28 @@ export const CREATE_BOOK = gql`
     }
   }
 `;
+
+export const CREATE_RECIPE = gql`
+  mutation CreateRecipe($bookId: String!) {
+    createRecipe(bookId: $bookId) {
+      _id
+      meta {
+        name
+      }
+      recipes {
+        id
+        name
+        ingredients {
+          name
+          quantity
+          unit
+        }
+        directions
+        waitingTime
+        activeTime
+        previewImage
+        recipeSource
+      }
+    }
+  }
+`;

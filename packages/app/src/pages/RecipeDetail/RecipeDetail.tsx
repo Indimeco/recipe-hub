@@ -2,7 +2,8 @@ import React from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 
 import { Book, UpdateRecipe } from '../../../../../types';
-import { GET_BOOK, EDIT_RECIPE } from '../../hooks/data';
+import { GET_BOOK } from '../../hooks/data';
+import { EDIT_RECIPE } from '../../hooks/edit';
 import Heading from '../../components/Heading/Heading';
 import Image from '../../components/Image/Image';
 import Loading from '../Loading/Loading';

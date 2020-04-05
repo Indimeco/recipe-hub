@@ -6,7 +6,21 @@ import { Link } from 'react-router-dom';
 import Image from '../../../../components/Image/Image';
 import Button from '../../../../components/Button/Button';
 
-import { RecipeCard, RecipeHeading, RecipeItemControls, CenteringLink } from './RecipeItem.style';
+import {
+  RecipeCard,
+  RecipeHeading,
+  RecipeItemControls,
+  RecipeItemControlSpacer,
+  CenteringLink,
+} from './RecipeItem.style';
+
+const RecipeItemControl = ({ icon }: { icon: any }) => (
+  <RecipeItemControlSpacer>
+    <Button inlineStyle circle size="small">
+      <FontAwesomeIcon icon={icon} />
+    </Button>
+  </RecipeItemControlSpacer>
+);
 
 export const RecipeItem = ({
   link,
@@ -26,13 +40,8 @@ export const RecipeItem = ({
       <Image src={preview} alt="" />
     </Link>
     <RecipeItemControls>
-      <Button>
-        <FontAwesomeIcon icon={faHeart} />
-      </Button>
-
-      <Button>
-        <FontAwesomeIcon icon={faExternalLinkAlt} />
-      </Button>
+      <RecipeItemControl icon={faHeart} />
+      <RecipeItemControl icon={faExternalLinkAlt} />
     </RecipeItemControls>
   </RecipeCard>
 );

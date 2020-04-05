@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import { palette, SPACE_TINY, FONT_MEDIUM } from '../../../../styles/base';
+import { palette, SPACE_TINY, SPACE_SMALL, FONT_MEDIUM } from '../../../../styles/base';
 import { heading } from '../../../../styles/utils';
 
 export const RecipeCard = styled.div`
@@ -43,7 +43,11 @@ export const RecipeHeading = styled.h3`
 
 export const RecipeItemControls = styled.div`
   color: ${palette.fg};
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: 5px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+export const RecipeItemControlSpacer = styled.div`
+  margin-right: ${SPACE_SMALL};
 `;

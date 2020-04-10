@@ -1,6 +1,7 @@
 import React, { useState, useReducer, Reducer } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { uuid } from 'uuidv4';
 
 import { Recipe } from '../../../../../../types';
 import ToggleEdit from '../../../components/ToggleEdit/ToggleEdit';
@@ -10,7 +11,6 @@ import SrText from '../../../components/SrText/SrText';
 
 import { IngredientsBox, EditContainer } from './IngredientsList.style';
 
-// TODO Add ingredient
 // TODO Reorder ingredient
 
 type MutatedIngredient = {
@@ -20,11 +20,30 @@ type MutatedIngredient = {
   key: string;
 };
 
-type IngredientAction = {
-  type: string;
+type IngredientUpdateAction = {
+  type: 'update';
   index: number;
-  [x: string]: any;
+  value: MutatedIngredient;
 };
+type IngredientRemoveAction = {
+  type: 'remove';
+  index: number;
+};
+type IngredientReplaceAction = {
+  type: 'replace';
+  value: MutatedIngredient[];
+};
+type IngredientAddAction = {
+  type: 'add';
+};
+type IngredientAction = IngredientUpdateAction | IngredientRemoveAction | IngredientReplaceAction | IngredientAddAction;
+
+const getBlankIngredient = (): MutatedIngredient => ({
+  name: '',
+  unit: '',
+  quantity: '',
+  key: `ingredient${uuid()}`,
+});
 
 interface IngredientsListProps {
   ingredients: Recipe['ingredients'];
@@ -43,34 +62,49 @@ const IngredientsList: React.FunctionComponent<IngredientsListProps> = ({ ingred
       : [];
 
   const handleChange: Reducer<MutatedIngredient[], IngredientAction> = (state, action) => {
-    const { type, index } = action;
-    switch (type) {
+    switch (action.type) {
       case 'update':
-        const { value } = action;
-        return [...state.slice(0, index), value, ...state.slice(index + 1)];
+        return [...state.slice(0, action.index), action.value, ...state.slice(action.index + 1)];
 
       case 'remove':
-        return [...state.slice(0, index), ...state.slice(index + 1)];
+        return [...state.slice(0, action.index), ...state.slice(action.index + 1)];
+
+      case 'replace':
+        return action.value;
+
+      case 'add':
+        return [...state, getBlankIngredient()];
 
       default:
-        throw new Error(`Unhandled reducer action: ${action.type}`);
+        throw new Error(`Unhandled reducer action: ${action}`);
     }
   };
 
-  const [isEditMode, toggleEdit] = useState(false);
   const [state, dispatch] = useReducer(handleChange, ingredients, initializeIngredients);
+  const [isEditMode, toggleEdit] = useState(false);
+
+  const handleEditMode = (setEditMode: boolean) => {
+    if (setEditMode === false) {
+      dispatch({ type: 'replace', value: initializeIngredients(ingredients) });
+    }
+    toggleEdit(setEditMode);
+  };
+
+  const removeEmpty = (ingred: MutatedIngredient[]) => ingred.filter(item => item.name !== '');
 
   const save = () => {
-    const payload = state.map(item => ({ name: item.name, quantity: item.quantity, unit: item.unit }));
+    const cleanState = removeEmpty(state);
+    const payload = cleanState.map(item => ({ name: item.name, quantity: item.quantity, unit: item.unit }));
     handleSave({
       ingredients: payload,
     });
     toggleEdit(false);
+    dispatch({ type: 'replace', value: cleanState });
   };
 
   return (
     <IngredientsBox>
-      <ToggleEdit edit={isEditMode} onSave={save} onClick={() => toggleEdit(!isEditMode)}>
+      <ToggleEdit edit={isEditMode} onSave={save} onClick={() => handleEditMode(!isEditMode)}>
         {isEditMode ? (
           <div>
             <EditContainer>
@@ -115,6 +149,10 @@ const IngredientsList: React.FunctionComponent<IngredientsListProps> = ({ ingred
                     </Button>
                   </div>
                 ))}
+              <Button inlineStyle onClick={() => dispatch({ type: 'add' })}>
+                <FontAwesomeIcon icon={faPlus} />
+                <SrText>Add</SrText>
+              </Button>
             </EditContainer>
           </div>
         ) : (

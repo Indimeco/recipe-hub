@@ -1,7 +1,5 @@
 // SECTION MVP
 // TODO Rate limit or prevent infinite recipes/books creation spam
-// REVIEW New Recipe would be nice to open as soon as created
-// TODO Redesign recipeitems view less elongated responsive views
 // TODO investigate extraneous db connections (gql cleanup?)
 // REVIEW Graphql implementation of resolvers and schema
 // REVIEW Ensure correct use of ObjectIds across recipes/books/users
@@ -25,6 +23,9 @@
 
 
 // SECTION FUTURE
+// REVIEW New Recipe would be nice to open as soon as created
+// REVIEW Redesign recipeitems view less elongated responsive views
+// FIXME Performance fix IngredientList
 // TODO Demo recipe hub without sign updates
 // TODO Bulk import recipes from csv
 // TODO List view for recipes

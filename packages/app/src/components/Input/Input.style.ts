@@ -31,6 +31,7 @@ export const StyledInput = styled.input<StyledInputProps>`
   background-color: transparent;
   border-color: ${palette.aux};
   ${secondaryInteractable};
+  cursor: text;
   &:focus,
   &:active {
     border-color: ${palette.brand};

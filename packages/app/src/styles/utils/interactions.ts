@@ -5,11 +5,11 @@ import { TRANSITIONS, palette } from '../base';
 const interaction = css`
   transition: background-color ${TRANSITIONS.swift}, color ${TRANSITIONS.swift}, border-color ${TRANSITIONS.swift},
     transform ${TRANSITIONS.swift};
+  cursor: pointer;
 
   &:hover,
   &:focus {
     text-decoration: none;
-    cursor: pointer;
   }
 
   &:focus {

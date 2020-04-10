@@ -4,7 +4,7 @@ import { render, fireEvent } from '@testing-library/react';
 import IngredientsList from './IngredientsList';
 
 const initialIngredients = [
-  { name: 'yellow onion', quantity: '2', unit: '' },
+  { name: 'test item with no quantity', quantity: '', unit: '' },
   { name: 'red capsicum', quantity: '1', unit: '' },
   { name: 'garlic cloves', quantity: '6', unit: '' },
   { name: 'chili powder', quantity: '0.25', unit: 'cup' },
@@ -24,7 +24,7 @@ describe('IngredientsList', () => {
     const { getByText } = render(<IngredientsList ingredients={initialIngredients} handleSave={() => {}} />);
 
     initialIngredients.forEach(item =>
-      expect(getByText(`${item.quantity}${item.unit} ${item.name}`)).toBeInTheDocument(),
+      expect(getByText(new RegExp(`${item.quantity}${item.unit}\\s?${item.name}`))).toBeInTheDocument(),
     );
   });
 
@@ -61,5 +61,32 @@ describe('IngredientsList', () => {
 
     expect(getAllByTestId('ingredientslist__name__input')).toHaveLength(initialFirstNameInputs.length - 1);
     expect(initialFirstNameInputs[0]).not.toBeInTheDocument();
+  });
+
+  it('adds ingredients when add is actioned', () => {
+    const { getByText, getAllByTestId } = render(
+      <IngredientsList ingredients={initialIngredients} handleSave={() => {}} />,
+    );
+
+    getByText('Edit').click();
+
+    const initialFirstNameInputs = getAllByTestId('ingredientslist__name__input');
+
+    getByText('Add').click();
+
+    expect(getAllByTestId('ingredientslist__name__input')).toHaveLength(initialFirstNameInputs.length + 1);
+  });
+  it('shows initial ingredients when undo is actioned', () => {
+    const { getByText, getAllByText } = render(
+      <IngredientsList ingredients={initialIngredients} handleSave={() => {}} />,
+    );
+
+    getByText('Edit').click();
+
+    getAllByText('Delete')[0].click();
+
+    getByText('Undo').click();
+
+    expect(getByText(initialIngredients[0].name)).toBeInTheDocument();
   });
 });

@@ -11,19 +11,19 @@ const Footer: React.FunctionComponent = () => (
     <FooterContent>
       <ul>
         <li>
-          <Link invert href="https://twitter.com/">
+          <Link invertStyle href="https://twitter.com/">
             <FontAwesomeIcon icon={faTwitter} />
           </Link>
         </li>
 
         <li>
-          <Link invert href="https://facebook.com/">
+          <Link invertStyle href="https://facebook.com/">
             <FontAwesomeIcon icon={faFacebook} />
           </Link>
         </li>
 
         <li>
-          <Link invert href="https://github.com/">
+          <Link invertStyle href="https://github.com/">
             <FontAwesomeIcon icon={faGithub} />
           </Link>
         </li>

@@ -1,4 +1,6 @@
 // SECTION MVP
+// FIXME undo functionality for all recipe details
+// FIXME gone in a pinch displaying when 1min active time
 // TODO Rate limit or prevent infinite recipes/books creation spam
 // TODO investigate extraneous db connections (gql cleanup?)
 // REVIEW Graphql implementation of resolvers and schema

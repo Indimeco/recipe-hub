@@ -4,7 +4,7 @@ import { LinkProps as RouterLinkProps } from 'react-router-dom';
 import { StyledAnchor, StyledLinkButton, StyledLink } from './Link.style';
 
 interface LinkProps {
-  invert?: boolean;
+  invertStyle?: boolean;
 }
 
 export const Link = ({

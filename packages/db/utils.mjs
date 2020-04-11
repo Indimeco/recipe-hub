@@ -11,6 +11,10 @@ export const insertBooks = (db, number) => {
     const newBook = JSON.parse(JSON.stringify(book));
     newBook._id = new ObjectID(`testbookid@${index}`);
     newBook.meta.name += index;
+    newBook.recipes = newBook.recipes.map(recipe => ({
+      ...recipe,
+      id: ObjectID(),
+    }));
     return newBook;
   });
 

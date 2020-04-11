@@ -1,34 +1,28 @@
 // SECTION MVP
-// FIXME mock recipe ids must be oIds
-// FIXME undo functionality for all recipe details
-// TODO Rate limit or prevent infinite recipes/books creation spam
-// TODO investigate extraneous db connections (gql cleanup?)
+// FIXME Rate limit or prevent infinite recipes/books creation spam
+// FIXME investigate extraneous db connections (gql cleanup?)
 // REVIEW Graphql implementation of resolvers and schema
 // REVIEW Ensure correct use of ObjectIds across recipes/books/users
 // FIXME Recipe Details cancel doesn't revert state changes
 // TODO handle Apollo Errors via ErrorPage
 // TODO Create a simple test all workflow
-// TODO Tests for lambda
-// TODO Tests for db
+// TODO Research how to test graphql resolvers
 // TODO Add last modified to recipe via $currentData in mongodb
 // TODO Auto semantic versioning with lerna
 // TODO delete recipe
 // TODO deleting a book
 // TODO filter functionality
-// TODO Create login page
-// TODO Decide on AWS Cognito or Roll my own Auth
+// TODO Integrate with cognito
 // TODO Protect user operations based on book ownership
-// TODO Decide on hosted database or moving to DynamoDb
+// TODO Get hosted on Mongodb Atlas
 // TODO Enable editing for remaining recipe details
 // REVIEW Refactor state updates to use the Apollo client store
-// REVIEW Refactor frontend patterns to use imported css snippets
-
 
 // SECTION FUTURE
 // REVIEW New Recipe would be nice to open as soon as created
 // REVIEW Redesign recipeitems view less elongated responsive views
 // FIXME Performance fix IngredientList
-// TODO Demo recipe hub without sign updates
+// TODO Demo recipe hub without signup
 // TODO Bulk import recipes from csv
 // TODO List view for recipes
 // TODO IngredientList re-ordering
@@ -37,4 +31,6 @@
 // TODO Performance testing tech
 // TODO Accessibility checking
 // TODO Browse hot books
+// TODO Share books as read access only
 // TODO Copy other user's recipes
+// TODO Copy other user's books

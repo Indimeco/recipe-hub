@@ -19,8 +19,15 @@ export const RecipeDirections: React.FunctionComponent<RecipeDirectionsProps> = 
     toggleEdit(false);
   };
 
+  const handleEditMode = (setEditMode: boolean) => {
+    if (setEditMode === false) {
+      setInputDirections(directions || '');
+    }
+    toggleEdit(setEditMode);
+  };
+
   return (
-    <ToggleEdit edit={isEditMode} onSave={save} onClick={() => toggleEdit(!isEditMode)}>
+    <ToggleEdit edit={isEditMode} onSave={save} onClick={() => handleEditMode(!isEditMode)}>
       {isEditMode ? (
         <label htmlFor="RecipeDirections__textarea">
           Directions

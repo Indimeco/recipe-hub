@@ -40,7 +40,7 @@ export default {
         });
 
         const update = db.collection(books).updateOne(
-          { _id: oId(bookId), 'recipes.id': id },
+          { _id: oId(bookId), 'recipes.id': oId(id) },
           {
             $set: updatePayload,
           },
@@ -50,7 +50,7 @@ export default {
           db
             .collection(books)
             .findOne({ _id: oId(bookId) })
-            .then(({ recipes }) => recipes.find(recipe => recipe.id === id)),
+            .then(({ recipes }) => recipes.find(recipe => recipe.id === oId(id))),
         );
       } catch (err) {
         throw new Error(err);

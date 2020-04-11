@@ -113,4 +113,26 @@ describe('CookTime', () => {
     fireEvent.change(activeHour, { target: { value: '123a' } });
     expect(activeHour).toHaveValue('123');
   });
+
+  it('shows initial time when undo is actioned', () => {
+    const { getByText, getByTestId } = render(
+      <CookTime
+        activeTime={timeValues.suppliedActive}
+        waitingTime={timeValues.suppliedWaiting}
+        handleSave={() => {
+          console.log('handleSave called');
+        }}
+      />,
+    );
+
+    getByText('Edit').click();
+    const activeInputs = getByTestId('CookTime__activeInputs');
+    fireEvent.change(within(activeInputs).getByLabelText('hours'), { target: { value: '123' } });
+
+    getByText('Undo').click();
+
+    expect(getByTestId('CookTime__active').textContent).toStrictEqual(timeValues.expectedActive);
+    expect(getByTestId('CookTime__waiting').textContent).toStrictEqual(timeValues.expectedWaiting);
+    expect(getByTestId('CookTime__total').textContent).toStrictEqual(timeValues.expectedTotal);
+  });
 });

@@ -76,6 +76,7 @@ describe('IngredientsList', () => {
 
     expect(getAllByTestId('ingredientslist__name__input')).toHaveLength(initialFirstNameInputs.length + 1);
   });
+
   it('shows initial ingredients when undo is actioned', () => {
     const { getByText, getAllByText } = render(
       <IngredientsList ingredients={initialIngredients} handleSave={() => {}} />,

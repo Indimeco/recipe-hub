@@ -8,8 +8,6 @@ import { Recipe } from '../../../../../../types';
 
 import { TimeBox, ClockWrapper } from './CookTime.style';
 
-// TODO Restyle CookTime
-
 interface TimeUnits {
   hours: number;
   minutes: number;
@@ -131,6 +129,16 @@ const CookTime = ({ activeTime = 0, waitingTime = 0, handleSave }: CookTimeProps
   const [inputWaitingMinutes, setInputWaitingMinutes] = useState(waitingMinutes);
   const [inputWaitingHours, setInputWaitingHours] = useState(waitingHours);
 
+  const handleEditMode = (setEditMode: boolean) => {
+    if (setEditMode === false) {
+      setInputActiveMinutes(activeMinutes);
+      setInputActiveHours(activeHours);
+      setInputWaitingMinutes(waitingMinutes);
+      setInputWaitingHours(waitingHours);
+    }
+    toggleEdit(setEditMode);
+  };
+
   const save = () => {
     handleSave({
       activeTime: timeUnitsToMinutes({ hours: inputActiveHours, minutes: inputActiveMinutes }),
@@ -149,9 +157,12 @@ const CookTime = ({ activeTime = 0, waitingTime = 0, handleSave }: CookTimeProps
     minutes: inputWaitingMinutes,
   });
 
+  const hasActiveTime = inputActiveHours || inputActiveMinutes;
+  const hasWaitingTime = inputWaitingHours || inputWaitingMinutes;
+
   return (
     <TimeBox>
-      <ToggleEdit onSave={save} edit={isEditMode} onClick={() => toggleEdit(!isEditMode)}>
+      <ToggleEdit onSave={save} edit={isEditMode} onClick={() => handleEditMode(!isEditMode)}>
         {isEditMode ? (
           <EditCookTime
             {...{
@@ -171,15 +182,18 @@ const CookTime = ({ activeTime = 0, waitingTime = 0, handleSave }: CookTimeProps
               <FontAwesomeIcon icon={faClock} />
             </ClockWrapper>
             <span data-testid="CookTime__total">
-              {activeTime || waitingTime
-                ? timeUnitsString({ minutes: activeMinutes + waitingMinutes, hours: activeHours + waitingHours })
+              {hasActiveTime || hasWaitingTime
+                ? timeUnitsString({
+                    minutes: inputActiveMinutes + inputWaitingMinutes,
+                    hours: inputActiveHours + inputWaitingHours,
+                  })
                 : 'Done in a pinch!'}
             </span>
-            {activeTime || waitingTime ? <span> ( </span> : null}
+            {hasActiveTime || hasWaitingTime ? <span>{' ( '}</span> : null}
             <span data-testid="CookTime__active">{activeTimeString ? `${activeTimeString} active` : ''}</span>
-            {activeTimeString && waitingTimeString && <span> : </span>}
+            {hasActiveTime && hasWaitingTime ? <span> : </span> : null}
             <span data-testid="CookTime__waiting">{waitingTimeString ? `${waitingTimeString} waiting` : ''}</span>
-            {activeTime || waitingTime ? <span> ) </span> : null}
+            {hasActiveTime || hasWaitingTime ? <span>{' ) '}</span> : null}
           </>
         )}
       </ToggleEdit>

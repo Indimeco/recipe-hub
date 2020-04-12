@@ -1,4 +1,11 @@
 // SECTION MVP
+// TODO each edit should be a form that I can action submit with ENTER
+// REVIEW IngredientsList could just be two columns of Name|Amount and data separation would be behind the scenes
+// TODO visually separate CookTime and IngredientsList better
+// TODO Adding new recipe should put new recipe at the top of recipe area
+// FIXME preview image enlarging when adding IngredientsList
+// TODO add favorites functionality
+// TODO add external link to recipe functionality
 // TODO go back to recipes area from single recipe button
 // TODO update recipes area when single recipe is updated
 // FIXME Rate limit or prevent infinite recipes/books creation spam
@@ -16,12 +23,13 @@
 // TODO Integrate with cognito
 // TODO Protect user operations based on book ownership
 // TODO Get hosted on Mongodb Atlas
-// TODO Enable editing for remaining recipe details
 // REVIEW Refactor state updates to use the Apollo client store
 
 // SECTION FUTURE
 // REVIEW New Recipe would be nice to open as soon as created
 // REVIEW Redesign recipeitems view less elongated responsive views
+// TODO allow recipe directions to support rich text editing
+// TODO make IngredientsList automatically create new line when editing instead of having to action a button
 // FIXME Performance fix IngredientList
 // TODO Demo recipe hub without signup
 // TODO Bulk import recipes from csv

@@ -49,7 +49,7 @@ interface IngredientsListProps {
   ingredients: Recipe['ingredients'];
   handleSave: (payload: { ingredients: Recipe['ingredients'] }) => void;
 }
-const IngredientsList: React.FunctionComponent<IngredientsListProps> = ({ ingredients, handleSave }) => {
+export const IngredientsList: React.FunctionComponent<IngredientsListProps> = ({ ingredients, handleSave }) => {
   // sanitize graphql typenames and prep data
   const initializeIngredients = (raw: Recipe['ingredients']): MutatedIngredient[] =>
     raw

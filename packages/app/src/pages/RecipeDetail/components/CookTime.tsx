@@ -116,7 +116,7 @@ const EditCookTime = ({
 interface CookTimeProps extends RecipeFragment {
   handleSave: (payload: RecipeFragment) => void;
 }
-const CookTime = ({ activeTime = 0, waitingTime = 0, handleSave }: CookTimeProps) => {
+export const CookTime = ({ activeTime = 0, waitingTime = 0, handleSave }: CookTimeProps) => {
   const [isEditMode, toggleEdit] = useState(false);
 
   // convert stored minutes to time units

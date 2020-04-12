@@ -3,7 +3,6 @@
 // FIXME investigate extraneous db connections (gql cleanup?)
 // REVIEW Graphql implementation of resolvers and schema
 // REVIEW Ensure correct use of ObjectIds across recipes/books/users
-// FIXME Recipe Details cancel doesn't revert state changes
 // TODO handle Apollo Errors via ErrorPage
 // TODO Create a simple test all workflow
 // TODO Research how to test graphql resolvers

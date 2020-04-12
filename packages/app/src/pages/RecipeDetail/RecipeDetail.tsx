@@ -4,15 +4,12 @@ import { useQuery, useMutation } from '@apollo/react-hooks';
 import { Book, UpdateRecipe } from '../../../../../types';
 import { GET_BOOK } from '../../hooks/data';
 import { EDIT_RECIPE } from '../../hooks/edit';
-import Heading from '../../components/Heading/Heading';
 import Image from '../../components/Image/Image';
 import Loading from '../Loading/Loading';
 import ErrorPage from '../../components/ErrorPage/ErrorPage';
 import { RecipeDetailMatch } from '../../../types';
 
-import RecipeDirections from './components/RecipeDirections';
-import IngredientsList from './components/IngredientsList';
-import CookTime from './components/CookTime';
+import { RecipeDirections, RecipeName, CookTime, IngredientsList } from './components';
 import { RecipeWrapper, RecipeIntro } from './RecipeDetail.style';
 
 const RecipeDetail = ({
@@ -41,7 +38,7 @@ const RecipeDetail = ({
   return (
     <RecipeWrapper>
       <RecipeIntro>
-        <Heading el="h2">{recipe.name}</Heading>
+        <RecipeName name={recipe.name} handleSave={mergePayloadAndEditRecipe} />
         <CookTime
           activeTime={recipe.activeTime}
           waitingTime={recipe.waitingTime}

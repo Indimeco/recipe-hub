@@ -1,4 +1,6 @@
 // SECTION MVP
+// TODO go back to recipes area from single recipe button
+// TODO update recipes area when single recipe is updated
 // FIXME Rate limit or prevent infinite recipes/books creation spam
 // FIXME investigate extraneous db connections (gql cleanup?)
 // REVIEW Graphql implementation of resolvers and schema

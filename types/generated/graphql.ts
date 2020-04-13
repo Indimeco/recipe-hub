@@ -50,8 +50,15 @@ export type Meta = {
 };
 
 export type Mutation = {
+  createRecipe?: Maybe<Book>,
   editRecipe?: Maybe<Recipe>,
   createBook?: Maybe<User>,
+  editBookName?: Maybe<User>,
+};
+
+
+export type MutationCreateRecipeArgs = {
+  bookId: Scalars['String']
 };
 
 
@@ -63,6 +70,13 @@ export type MutationEditRecipeArgs = {
 export type MutationCreateBookArgs = {
   userId: Scalars['String'],
   bookName: Scalars['String']
+};
+
+
+export type MutationEditBookNameArgs = {
+  userId: Scalars['String'],
+  bookId: Scalars['String'],
+  newBookName: Scalars['String']
 };
 
 export type Query = {
@@ -91,6 +105,7 @@ export type Recipe = {
   recipeSource?: Maybe<Scalars['String']>,
   method?: Maybe<Scalars['String']>,
   categories?: Maybe<Array<Maybe<Scalars['String']>>>,
+  lastModified: Scalars['String'],
 };
 
 export type UpdateIngredient = {
@@ -227,8 +242,10 @@ export type MetaResolvers<Context = any, ParentType = Meta> = {
 };
 
 export type MutationResolvers<Context = any, ParentType = Mutation> = {
+  createRecipe?: Resolver<Maybe<Book>, ParentType, Context, MutationCreateRecipeArgs>,
   editRecipe?: Resolver<Maybe<Recipe>, ParentType, Context, MutationEditRecipeArgs>,
   createBook?: Resolver<Maybe<User>, ParentType, Context, MutationCreateBookArgs>,
+  editBookName?: Resolver<Maybe<User>, ParentType, Context, MutationEditBookNameArgs>,
 };
 
 export type QueryResolvers<Context = any, ParentType = Query> = {
@@ -247,6 +264,7 @@ export type RecipeResolvers<Context = any, ParentType = Recipe> = {
   recipeSource?: Resolver<Maybe<Scalars['String']>, ParentType, Context>,
   method?: Resolver<Maybe<Scalars['String']>, ParentType, Context>,
   categories?: Resolver<Maybe<ArrayOrIterable<Maybe<Scalars['String']>>>, ParentType, Context>,
+  lastModified?: Resolver<Scalars['String'], ParentType, Context>,
 };
 
 export type UserResolvers<Context = any, ParentType = User> = {

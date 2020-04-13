@@ -1,19 +1,14 @@
 import React from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
-import Filter from '../../components/Filter/Filter';
-import { Book } from '../../../../../types';
+import { Book, Recipe } from '../../../../../types';
 import { GET_BOOK } from '../../hooks/data';
 import { CREATE_RECIPE } from '../../hooks/create';
 import Loading from '../Loading/Loading';
 import ErrorPage from '../../components/ErrorPage/ErrorPage';
 import { RecipeAreaMatch } from '../../../types';
-import Button from '../../components/Button/Button';
 
-import { HeadingLayout, RecipesLayout, RecipeHeading, ToolsLayout, ToolsText } from './RecipeArea.style';
-import RecipeItem from './components/RecipeItem/RecipeItem';
+import { RecipeAreaView } from './RecipeAreaView';
 
 const RecipeArea = ({
   match: {
@@ -31,34 +26,11 @@ const RecipeArea = ({
 
   const { book }: { book: Book } = data;
   if (!book) return <ErrorPage />;
-  return (
-    <section>
-      <HeadingLayout>
-        <RecipeHeading>{book.meta.name}</RecipeHeading>
-        <Filter />
-      </HeadingLayout>
-      <ToolsLayout>
-        <ToolsText>Add a recipe</ToolsText>
-        <Button circle onClick={() => createRecipe({ variables: { bookId: book._id } })}>
-          <FontAwesomeIcon icon={faPlus} />
-        </Button>
-      </ToolsLayout>
-      <RecipesLayout>
-        {book?.recipes?.map(recipe => {
-          return (
-            recipe && (
-              <RecipeItem
-                key={`recipe-${recipe.id}`}
-                name={recipe.name}
-                link={`/book/${bookId}/${recipe.id}`}
-                preview={recipe?.previewImage}
-              />
-            )
-          );
-        })}
-      </RecipesLayout>
-    </section>
-  );
+
+  // bit of funny typescript here to ensure recipes has the correct type despite conditional assignment
+  const recipes = (book.recipes as Recipe[]) ? (book.recipes as Recipe[]) : [];
+
+  return <RecipeAreaView bookName={book.meta.name} bookId={bookId} recipes={recipes} createRecipe={createRecipe} />;
 };
 
 export default RecipeArea;

@@ -14,7 +14,7 @@ export default gql`
   }
 
   type Recipe {
-    id: String!
+    id: ID!
     name: String!
     ingredients: [Ingredient]
     directions: String
@@ -24,6 +24,7 @@ export default gql`
     recipeSource: String
     method: String
     categories: [String]
+    lastModified: String!
   }
 
   type Ingredient {
@@ -70,7 +71,7 @@ export default gql`
 
   type Mutation {
     createRecipe(bookId: String!): Book
-    editRecipe(recipeFragment: UpdateRecipe): Recipe
+    editRecipe(recipeFragment: UpdateRecipe): Book
     createBook(userId: String!, bookName: String!): User
     editBookName(userId: String!, bookId: String!, newBookName: String!): User
   }

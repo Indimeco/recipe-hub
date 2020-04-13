@@ -17,20 +17,7 @@ export const EDIT_BOOKNAME = gql`
 export const EDIT_RECIPE = gql`
   mutation EditRecipe($recipeFragment: UpdateRecipe!) {
     editRecipe(recipeFragment: $recipeFragment) {
-      id
-      name
-      ingredients {
-        name
-        quantity
-        unit
-      }
-      directions
-      waitingTime
-      activeTime
-      previewImage
-      recipeSource
-      method
-      categories
+      _id
     }
   }
 `;

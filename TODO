@@ -1,13 +1,14 @@
 // SECTION MVP
+// FIXME recipe area not refreshing view on create recipe
+// TODO number of servings
+// TODO keywords, tags
 // TODO each edit should be a form that I can action submit with ENTER
 // REVIEW IngredientsList could just be two columns of Name|Amount and data separation would be behind the scenes
-// TODO visually separate CookTime and IngredientsList better
-// TODO Adding new recipe should put new recipe at the top of recipe area
+// REVIEW visually separate CookTime and IngredientsList better
 // FIXME preview image enlarging when adding IngredientsList
 // TODO add favorites functionality
 // TODO add external link to recipe functionality
 // TODO go back to recipes area from single recipe button
-// TODO update recipes area when single recipe is updated
 // FIXME Rate limit or prevent infinite recipes/books creation spam
 // FIXME investigate extraneous db connections (gql cleanup?)
 // REVIEW Graphql implementation of resolvers and schema
@@ -15,7 +16,6 @@
 // TODO handle Apollo Errors via ErrorPage
 // TODO Create a simple test all workflow
 // TODO Research how to test graphql resolvers
-// TODO Add last modified to recipe via $currentData in mongodb
 // TODO Auto semantic versioning with lerna
 // TODO delete recipe
 // TODO deleting a book
@@ -26,6 +26,7 @@
 // REVIEW Refactor state updates to use the Apollo client store
 
 // SECTION FUTURE
+// TODO previewImage upload
 // REVIEW New Recipe would be nice to open as soon as created
 // REVIEW Redesign recipeitems view less elongated responsive views
 // TODO allow recipe directions to support rich text editing

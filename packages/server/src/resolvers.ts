@@ -15,6 +15,7 @@ export default {
         const blankRecipe = {
           name: 'New Recipe',
           id: newId,
+          lastModified: new Date(),
         };
 
         const update = db.collection(books).updateOne(
@@ -32,7 +33,9 @@ export default {
 
     editRecipe: async (_source, { recipeFragment }, { db }): Promise<Recipe> => {
       try {
-        const { bookId, id, ...rest } = recipeFragment;
+        const { bookId: strBookId, id: strId, ...rest } = recipeFragment;
+        const bookId = oId(strBookId);
+        const id = oId(strId);
 
         const updatePayload = {};
         Object.entries(rest).forEach(([key, value]) => {
@@ -40,18 +43,16 @@ export default {
         });
 
         const update = db.collection(books).updateOne(
-          { _id: oId(bookId), 'recipes.id': oId(id) },
+          { _id: bookId, 'recipes.id': id },
           {
+            $currentDate: {
+              'recipes.$.lastModified': true,
+            },
             $set: updatePayload,
           },
         );
 
-        return update.then(() =>
-          db
-            .collection(books)
-            .findOne({ _id: oId(bookId) })
-            .then(({ recipes }) => recipes.find(recipe => recipe.id === oId(id))),
-        );
+        return update.then(() => db.collection(books).findOne({ _id: bookId }));
       } catch (err) {
         throw new Error(err);
       }

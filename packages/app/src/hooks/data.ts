@@ -20,6 +20,7 @@ export const GET_BOOK = gql`
         activeTime
         previewImage
         recipeSource
+        lastModified
       }
     }
   }

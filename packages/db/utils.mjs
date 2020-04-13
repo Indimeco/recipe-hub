@@ -14,6 +14,7 @@ export const insertBooks = (db, number) => {
     newBook.recipes = newBook.recipes.map(recipe => ({
       ...recipe,
       id: ObjectID(),
+      lastModified: new Date(),
     }));
     return newBook;
   });

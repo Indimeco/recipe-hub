@@ -33,7 +33,8 @@ export default {
           previewImage:
             'https://c-7npsfqifvt34x24tfbsdix2edipx78x2edpn.g00.chowhound.com/g00/3_c-7x78x78x78.dipx78ipvoe.dpn_/c-7NPSFQIFVT34x24iuuqtx3ax2fx2ftfbsdi.dipx78.dpnx2fuivncobjmx2f2391x2f1x2fx78x78x78.dipx78tubujd.dpnx2fbttfutx2f3125x2f10x2f41770_tqjdz_tmpx78_dpplfs_cffg_dijmj_4111y3111.kqhx3fj21d.nbslx3djnbhf_$/$/$/$/$/$/$/$/$',
           recipeSource: 'https://www.chowhound.com/recipes/spicy-slow-cooker-beef-chili-30669',
-          __typename: 'Recipe',
+          lastModified: "0",
+					__typename: 'Recipe',
         },
         {
           id: '2',
@@ -125,7 +126,8 @@ export default {
           previewImage: 'https://images.media-allrecipes.com/userphotos/560x315/5193809.jpg',
           recipeSource:
             'https://www.allrecipes.com/recipe/11679/homemade-mac-and-cheese/?internalSource=hub%20recipe&referringId=509&referringContentType=recipe%20hub',
-          __typename: 'Recipe',
+          lastModified: "0",
+					__typename: 'Recipe',
         },
         {
           id: '3',
@@ -216,7 +218,8 @@ export default {
           activeTime: 45,
           previewImage: 'https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/167797.jpg',
           recipeSource: 'https://www.chowhound.com/recipes/spicy-slow-cooker-beef-chili-30669',
-          __typename: 'Recipe',
+          lastModified: "0",
+					__typename: 'Recipe',
         },
         {
           id: '4',
@@ -308,7 +311,8 @@ export default {
           previewImage:
             'https://c-7npsfqifvt34x24tfbsdix2edipx78x2edpn.g00.chowhound.com/g00/3_c-7x78x78x78.dipx78ipvoe.dpn_/c-7NPSFQIFVT34x24iuuqtx3ax2fx2ftfbsdi.dipx78.dpnx2fuivncobjmx2f2391x2f1x2fx78x78x78.dipx78tubujd.dpnx2fbttfutx2f3125x2f10x2f41770_tqjdz_tmpx78_dpplfs_cffg_dijmj_4111y3111.kqhx3fj21d.nbslx3djnbhf_$/$/$/$/$/$/$/$/$',
           recipeSource: 'https://www.chowhound.com/recipes/spicy-slow-cooker-beef-chili-30669',
-          __typename: 'Recipe',
+          lastModified: "0",
+					__typename: 'Recipe',
         },
         {
           id: '5',
@@ -400,7 +404,8 @@ export default {
           previewImage:
             'https://c-7npsfqifvt34x24tfbsdix2edipx78x2edpn.g00.chowhound.com/g00/3_c-7x78x78x78.dipx78ipvoe.dpn_/c-7NPSFQIFVT34x24iuuqtx3ax2fx2ftfbsdi.dipx78.dpnx2fuivncobjmx2f2391x2f1x2fx78x78x78.dipx78tubujd.dpnx2fbttfutx2f3125x2f10x2f41770_tqjdz_tmpx78_dpplfs_cffg_dijmj_4111y3111.kqhx3fj21d.nbslx3djnbhf_$/$/$/$/$/$/$/$/$',
           recipeSource: 'https://www.chowhound.com/recipes/spicy-slow-cooker-beef-chili-30669',
-          __typename: 'Recipe',
+          lastModified: "0",
+					__typename: 'Recipe',
         },
         {
           id: '6',
@@ -492,7 +497,8 @@ export default {
           previewImage:
             'https://c-7npsfqifvt34x24tfbsdix2edipx78x2edpn.g00.chowhound.com/g00/3_c-7x78x78x78.dipx78ipvoe.dpn_/c-7NPSFQIFVT34x24iuuqtx3ax2fx2ftfbsdi.dipx78.dpnx2fuivncobjmx2f2391x2f1x2fx78x78x78.dipx78tubujd.dpnx2fbttfutx2f3125x2f10x2f41770_tqjdz_tmpx78_dpplfs_cffg_dijmj_4111y3111.kqhx3fj21d.nbslx3djnbhf_$/$/$/$/$/$/$/$/$',
           recipeSource: 'https://www.chowhound.com/recipes/spicy-slow-cooker-beef-chili-30669',
-          __typename: 'Recipe',
+          lastModified: "0",
+					__typename: 'Recipe',
         },
         {
           id: '7',
@@ -584,7 +590,8 @@ export default {
           previewImage:
             'https://c-7npsfqifvt34x24tfbsdix2edipx78x2edpn.g00.chowhound.com/g00/3_c-7x78x78x78.dipx78ipvoe.dpn_/c-7NPSFQIFVT34x24iuuqtx3ax2fx2ftfbsdi.dipx78.dpnx2fuivncobjmx2f2391x2f1x2fx78x78x78.dipx78tubujd.dpnx2fbttfutx2f3125x2f10x2f41770_tqjdz_tmpx78_dpplfs_cffg_dijmj_4111y3111.kqhx3fj21d.nbslx3djnbhf_$/$/$/$/$/$/$/$/$',
           recipeSource: 'https://www.chowhound.com/recipes/spicy-slow-cooker-beef-chili-30669',
-          __typename: 'Recipe',
+          lastModified: "0",
+					__typename: 'Recipe',
         },
         {
           id: '8',
@@ -676,7 +683,8 @@ export default {
           previewImage:
             'https://c-7npsfqifvt34x24tfbsdix2edipx78x2edpn.g00.chowhound.com/g00/3_c-7x78x78x78.dipx78ipvoe.dpn_/c-7NPSFQIFVT34x24iuuqtx3ax2fx2ftfbsdi.dipx78.dpnx2fuivncobjmx2f2391x2f1x2fx78x78x78.dipx78tubujd.dpnx2fbttfutx2f3125x2f10x2f41770_tqjdz_tmpx78_dpplfs_cffg_dijmj_4111y3111.kqhx3fj21d.nbslx3djnbhf_$/$/$/$/$/$/$/$/$',
           recipeSource: 'https://www.chowhound.com/recipes/spicy-slow-cooker-beef-chili-30669',
-          __typename: 'Recipe',
+          lastModified: "0",
+					__typename: 'Recipe',
         },
         {
           id: '9',
@@ -768,7 +776,8 @@ export default {
           previewImage:
             'https://c-7npsfqifvt34x24tfbsdix2edipx78x2edpn.g00.chowhound.com/g00/3_c-7x78x78x78.dipx78ipvoe.dpn_/c-7NPSFQIFVT34x24iuuqtx3ax2fx2ftfbsdi.dipx78.dpnx2fuivncobjmx2f2391x2f1x2fx78x78x78.dipx78tubujd.dpnx2fbttfutx2f3125x2f10x2f41770_tqjdz_tmpx78_dpplfs_cffg_dijmj_4111y3111.kqhx3fj21d.nbslx3djnbhf_$/$/$/$/$/$/$/$/$',
           recipeSource: 'https://www.chowhound.com/recipes/spicy-slow-cooker-beef-chili-30669',
-          __typename: 'Recipe',
+          lastModified: "0",
+					__typename: 'Recipe',
         },
         {
           id: '10',
@@ -860,7 +869,8 @@ export default {
           previewImage:
             'https://c-7npsfqifvt34x24tfbsdix2edipx78x2edpn.g00.chowhound.com/g00/3_c-7x78x78x78.dipx78ipvoe.dpn_/c-7NPSFQIFVT34x24iuuqtx3ax2fx2ftfbsdi.dipx78.dpnx2fuivncobjmx2f2391x2f1x2fx78x78x78.dipx78tubujd.dpnx2fbttfutx2f3125x2f10x2f41770_tqjdz_tmpx78_dpplfs_cffg_dijmj_4111y3111.kqhx3fj21d.nbslx3djnbhf_$/$/$/$/$/$/$/$/$',
           recipeSource: 'https://www.chowhound.com/recipes/spicy-slow-cooker-beef-chili-30669',
-          __typename: 'Recipe',
+          lastModified: "0",
+					__typename: 'Recipe',
         },
         {
           id: '11',
@@ -952,7 +962,8 @@ export default {
           previewImage:
             'https://c-7npsfqifvt34x24tfbsdix2edipx78x2edpn.g00.chowhound.com/g00/3_c-7x78x78x78.dipx78ipvoe.dpn_/c-7NPSFQIFVT34x24iuuqtx3ax2fx2ftfbsdi.dipx78.dpnx2fuivncobjmx2f2391x2f1x2fx78x78x78.dipx78tubujd.dpnx2fbttfutx2f3125x2f10x2f41770_tqjdz_tmpx78_dpplfs_cffg_dijmj_4111y3111.kqhx3fj21d.nbslx3djnbhf_$/$/$/$/$/$/$/$/$',
           recipeSource: 'https://www.chowhound.com/recipes/spicy-slow-cooker-beef-chili-30669',
-          __typename: 'Recipe',
+          lastModified: "0",
+					__typename: 'Recipe',
         },
       ],
       __typename: 'Book',

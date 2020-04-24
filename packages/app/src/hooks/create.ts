@@ -21,9 +21,6 @@ export const CREATE_RECIPE = gql`
   mutation CreateRecipe($bookId: String!) {
     createRecipe(bookId: $bookId) {
       _id
-      meta {
-        name
-      }
       recipes {
         id
         name
@@ -37,6 +34,7 @@ export const CREATE_RECIPE = gql`
         activeTime
         previewImage
         recipeSource
+        lastModified
       }
     }
   }

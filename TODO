@@ -1,5 +1,4 @@
 // SECTION MVP
-// FIXME recipe area not refreshing view on create recipe
 // TODO number of servings
 // TODO keywords, tags
 // TODO each edit should be a form that I can action submit with ENTER
@@ -27,6 +26,7 @@
 
 // SECTION FUTURE
 // TODO previewImage upload
+// REVIEW recipe area not refreshing view on create recipe without sending all recipe details
 // REVIEW New Recipe would be nice to open as soon as created
 // REVIEW Redesign recipeitems view less elongated responsive views
 // TODO allow recipe directions to support rich text editing

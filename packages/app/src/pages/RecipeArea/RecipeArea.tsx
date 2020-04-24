@@ -17,6 +17,7 @@ const RecipeArea = ({
 }: RecipeAreaMatch): React.ReactElement => {
   const { loading, error, data } = useQuery(GET_BOOK, {
     variables: { bookId },
+    partialRefetch: true,
   });
 
   const [createRecipe, { loading: createLoading, error: createError }] = useMutation(CREATE_RECIPE);

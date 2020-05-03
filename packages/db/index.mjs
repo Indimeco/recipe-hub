@@ -4,7 +4,7 @@ import MongoClient from 'mongodb';
 
 import { insertBooks, insertUser } from './utils.mjs';
 
-const dbUrl = 'mongodb://localhost:27017';
+const dbUri = process.env.DATABASE_URI;
 const dbName = 'recipehub';
 
 const resetDb = db => {
@@ -12,7 +12,7 @@ const resetDb = db => {
 };
 
 // Main
-MongoClient.connect(dbUrl, { useNewUrlParser: true }, async function(err, client) {
+MongoClient.connect(dbUri, { useNewUrlParser: true }, async function(err, client) {
   assert.equal(null, err);
   console.log('Connected successfully to server');
 

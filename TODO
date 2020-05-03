@@ -21,10 +21,11 @@
 // TODO filter functionality
 // TODO Integrate with cognito
 // TODO Protect user operations based on book ownership
-// TODO Get hosted on Mongodb Atlas
 // REVIEW Refactor state updates to use the Apollo client store
+// TODO limit serverless-admin aws permissions https://www.serverless.com/framework/docs/providers/aws/guide/credentials/
 
 // SECTION FUTURE
+// TODO One click infrastructure build
 // TODO previewImage upload
 // REVIEW recipe area not refreshing view on create recipe without sending all recipe details
 // REVIEW New Recipe would be nice to open as soon as created

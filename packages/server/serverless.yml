@@ -19,6 +19,9 @@ functions:
 plugins:
   - serverless-webpack
   - serverless-offline
+  - serverless-dotenv-plugin
 custom:
   serverless-offline:
     port: 4000
+  webpack:
+    includeModules: true

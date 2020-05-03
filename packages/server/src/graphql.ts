@@ -6,12 +6,13 @@ import resolvers from './resolvers';
 
 let cachedDb;
 function connectToDatabase() {
-  const dbUrl = 'mongodb://localhost:27017'; // Database Connection
+  const dbUri = process.env.DATABASE_URI;
   const dbName = 'recipehub';
 
+  if (!dbUri) throw new Error();
   if (cachedDb) return Promise.resolve(cachedDb);
 
-  return MongoClient.connect(dbUrl).then(db => {
+  return MongoClient.connect(dbUri).then(db => {
     const recipeHub = db.db(dbName);
     cachedDb = recipeHub;
     return cachedDb;

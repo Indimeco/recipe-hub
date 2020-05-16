@@ -27,7 +27,7 @@ describe('RecipeArea', () => {
     const { findByText } = render(
       <MockedProvider mocks={mocks} addTypename={false}>
         <Router>
-          <RecipeArea match={{ params: { bookId: '1' } }} />
+          <RecipeArea setNavLinks={() => null} match={{ params: { bookId: '1' } }} />
         </Router>
       </MockedProvider>,
     );

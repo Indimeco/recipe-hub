@@ -1,23 +1,15 @@
 import React from 'react';
 
-import { Link } from '../Link/Link';
+import Breadcrumbs, { CrumbsType } from '../Breadcrumbs/Breadcrumbs';
 
-import { NavWrapper, NavLinkList, NavLink } from './Navbar.style';
+import { NavWrapper } from './Navbar.style';
 
-const Navbar = () => (
+type PropTypes = {
+  links: CrumbsType;
+};
+const Navbar: React.FunctionComponent<PropTypes> = ({ links }) => (
   <NavWrapper>
-    <NavLinkList>
-      <NavLink>
-        <Link invertStyle to="/">
-          My Books
-        </Link>
-      </NavLink>
-      <NavLink>
-        <Link invertStyle to="/">
-          Hot
-        </Link>
-      </NavLink>
-    </NavLinkList>
+    <Breadcrumbs crumbs={links} />
   </NavWrapper>
 );
 

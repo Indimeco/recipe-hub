@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,9 +17,11 @@ import { BookInformation } from './components/BookInformation';
 import { BookTile, BookText, UnstyledLi, UnstyledUl, BookButtonText } from './BookArea.style';
 import { InputModal } from './components/InputModal';
 
-const BookArea = (): React.ReactElement => {
-  const userId = '746573747573657269644030'; // TODO get userId from cookie
-
+type PropTypes = {
+  setNavLinks: any;
+  userId: string;
+};
+const BookArea: React.FunctionComponent<PropTypes> = ({ userId, setNavLinks }) => {
   const [isNewBookOpen, setNewBookOpen] = useState(false);
 
   const { loading: getLoading, error: getError, data } = useQuery(GET_USERS_BOOKS, {
@@ -38,11 +40,17 @@ const BookArea = (): React.ReactElement => {
   const handleEditName = ({ bookId, newBookName }: { bookId: string; newBookName: string }) =>
     editName({ variables: { userId, bookId, newBookName } });
 
-  const loading = getLoading || addLoading || editLoading;
-  const error = getError || addError || editError;
+  const isLoading = getLoading || addLoading || editLoading;
+  const isError = getError || addError || editError;
 
-  if (loading) return <Loading />;
-  if (error) return <ErrorPage />;
+  useEffect(() => {
+    if (!isLoading && !isError) {
+      setNavLinks([{ name: 'My Books', path: null }]);
+    }
+  }, [isError, isLoading, setNavLinks]);
+
+  if (isLoading) return <Loading />;
+  if (isError) return <ErrorPage />;
 
   const { user }: { user: User } = data;
   if (!user.books) return <Heading>Add a book!</Heading>;

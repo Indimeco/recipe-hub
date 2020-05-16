@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 
 import { Book, Recipe } from '../../../../../types';
@@ -6,15 +6,19 @@ import { GET_BOOK } from '../../hooks/data';
 import { CREATE_RECIPE } from '../../hooks/create';
 import Loading from '../Loading/Loading';
 import ErrorPage from '../../components/ErrorPage/ErrorPage';
-import { RecipeAreaMatch } from '../../../types';
 
 import { RecipeAreaView } from './RecipeAreaView';
 
-const RecipeArea = ({
+type PropTypes = {
+  match: { params: { bookId: string } };
+  setNavLinks: any;
+};
+const RecipeArea: React.FunctionComponent<PropTypes> = ({
   match: {
     params: { bookId },
   },
-}: RecipeAreaMatch): React.ReactElement => {
+  setNavLinks,
+}) => {
   const { loading, error, data } = useQuery(GET_BOOK, {
     variables: { bookId },
     partialRefetch: true,
@@ -22,11 +26,21 @@ const RecipeArea = ({
 
   const [createRecipe, { loading: createLoading, error: createError }] = useMutation(CREATE_RECIPE);
 
-  if (loading || createLoading) return <Loading />;
-  if (error || createError) return <ErrorPage />;
+  const book: Book = data?.book;
+  const isLoading = loading || createLoading;
+  const isError = error || createError || !book;
 
-  const { book }: { book: Book } = data;
-  if (!book) return <ErrorPage />;
+  useEffect(() => {
+    if (!isLoading && !isError) {
+      setNavLinks([
+        { name: 'My Books', path: '/book' },
+        { name: book?.meta?.name, path: null },
+      ]);
+    }
+  }, [setNavLinks, book, isLoading, isError]);
+
+  if (isLoading) return <Loading />;
+  if (isError) return <ErrorPage />;
 
   // bit of funny typescript here to ensure recipes has the correct type despite conditional assignment
   const recipes = (book.recipes as Recipe[]) ? (book.recipes as Recipe[]) : [];

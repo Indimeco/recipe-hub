@@ -1,31 +1,60 @@
-import React, { ReactElement } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 
 import ErrorPage from '../components/ErrorPage/ErrorPage';
-import { RecipeAreaMatch, RecipeDetailMatch } from '../../types';
+import Banner from '../components/Banner/Banner';
+import Navbar from '../components/Navbar/Navbar';
+import Footer from '../components/Footer/Footer';
+import Layout from '../components/Layout/Layout';
 
-import BookArea from './BookArea/BookArea';
-import RecipeDetail from './RecipeDetail/RecipeDetail';
 import RecipeArea from './RecipeArea/RecipeArea';
+import RecipeDetail from './RecipeDetail/RecipeDetail';
+import BookArea from './BookArea/BookArea';
 
-export const Pages = () => (
-  <Switch>
-    <Route path="/" exact render={(): ReactElement => <BookArea />} />
+const routes = [
+  {
+    path: ['/', '/book'],
+    exact: true,
+    Component: BookArea,
+  },
+  {
+    path: '/book/:bookId',
+    exact: true,
+    Component: RecipeArea,
+  },
+  {
+    path: '/book/:bookId/:recipeId',
+    exact: true,
+    Component: RecipeDetail,
+  },
+  {
+    exact: false,
+    Component: ErrorPage,
+  },
+];
 
-    <Route
-      path="/book/:bookId"
-      exact
-      render={({ match }: RecipeAreaMatch): ReactElement => <RecipeArea match={match} />}
-    />
+const userId = '746573747573657269644030'; // TODO get userId from cookie
 
-    <Route
-      path="/book/:bookId/:recipeId"
-      exact
-      render={({ match }: RecipeDetailMatch): ReactElement => <RecipeDetail match={match} />}
-    />
-
-    <Route render={(): ReactElement => <ErrorPage />} />
-  </Switch>
-);
+export const Pages = () => {
+  const [navLinks, setNavLinks] = useState([{ name: 'My Books', path: '/book' }]);
+  return (
+    <Router>
+      <Banner>Recipe Hub</Banner>
+      <Navbar links={navLinks} />
+      <Layout>
+        <Switch>
+          {routes.map(({ path, exact, Component }) => (
+            <Route
+              {...{ path, exact }}
+              key={`Route-${typeof path === 'string' ? path : path?.find(x => x)}`}
+              render={({ match }) => <Component {...{ match, setNavLinks, userId }} />}
+            />
+          ))}
+        </Switch>
+      </Layout>
+      <Footer />
+    </Router>
+  );
+};
 
 export default Pages;

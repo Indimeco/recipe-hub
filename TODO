@@ -1,4 +1,5 @@
 // SECTION MVP
+// FIXME Breadcrumbs don't update on recipe name or book name update
 // TODO number of servings
 // TODO keywords, tags
 // TODO each edit should be a form that I can action submit with ENTER

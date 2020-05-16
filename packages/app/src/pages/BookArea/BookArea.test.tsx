@@ -8,12 +8,14 @@ import UserData from '../../mocks/GET_USERS_BOOKS';
 
 import BookArea from './BookArea';
 
+const userId = '746573747573657269644030';
+
 const mocks = [
   {
     request: {
       query: GET_USERS_BOOKS,
       variables: {
-        userId: '746573747573657269644030',
+        userId,
       },
     },
     result: {
@@ -27,7 +29,7 @@ describe('BookArea', () => {
     const { findByText } = render(
       <MockedProvider mocks={mocks} addTypename={false}>
         <Router>
-          <BookArea />
+          <BookArea setNavLinks={() => null} userId={userId} />
         </Router>
       </MockedProvider>,
     );
@@ -40,7 +42,7 @@ describe('BookArea', () => {
     const { findByText } = render(
       <MockedProvider mocks={mocks} addTypename={false}>
         <Router>
-          <BookArea />
+          <BookArea setNavLinks={() => null} userId={userId} />
         </Router>
       </MockedProvider>,
     );
@@ -56,7 +58,7 @@ describe('BookArea', () => {
     const { findByText } = render(
       <MockedProvider mocks={mocks} addTypename={false}>
         <Router>
-          <BookArea />
+          <BookArea setNavLinks={() => null} userId={userId} />
         </Router>
       </MockedProvider>,
     );
@@ -76,7 +78,7 @@ describe('BookArea', () => {
     const { findByText } = render(
       <MockedProvider mocks={mocks} addTypename={false}>
         <Router>
-          <BookArea />
+          <BookArea setNavLinks={() => null} userId={userId} />
         </Router>
       </MockedProvider>,
     );

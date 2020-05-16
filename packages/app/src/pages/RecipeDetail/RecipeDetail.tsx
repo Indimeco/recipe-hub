@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 
 import { Book, UpdateRecipe } from '../../../../../types';
@@ -6,16 +6,21 @@ import { GET_BOOK } from '../../hooks/data';
 import { EDIT_RECIPE } from '../../hooks/edit';
 import Loading from '../Loading/Loading';
 import ErrorPage from '../../components/ErrorPage/ErrorPage';
-import { RecipeDetailMatch } from '../../../types';
 
 import { RecipeDirections, RecipeName, CookTime, IngredientsList, RecipeImage } from './components';
 import { RecipeWrapper, RecipeIntro } from './RecipeDetail.style';
 
-const RecipeDetail = ({
+type PropTypes = {
+  match: { params: { bookId: string; recipeId: string } };
+  setNavLinks: any;
+};
+
+const RecipeDetail: React.FunctionComponent<PropTypes> = ({
   match: {
     params: { bookId, recipeId },
   },
-}: RecipeDetailMatch) => {
+  setNavLinks,
+}) => {
   const { loading: bookLoading, error: bookError, data } = useQuery(GET_BOOK, {
     variables: { bookId },
     partialRefetch: true,
@@ -26,14 +31,24 @@ const RecipeDetail = ({
     editRecipe({ variables: { recipeFragment: { bookId, id: recipeId, ...payload } } });
   };
 
-  if ((bookLoading || editLoading) && !data) return <Loading />;
-  if (bookError || editError) return <ErrorPage />;
+  const book: Book = data?.book;
+  const recipe: any = book?.recipes?.find(x => x?.id === recipeId);
 
-  const { book }: { book: Book } = data;
-  if (!book) return <ErrorPage />;
+  const isLoading = (bookLoading || editLoading) && !data;
+  const isError = bookError || editError || !book || !recipe;
 
-  const recipe = book.recipes?.find(x => x?.id === recipeId);
-  if (!recipe) return <ErrorPage />;
+  useEffect(() => {
+    if (!isLoading || !isError) {
+      setNavLinks([
+        { name: 'My Books', path: '/book' },
+        { name: book.meta.name, path: `/book/${book._id}` },
+        { name: recipe.name, path: null },
+      ]);
+    }
+  }, [data, book, isError, isLoading, setNavLinks, recipe]);
+
+  if (isLoading) return <Loading />;
+  if (isError) return <ErrorPage />;
   return (
     <RecipeWrapper>
       <RecipeIntro>

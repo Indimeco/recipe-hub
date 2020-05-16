@@ -1,5 +1,4 @@
-import React, { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
-import { LinkProps as RouterLinkProps } from 'react-router-dom';
+import React from 'react';
 
 import { StyledAnchor, StyledLinkButton, StyledLink } from './Link.style';
 

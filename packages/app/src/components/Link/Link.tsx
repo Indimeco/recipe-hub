@@ -7,11 +7,7 @@ interface LinkProps {
   invertStyle?: boolean;
 }
 
-export const Link = ({
-  children,
-  type,
-  ...restProps
-}: (AnchorHTMLAttributes<any> | ButtonHTMLAttributes<any> | RouterLinkProps<any>) & LinkProps) => {
+export const Link: React.FunctionComponent<any & LinkProps> = ({ children, type, ...restProps }) => {
   if ('href' in restProps) {
     return (
       <StyledAnchor type={type} {...restProps}>
@@ -30,3 +26,5 @@ export const Link = ({
     </StyledLinkButton>
   );
 };
+
+export default Link;

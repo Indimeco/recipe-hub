@@ -4,7 +4,6 @@ import { palette, MEDIA_1, SPACE_SMALL } from '../../styles/base';
 
 export const RecipeIntro = styled.div`
   color: ${palette.fg};
-  background-color: ${palette.bg};
   display: block;
 
   @media screen and (min-width: ${MEDIA_1}) {
@@ -16,12 +15,10 @@ export const RecipeIntro = styled.div`
 
 export const RecipeWrapper = styled.div`
   color: ${palette.fg};
-  background-color: ${palette.bg};
 `;
 
 export const TimeBox = styled.div`
   color: ${palette.fg};
-  background-color: ${palette.bg};
   padding: ${SPACE_SMALL};
   margin: ${SPACE_SMALL};
   text-align: center;

@@ -1,12 +1,9 @@
 import React from 'react';
 
 import { StyledAnchor, StyledLinkButton, StyledLink } from './Link.style';
+import { LinkProps } from './types';
 
-interface LinkProps {
-  invertStyle?: boolean;
-}
-
-export const Link: React.FunctionComponent<any & LinkProps> = ({ children, type, ...restProps }) => {
+export const Link: React.FunctionComponent<LinkProps> = ({ children, type, ...restProps }) => {
   if ('href' in restProps) {
     return (
       <StyledAnchor type={type} {...restProps}>

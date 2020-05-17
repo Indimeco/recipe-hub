@@ -1,6 +1,8 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
-import { CrumbContainer, Crumb } from './Breadcrumbs.style';
+import { CrumbContainer, Crumb, CrumbConnector, CrumbAlign } from './Breadcrumbs.style';
 
 export type CrumbsType = { name: string; path?: string | null }[];
 type PropTypes = {
@@ -11,16 +13,14 @@ const Breadcrumbs: React.FunctionComponent<PropTypes> = ({ crumbs }) => (
   <CrumbContainer>
     {crumbs?.map(({ name, path }, index) => {
       return (
-        <li key={`Breadcrumb-${path}`}>
-          {index !== 0 && <span>> </span>}
-          {path ? (
-            <Crumb to={path} invertStyle>
-              {name}
-            </Crumb>
-          ) : (
-            <span>{name}</span>
+        <CrumbAlign key={`Breadcrumb-${path}`}>
+          {index !== 0 && (
+            <CrumbConnector>
+              <FontAwesomeIcon icon={faChevronRight} />
+            </CrumbConnector>
           )}
-        </li>
+          {path ? <Crumb to={path}>{name}</Crumb> : <Crumb inactive>{name}</Crumb>}
+        </CrumbAlign>
       );
     })}
   </CrumbContainer>

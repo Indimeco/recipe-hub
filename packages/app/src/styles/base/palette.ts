@@ -1,6 +1,6 @@
 const raisinBlack = '#262626';
 const paper = '#F0DBC0';
-const paper50 = '#F0DBC080';
+const paper50 = '#f7eddf';
 const graniteCountertop = '#394648';
 const redLeather = '#d83e40';
 const coffee = '#a85805';

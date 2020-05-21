@@ -13,6 +13,7 @@ export const palette = {
   bg1: paper,
   bg2: coffeeCream,
   bgAccent: graniteCountertop,
+  bgAccent1: raisinBlack,
   brand: redLeather,
   fg: raisinBlack,
 };

@@ -4,7 +4,6 @@ import {
   FONT_MEDIUM,
   FONT_SMALL,
   FONT_TINY,
-  MEDIA_1,
   palette,
   SPACE_MEGA,
   SPACE_MEDIUM,
@@ -25,6 +24,13 @@ const regular = css`
 
 const circular = css`
   border-radius: 100%;
+  padding: 0;
+`;
+
+const rectangular = css`
+  padding: ${SPACE_TINY};
+  border-radius: 3%;
+  max-width: ${SPACE_MEGA};
 `;
 
 const sizes = {
@@ -42,9 +48,6 @@ const sizes = {
     font-size: ${FONT_MEDIUM};
     width: 100%;
     height: auto;
-    @media screen and (min-width: ${MEDIA_1}) {
-      max-width: ${SPACE_MEGA};
-    }
   `,
 };
 
@@ -55,15 +58,12 @@ interface ButtonProps {
 }
 
 export const StyledButton = styled.button<ButtonProps>`
-  box-sizing: border-box;
-
   display: inline-flex;
   justify-content: center;
   align-items: center;
 
-  padding: ${SPACE_TINY};
-  border-radius: 3%;
   border: 1px solid;
+  margin: 0;
 
   border-color: ${palette.aux};
   background-color: ${palette.auxAccent};
@@ -76,6 +76,6 @@ export const StyledButton = styled.button<ButtonProps>`
   }
 
   ${props => (props.inlineStyle ? inlineVariant : regular)};
-  ${props => (props.circle ? circular : null)};
+  ${props => (props.circle ? circular : rectangular)};
   ${({ size }) => (size ? sizes[size] : null)};
 `;

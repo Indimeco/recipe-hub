@@ -26,6 +26,7 @@
 // TODO limit serverless-admin aws permissions https://www.serverless.com/framework/docs/providers/aws/guide/credentials/
 
 // SECTION FUTURE
+// REVIEW Breadcrumbs design to be like book tabs
 // TODO One click infrastructure build
 // TODO previewImage upload
 // REVIEW recipe area not refreshing view on create recipe without sending all recipe details

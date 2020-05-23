@@ -15,6 +15,7 @@ export const DropdownWrapper = styled.div`
 `;
 
 export const DropdownItem = styled.div`
+  white-space: nowrap;
   &:hover,
   &:focus {
     background-color: ${palette.aux};

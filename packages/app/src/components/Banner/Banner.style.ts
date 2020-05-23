@@ -5,7 +5,7 @@ import { ReactComponent as RawLogo } from '../../assets/RecipeHubOptimized.svg';
 import { indent } from '../../styles/utils';
 
 export const BannerWrapper = styled.div`
-  background-color: ${palette.bgAccent};
+  background-color: ${palette.brand};
   min-height: ${SPACE_BANNER};
   display: flex;
   justify-content: flex-end;
@@ -30,6 +30,7 @@ export const BannerContent = styled.div`
   border-radius: 2% 2% 0 0;
   padding: 0 ${SPACE_SMALL};
   margin-top: ${SPACE_SMALL};
+  box-shadow: 0 0 4px ${palette.bgAccent1};
 `;
 
 export const Logo = styled(RawLogo)`

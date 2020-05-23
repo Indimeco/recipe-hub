@@ -7,13 +7,13 @@ import { heading } from '../../../../styles/utils';
 export const RecipeCard = styled.div`
   box-sizing: border-box;
   border-radius: 2%;
-  height: 30vh;
+  min-height: 30vh;
   background-color: ${palette.aux};
   color: ${palette.fg};
   box-shadow: 1px 0 0 ${palette.auxAccent};
   padding: 5px;
   display: grid;
-  grid-template-rows: ${(1 / 6) * 100}% ${(2 / 3) * 100}% ${(1 / 6) * 100}%;
+  grid-template-rows: 1fr 4fr 1fr;
   text-align: center;
 `;
 

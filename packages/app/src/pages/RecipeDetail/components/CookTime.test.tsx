@@ -1,5 +1,5 @@
-import React from 'react';
-import { render, within, fireEvent } from '@testing-library/react';
+import React, { useState } from 'react';
+import { render, within, fireEvent, waitForDomChange } from '@testing-library/react';
 
 import CookTime from './CookTime';
 
@@ -17,8 +17,9 @@ describe('CookTime', () => {
       <CookTime
         activeTime={timeValues.suppliedActive}
         waitingTime={timeValues.suppliedWaiting}
-        handleSave={() => {
-          console.log('handleSave called');
+        isEditMode={false}
+        dispatch={() => {
+          console.log('dispatch called');
         }}
       />,
     );
@@ -41,8 +42,9 @@ describe('CookTime', () => {
       <CookTime
         activeTime={zeroTimeValues.suppliedActive}
         waitingTime={zeroTimeValues.suppliedWaiting}
-        handleSave={() => {
-          console.log('handleSave called');
+        isEditMode={false}
+        dispatch={() => {
+          console.log('dispatch called');
         }}
       />,
     );
@@ -65,8 +67,9 @@ describe('CookTime', () => {
       <CookTime
         activeTime={zeroTimeValues.suppliedActive}
         waitingTime={zeroTimeValues.suppliedWaiting}
-        handleSave={() => {
-          console.log('handleSave called');
+        isEditMode={false}
+        dispatch={() => {
+          console.log('dispatch called');
         }}
       />,
     );
@@ -77,34 +80,34 @@ describe('CookTime', () => {
   });
 
   it('changes time when edited', async () => {
-    const { getByText, getByTestId } = render(
+    const { getByTestId } = render(
       <CookTime
         activeTime={timeValues.suppliedActive}
         waitingTime={timeValues.suppliedWaiting}
-        handleSave={() => {
-          console.log('handleSave called');
+        isEditMode
+        dispatch={() => {
+          console.log('dispatch called');
         }}
       />,
     );
 
-    getByText('Edit').click();
     const activeInputs = getByTestId('CookTime__activeInputs');
     fireEvent.change(within(activeInputs).getByLabelText('hours'), { target: { value: '123' } });
     expect(within(activeInputs).getByLabelText('hours')).toHaveValue('123');
   });
 
   it('cannot receive negative or nonstring value', async () => {
-    const { getByText, getByTestId } = render(
+    const { getByTestId } = render(
       <CookTime
         activeTime={timeValues.suppliedActive}
         waitingTime={timeValues.suppliedWaiting}
-        handleSave={() => {
-          console.log('handleSave called');
+        isEditMode
+        dispatch={() => {
+          console.log('dispatch called');
         }}
       />,
     );
 
-    getByText('Edit').click();
     const activeHour = within(getByTestId('CookTime__activeInputs')).getByLabelText('hours');
     fireEvent.change(activeHour, { target: { value: '-123' } });
     expect(activeHour).toHaveValue('0');
@@ -115,15 +118,25 @@ describe('CookTime', () => {
   });
 
   it('shows initial time when undo is actioned', () => {
-    const { getByText, getByTestId } = render(
-      <CookTime
-        activeTime={timeValues.suppliedActive}
-        waitingTime={timeValues.suppliedWaiting}
-        handleSave={() => {
-          console.log('handleSave called');
-        }}
-      />,
-    );
+    const EditableCookTime = () => {
+      const [isEditMode, toggleIsEditMode] = React.useState(false);
+      return (
+        <>
+          <button onClick={() => toggleIsEditMode(!isEditMode)} type="button">
+            {isEditMode ? 'Undo' : 'Edit'}
+          </button>
+          <CookTime
+            activeTime={timeValues.suppliedActive}
+            waitingTime={timeValues.suppliedWaiting}
+            dispatch={() => {
+              console.log('dispatch called');
+            }}
+            isEditMode={isEditMode}
+          />
+        </>
+      );
+    };
+    const { getByText, getByTestId } = render(<EditableCookTime />);
 
     getByText('Edit').click();
     const activeInputs = getByTestId('CookTime__activeInputs');

@@ -72,6 +72,7 @@ const RecipeDetail: React.FunctionComponent<PropTypes> = ({
   // TODO refactor out controls into subcomponent
   // TODO implement single edit and save for all subcomponents
   // TODO improve design of edit and save buttons
+  // TODO improve types for dispatch in subcomponents
   return (
     <>
       <>
@@ -92,7 +93,6 @@ const RecipeDetail: React.FunctionComponent<PropTypes> = ({
             dispatch={dispatch}
             activeTime={recipe.activeTime}
             waitingTime={recipe.waitingTime}
-            handleSave={mergePayloadAndEditRecipe}
           />
           <RecipeImage previewImage={recipe.previewImage} handleSave={mergePayloadAndEditRecipe} />
           <IngredientsList ingredients={recipe.ingredients} handleSave={mergePayloadAndEditRecipe} />

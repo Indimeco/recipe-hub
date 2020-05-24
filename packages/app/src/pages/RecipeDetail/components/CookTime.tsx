@@ -113,11 +113,10 @@ const EditCookTime = ({
 };
 
 interface CookTimeProps extends RecipeFragment {
-  handleSave: (payload: RecipeFragment) => void;
   isEditMode: boolean;
-  dispatch: any;
+  dispatch: React.Dispatch<any>;
 }
-export const CookTime = ({ activeTime = 0, waitingTime = 0, handleSave, isEditMode, dispatch }: CookTimeProps) => {
+export const CookTime = ({ activeTime = 0, waitingTime = 0, isEditMode, dispatch }: CookTimeProps) => {
   // convert stored minutes to time units
   const { minutes: activeMinutes, hours: activeHours } = minutesToTimeUnits(activeTime || 0);
   const { minutes: waitingMinutes, hours: waitingHours } = minutesToTimeUnits(waitingTime || 0);
@@ -129,6 +128,15 @@ export const CookTime = ({ activeTime = 0, waitingTime = 0, handleSave, isEditMo
   const [inputWaitingHours, setInputWaitingHours] = useState(waitingHours);
 
   useEffect(() => {
+    if (isEditMode === false) {
+      setInputActiveHours(activeHours);
+      setInputActiveMinutes(activeMinutes);
+      setInputWaitingHours(waitingHours);
+      setInputWaitingMinutes(waitingMinutes);
+    }
+  }, [isEditMode, activeHours, activeMinutes, waitingHours, waitingMinutes]);
+
+  useEffect(() => {
     if (isEditMode === true) {
       dispatch({
         type: 'update',
@@ -137,12 +145,6 @@ export const CookTime = ({ activeTime = 0, waitingTime = 0, handleSave, isEditMo
           waitingTime: timeUnitsToMinutes({ hours: inputWaitingHours, minutes: inputWaitingMinutes }),
         },
       });
-    }
-    if (isEditMode === false) {
-      setInputActiveHours(activeHours);
-      setInputActiveMinutes(activeMinutes);
-      setInputWaitingHours(waitingHours);
-      setInputWaitingMinutes(waitingMinutes);
     }
   }, [
     inputActiveHours,
@@ -158,17 +160,17 @@ export const CookTime = ({ activeTime = 0, waitingTime = 0, handleSave, isEditMo
   ]);
 
   const activeTimeString = timeUnitsString({
-    hours: inputActiveHours,
-    minutes: inputActiveMinutes,
+    hours: activeHours,
+    minutes: activeMinutes,
   });
 
   const waitingTimeString = timeUnitsString({
-    hours: inputWaitingHours,
-    minutes: inputWaitingMinutes,
+    hours: waitingHours,
+    minutes: waitingMinutes,
   });
 
-  const hasActiveTime = inputActiveHours || inputActiveMinutes;
-  const hasWaitingTime = inputWaitingHours || inputWaitingMinutes;
+  const hasActiveTime = activeHours || activeMinutes;
+  const hasWaitingTime = waitingHours || waitingMinutes;
 
   return (
     <TimeBox>
@@ -193,8 +195,8 @@ export const CookTime = ({ activeTime = 0, waitingTime = 0, handleSave, isEditMo
           <span data-testid="CookTime__total">
             {hasActiveTime || hasWaitingTime
               ? timeUnitsString({
-                  minutes: inputActiveMinutes + inputWaitingMinutes,
-                  hours: inputActiveHours + inputWaitingHours,
+                  minutes: activeMinutes + waitingMinutes,
+                  hours: activeHours + waitingHours,
                 })
               : 'Done in a pinch!'}
           </span>

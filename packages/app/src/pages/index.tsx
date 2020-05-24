@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import ErrorPage from '../components/ErrorPage/ErrorPage';
 import Banner from '../components/Banner/Banner';
@@ -38,7 +38,7 @@ const userId = '746573747573657269644030'; // TODO get userId from cookie
 export const Pages = () => {
   const [navLinks, setNavLinks] = useState([{ name: 'My Books', path: '/book' }]);
   return (
-    <Router>
+    <>
       <Banner>Recipe Hub</Banner>
       <Navbar links={navLinks} />
       <Layout>
@@ -53,7 +53,7 @@ export const Pages = () => {
         </Switch>
       </Layout>
       <Footer />
-    </Router>
+    </>
   );
 };
 

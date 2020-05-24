@@ -1,14 +1,15 @@
 // SECTION MVP
-// FIXME Breadcrumbs don't update on recipe name or book name update
+// REVIEW IN PROGRESS visually separate CookTime and IngredientsList better ( one save action for recipe )
+// FIXME IN PROGRESS Breadcrumbs don't update on recipe name or book name update
+// REVIEW MongoDB schema
 // TODO number of servings
 // TODO keywords, tags
 // TODO each edit should be a form that I can action submit with ENTER
+// TODO Change book name modal should auto-populate the current name
 // REVIEW IngredientsList could just be two columns of Name|Amount and data separation would be behind the scenes
-// REVIEW visually separate CookTime and IngredientsList better
 // FIXME preview image enlarging when adding IngredientsList
 // TODO add favorites functionality
 // TODO add external link to recipe functionality
-// TODO go back to recipes area from single recipe button
 // FIXME Rate limit or prevent infinite recipes/books creation spam
 // FIXME investigate extraneous db connections (gql cleanup?)
 // REVIEW Graphql implementation of resolvers and schema
@@ -22,7 +23,6 @@
 // TODO filter functionality
 // TODO Integrate with cognito
 // TODO Protect user operations based on book ownership
-// REVIEW Refactor state updates to use the Apollo client store
 // TODO limit serverless-admin aws permissions https://www.serverless.com/framework/docs/providers/aws/guide/credentials/
 
 // SECTION FUTURE

@@ -63,6 +63,7 @@ export const BookInformation: React.FC<BookInformationProps> = ({ id, name, view
 
         <Modal isOpen={changeModalIsOpen} setIsOpen={setChangeModalIsOpen}>
           <InputModal
+            initialValue={name}
             label={`Change book name for ${name}`}
             button="Confirm"
             onSubmit={val => {

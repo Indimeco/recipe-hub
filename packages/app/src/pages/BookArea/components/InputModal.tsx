@@ -9,10 +9,11 @@ interface InputModalProps {
   onSubmit: (bookName: string) => any;
   label: string;
   button: string;
+  initialValue?: string;
 }
 
-export const InputModal: React.FunctionComponent<InputModalProps> = ({ label, button, onSubmit }) => {
-  const [inputValue, setInputValue] = useState('');
+export const InputModal: React.FunctionComponent<InputModalProps> = ({ label, button, initialValue, onSubmit }) => {
+  const [inputValue, setInputValue] = useState(initialValue || '');
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {

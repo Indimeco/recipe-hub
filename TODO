@@ -5,7 +5,6 @@
 // TODO number of servings
 // TODO keywords, tags
 // TODO each edit should be a form that I can action submit with ENTER
-// TODO Change book name modal should auto-populate the current name
 // REVIEW IngredientsList could just be two columns of Name|Amount and data separation would be behind the scenes
 // FIXME preview image enlarging when adding IngredientsList
 // TODO add favorites functionality

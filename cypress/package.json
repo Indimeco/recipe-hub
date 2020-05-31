@@ -1,0 +1,17 @@
+{
+  "name": "@recipe-hub/cypress",
+  "version": "1.0.0",
+  "description": "integration tests for recipehub",
+  "devDependencies": {
+    "@babel/core": "^7",
+    "@babel/preset-env": "^7",
+    "babel-loader": "^8",
+    "@cypress/webpack-preprocessor": "^5.4.1",
+    "@testing-library/cypress": "^6.0.0",
+    "@types/testing-library__cypress": "^5.0.1",
+    "cypress": "^4.7.0",
+    "ts-loader": "^7",
+    "typescript": "^3",
+    "webpack": "^4.41.2"
+  }
+}

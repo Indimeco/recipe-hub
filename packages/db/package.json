@@ -9,7 +9,8 @@
 		"build:local": "node -r dotenv/config ./index.mjs dotenv_config_path=./.env.development",
 		"build:remote": "node -r dotenv/config ./index.mjs dotenv_config_path=./.env",
 		"prestart": "[ -d ./data/db ] || mkdir -p data/db",
-		"start": "mongod --dbpath ~/data/db"
+		"start": "mongod --dbpath ~/data/db",
+		"test": ""
 	},
 	"repository": {
 		"type": "git",

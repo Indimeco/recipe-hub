@@ -14,7 +14,6 @@
 // REVIEW Graphql implementation of resolvers and schema
 // REVIEW Ensure correct use of ObjectIds across recipes/books/users
 // TODO handle Apollo Errors via ErrorPage
-// TODO Create a simple test all workflow
 // TODO Research how to test graphql resolvers
 // TODO Auto semantic versioning with lerna
 // TODO delete recipe

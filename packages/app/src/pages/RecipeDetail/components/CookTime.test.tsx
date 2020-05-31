@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { render, within, fireEvent, waitForDomChange } from '@testing-library/react';
+import React from 'react';
+import { render, within, fireEvent } from '@testing-library/react';
 
 import CookTime from './CookTime';
 
@@ -19,7 +19,7 @@ describe('CookTime', () => {
         waitingTime={timeValues.suppliedWaiting}
         isEditMode={false}
         dispatch={() => {
-          console.log('dispatch called');
+          return null;
         }}
       />,
     );
@@ -44,7 +44,7 @@ describe('CookTime', () => {
         waitingTime={zeroTimeValues.suppliedWaiting}
         isEditMode={false}
         dispatch={() => {
-          console.log('dispatch called');
+          return null;
         }}
       />,
     );
@@ -69,7 +69,7 @@ describe('CookTime', () => {
         waitingTime={zeroTimeValues.suppliedWaiting}
         isEditMode={false}
         dispatch={() => {
-          console.log('dispatch called');
+          return null;
         }}
       />,
     );
@@ -86,7 +86,7 @@ describe('CookTime', () => {
         waitingTime={timeValues.suppliedWaiting}
         isEditMode
         dispatch={() => {
-          console.log('dispatch called');
+          return null;
         }}
       />,
     );
@@ -103,7 +103,7 @@ describe('CookTime', () => {
         waitingTime={timeValues.suppliedWaiting}
         isEditMode
         dispatch={() => {
-          console.log('dispatch called');
+          return null;
         }}
       />,
     );
@@ -129,7 +129,7 @@ describe('CookTime', () => {
             activeTime={timeValues.suppliedActive}
             waitingTime={timeValues.suppliedWaiting}
             dispatch={() => {
-              console.log('dispatch called');
+              return null;
             }}
             isEditMode={isEditMode}
           />

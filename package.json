@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "preinstall": "npm run copyTypes",
-    "install": "lerna exec npm install --stream",
-    "build": "lerna exec npm run build --stream",
+    "postinstall": "lerna exec npm install --stream",
+    "start": "lerna run start --stream --parallel",
+    "build": "lerna exec npm run build --stream --parallel",
+    "test": "lerna exec npm run test --stream --parallel",
     "copyTypes": "./copyTypes.sh"
   },
   "repository": {
@@ -52,7 +54,7 @@
     "hooks": {
       "pre-commit": "npx lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-push": "set CI=true && lerna run test"
+      "pre-push": "set CI=true && npm run test"
     }
   },
   "lint-staged": {

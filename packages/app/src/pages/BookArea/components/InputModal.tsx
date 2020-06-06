@@ -23,14 +23,19 @@ export const InputModal: React.FunctionComponent<InputModalProps> = ({ label, bu
   return (
     <ContentWrapper>
       <form>
-        <InputLabel>{label}</InputLabel>
-        <Input value={inputValue} onChange={e => setInputValue(e.target.value)} forwardedRef={inputRef} />
+        <InputLabel htmlFor="modal__input">{label}</InputLabel>
+        <Input
+          id="modal__input"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          forwardedRef={inputRef}
+        />
         <ButtonPosition>
           <Button
             type="submit"
             circle={false}
             size="large"
-            onClick={e => {
+            onClick={(e) => {
               e.preventDefault();
               onSubmit(inputValue);
             }}

@@ -1,3 +1,3 @@
 module.exports = {
-  extends: "@indimeco/eslint-config-indimeco"
+  extends: "@indimeco/eslint-config-indimeco",
 };

@@ -12,7 +12,7 @@
         "jsx": "react",
         "types": [
             "cypress",
-            "testing-library__cypress"
+            "@types/testing-library__cypress"
         ],
     },
     "include": [

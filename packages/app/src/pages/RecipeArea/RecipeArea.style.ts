@@ -40,7 +40,7 @@ export const ToolsLayout = styled.div`
   align-items: center;
 `;
 
-export const ToolsText = styled.span`
+export const ToolsText = styled.label`
   ${text};
   margin-bottom: 0;
   margin-right: ${SPACE_SMALL};

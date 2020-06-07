@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, within, fireEvent } from '@testing-library/react';
 
+import { recipeDetailControlProps, EditableRecipeDetailControl } from './testUtils';
 import CookTime from './CookTime';
 
 const timeValues = {
@@ -17,10 +18,7 @@ describe('CookTime', () => {
       <CookTime
         activeTime={timeValues.suppliedActive}
         waitingTime={timeValues.suppliedWaiting}
-        isEditMode={false}
-        dispatch={() => {
-          return null;
-        }}
+        {...recipeDetailControlProps}
       />,
     );
 
@@ -42,10 +40,7 @@ describe('CookTime', () => {
       <CookTime
         activeTime={zeroTimeValues.suppliedActive}
         waitingTime={zeroTimeValues.suppliedWaiting}
-        isEditMode={false}
-        dispatch={() => {
-          return null;
-        }}
+        {...recipeDetailControlProps}
       />,
     );
 
@@ -67,10 +62,7 @@ describe('CookTime', () => {
       <CookTime
         activeTime={zeroTimeValues.suppliedActive}
         waitingTime={zeroTimeValues.suppliedWaiting}
-        isEditMode={false}
-        dispatch={() => {
-          return null;
-        }}
+        {...recipeDetailControlProps}
       />,
     );
 
@@ -84,10 +76,8 @@ describe('CookTime', () => {
       <CookTime
         activeTime={timeValues.suppliedActive}
         waitingTime={timeValues.suppliedWaiting}
+        {...recipeDetailControlProps}
         isEditMode
-        dispatch={() => {
-          return null;
-        }}
       />,
     );
 
@@ -101,10 +91,8 @@ describe('CookTime', () => {
       <CookTime
         activeTime={timeValues.suppliedActive}
         waitingTime={timeValues.suppliedWaiting}
+        {...recipeDetailControlProps}
         isEditMode
-        dispatch={() => {
-          return null;
-        }}
       />,
     );
 
@@ -118,25 +106,15 @@ describe('CookTime', () => {
   });
 
   it('shows initial time when undo is actioned', () => {
-    const EditableCookTime = () => {
-      const [isEditMode, toggleIsEditMode] = React.useState(false);
-      return (
-        <>
-          <button onClick={() => toggleIsEditMode(!isEditMode)} type="button">
-            {isEditMode ? 'Undo' : 'Edit'}
-          </button>
-          <CookTime
-            activeTime={timeValues.suppliedActive}
-            waitingTime={timeValues.suppliedWaiting}
-            dispatch={() => {
-              return null;
-            }}
-            isEditMode={isEditMode}
-          />
-        </>
-      );
-    };
-    const { getByText, getByTestId } = render(<EditableCookTime />);
+    const { getByText, getByTestId } = render(
+      <EditableRecipeDetailControl>
+        <CookTime
+          activeTime={timeValues.suppliedActive}
+          waitingTime={timeValues.suppliedWaiting}
+          {...recipeDetailControlProps}
+        />
+      </EditableRecipeDetailControl>,
+    );
 
     getByText('Edit').click();
     const activeInputs = getByTestId('CookTime__activeInputs');

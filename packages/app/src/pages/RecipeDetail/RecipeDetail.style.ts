@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { palette, MEDIA_1, SPACE_SMALL } from '../../styles/base';
+import { palette, MEDIA_1, SPACE_SMALL, SPACE_LARGE } from '../../styles/base';
 
 export const RecipeIntro = styled.div`
   color: ${palette.fg};
@@ -9,7 +9,7 @@ export const RecipeIntro = styled.div`
   @media screen and (min-width: ${MEDIA_1}) {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    grid-column-gap: ${SPACE_SMALL};
+    grid-column-gap: ${SPACE_LARGE};
   }
 `;
 

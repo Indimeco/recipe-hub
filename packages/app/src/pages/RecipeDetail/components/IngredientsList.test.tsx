@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
+import { recipeDetailControlProps, EditableRecipeDetailControl } from './testUtils';
 import IngredientsList from './IngredientsList';
 
 const initialIngredients = [
@@ -21,16 +22,18 @@ const initialIngredients = [
 
 describe('IngredientsList', () => {
   it('renders separated ingredients', async () => {
-    const { getByText } = render(<IngredientsList ingredients={initialIngredients} handleSave={() => {}} />);
+    const { getByText } = render(<IngredientsList ingredients={initialIngredients} {...recipeDetailControlProps} />);
 
-    initialIngredients.forEach(item =>
+    initialIngredients.forEach((item) =>
       expect(getByText(new RegExp(`${item.quantity}${item.unit}\\s?${item.name}`))).toBeInTheDocument(),
     );
   });
 
   it('changes values when edited', async () => {
     const { getByText, getAllByTestId } = render(
-      <IngredientsList ingredients={initialIngredients} handleSave={() => {}} />,
+      <EditableRecipeDetailControl>
+        <IngredientsList ingredients={initialIngredients} {...recipeDetailControlProps} />
+      </EditableRecipeDetailControl>,
     );
 
     getByText('Edit').click();
@@ -50,7 +53,9 @@ describe('IngredientsList', () => {
 
   it('deletes ingredient when delete is actioned', () => {
     const { getByText, getAllByText, getAllByTestId } = render(
-      <IngredientsList ingredients={initialIngredients} handleSave={() => {}} />,
+      <EditableRecipeDetailControl>
+        <IngredientsList ingredients={initialIngredients} {...recipeDetailControlProps} />
+      </EditableRecipeDetailControl>,
     );
 
     getByText('Edit').click();
@@ -65,7 +70,9 @@ describe('IngredientsList', () => {
 
   it('adds ingredients when add is actioned', () => {
     const { getByText, getAllByTestId } = render(
-      <IngredientsList ingredients={initialIngredients} handleSave={() => {}} />,
+      <EditableRecipeDetailControl>
+        <IngredientsList ingredients={initialIngredients} {...recipeDetailControlProps} />
+      </EditableRecipeDetailControl>,
     );
 
     getByText('Edit').click();
@@ -79,7 +86,9 @@ describe('IngredientsList', () => {
 
   it('shows initial ingredients when undo is actioned', () => {
     const { getByText, getAllByText } = render(
-      <IngredientsList ingredients={initialIngredients} handleSave={() => {}} />,
+      <EditableRecipeDetailControl>
+        <IngredientsList ingredients={initialIngredients} {...recipeDetailControlProps} />
+      </EditableRecipeDetailControl>,
     );
 
     getByText('Edit').click();

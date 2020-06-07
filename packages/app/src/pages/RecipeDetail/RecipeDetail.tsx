@@ -28,10 +28,6 @@ const RecipeDetail: React.FunctionComponent<PropTypes> = ({
   });
 
   const [editRecipe, { loading: editLoading, error: editError }] = useMutation(EDIT_RECIPE);
-  const mergePayloadAndEditRecipe = (payload: Partial<UpdateRecipe>) => {
-    editRecipe({ variables: { recipeFragment: { bookId, id: recipeId, ...payload } } });
-  };
-
   const handlePayload: React.Reducer<Partial<UpdateRecipe> | null, { type: string; value: any }> = (state, arg) => {
     switch (arg.type) {
       case 'update':
@@ -51,7 +47,7 @@ const RecipeDetail: React.FunctionComponent<PropTypes> = ({
   };
 
   const book: Book = data?.book;
-  const recipe: any = book?.recipes?.find(x => x?.id === recipeId);
+  const recipe: any = book?.recipes?.find((x) => x?.id === recipeId);
 
   const isLoading = bookLoading || editLoading;
   const isError = bookError || editError || !book || !recipe;
@@ -69,8 +65,11 @@ const RecipeDetail: React.FunctionComponent<PropTypes> = ({
   if (isLoading) return <Loading />;
   if (isError) return <ErrorPage />;
 
-  // TODO refactor out controls into subcomponent
-  // TODO implement single edit and save for all subcomponents
+  const recipeDetailControlProps = {
+    isEditMode,
+    dispatch,
+  };
+
   // TODO improve design of edit and save buttons
   // TODO improve types for dispatch in subcomponents
   return (
@@ -87,17 +86,12 @@ const RecipeDetail: React.FunctionComponent<PropTypes> = ({
       </>
       <RecipeWrapper>
         <RecipeIntro>
-          <RecipeName name={recipe.name} handleSave={mergePayloadAndEditRecipe} />
-          <CookTime
-            isEditMode={isEditMode}
-            dispatch={dispatch}
-            activeTime={recipe.activeTime}
-            waitingTime={recipe.waitingTime}
-          />
-          <RecipeImage previewImage={recipe.previewImage} handleSave={mergePayloadAndEditRecipe} />
-          <IngredientsList ingredients={recipe.ingredients} handleSave={mergePayloadAndEditRecipe} />
+          <RecipeName name={recipe.name} {...recipeDetailControlProps} />
+          <CookTime {...recipeDetailControlProps} activeTime={recipe.activeTime} waitingTime={recipe.waitingTime} />
+          <RecipeImage {...recipeDetailControlProps} previewImage={recipe.previewImage} />
+          <IngredientsList ingredients={recipe.ingredients} {...recipeDetailControlProps} />
         </RecipeIntro>
-        <RecipeDirections directions={recipe.directions} handleSave={mergePayloadAndEditRecipe} />
+        <RecipeDirections directions={recipe.directions} {...recipeDetailControlProps} />
       </RecipeWrapper>
     </>
   );

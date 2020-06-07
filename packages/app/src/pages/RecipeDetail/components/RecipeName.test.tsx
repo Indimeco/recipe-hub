@@ -1,32 +1,23 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
+import { recipeDetailControlProps, EditableRecipeDetailControl } from './testUtils';
 import { RecipeName } from './RecipeName';
 
 const sampleName = "Fuusen's Tuna Treat";
 
 describe('RecipeName', () => {
   it('Renders initial value', async () => {
-    const { getByText } = render(
-      <RecipeName
-        name={sampleName}
-        handleSave={() => {
-          console.log('handleSave called');
-        }}
-      />,
-    );
+    const { getByText } = render(<RecipeName name={sampleName} {...recipeDetailControlProps} />);
 
     expect(getByText(sampleName)).toBeInTheDocument();
   });
 
   it('changes value when edited', async () => {
     const { getByText, getByLabelText } = render(
-      <RecipeName
-        name={sampleName}
-        handleSave={() => {
-          console.log('handleSave called');
-        }}
-      />,
+      <EditableRecipeDetailControl>
+        <RecipeName name={sampleName} {...recipeDetailControlProps} />
+      </EditableRecipeDetailControl>,
     );
 
     getByText('Edit').click();
@@ -36,12 +27,9 @@ describe('RecipeName', () => {
 
   it('shows initial name when undo is actioned', () => {
     const { getByText, getByLabelText } = render(
-      <RecipeName
-        name={sampleName}
-        handleSave={() => {
-          console.log('handleSave called');
-        }}
-      />,
+      <EditableRecipeDetailControl>
+        <RecipeName name={sampleName} {...recipeDetailControlProps} />
+      </EditableRecipeDetailControl>,
     );
 
     getByText('Edit').click();

@@ -1,7 +1,7 @@
 // SECTION MVP
-// REVIEW IN PROGRESS visually separate CookTime and IngredientsList better ( one save action for recipe )
 // FIXME IN PROGRESS Breadcrumbs don't update on recipe name or book name update
 // REVIEW MongoDB schema
+// TODO restyle recipe edit mode
 // TODO number of servings
 // TODO keywords, tags
 // TODO each edit should be a form that I can action submit with ENTER

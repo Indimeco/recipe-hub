@@ -4,6 +4,7 @@ import { faClock } from '@fortawesome/free-solid-svg-icons';
 
 import Input from '../../../components/Input/Input';
 import { Recipe } from '../../../../../../types';
+import { RecipeDetailControl } from '../types';
 
 import { TimeBox, ClockWrapper } from './CookTime.style';
 
@@ -112,11 +113,14 @@ const EditCookTime = ({
   );
 };
 
-interface CookTimeProps extends RecipeFragment {
-  isEditMode: boolean;
-  dispatch: React.Dispatch<any>;
-}
-export const CookTime = ({ activeTime = 0, waitingTime = 0, isEditMode, dispatch }: CookTimeProps) => {
+interface CookTimeProps extends RecipeFragment, RecipeDetailControl {}
+
+export const CookTime: React.FunctionComponent<CookTimeProps> = ({
+  activeTime = 0,
+  waitingTime = 0,
+  isEditMode,
+  dispatch,
+}) => {
   // convert stored minutes to time units
   const { minutes: activeMinutes, hours: activeHours } = minutesToTimeUnits(activeTime || 0);
   const { minutes: waitingMinutes, hours: waitingHours } = minutesToTimeUnits(waitingTime || 0);

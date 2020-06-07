@@ -29,13 +29,13 @@ export const RecipeAreaView: React.FunctionComponent<RecipeAreaViewProps> = ({
         <Filter setRecipes={setRecipes} />
       </HeadingLayout>
       <ToolsLayout>
-        <ToolsText>Add a recipe</ToolsText>
-        <Button circle onClick={() => createRecipe({ variables: { bookId } })}>
+        <ToolsText htmlFor="RecipeAreaView__addButton">Add a recipe</ToolsText>
+        <Button id="RecipeAreaView__addButton" circle onClick={() => createRecipe({ variables: { bookId } })}>
           <FontAwesomeIcon icon={faPlus} />
         </Button>
       </ToolsLayout>
       <RecipesLayout>
-        {recipes.map(recipe => {
+        {recipes.map((recipe) => {
           return (
             recipe && (
               <RecipeItem

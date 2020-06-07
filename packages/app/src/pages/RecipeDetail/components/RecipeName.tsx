@@ -1,43 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import ToggleEdit from '../../../components/ToggleEdit/ToggleEdit';
 import Input from '../../../components/Input/Input';
 import Heading from '../../../components/Heading/Heading';
 import { Recipe } from '../../../../../../types';
+import { RecipeDetailControl } from '../types';
 
-interface RecipeNameProps {
+interface RecipeNameProps extends RecipeDetailControl {
   name: Recipe['name'];
-  handleSave: (payload: { name: string }) => void;
 }
-export const RecipeName: React.FunctionComponent<RecipeNameProps> = ({ name, handleSave }) => {
-  const [isEditMode, toggleEdit] = useState(false);
+export const RecipeName: React.FunctionComponent<RecipeNameProps> = ({ name, isEditMode, dispatch }) => {
   const [inputName, setInputName] = useState(name);
 
-  const save = () => {
-    handleSave({
-      name: inputName || 'Untitled recipe',
-    });
-    toggleEdit(false);
-  };
-
-  const handleEditMode = (setEditMode: boolean) => {
-    if (setEditMode === false) {
+  useEffect(() => {
+    if (isEditMode === false) {
       setInputName(name);
     }
-    toggleEdit(setEditMode);
-  };
+  }, [name, isEditMode]);
+
+  useEffect(() => {
+    if (isEditMode === true) {
+      dispatch({
+        type: 'update',
+        value: {
+          name: inputName || 'Untitled recipe',
+        },
+      });
+    }
+  }, [isEditMode, inputName, dispatch]);
 
   return (
-    <ToggleEdit edit={isEditMode} onSave={save} onClick={() => handleEditMode(!isEditMode)}>
+    <>
       {isEditMode ? (
         <label htmlFor="RecipeName__input">
           Recipe name
-          <Input id="RecipeName__input" value={inputName} onChange={e => setInputName(e.target.value)} />
+          <Input id="RecipeName__input" value={inputName} onChange={(e) => setInputName(e.target.value)} />
         </label>
       ) : (
-        <Heading el="h2">{inputName || 'Untitled recipe'}</Heading>
+        <Heading el="h2">{name || 'Untitled recipe'}</Heading>
       )}
-    </ToggleEdit>
+    </>
   );
 };
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
 import RecipeDirections from './RecipeDirections';
+import { recipeDetailControlProps, EditableRecipeDetailControl } from './testUtils';
 
 const sampleDirections = `
 1) Step one
@@ -12,26 +13,16 @@ const sampleDirections = `
 
 describe('RecipeDirections', () => {
   it('Renders initial value', async () => {
-    const { getByText } = render(
-      <RecipeDirections
-        directions={sampleDirections}
-        handleSave={() => {
-          console.log('handleSave called');
-        }}
-      />,
-    );
+    const { getByText } = render(<RecipeDirections directions={sampleDirections} {...recipeDetailControlProps} />);
 
     expect(getByText('1) Step one')).toBeInTheDocument();
   });
 
   it('changes value when edited', async () => {
     const { getByText, getByLabelText } = render(
-      <RecipeDirections
-        directions={sampleDirections}
-        handleSave={() => {
-          console.log('handleSave called');
-        }}
-      />,
+      <EditableRecipeDetailControl>
+        <RecipeDirections directions={sampleDirections} {...recipeDetailControlProps} />
+      </EditableRecipeDetailControl>,
     );
 
     getByText('Edit').click();
@@ -41,12 +32,9 @@ describe('RecipeDirections', () => {
 
   it('shows initial directions when undo is actioned', () => {
     const { getByText, getByLabelText } = render(
-      <RecipeDirections
-        directions={sampleDirections}
-        handleSave={() => {
-          console.log('handleSave called');
-        }}
-      />,
+      <EditableRecipeDetailControl>
+        <RecipeDirections directions={sampleDirections} {...recipeDetailControlProps} />
+      </EditableRecipeDetailControl>,
     );
 
     getByText('Edit').click();

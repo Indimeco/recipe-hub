@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Invisible = styled.span`
+export const Invisible = styled.label`
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
   clip-path: inset(50%);

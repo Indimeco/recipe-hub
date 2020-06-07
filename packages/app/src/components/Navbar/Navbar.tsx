@@ -8,7 +8,7 @@ type PropTypes = {
   links: CrumbsType;
 };
 const Navbar: React.FunctionComponent<PropTypes> = ({ links }) => (
-  <NavWrapper>
+  <NavWrapper data-testid="navigation">
     <Breadcrumbs crumbs={links} />
   </NavWrapper>
 );

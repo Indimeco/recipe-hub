@@ -12,7 +12,8 @@
         "jsx": "react",
         "types": [
             "cypress",
-            "@types/testing-library__cypress"
+            "@types/testing-library__cypress",
+            "./cypress/support"
         ],
     },
     "include": [

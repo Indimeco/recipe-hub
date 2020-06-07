@@ -1,7 +1,3 @@
-import React from 'react';
-
-import { Invisible } from './SrText.style';
-
-const SrText: React.FunctionComponent = ({ children }) => <Invisible>{children}</Invisible>;
+import { Invisible as SrText } from './SrText.style';
 
 export default SrText;

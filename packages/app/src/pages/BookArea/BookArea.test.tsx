@@ -66,7 +66,7 @@ describe('BookArea', () => {
     const result = await findByText((content, node) => {
       const hasText = (target: Element) => target.textContent === `Favorites for 21032 Potato Recipes: 0`;
       const nodeHasText = hasText(node);
-      const childrenDontHaveText = Array.from(node.children).every(child => !hasText(child));
+      const childrenDontHaveText = Array.from(node.children).every((child) => !hasText(child));
 
       return nodeHasText && childrenDontHaveText;
     });
@@ -75,7 +75,7 @@ describe('BookArea', () => {
   });
 
   it('has settings button to change book name', async () => {
-    const { findByText } = render(
+    const { findByText, findByLabelText } = render(
       <MockedProvider mocks={mocks} addTypename={false}>
         <Router>
           <BookArea setNavLinks={() => null} userId={userId} />
@@ -83,7 +83,7 @@ describe('BookArea', () => {
       </MockedProvider>,
     );
 
-    const button = await findByText(`Settings for 21032 Potato Recipes`);
+    const button = await findByLabelText(`Settings for 21032 Potato Recipes`);
     button.click();
 
     const dropDownItem = await findByText(`Change name`);

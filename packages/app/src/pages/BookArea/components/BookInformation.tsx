@@ -43,8 +43,8 @@ export const BookInformation: React.FC<BookInformationProps> = ({ id, name, view
         </BookSubText>
       </div>
       <SettingsWrapper>
-        <Button onClick={() => setBookSettingsOpen(!isBookSettingsOpen)}>
-          <SrText>{`Settings for ${name}`}</SrText>
+        <Button id={`BookInformation__settings--${name}`} onClick={() => setBookSettingsOpen(!isBookSettingsOpen)}>
+          <SrText htmlFor={`BookInformation__settings--${name}`}>{`Settings for ${name}`}</SrText>
           <FontAwesomeIcon icon={faCog} />
         </Button>
         <Dropdown
@@ -66,7 +66,7 @@ export const BookInformation: React.FC<BookInformationProps> = ({ id, name, view
             initialValue={name}
             label={`Change book name for ${name}`}
             button="Confirm"
-            onSubmit={val => {
+            onSubmit={(val) => {
               setChangeModalIsOpen(false);
               onSubmit({ bookId: id, newBookName: val });
             }}

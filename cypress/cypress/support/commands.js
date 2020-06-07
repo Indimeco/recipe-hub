@@ -25,3 +25,14 @@
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
 import '@testing-library/cypress/add-commands';
+
+Cypress.Commands.add('useNavigation', (name) => {
+  cy.findByTestId('navigation').findByText(name).click();
+});
+
+Cypress.Commands.add('createBook', (name) => {
+  cy.visit('http://localhost:3000');
+  cy.findByText('Create new book').click();
+  cy.findByLabelText('New book name').type(name);
+  cy.findByText('Create').click();
+});

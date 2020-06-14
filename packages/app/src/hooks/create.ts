@@ -7,11 +7,9 @@ export const CREATE_BOOK = gql`
       username
       books {
         _id
-        meta {
-          name
-          favorites
-          views
-        }
+        name
+        favorites
+        views
       }
     }
   }
@@ -22,7 +20,7 @@ export const CREATE_RECIPE = gql`
     createRecipe(bookId: $bookId) {
       _id
       recipes {
-        id
+        _id
         name
         ingredients {
           name

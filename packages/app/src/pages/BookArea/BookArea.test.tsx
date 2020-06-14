@@ -3,8 +3,8 @@ import { render } from '@testing-library/react';
 import { MockedProvider } from '@apollo/react-testing';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import { GET_USERS_BOOKS } from '../../hooks/data';
-import UserData from '../../mocks/GET_USERS_BOOKS';
+import { GET_USER } from '../../hooks/data';
+import UserData from '../../mocks/GET_USER';
 
 import BookArea from './BookArea';
 
@@ -13,7 +13,7 @@ const userId = '746573747573657269644030';
 const mocks = [
   {
     request: {
-      query: GET_USERS_BOOKS,
+      query: GET_USER,
       variables: {
         userId,
       },

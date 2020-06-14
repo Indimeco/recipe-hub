@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBook } from '@fortawesome/free-solid-svg-icons';
 
 import { User } from '../../../../../types';
-import { GET_USERS_BOOKS } from '../../hooks/data';
+import { GET_USER } from '../../hooks/data';
 import Loading from '../Loading/Loading';
 import ErrorPage from '../../components/ErrorPage/ErrorPage';
 import Heading from '../../components/Heading/Heading';
@@ -24,10 +24,11 @@ type PropTypes = {
 const BookArea: React.FunctionComponent<PropTypes> = ({ userId, setNavLinks }) => {
   const [isNewBookOpen, setNewBookOpen] = useState(false);
 
-  const { loading: getLoading, error: getError, data } = useQuery(GET_USERS_BOOKS, {
+  const { loading: getLoading, error: getError, data: userData } = useQuery(GET_USER, {
     variables: { userId },
     partialRefetch: true,
   });
+
   const [addBook, { loading: addLoading, error: addError }] = useMutation(CREATE_BOOK);
 
   const [editName, { loading: editLoading, error: editError }] = useMutation(EDIT_BOOKNAME);
@@ -52,32 +53,36 @@ const BookArea: React.FunctionComponent<PropTypes> = ({ userId, setNavLinks }) =
   if (isLoading) return <Loading />;
   if (isError) return <ErrorPage />;
 
-  const { user }: { user: User } = data;
+  const { user }: { user: User } = userData;
+  // const { books }: { books: Book[] } = booksData;
   if (!user.books) return <Heading>Add a book!</Heading>;
 
   return (
     <section>
       <Heading el="h2">{user.username}&apos;s Recipe Books!</Heading>
       <UnstyledUl>
-        {user?.books?.map(book => (
-          <UnstyledLi key={book._id}>
-            <BookTile key={`book-${book._id}`}>
-              <Link to={`/book/${book._id}`}>
-                <BookText>
-                  <FontAwesomeIcon icon={faBook} />
-                </BookText>
-                <BookText>{book.meta.name}</BookText>
-              </Link>
-              <BookInformation
-                id={book._id}
-                name={book.meta.name}
-                favorites={book.meta.favorites}
-                views={book.meta.views}
-                onSubmit={handleEditName}
-              />
-            </BookTile>
-          </UnstyledLi>
-        ))}
+        {user.books?.map(
+          (book) =>
+            book && (
+              <UnstyledLi key={book._id}>
+                <BookTile key={`book-${book._id}`}>
+                  <Link to={`/book/${book._id}`}>
+                    <BookText>
+                      <FontAwesomeIcon icon={faBook} />
+                    </BookText>
+                    <BookText>{book.name}</BookText>
+                  </Link>
+                  <BookInformation
+                    id={book._id}
+                    name={book.name}
+                    favorites={book.favorites}
+                    views={book.views}
+                    onSubmit={handleEditName}
+                  />
+                </BookTile>
+              </UnstyledLi>
+            ),
+        )}
       </UnstyledUl>
       <ModalButton
         isOpen={isNewBookOpen}

@@ -42,12 +42,12 @@ const RecipeDetail: React.FunctionComponent<PropTypes> = ({
   const [isEditMode, toggleIsEditMode] = React.useState(false);
 
   const handleSave = () => {
-    editRecipe({ variables: { recipeFragment: { bookId, id: recipeId, ...payload } } });
+    editRecipe({ variables: { recipeFragment: { bookId, _id: recipeId, ...payload } } });
     toggleIsEditMode(false);
   };
 
   const book: Book = data?.book;
-  const recipe: any = book?.recipes?.find((x) => x?.id === recipeId);
+  const recipe: any = book?.recipes?.find((x) => x?._id === recipeId);
 
   const isLoading = bookLoading || editLoading;
   const isError = bookError || editError || !book || !recipe;
@@ -56,7 +56,7 @@ const RecipeDetail: React.FunctionComponent<PropTypes> = ({
     if (!isLoading || !isError) {
       setNavLinks([
         { name: 'My Books', path: '/book' },
-        { name: book.meta.name, path: `/book/${book._id}` },
+        { name: book.name, path: `/book/${book._id}` },
         { name: recipe.name, path: null },
       ]);
     }

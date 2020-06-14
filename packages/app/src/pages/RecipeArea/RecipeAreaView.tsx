@@ -39,9 +39,9 @@ export const RecipeAreaView: React.FunctionComponent<RecipeAreaViewProps> = ({
           return (
             recipe && (
               <RecipeItem
-                key={`recipe-${recipe.id}`}
+                key={`recipe-${recipe._id}`}
                 name={recipe.name}
-                link={`/book/${bookId}/${recipe.id}`}
+                link={`/book/${bookId}/${recipe._id}`}
                 preview={recipe?.previewImage}
               />
             )

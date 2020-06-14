@@ -12,7 +12,7 @@ function connectToDatabase() {
   if (!dbUri) throw new Error();
   if (cachedDb) return Promise.resolve(cachedDb);
 
-  return MongoClient.connect(dbUri).then(db => {
+  return MongoClient.connect(dbUri).then((db) => {
     const recipeHub = db.db(dbName);
     cachedDb = recipeHub;
     return cachedDb;
@@ -24,7 +24,7 @@ export const graphqlHandler = (event, context, callback) => {
   // eslint-disable-next-line
   context.callbackWaitsForEmptyEventLoop = false;
 
-  connectToDatabase().then(connection =>
+  connectToDatabase().then((connection) =>
     new ApolloServer({
       resolvers,
       context: ({ event: e }) => {

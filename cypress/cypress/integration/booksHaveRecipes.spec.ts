@@ -5,7 +5,7 @@ describe('Book view', () => {
 
   it('Lists starting books', () => {
     cy.findByText('My Books').should('exist');
-    cy.findByText("Jake's Recipes0").should('exist');
+    cy.findByText("Baby Bear's Jam Encylopedia").should('exist');
   });
 
   it('Can create new book', () => {
@@ -24,6 +24,13 @@ describe('Book view', () => {
     const timestamp = Date.now();
     const testBook = `${timestamp} cypress book`;
     cy.createBook(testBook);
+
+    /* Recipe Area View */
+    cy.findByText(testBook).should('exist').click();
+    cy.findAllByText(testBook).should('have.length', 2); // Book name plus breadcrumb
+    cy.useNavigation('My Books'); // return via breadcrumb
+
+    /* Book Area View */
     cy.findByLabelText(`Settings for ${testBook}`).click();
     cy.findByText('Change name').click();
     cy.findByLabelText(`Change book name for ${testBook}`).clear().type(`renamed ${testBook}`);

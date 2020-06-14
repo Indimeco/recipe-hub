@@ -8,13 +8,15 @@ export default {
       books: [
         {
           _id: '74657374626f6f6b69644030',
-          meta: { name: 'Fuusen', favorites: 0, views: 100, __typename: 'Meta' },
-          __typename: 'ListedBook',
+          name: 'Fuusen', 
+          favorites: 0, 
+          views: 100,
         },
         {
           _id: '5e5cc970fa637929e872dea3',
-          meta: { name: '21032 Potato Recipes', favorites: 0, views: 0, __typename: 'Meta' },
-          __typename: 'ListedBook',
+          name: '21032 Potato Recipes', 
+          favorites: 0, 
+          views: 0
         },
       ],
       __typename: 'User',

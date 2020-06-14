@@ -2,12 +2,13 @@
 	"name": "@recipe-hub/db",
 	"version": "1.0.0",
 	"description": "",
-	"main": "index.mjs",
-	"type": "module",
+	"main": "dist/index.js",
+	"type": "commonjs",
 	"scripts": {
+		"prebuild": "npx tsc",
 		"build": "npm run build:local",
-		"build:local": "node -r dotenv/config ./index.mjs dotenv_config_path=./.env.development",
-		"build:remote": "node -r dotenv/config ./index.mjs dotenv_config_path=./.env",
+		"build:local": "node -r dotenv/config ./dist/index.js dotenv_config_path=./.env.development",
+		"build:remote": "node -r dotenv/config ./dist/index.js dotenv_config_path=./.env",
 		"prestart": "[ -d ./data/db ] || mkdir -p data/db",
 		"start": "mongod --dbpath ~/data/db",
 		"test": ""
@@ -17,7 +18,7 @@
 		"url": "git+https://github.com/Indimeco/recipe-hub.git"
 	},
 	"keywords": [],
-	"author": "",
+	"author": "indimeco",
 	"license": "ISC",
 	"bugs": {
 		"url": "https://github.com/Indimeco/recipe-hub/issues"
@@ -25,7 +26,12 @@
 	"homepage": "https://github.com/Indimeco/recipe-hub#readme",
 	"devDependencies": {},
 	"dependencies": {
+		"@types/mongodb": "^3.5.20",
+		"@types/ramda": "^0.27.6",
 		"dotenv": "^8.2.0",
-		"mongodb": "^3.2.7"
+		"graphql": "^15.1.0",
+		"mongodb": "^3.2.7",
+		"ramda": "^0.27.0",
+		"typescript": "^3.9.3"
 	}
 }

@@ -1,20 +1,19 @@
 import { gql } from 'apollo-server-lambda';
 
 export default gql`
+  scalar Date
+
   type Book {
     _id: ID!
-    meta: Meta!
-    recipes: [Recipe]
-  }
-
-  type Meta {
+    owner: ID!
     name: String!
-    favorites: Int!
     views: Int!
+    favorites: Int!
+    recipes: [Recipe!]!
   }
 
   type Recipe {
-    id: ID!
+    _id: ID!
     name: String!
     ingredients: [Ingredient]
     directions: String
@@ -22,20 +21,20 @@ export default gql`
     activeTime: Int
     previewImage: String
     recipeSource: String
-    method: String
+    methods: [String]
     categories: [String]
-    lastModified: String!
+    lastModified: Date!
   }
 
   type Ingredient {
     name: String!
-    quantity: String!
-    unit: String!
+    quantity: String
+    unit: String
   }
 
   input UpdateRecipe {
     bookId: ID!
-    id: String!
+    _id: String!
     name: String
     ingredients: [UpdateIngredient]
     directions: String
@@ -56,12 +55,7 @@ export default gql`
   type User {
     _id: ID!
     username: String!
-    books: [ListedBook!]
-  }
-
-  type ListedBook {
-    _id: ID!
-    meta: Meta!
+    books: [Book]!
   }
 
   type Query {
@@ -73,6 +67,6 @@ export default gql`
     createRecipe(bookId: String!): Book
     editRecipe(recipeFragment: UpdateRecipe): Book
     createBook(userId: String!, bookName: String!): User
-    editBookName(userId: String!, bookId: String!, newBookName: String!): User
+    editBookName(userId: String!, bookId: String!, newBookName: String!): Book
   }
 `;

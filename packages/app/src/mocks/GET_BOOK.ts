@@ -4,13 +4,10 @@ export default {
   data: {
     book: {
       _id: 'potato',
-      meta: {
-        name: "Jake's Recipes",
-        __typename: 'Meta',
-      },
+      name: "Jake's Recipes",
       recipes: [
         {
-          id: '1',
+          _id: '1',
           name: 'Hello sweet pancake',
           ingredients: [
             {
@@ -37,7 +34,7 @@ export default {
 					__typename: 'Recipe',
         },
         {
-          id: '2',
+          _id: '2',
           name: 'Mac & Cheese',
           ingredients: [
             {
@@ -130,7 +127,7 @@ export default {
 					__typename: 'Recipe',
         },
         {
-          id: '3',
+          _id: '3',
           name: 'Chili Con Carne',
           ingredients: [
             {
@@ -222,7 +219,7 @@ export default {
 					__typename: 'Recipe',
         },
         {
-          id: '4',
+          _id: '4',
           name: 'Chili Con Carne',
           ingredients: [
             {
@@ -315,7 +312,7 @@ export default {
 					__typename: 'Recipe',
         },
         {
-          id: '5',
+          _id: '5',
           name: 'Chili Con Carne',
           ingredients: [
             {
@@ -408,7 +405,7 @@ export default {
 					__typename: 'Recipe',
         },
         {
-          id: '6',
+          _id: '6',
           name: 'Chili Con Carne',
           ingredients: [
             {
@@ -501,7 +498,7 @@ export default {
 					__typename: 'Recipe',
         },
         {
-          id: '7',
+          _id: '7',
           name: 'Chili Con Carne',
           ingredients: [
             {
@@ -594,7 +591,7 @@ export default {
 					__typename: 'Recipe',
         },
         {
-          id: '8',
+          _id: '8',
           name: 'Chili Con Carne',
           ingredients: [
             {
@@ -687,7 +684,7 @@ export default {
 					__typename: 'Recipe',
         },
         {
-          id: '9',
+          _id: '9',
           name: 'Chili Con Carne',
           ingredients: [
             {
@@ -780,7 +777,7 @@ export default {
 					__typename: 'Recipe',
         },
         {
-          id: '10',
+          _id: '10',
           name: 'Chili Con Carne',
           ingredients: [
             {
@@ -873,7 +870,7 @@ export default {
 					__typename: 'Recipe',
         },
         {
-          id: '11',
+          _id: '11',
           name: 'Chili Con Carne',
           ingredients: [
             {

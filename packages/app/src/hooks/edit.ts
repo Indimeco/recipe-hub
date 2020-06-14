@@ -4,12 +4,7 @@ export const EDIT_BOOKNAME = gql`
   mutation EditBookName($userId: String!, $bookId: String!, $newBookName: String!) {
     editBookName(userId: $userId, bookId: $bookId, newBookName: $newBookName) {
       _id
-      books {
-        _id
-        meta {
-          name
-        }
-      }
+      name
     }
   }
 `;
@@ -19,7 +14,7 @@ export const EDIT_RECIPE = gql`
     editRecipe(recipeFragment: $recipeFragment) {
       _id
       recipes {
-        id
+        _id
         name
         ingredients {
           name

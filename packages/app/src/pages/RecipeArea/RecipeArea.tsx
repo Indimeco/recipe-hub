@@ -34,7 +34,7 @@ const RecipeArea: React.FunctionComponent<PropTypes> = ({
     if (!isLoading && !isError) {
       setNavLinks([
         { name: 'My Books', path: '/book' },
-        { name: book?.meta?.name, path: null },
+        { name: book?.name, path: null },
       ]);
     }
   }, [setNavLinks, book, isLoading, isError]);
@@ -45,7 +45,7 @@ const RecipeArea: React.FunctionComponent<PropTypes> = ({
   // bit of funny typescript here to ensure recipes has the correct type despite conditional assignment
   const recipes = (book.recipes as Recipe[]) ? (book.recipes as Recipe[]) : [];
 
-  return <RecipeAreaView bookName={book.meta.name} bookId={bookId} recipes={recipes} createRecipe={createRecipe} />;
+  return <RecipeAreaView bookName={book.name} bookId={bookId} recipes={recipes} createRecipe={createRecipe} />;
 };
 
 export default RecipeArea;

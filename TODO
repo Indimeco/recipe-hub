@@ -1,6 +1,4 @@
 // SECTION MVP
-// FIXME IN PROGRESS Breadcrumbs don't update on recipe name or book name update
-// REVIEW MongoDB schema
 // TODO restyle recipe edit mode
 // TODO number of servings
 // TODO keywords, tags
@@ -12,7 +10,6 @@
 // FIXME Rate limit or prevent infinite recipes/books creation spam
 // FIXME investigate extraneous db connections (gql cleanup?)
 // REVIEW Graphql implementation of resolvers and schema
-// REVIEW Ensure correct use of ObjectIds across recipes/books/users
 // TODO handle Apollo Errors via ErrorPage
 // TODO Research how to test graphql resolvers
 // TODO Auto semantic versioning with lerna

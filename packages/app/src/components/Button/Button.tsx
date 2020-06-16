@@ -12,11 +12,12 @@ export const Button = ({
   inlineStyle = false,
   circle = true,
   size = 'small',
+  type = 'button',
   onClick,
   children,
   ...restProps
 }: ButtonProps & ButtonHTMLAttributes<any>): React.ReactElement => (
-  <StyledButton inlineStyle={inlineStyle} circle={circle} onClick={onClick} size={size} {...restProps}>
+  <StyledButton {...{ inlineStyle, circle, size, type, onClick }} {...restProps}>
     {children}
   </StyledButton>
 );

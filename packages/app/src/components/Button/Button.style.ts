@@ -4,6 +4,7 @@ import {
   FONT_MEDIUM,
   FONT_SMALL,
   FONT_TINY,
+  FONT_BOLD,
   palette,
   SPACE_MEGA,
   SPACE_MEDIUM,
@@ -65,8 +66,10 @@ export const StyledButton = styled.button<ButtonProps>`
   border: 1px solid;
   margin: 0;
 
+  font-weight: ${FONT_BOLD};
+
   border-color: ${palette.aux};
-  background-color: ${palette.auxAccent};
+  background-color: ${palette.bg1};
   ${secondaryInteractable};
 
   &:hover,
@@ -75,7 +78,7 @@ export const StyledButton = styled.button<ButtonProps>`
     background-color: ${palette.bg};
   }
 
-  ${props => (props.inlineStyle ? inlineVariant : regular)};
-  ${props => (props.circle ? circular : rectangular)};
+  ${(props) => (props.inlineStyle ? inlineVariant : regular)};
+  ${(props) => (props.circle ? circular : rectangular)};
   ${({ size }) => (size ? sizes[size] : null)};
 `;

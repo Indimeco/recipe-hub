@@ -23,3 +23,9 @@ export const TimeBox = styled.div`
   margin: ${SPACE_SMALL};
   text-align: center;
 `;
+
+export const EditControlsLayout = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`;

@@ -9,7 +9,7 @@ import ErrorPage from '../../components/ErrorPage/ErrorPage';
 import Button from '../../components/Button/Button';
 
 import { RecipeDirections, RecipeName, CookTime, IngredientsList, RecipeImage } from './components';
-import { RecipeWrapper, RecipeIntro } from './RecipeDetail.style';
+import { RecipeWrapper, RecipeIntro, EditControlsLayout } from './RecipeDetail.style';
 
 type PropTypes = {
   match: { params: { bookId: string; recipeId: string } };
@@ -70,20 +70,19 @@ const RecipeDetail: React.FunctionComponent<PropTypes> = ({
     dispatch,
   };
 
-  // TODO improve design of edit and save buttons
   // TODO improve types for dispatch in subcomponents
   return (
-    <>
-      <>
-        <Button circle={false} onClick={() => toggleIsEditMode(!isEditMode)}>
+    <form>
+      <EditControlsLayout>
+        <Button circle onClick={() => toggleIsEditMode(!isEditMode)}>
           {isEditMode ? 'Undo' : 'Edit'}
         </Button>
         {isEditMode && (
-          <Button circle={false} onClick={handleSave}>
+          <Button circle onClick={handleSave} type="submit">
             Save
           </Button>
         )}
-      </>
+      </EditControlsLayout>
       <RecipeWrapper>
         <RecipeIntro>
           <RecipeName name={recipe.name} {...recipeDetailControlProps} />
@@ -93,7 +92,7 @@ const RecipeDetail: React.FunctionComponent<PropTypes> = ({
         </RecipeIntro>
         <RecipeDirections directions={recipe.directions} {...recipeDetailControlProps} />
       </RecipeWrapper>
-    </>
+    </form>
   );
 };
 

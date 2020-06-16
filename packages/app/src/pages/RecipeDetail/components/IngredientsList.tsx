@@ -9,7 +9,7 @@ import Button from '../../../components/Button/Button';
 import SrText from '../../../components/SrText/SrText';
 import { RecipeDetailControl } from '../types';
 
-import { IngredientsBox, EditContainer } from './IngredientsList.style';
+import { IngredientsUl, EditContainer } from './IngredientsList.style';
 
 // TODO Reorder ingredient
 
@@ -106,7 +106,7 @@ export const IngredientsList: React.FunctionComponent<IngredientsListProps> = ({
   }, [isEditMode, state, dispatch]);
 
   return (
-    <IngredientsBox>
+    <>
       {isEditMode ? (
         <div>
           <EditContainer>
@@ -158,14 +158,14 @@ export const IngredientsList: React.FunctionComponent<IngredientsListProps> = ({
           </EditContainer>
         </div>
       ) : (
-        <ul>
+        <IngredientsUl>
           {ingredients &&
             initializeIngredients(ingredients).map((item) => (
               <li key={item.key}> {`${item?.quantity}${item?.unit} ${item?.name}`}</li>
             ))}
-        </ul>
+        </IngredientsUl>
       )}
-    </IngredientsBox>
+    </>
   );
 };
 

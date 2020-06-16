@@ -10,4 +10,7 @@ export const EditContainer = styled.div`
   }
 `;
 
-export const IngredientsBox = styled.div``;
+export const IngredientsUl = styled.ul`
+  list-style-position: inside;
+  padding: 0;
+`;

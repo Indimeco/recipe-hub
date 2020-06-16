@@ -9,9 +9,12 @@ const expectedAlt = 'Recipe display image';
 
 describe('RecipeImage', () => {
   it('Renders initial value', async () => {
-    const { getByAltText } = render(<RecipeImage previewImage={samplepreviewImage} {...recipeDetailControlProps} />);
+    const { getByAltText, queryByTestId } = render(
+      <RecipeImage previewImage={samplepreviewImage} {...recipeDetailControlProps} />,
+    );
 
     expect(getByAltText(expectedAlt)).toBeInTheDocument();
+    expect(queryByTestId('Image__Placeholder')).not.toBeInTheDocument();
   });
 
   it('changes value when edited', async () => {
@@ -24,5 +27,11 @@ describe('RecipeImage', () => {
     getByText('Edit').click();
     fireEvent.change(getByLabelText('Preview image'), { target: { value: '123' } });
     expect(getByLabelText('Preview image')).toHaveValue('123');
+  });
+
+  it('renders svg when no image supplied', () => {
+    const { getByTestId } = render(<RecipeImage previewImage="" {...recipeDetailControlProps} />);
+
+    expect(getByTestId('Image__Placeholder')).toBeInTheDocument();
   });
 });

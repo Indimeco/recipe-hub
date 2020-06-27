@@ -26,7 +26,7 @@ const headingStyles = {
   `,
 };
 
-export const StyledHeading = styled.h1<{ el: HeadingTypes }>`
+export const StyledHeading = styled.h1<{ likeEl: HeadingTypes }>`
   ${heading};
-  ${({ el }) => headingStyles[el]};
+  ${({ likeEl }) => headingStyles[likeEl]};
 `;

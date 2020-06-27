@@ -1,11 +1,15 @@
 import React from 'react';
 
-import { StyledHeading } from './Heading.style';
+import { StyledHeading, HeadingTypes } from './Heading.style';
 
 interface HeadingProps {
-  el?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  el?: HeadingTypes;
   children: React.ReactNode;
 }
-const Heading = ({ el, children }: HeadingProps) => <StyledHeading as={el}>{children}</StyledHeading>;
+const Heading = ({ el = 'h1', children }: HeadingProps) => (
+  <StyledHeading as={el} el={el}>
+    {children}
+  </StyledHeading>
+);
 
 export default Heading;

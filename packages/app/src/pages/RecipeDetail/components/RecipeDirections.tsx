@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import Textarea from '../../../components/Textarea/Textarea';
+import Heading from '../../../components/Heading/Heading';
 import { Recipe } from '../../../../../../types';
 import { RecipeDetailControl } from '../types';
 
@@ -32,7 +33,7 @@ export const RecipeDirections: React.FunctionComponent<RecipeDirectionsProps> = 
   }, [isEditMode, inputDirections, dispatch]);
 
   return (
-    <>
+    <div>
       {isEditMode ? (
         <label htmlFor="RecipeDirections__textarea">
           Directions
@@ -44,6 +45,8 @@ export const RecipeDirections: React.FunctionComponent<RecipeDirectionsProps> = 
         </label>
       ) : (
         <>
+          <Heading el="h3">Directions</Heading>
+
           {directions ? (
             // eslint-disable-next-line
             directions.split('\n').map((x, index) => <p key={`directions-${index}`}>{x}</p>)
@@ -52,7 +55,7 @@ export const RecipeDirections: React.FunctionComponent<RecipeDirectionsProps> = 
           )}
         </>
       )}
-    </>
+    </div>
   );
 };
 

@@ -8,7 +8,7 @@ export const RecipeIntro = styled.div`
 
   @media screen and (min-width: ${MEDIA_1}) {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 2fr 3fr;
     grid-column-gap: ${SPACE_LARGE};
   }
 `;

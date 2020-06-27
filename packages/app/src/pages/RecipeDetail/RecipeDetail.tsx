@@ -87,7 +87,11 @@ const RecipeDetail: React.FunctionComponent<PropTypes> = ({
         <RecipeIntro>
           <RecipeName name={recipe.name} {...recipeDetailControlProps} />
           <CookTime {...recipeDetailControlProps} activeTime={recipe.activeTime} waitingTime={recipe.waitingTime} />
-          <RecipeImage {...recipeDetailControlProps} previewImage={recipe.previewImage} />
+          <div>
+            <RecipeImage {...recipeDetailControlProps} previewImage={recipe.previewImage} />
+            <p>Servings: 5</p>
+            <p>Keywords: 5</p>
+          </div>
           <IngredientsList ingredients={recipe.ingredients} {...recipeDetailControlProps} />
         </RecipeIntro>
         <RecipeDirections directions={recipe.directions} {...recipeDetailControlProps} />

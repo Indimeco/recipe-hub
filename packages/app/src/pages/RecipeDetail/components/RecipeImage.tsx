@@ -8,6 +8,8 @@ import { RecipeDetailControl } from '../types';
 import { ReactComponent as RawLogo } from '../../../assets/RecipeHubOptimized.svg';
 import { SPACE_MEGA } from '../../../styles/base';
 
+import { RecipeImageContainer } from './RecipeImage.styles';
+
 interface RecipeImageProps extends RecipeDetailControl {
   previewImage: Recipe['previewImage'];
 }
@@ -20,7 +22,11 @@ const ImagePlaceholder = styled(RawLogo)`
 type PreviewRendererProps = { previewImage?: Recipe['previewImage'] };
 const PreviewRenderer: React.FunctionComponent<PreviewRendererProps> = ({ previewImage }) => {
   if (!previewImage) return <ImagePlaceholder data-testid="Image__Placeholder" />;
-  return <Image src={previewImage} alt="Recipe display image" />;
+  return (
+    <RecipeImageContainer>
+      <Image src={previewImage} alt="Recipe display image" />
+    </RecipeImageContainer>
+  );
 };
 
 export const RecipeImage: React.FunctionComponent<RecipeImageProps> = ({ previewImage, dispatch, isEditMode }) => {

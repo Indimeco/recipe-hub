@@ -7,6 +7,7 @@ import { Recipe } from '../../../../../../types';
 import Input from '../../../components/Input/Input';
 import Button from '../../../components/Button/Button';
 import SrText from '../../../components/SrText/SrText';
+import Heading from '../../../components/Heading/Heading';
 import { RecipeDetailControl } from '../types';
 
 import { IngredientsUl, EditContainer } from './IngredientsList.style';
@@ -106,57 +107,56 @@ export const IngredientsList: React.FunctionComponent<IngredientsListProps> = ({
   }, [isEditMode, state, dispatch]);
 
   return (
-    <>
+    <div>
+      <Heading el="h3">Ingredients</Heading>
       {isEditMode ? (
-        <div>
-          <EditContainer>
-            <div>
-              <label id="ingredientslist__name">Name</label>
-              <label id="ingredientslist__quantity">Quantity</label>
-              <label id="ingredientslist__unit">Unit</label>
-            </div>
-            {state &&
-              state.map((item, index) => (
-                <div key={`ingredientlist__edit-${item.key}`}>
-                  <Input
-                    name="name"
-                    aria-labelledby="ingredientslist__name"
-                    data-testid="ingredientslist__name__input"
-                    onChange={(event) =>
-                      internalDispatch({ type: 'update', index, value: { ...item, name: event.target.value } })
-                    }
-                    value={item?.name}
-                  />
-                  <Input
-                    name="quantity"
-                    aria-labelledby="ingredientslist__quantity"
-                    data-testid="ingredientslist__quantity__input"
-                    onChange={(event) =>
-                      internalDispatch({ type: 'update', index, value: { ...item, quantity: event.target.value } })
-                    }
-                    value={item?.quantity}
-                  />
-                  <Input
-                    name="unit"
-                    aria-labelledby="ingredientslist__unit"
-                    data-testid="ingredientslist__unit__input"
-                    onChange={(event) =>
-                      internalDispatch({ type: 'update', index, value: { ...item, unit: event.target.value } })
-                    }
-                    value={item?.unit}
-                  />
-                  <Button inlineStyle onClick={() => internalDispatch({ type: 'remove', index })}>
-                    <FontAwesomeIcon icon={faTimes} />
-                    <SrText>Delete</SrText>
-                  </Button>
-                </div>
-              ))}
-            <Button inlineStyle onClick={() => internalDispatch({ type: 'add' })}>
-              <FontAwesomeIcon icon={faPlus} />
-              <SrText>Add</SrText>
-            </Button>
-          </EditContainer>
-        </div>
+        <EditContainer>
+          <div>
+            <label id="ingredientslist__name">Name</label>
+            <label id="ingredientslist__quantity">Quantity</label>
+            <label id="ingredientslist__unit">Unit</label>
+          </div>
+          {state &&
+            state.map((item, index) => (
+              <div key={`ingredientlist__edit-${item.key}`}>
+                <Input
+                  name="name"
+                  aria-labelledby="ingredientslist__name"
+                  data-testid="ingredientslist__name__input"
+                  onChange={(event) =>
+                    internalDispatch({ type: 'update', index, value: { ...item, name: event.target.value } })
+                  }
+                  value={item?.name}
+                />
+                <Input
+                  name="quantity"
+                  aria-labelledby="ingredientslist__quantity"
+                  data-testid="ingredientslist__quantity__input"
+                  onChange={(event) =>
+                    internalDispatch({ type: 'update', index, value: { ...item, quantity: event.target.value } })
+                  }
+                  value={item?.quantity}
+                />
+                <Input
+                  name="unit"
+                  aria-labelledby="ingredientslist__unit"
+                  data-testid="ingredientslist__unit__input"
+                  onChange={(event) =>
+                    internalDispatch({ type: 'update', index, value: { ...item, unit: event.target.value } })
+                  }
+                  value={item?.unit}
+                />
+                <Button inlineStyle onClick={() => internalDispatch({ type: 'remove', index })}>
+                  <FontAwesomeIcon icon={faTimes} />
+                  <SrText>Delete</SrText>
+                </Button>
+              </div>
+            ))}
+          <Button inlineStyle onClick={() => internalDispatch({ type: 'add' })}>
+            <FontAwesomeIcon icon={faPlus} />
+            <SrText>Add</SrText>
+          </Button>
+        </EditContainer>
       ) : (
         <IngredientsUl>
           {ingredients &&
@@ -165,7 +165,7 @@ export const IngredientsList: React.FunctionComponent<IngredientsListProps> = ({
             ))}
         </IngredientsUl>
       )}
-    </>
+    </div>
   );
 };
 

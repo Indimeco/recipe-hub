@@ -13,4 +13,5 @@ export const EditContainer = styled.div`
 export const IngredientsUl = styled.ul`
   list-style-position: inside;
   padding: 0;
+  margin: 0;
 `;

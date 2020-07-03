@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { SPACE_SMALL } from '../../../styles/base';
+import { SPACE_SMALL, SPACE_MEDIUM } from '../../../styles/base';
 
 export const EditContainer = styled.div`
   div {
@@ -14,4 +14,11 @@ export const IngredientsUl = styled.ul`
   list-style-position: inside;
   padding: 0;
   margin: 0;
+`;
+
+export const IngredientsContainer = styled.div`
+  padding: 0;
+  margin: 0;
+  margin-bottom: ${SPACE_MEDIUM};
+  border: none;
 `;

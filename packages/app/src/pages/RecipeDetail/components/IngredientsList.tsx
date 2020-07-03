@@ -8,9 +8,10 @@ import Input from '../../../components/Input/Input';
 import Button from '../../../components/Button/Button';
 import SrText from '../../../components/SrText/SrText';
 import Heading from '../../../components/Heading/Heading';
+import { Text } from '../../../components';
 import { RecipeDetailControl } from '../types';
 
-import { IngredientsUl, EditContainer } from './IngredientsList.style';
+import { IngredientsUl, IngredientsContainer, EditContainer } from './IngredientsList.style';
 
 // TODO Reorder ingredient
 
@@ -107,14 +108,22 @@ export const IngredientsList: React.FunctionComponent<IngredientsListProps> = ({
   }, [isEditMode, state, dispatch]);
 
   return (
-    <div>
-      <Heading el="h3">Ingredients</Heading>
+    <IngredientsContainer as={isEditMode ? 'fieldset' : 'div'}>
+      <Heading el={isEditMode ? 'legend' : 'h3'} level="h3">
+        Ingredients
+      </Heading>
       {isEditMode ? (
         <EditContainer>
           <div>
-            <label id="ingredientslist__name">Name</label>
-            <label id="ingredientslist__quantity">Quantity</label>
-            <label id="ingredientslist__unit">Unit</label>
+            <Heading el="label" level="h4" id="ingredientslist__name">
+              Name
+            </Heading>
+            <Heading el="label" level="h4" id="ingredientslist__quantity">
+              Quantity
+            </Heading>
+            <Heading el="label" level="h4" id="ingredientslist__unit">
+              Unit
+            </Heading>
           </div>
           {state &&
             state.map((item, index) => (
@@ -161,11 +170,14 @@ export const IngredientsList: React.FunctionComponent<IngredientsListProps> = ({
         <IngredientsUl>
           {ingredients &&
             initializeIngredients(ingredients).map((item) => (
-              <li key={item.key}> {`${item?.quantity}${item?.unit} ${item?.name}`}</li>
+              <Text el="li" key={item.key}>
+                {' '}
+                {`${item?.quantity}${item?.unit} ${item?.name}`}
+              </Text>
             ))}
         </IngredientsUl>
       )}
-    </div>
+    </IngredientsContainer>
   );
 };
 

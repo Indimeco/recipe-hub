@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
 
 import Input from '../../../components/Input/Input';
+import { Heading, Text } from '../../../components';
 import { Recipe } from '../../../../../../types';
 import { RecipeDetailControl } from '../types';
 
@@ -61,8 +62,10 @@ const EditCookTime = ({
     <>
       <div>
         <span data-testid="CookTime__activeInputs">
-          Active time:
-          <label htmlFor="CookTime__activeInputs__hours">
+          <Heading el="label" level="h3">
+            Active time:
+          </Heading>
+          <Text el="label" htmlFor="CookTime__activeInputs__hours">
             <Input
               id="CookTime__activeInputs__hours"
               value={inputActiveHours}
@@ -71,8 +74,8 @@ const EditCookTime = ({
               width="small"
             />
             hours
-          </label>
-          <label htmlFor="CookTime__activeInputs__minutes">
+          </Text>
+          <Text el="label" htmlFor="CookTime__activeInputs__minutes">
             <Input
               id="CookTime__activeInputs__minutes"
               value={inputActiveMinutes}
@@ -81,13 +84,15 @@ const EditCookTime = ({
               width="small"
             />
             minutes
-          </label>
+          </Text>
         </span>
       </div>
       <div>
         <span data-testid="CookTime__waitingInputs">
-          Waiting time:
-          <label htmlFor="CookTime__waitingInputs__hours">
+          <Heading el="label" level="h3">
+            Waiting time:
+          </Heading>
+          <Text el="label" htmlFor="CookTime__waitingInputs__hours">
             <Input
               id="CookTime__waitingInputs__hours"
               value={inputWaitingHours}
@@ -96,8 +101,8 @@ const EditCookTime = ({
               width="small"
             />
             hours
-          </label>
-          <label htmlFor="CookTime__waitingInputs__minutes">
+          </Text>
+          <Text el="label" htmlFor="CookTime__waitingInputs__minutes">
             <Input
               id="CookTime__waitingInputs__minutes"
               value={inputWaitingMinutes}
@@ -106,7 +111,7 @@ const EditCookTime = ({
               width="small"
             />
             minutes
-          </label>
+          </Text>
         </span>
       </div>
     </>
@@ -192,24 +197,26 @@ export const CookTime: React.FunctionComponent<CookTimeProps> = ({
           }}
         />
       ) : (
-        <>
+        <span>
           <ClockWrapper>
             <FontAwesomeIcon icon={faClock} />
           </ClockWrapper>
-          <span data-testid="CookTime__total">
+          <Heading el="span" level="h3" data-testid="CookTime__total">
             {hasActiveTime || hasWaitingTime
               ? timeUnitsString({
                   minutes: activeMinutes + waitingMinutes,
                   hours: activeHours + waitingHours,
                 })
               : 'Done in a pinch!'}
+          </Heading>
+          <span>
+            {hasActiveTime || hasWaitingTime ? <Text>{' ( '}</Text> : null}
+            <Text data-testid="CookTime__active">{activeTimeString ? `${activeTimeString} active` : ''}</Text>
+            {hasActiveTime && hasWaitingTime ? <Text> : </Text> : null}
+            <Text data-testid="CookTime__waiting">{waitingTimeString ? `${waitingTimeString} waiting` : ''}</Text>
+            {hasActiveTime || hasWaitingTime ? <Text>{' ) '}</Text> : null}
           </span>
-          {hasActiveTime || hasWaitingTime ? <span>{' ( '}</span> : null}
-          <span data-testid="CookTime__active">{activeTimeString ? `${activeTimeString} active` : ''}</span>
-          {hasActiveTime && hasWaitingTime ? <span> : </span> : null}
-          <span data-testid="CookTime__waiting">{waitingTimeString ? `${waitingTimeString} waiting` : ''}</span>
-          {hasActiveTime || hasWaitingTime ? <span>{' ) '}</span> : null}
-        </>
+        </span>
       )}
     </TimeBox>
   );

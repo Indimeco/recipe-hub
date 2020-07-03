@@ -3,12 +3,13 @@ import styled from 'styled-components';
 
 import Input from '../../../components/Input/Input';
 import Image from '../../../components/Image/Image';
+import { Heading } from '../../../components';
 import { Recipe } from '../../../../../../types';
 import { RecipeDetailControl } from '../types';
 import { ReactComponent as RawLogo } from '../../../assets/RecipeHubOptimized.svg';
 import { SPACE_MEGA } from '../../../styles/base';
 
-import { RecipeImageContainer } from './RecipeImage.styles';
+import { RecipeImageContainer, RecipeInputContainer } from './RecipeImage.styles';
 
 interface RecipeImageProps extends RecipeDetailControl {
   previewImage: Recipe['previewImage'];
@@ -52,10 +53,12 @@ export const RecipeImage: React.FunctionComponent<RecipeImageProps> = ({ preview
   return (
     <>
       {isEditMode ? (
-        <label htmlFor="RecipeImage__input">
-          Preview image
+        <RecipeInputContainer>
+          <Heading el="label" level="h3" htmlFor="RecipeImage__input">
+            Preview image:
+          </Heading>
           <Input id="RecipeImage__input" value={inputImage} onChange={(e) => setinputImage(e.target.value)} />
-        </label>
+        </RecipeInputContainer>
       ) : (
         <PreviewRenderer previewImage={previewImage} />
       )}

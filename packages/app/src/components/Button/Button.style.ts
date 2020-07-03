@@ -42,11 +42,13 @@ const sizes = {
   `,
   medium: css`
     font-size: ${FONT_SMALL};
+    font-weight: ${FONT_BOLD};
     width: ${SPACE_LARGE};
     height: ${SPACE_LARGE};
   `,
   large: css`
     font-size: ${FONT_MEDIUM};
+    font-weight: ${FONT_BOLD};
     width: 100%;
     height: auto;
   `,
@@ -65,8 +67,6 @@ export const StyledButton = styled.button<ButtonProps>`
 
   border: 1px solid;
   margin: 0;
-
-  font-weight: ${FONT_BOLD};
 
   border-color: ${palette.aux};
   background-color: ${palette.bg1};

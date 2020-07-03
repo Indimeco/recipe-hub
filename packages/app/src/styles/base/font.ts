@@ -12,4 +12,5 @@ export const FONT_HEADING =
 export const FONT_CONTENT =
   "'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande','Lucida Sans Unicode', Geneva, Verdana, sans-serif";
 
-export const FONT_BOLD = '700';
+export const FONT_BOLD_SEMI = '600';
+export const FONT_BOLD = '900';

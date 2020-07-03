@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { AllHTMLAttributes } from 'react';
 
 import { StyledHeading, HeadingTypes } from './Heading.style';
 
 interface HeadingProps {
   el?: any;
-  likeEl?: HeadingTypes;
-  children: React.ReactNode;
+  level?: HeadingTypes;
 }
-const Heading = ({ el = 'h1', likeEl, children }: HeadingProps) => (
-  <StyledHeading as={el} likeEl={likeEl || el}>
+export const Heading: React.FunctionComponent<AllHTMLAttributes<any> & HeadingProps> = ({
+  el = 'h1',
+  level,
+  children,
+  ...restProps
+}) => (
+  <StyledHeading as={el} likeEl={level || el} {...restProps}>
     {children}
   </StyledHeading>
 );

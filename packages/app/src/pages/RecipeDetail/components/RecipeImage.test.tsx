@@ -25,8 +25,8 @@ describe('RecipeImage', () => {
     );
 
     getByText('Edit').click();
-    fireEvent.change(getByLabelText('Preview image'), { target: { value: '123' } });
-    expect(getByLabelText('Preview image')).toHaveValue('123');
+    fireEvent.change(getByLabelText('Preview image:'), { target: { value: '123' } });
+    expect(getByLabelText('Preview image:')).toHaveValue('123');
   });
 
   it('renders svg when no image supplied', () => {

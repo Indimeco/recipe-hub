@@ -1,14 +1,9 @@
-import React from 'react';
+import React, { InputHTMLAttributes } from 'react';
 
 import { StyledInput } from './Input.style';
+import { InputProps } from './types';
 
-interface InputProps {
-  inline?: boolean;
-  width?: 'small' | 'large';
-  'data-testid'?: string;
-  forwardedRef?: any;
-}
-const Input = ({
+export const Input: React.FunctionComponent<InputHTMLAttributes<HTMLInputElement> & InputProps> = ({
   placeholder,
   id,
   inline,
@@ -17,10 +12,11 @@ const Input = ({
   width,
   name,
   forwardedRef,
-  ...rest
-}: React.InputHTMLAttributes<HTMLInputElement> & InputProps) => (
+  fontSize,
+  ...restProps
+}) => (
   <StyledInput
-    {...{ placeholder, id, inline, onChange, value, width, name, 'data-testid': rest['data-testid'] }}
+    {...{ placeholder, id, inline, onChange, value, width, name, fontSize, ...restProps }}
     ref={forwardedRef}
   />
 );

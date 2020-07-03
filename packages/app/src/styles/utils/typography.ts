@@ -1,11 +1,12 @@
 import { css } from 'styled-components';
 
 import {
-  FONT_MEDIUM,
+  FONT_SMALL,
   FONT_CONTENT,
   FONT_HEADING,
   FONT_TITLE,
   FONT_HUGE,
+  FONT_BOLD_SEMI,
   SPACE_SMALL,
   SPACE_HUGE,
   palette,
@@ -24,12 +25,14 @@ export const heading = () => css`
   color: inherit;
   font-size: ${FONT_HUGE};
   font-family: ${FONT_HEADING};
+  font-weight: ${FONT_BOLD_SEMI};
   margin: 0;
+  padding: 0;
 `;
 
 export const text = () => css`
   color: inherit;
-  font-size: ${FONT_MEDIUM};
+  font-size: ${FONT_SMALL};
   font-family: ${FONT_CONTENT};
   margin: 0 0 ${SPACE_SMALL} 0;
 `;

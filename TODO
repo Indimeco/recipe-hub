@@ -1,10 +1,7 @@
 // SECTION MVP
-// TODO add correct headings, fieldsets, labels to recipe details & edit mode
 // TODO restyle book area view layout
-// TODO restyle recipe edit mode
 // TODO number of servings
 // TODO keywords, tags
-// TODO each edit should be a form that I can action submit with ENTER
 // REVIEW IngredientsList could just be two columns of Name|Amount and data separation would be behind the scenes
 // TODO add favorites functionality
 // TODO add external link to recipe functionality

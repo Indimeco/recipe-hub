@@ -1,7 +1,8 @@
 // SECTION MVP
+// TODO how will app build programatically receive lambda location when both are provisioned given lambda is created via serverless?
+// TODO mongodb provisioning via terraform
+// REVIEW js bundle analysis
 // TODO restyle book area view layout
-// TODO number of servings
-// TODO keywords, tags
 // REVIEW IngredientsList could just be two columns of Name|Amount and data separation would be behind the scenes
 // TODO add favorites functionality
 // TODO add external link to recipe functionality
@@ -19,6 +20,8 @@
 // TODO limit serverless-admin aws permissions https://www.serverless.com/framework/docs/providers/aws/guide/credentials/
 
 // SECTION FUTURE
+// TODO number of servings
+// TODO keywords, tags
 // REVIEW Breadcrumbs design to be like book tabs
 // TODO One click infrastructure build
 // TODO previewImage upload

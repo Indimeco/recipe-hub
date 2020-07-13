@@ -6,7 +6,7 @@ provider "aws" {
 resource "aws_s3_bucket" "recipehub_website_bucket" {
   bucket = "recipehub-website"
   acl    = "public-read" # does this need to be public since the policy is public?
-  policy = file("${path.module}/recipehub_website_bucket_policy.json")
+  policy = file("${path.module}/app_s3policy.json")
   force_destroy = true
 
   website {

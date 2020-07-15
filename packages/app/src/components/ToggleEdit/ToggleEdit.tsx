@@ -14,7 +14,7 @@ interface ToggleEditProps {
   children: React.ReactNode;
 }
 
-const ToggleEdit: React.FunctionComponent<ToggleEditProps> = ({ edit, onClick, onSave, children }) => (
+export const ToggleEdit: React.FunctionComponent<ToggleEditProps> = ({ edit, onClick, onSave, children }) => (
   <ButtonVisibilityWrapper>
     <ToggleButtonWrapper>
       {edit && (

@@ -28,7 +28,7 @@ export const Indent = styled.div`
 interface LayoutProps {
   children: React.ReactNode;
 }
-const Layout: FunctionComponent<LayoutProps> = ({ children }) => (
+export const Layout: FunctionComponent<LayoutProps> = ({ children }) => (
   <Wrapper>
     <Indent>{children}</Indent>
   </Wrapper>

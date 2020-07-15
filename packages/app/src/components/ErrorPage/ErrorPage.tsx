@@ -24,7 +24,7 @@ interface ErrorPageProps {
   code: string;
 }
 
-const ErrorPage = ({ code = '404' }): React.ReactElement<ErrorPageProps> => (
+export const ErrorPage = ({ code = '404' }): React.ReactElement<ErrorPageProps> => (
   <div>
     <Heading el="h2">{codeResponses[code].title}</Heading>
     <p>{codeResponses[code].message}</p>

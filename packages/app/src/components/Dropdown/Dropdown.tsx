@@ -10,7 +10,7 @@ interface DropdownProps {
   onRequestClose: () => void;
 }
 
-const Dropdown: React.FunctionComponent<DropdownProps> = ({ isOpen, onRequestClose, content }) => {
+export const Dropdown: React.FunctionComponent<DropdownProps> = ({ isOpen, onRequestClose, content }) => {
   const dropdownNode = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     const clearDropdown = (e: any) => {

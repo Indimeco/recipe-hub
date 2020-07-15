@@ -6,7 +6,7 @@ import { Link } from '../Link/Link';
 
 import { FooterWrapper, FooterContent } from './Footer.style';
 
-const Footer: React.FunctionComponent = () => (
+export const Footer: React.FunctionComponent = () => (
   <FooterWrapper>
     <FooterContent>
       <ul>

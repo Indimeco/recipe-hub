@@ -1,15 +1,13 @@
-import { css } from 'styled-components';
+import styled from 'styled-components';
 
-export default () => {
-  return css`
-    background-color: black;
-    width: 100%;
-    height: 100%;
+export const ImageWrapper = styled.div`
+  background-color: black;
+  width: 100%;
+  height: 100%;
+`;
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  `;
-};
+export const StyledImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;

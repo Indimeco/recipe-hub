@@ -7,7 +7,7 @@ import { NavWrapper } from './Navbar.style';
 type PropTypes = {
   links: CrumbsType;
 };
-const Navbar: React.FunctionComponent<PropTypes> = ({ links }) => (
+export const Navbar: React.FunctionComponent<PropTypes> = ({ links }) => (
   <NavWrapper data-testid="navigation">
     <Breadcrumbs crumbs={links} />
   </NavWrapper>

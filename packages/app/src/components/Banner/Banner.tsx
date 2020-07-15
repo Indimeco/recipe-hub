@@ -5,7 +5,7 @@ import Link from '../Link/Link';
 
 import { BannerWrapper, BannerContent, Logo } from './Banner.style';
 
-const Banner: React.FunctionComponent = ({ children }) => (
+export const Banner: React.FunctionComponent = ({ children }) => (
   <BannerWrapper>
     <BannerContent>
       <Link to="/">

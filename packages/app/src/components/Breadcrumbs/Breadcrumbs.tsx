@@ -9,7 +9,7 @@ type PropTypes = {
   crumbs: CrumbsType;
 };
 
-const Breadcrumbs: React.FunctionComponent<PropTypes> = ({ crumbs }) => (
+export const Breadcrumbs: React.FunctionComponent<PropTypes> = ({ crumbs }) => (
   <CrumbContainer>
     {crumbs?.map(({ name, path }, index) => {
       return (

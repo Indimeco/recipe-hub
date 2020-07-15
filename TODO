@@ -1,4 +1,6 @@
 // SECTION MVP
+// TODO pagination on recipes
+// TODO pagination on books
 // TODO how will app build programatically receive lambda location when both are provisioned given lambda is created via serverless?
 // TODO mongodb provisioning via terraform
 // REVIEW js bundle analysis
@@ -6,7 +8,7 @@
 // REVIEW IngredientsList could just be two columns of Name|Amount and data separation would be behind the scenes
 // TODO add favorites functionality
 // TODO add external link to recipe functionality
-// FIXME Rate limit or prevent infinite recipes/books creation spam
+// FIXME Rate limit or prevent infinite recipes/books creation spam (api gateway)
 // FIXME investigate extraneous db connections (gql cleanup?)
 // REVIEW Graphql implementation of resolvers and schema
 // TODO handle Apollo Errors via ErrorPage
@@ -17,7 +19,6 @@
 // TODO filter functionality
 // TODO Integrate with cognito
 // TODO Protect user operations based on book ownership
-// TODO limit serverless-admin aws permissions https://www.serverless.com/framework/docs/providers/aws/guide/credentials/
 
 // SECTION FUTURE
 // TODO number of servings

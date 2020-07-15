@@ -31,7 +31,6 @@ const circular = css`
 const rectangular = css`
   padding: ${SPACE_TINY};
   border-radius: 3%;
-  max-width: ${SPACE_MEGA};
 `;
 
 const sizes = {

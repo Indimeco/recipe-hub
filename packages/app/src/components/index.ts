@@ -1,6 +1,7 @@
 export { Banner } from './Banner';
 export { Breadcrumbs } from './Breadcrumbs';
 export { Button } from './Button';
+export { Card } from './Card';
 export { Dropdown } from './Dropdown';
 export { ErrorPage } from './ErrorPage';
 export { Footer } from './Footer';

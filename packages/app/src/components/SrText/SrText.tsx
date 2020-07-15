@@ -1,3 +1,5 @@
-import { Invisible as SrText } from './SrText.style';
+import { Invisible } from './SrText.style';
+
+export const SrText = Invisible;
 
 export default SrText;

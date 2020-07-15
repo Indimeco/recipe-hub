@@ -2,6 +2,12 @@ import styled from 'styled-components';
 
 import { SPACE_SMALL, FONT_LARGE, FONT_MEDIUM } from '../../styles/base';
 
+export const BookAreaLayout = styled.div`
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-column-gap: ${SPACE_SMALL};
+`;
+
 export const BookTile = styled.div`
   padding: ${SPACE_SMALL} 0;
 `;

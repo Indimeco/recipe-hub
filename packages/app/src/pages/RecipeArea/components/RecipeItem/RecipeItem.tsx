@@ -37,7 +37,7 @@ export const RecipeItem = ({
       <RecipeHeading>{name}</RecipeHeading>
     </CenteringLink>
     <Link to={link}>
-      <Image src={preview} alt="" />
+      <Image src={preview ?? ''} alt="" />
     </Link>
     <RecipeItemControls>
       <RecipeItemControl icon={faHeart} />

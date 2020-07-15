@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { palette, SPACE_BANNER, FONT_HERO, SPACE_SMALL } from '../../styles/base';
 import { ReactComponent as RawLogo } from '../../assets/RecipeHubOptimized.svg';
-import { indent } from '../../styles/utils';
+import { indent, rounded } from '../../styles/utils';
 
 export const BannerWrapper = styled.div`
   background-color: ${palette.brand};
@@ -23,11 +23,11 @@ export const BannerWrapper = styled.div`
 
 export const BannerContent = styled.div`
   ${indent}
+  ${rounded({ bottomLeft: false, bottomRight: false })}
   color: ${palette.brand};
   display: flex;
   align-items: center;
   background-color: ${palette.bg1};
-  border-radius: 2% 2% 0 0;
   padding: 0 ${SPACE_SMALL};
   margin-top: ${SPACE_SMALL};
   box-shadow: 0 0 4px ${palette.bgAccent1};

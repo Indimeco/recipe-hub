@@ -6,12 +6,11 @@ import {
   FONT_TINY,
   FONT_BOLD,
   palette,
-  SPACE_MEGA,
   SPACE_MEDIUM,
   SPACE_LARGE,
   SPACE_TINY,
 } from '../../styles/base';
-import { secondaryInteractable } from '../../styles/utils';
+import { secondaryInteractable, rounded } from '../../styles/utils';
 
 const inlineVariant = css`
   width: auto;
@@ -30,7 +29,7 @@ const circular = css`
 
 const rectangular = css`
   padding: ${SPACE_TINY};
-  border-radius: 3%;
+  ${rounded};
 `;
 
 const sizes = {

@@ -1,17 +1,10 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { MEDIA_1, MEDIA_2, SPACE_SMALL } from '../../styles/base';
-import { heading, text } from '../../styles/utils';
-
-const gridStyles = css`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-column-gap: ${SPACE_SMALL};
-  grid-row-gap: ${SPACE_SMALL};
-`;
+import { heading, text, grid } from '../../styles/utils';
 
 export const HeadingLayout = styled.div`
-  ${gridStyles};
+  ${grid};
 
   @media screen and (min-width: ${MEDIA_1}) {
     grid-template-columns: 1fr 1fr;
@@ -19,7 +12,7 @@ export const HeadingLayout = styled.div`
 `;
 
 export const RecipesLayout = styled.div`
-  ${gridStyles};
+  ${grid};
 
   @media screen and (min-width: ${MEDIA_1}) {
     grid-template-columns: 1fr 1fr 1fr;

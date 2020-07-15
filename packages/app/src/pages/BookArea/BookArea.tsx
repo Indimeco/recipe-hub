@@ -2,17 +2,25 @@ import React, { useState, useEffect } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBook } from '@fortawesome/free-solid-svg-icons';
+import { faBook, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import { User } from '../../../../../types';
 import { GET_USER } from '../../hooks/data';
-import { ErrorPage, Heading, ModalButton, Input, Card } from '../../components';
+import { ErrorPage, Heading, ModalButton, Input } from '../../components';
 import { Loading } from '../Loading';
 import { CREATE_BOOK } from '../../hooks/create';
 import { EDIT_BOOKNAME } from '../../hooks/edit';
 
 import { BookInformation } from './components/BookInformation';
-import { BookAreaLayout, BookTile, BookText, UnstyledLi, UnstyledUl, BookButtonText } from './BookArea.style';
+import {
+  BookAreaLayout,
+  BookTile,
+  BookText,
+  UnstyledLi,
+  UnstyledUl,
+  BookButtonText,
+  ToolsLayout,
+} from './BookArea.style';
 import { InputModal } from './components/InputModal';
 
 type PropTypes = {
@@ -57,48 +65,44 @@ const BookArea: React.FunctionComponent<PropTypes> = ({ userId, setNavLinks }) =
   return (
     <section>
       <BookAreaLayout>
-        <div>
-          <Heading el="h2">{user.username}&apos;s Recipe Books!</Heading>
-          <UnstyledUl>
-            {user.books?.map(
-              (book) =>
-                book && (
-                  <UnstyledLi key={book._id}>
-                    <BookTile key={`book-${book._id}`}>
-                      <Link to={`/book/${book._id}`}>
-                        <BookText>
-                          <FontAwesomeIcon icon={faBook} />
-                        </BookText>
-                        <BookText>{book.name}</BookText>
-                      </Link>
-                      <BookInformation
-                        id={book._id}
-                        name={book.name}
-                        favorites={book.favorites}
-                        views={book.views}
-                        onSubmit={handleEditName}
-                      />
-                    </BookTile>
-                  </UnstyledLi>
-                ),
-            )}
-          </UnstyledUl>
-        </div>
-        <div>
-          <Card>
-            <Input placeholder="Search..." />
-            <ModalButton
-              isOpen={isNewBookOpen}
-              setIsOpen={setNewBookOpen}
-              ModalContent={() => <InputModal label="New book name" button="Create" onSubmit={handleCreation} />}
-              circle={false}
-              size="large"
-            >
-              <BookButtonText>Create new book</BookButtonText>
-            </ModalButton>
-          </Card>
-        </div>
+        <Heading el="h2">{`${user.username}'s Recipe Books!`}</Heading>
+        <Input placeholder="Search My Books" />
       </BookAreaLayout>
+      <ToolsLayout>
+        <BookButtonText htmlFor="BookArea__addButton">Create new book</BookButtonText>
+        <ModalButton
+          isOpen={isNewBookOpen}
+          setIsOpen={setNewBookOpen}
+          ModalContent={() => <InputModal label="New book name" button="Create" onSubmit={handleCreation} />}
+          id="BookArea__addButton"
+        >
+          <FontAwesomeIcon icon={faPlus} />
+        </ModalButton>
+      </ToolsLayout>
+      <UnstyledUl>
+        {user.books?.map(
+          (book) =>
+            book && (
+              <UnstyledLi key={book._id}>
+                <BookTile key={`book-${book._id}`}>
+                  <Link to={`/book/${book._id}`}>
+                    <BookText>
+                      <FontAwesomeIcon icon={faBook} />
+                    </BookText>
+                    <BookText>{book.name}</BookText>
+                  </Link>
+                  <BookInformation
+                    id={book._id}
+                    name={book.name}
+                    favorites={book.favorites}
+                    views={book.views}
+                    onSubmit={handleEditName}
+                  />
+                </BookTile>
+              </UnstyledLi>
+            ),
+        )}
+      </UnstyledUl>
     </section>
   );
 };

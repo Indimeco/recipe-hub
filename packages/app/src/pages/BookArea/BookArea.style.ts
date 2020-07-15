@@ -1,11 +1,20 @@
 import styled from 'styled-components';
 
-import { SPACE_SMALL, FONT_LARGE, FONT_MEDIUM } from '../../styles/base';
+import { SPACE_SMALL, FONT_LARGE, MEDIA_1 } from '../../styles/base';
+import { text, grid } from '../../styles/utils';
 
 export const BookAreaLayout = styled.div`
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  grid-column-gap: ${SPACE_SMALL};
+  ${grid}
+
+  @media screen and (min-width: ${MEDIA_1}) {
+    grid-template-columns: 1fr 1fr;
+  }
+`;
+
+export const ToolsLayout = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 `;
 
 export const BookTile = styled.div`
@@ -28,7 +37,8 @@ export const UnstyledUl = styled.ul`
   margin: 0;
 `;
 
-export const BookButtonText = styled.span`
-  color: inherit;
-  font-size: ${FONT_MEDIUM};
+export const BookButtonText = styled.label`
+  ${text};
+  margin-bottom: 0;
+  margin-right: ${SPACE_SMALL};
 `;

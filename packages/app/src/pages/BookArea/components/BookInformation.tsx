@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faHeart, faCog } from '@fortawesome/free-solid-svg-icons';
+import numberAbbreviate from 'number-abbreviate';
 
 import Button from '../../../components/Button/Button';
 import Dropdown from '../../../components/Dropdown/Dropdown';
@@ -30,7 +31,7 @@ export const BookInformation: React.FC<BookInformationProps> = ({ id, name, view
         </BookSubText>
         <BookSubText>
           <SrText>{`Views for ${name}: `}</SrText>
-          {views}
+          {numberAbbreviate(views, 1)}
         </BookSubText>
       </div>
       <div>
@@ -39,11 +40,15 @@ export const BookInformation: React.FC<BookInformationProps> = ({ id, name, view
         </BookSubText>
         <BookSubText>
           <SrText>{`Favorites for ${name}: `}</SrText>
-          {favorites}
+          {numberAbbreviate(favorites, 1)}
         </BookSubText>
       </div>
       <SettingsWrapper>
-        <Button id={`BookInformation__settings--${name}`} onClick={() => setBookSettingsOpen(!isBookSettingsOpen)}>
+        <Button
+          id={`BookInformation__settings--${name}`}
+          onClick={() => setBookSettingsOpen(!isBookSettingsOpen)}
+          inlineStyle
+        >
           <SrText htmlFor={`BookInformation__settings--${name}`}>{`Settings for ${name}`}</SrText>
           <FontAwesomeIcon icon={faCog} />
         </Button>

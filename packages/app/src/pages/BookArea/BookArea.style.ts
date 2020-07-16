@@ -19,6 +19,11 @@ export const ToolsLayout = styled.div`
 
 export const BookTile = styled.div`
   padding: ${SPACE_SMALL} 0;
+
+  ${grid}
+  @media screen and (min-width: ${MEDIA_1}) {
+    grid-template-columns: 2fr 1fr;
+  }
 `;
 
 export const BookText = styled.span`

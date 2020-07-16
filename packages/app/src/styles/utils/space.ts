@@ -31,4 +31,5 @@ export const grid = (): FlattenSimpleInterpolation => css`
   grid-template-columns: 1fr;
   grid-column-gap: ${SPACE_SMALL};
   grid-row-gap: ${SPACE_SMALL};
+  align-items: center;
 `;

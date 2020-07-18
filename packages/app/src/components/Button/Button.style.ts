@@ -8,6 +8,7 @@ import {
   palette,
   SPACE_MEDIUM,
   SPACE_LARGE,
+  SPACE_MEGA,
   SPACE_TINY,
 } from '../../styles/base';
 import { secondaryInteractable, rounded } from '../../styles/utils';
@@ -41,7 +42,7 @@ const sizes = {
   medium: css`
     font-size: ${FONT_SMALL};
     font-weight: ${FONT_BOLD};
-    width: ${SPACE_LARGE};
+    width: ${SPACE_MEGA};
     height: ${SPACE_LARGE};
   `,
   large: css`

@@ -25,8 +25,8 @@ export const GET_BOOK = gql`
 `;
 
 export const GET_USER = gql`
-  query User($userId: String!) {
-    user(userId: $userId) {
+  query User($userId: String!, $lastBook: String) {
+    user(userId: $userId, lastBook: $lastBook) {
       _id
       username
       books {
@@ -34,6 +34,10 @@ export const GET_USER = gql`
         name
         favorites
         views
+      }
+      pagination {
+        lastId
+        hasNext
       }
     }
   }

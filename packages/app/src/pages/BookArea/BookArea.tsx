@@ -6,7 +6,7 @@ import { faBook, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import { User } from '../../../../../types';
 import { GET_USER } from '../../hooks/data';
-import { ErrorPage, Heading, ModalButton, Input } from '../../components';
+import { ErrorPage, Heading, ModalButton, Input, Button } from '../../components';
 import { Loading } from '../Loading';
 import { CREATE_BOOK } from '../../hooks/create';
 import { EDIT_BOOKNAME } from '../../hooks/edit';
@@ -20,6 +20,7 @@ import {
   UnstyledUl,
   BookButtonText,
   ToolsLayout,
+  LoadMoreWrapper,
 } from './BookArea.style';
 import { InputModal } from './components/InputModal';
 
@@ -30,9 +31,10 @@ type PropTypes = {
 const BookArea: React.FunctionComponent<PropTypes> = ({ userId, setNavLinks }) => {
   const [isNewBookOpen, setNewBookOpen] = useState(false);
 
-  const { loading: getLoading, error: getError, data: userData } = useQuery(GET_USER, {
-    variables: { userId },
+  const { loading: getLoading, error: getError, data: userData, fetchMore } = useQuery(GET_USER, {
+    variables: { userId, lastBook: null },
     partialRefetch: true,
+    notifyOnNetworkStatusChange: true,
   });
 
   const [addBook, { loading: addLoading, error: addError }] = useMutation(CREATE_BOOK);
@@ -103,6 +105,30 @@ const BookArea: React.FunctionComponent<PropTypes> = ({ userId, setNavLinks }) =
             ),
         )}
       </UnstyledUl>
+      {user.pagination.hasNext && (
+        <LoadMoreWrapper>
+          <Button
+            size="medium"
+            circle={false}
+            onClick={() =>
+              fetchMore({
+                query: GET_USER,
+                variables: { userId, lastBook: userData.user.pagination.lastId },
+                updateQuery: (prev, { fetchMoreResult }) => {
+                  return {
+                    user: {
+                      ...fetchMoreResult.user,
+                      books: [...prev.user.books, ...fetchMoreResult.user.books],
+                    },
+                  };
+                },
+              })
+            }
+          >
+            Load More
+          </Button>
+        </LoadMoreWrapper>
+      )}
     </section>
   );
 };

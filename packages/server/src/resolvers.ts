@@ -103,8 +103,8 @@ export default {
     book: async (_source, { bookId }, { db }): Promise<Book> => {
       return db.collection(booksCollection).findOne({ _id: oId(bookId) });
     },
-    user: async (_source, { userId }, { db }): Promise<User> => {
-      return resolveUser({ db, userId });
+    user: async (_source, { userId, lastBook }, { db }): Promise<User> => {
+      return resolveUser({ db, userId, lastBook });
     },
   },
 };

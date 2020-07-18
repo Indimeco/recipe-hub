@@ -47,7 +47,7 @@ export type Mutation = {
   createRecipe?: Maybe<Book>,
   editRecipe?: Maybe<Book>,
   createBook?: Maybe<User>,
-  editBookName?: Maybe<User>,
+  editBookName?: Maybe<Book>,
 };
 
 
@@ -73,6 +73,11 @@ export type MutationEditBookNameArgs = {
   newBookName: Scalars['String']
 };
 
+export type Pagination = {
+  lastId: Scalars['String'],
+  hasNext: Scalars['Boolean'],
+};
+
 export type Query = {
   book?: Maybe<Book>,
   user?: Maybe<User>,
@@ -85,7 +90,8 @@ export type QueryBookArgs = {
 
 
 export type QueryUserArgs = {
-  userId?: Maybe<Scalars['String']>
+  userId?: Maybe<Scalars['String']>,
+  lastBook?: Maybe<Scalars['String']>
 };
 
 export type Recipe = {
@@ -126,6 +132,7 @@ export type User = {
   _id: Scalars['ID'],
   username: Scalars['String'],
   books: Array<Maybe<Book>>,
+  pagination: Pagination,
 };
 
 
@@ -235,7 +242,12 @@ export type MutationResolvers<Context = any, ParentType = Mutation> = {
   createRecipe?: Resolver<Maybe<Book>, ParentType, Context, MutationCreateRecipeArgs>,
   editRecipe?: Resolver<Maybe<Book>, ParentType, Context, MutationEditRecipeArgs>,
   createBook?: Resolver<Maybe<User>, ParentType, Context, MutationCreateBookArgs>,
-  editBookName?: Resolver<Maybe<User>, ParentType, Context, MutationEditBookNameArgs>,
+  editBookName?: Resolver<Maybe<Book>, ParentType, Context, MutationEditBookNameArgs>,
+};
+
+export type PaginationResolvers<Context = any, ParentType = Pagination> = {
+  lastId?: Resolver<Scalars['String'], ParentType, Context>,
+  hasNext?: Resolver<Scalars['Boolean'], ParentType, Context>,
 };
 
 export type QueryResolvers<Context = any, ParentType = Query> = {
@@ -261,6 +273,7 @@ export type UserResolvers<Context = any, ParentType = User> = {
   _id?: Resolver<Scalars['ID'], ParentType, Context>,
   username?: Resolver<Scalars['String'], ParentType, Context>,
   books?: Resolver<ArrayOrIterable<Maybe<Book>>, ParentType, Context>,
+  pagination?: Resolver<Pagination, ParentType, Context>,
 };
 
 export type IResolvers<Context = any> = {
@@ -268,6 +281,7 @@ export type IResolvers<Context = any> = {
   Date?: GraphQLScalarType,
   Ingredient?: IngredientResolvers<Context>,
   Mutation?: MutationResolvers<Context>,
+  Pagination?: PaginationResolvers<Context>,
   Query?: QueryResolvers<Context>,
   Recipe?: RecipeResolvers<Context>,
   User?: UserResolvers<Context>,

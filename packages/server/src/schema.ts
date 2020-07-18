@@ -52,15 +52,21 @@ export default gql`
     unit: String
   }
 
+  type Pagination {
+    lastId: String!
+    hasNext: Boolean!
+  }
+
   type User {
     _id: ID!
     username: String!
     books: [Book]!
+    pagination: Pagination!
   }
 
   type Query {
     book(bookId: String): Book
-    user(userId: String): User
+    user(userId: String, lastBook: String): User
   }
 
   type Mutation {

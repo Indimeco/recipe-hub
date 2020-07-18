@@ -47,3 +47,9 @@ export const BookButtonText = styled.label`
   margin-bottom: 0;
   margin-right: ${SPACE_SMALL};
 `;
+
+export const LoadMoreWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 export default {
   data: {
     user: {
@@ -8,17 +6,22 @@ export default {
       books: [
         {
           _id: '74657374626f6f6b69644030',
-          name: 'Fuusen', 
-          favorites: 0, 
+          name: 'Fuusen',
+          favorites: 0,
           views: 100,
         },
         {
           _id: '5e5cc970fa637929e872dea3',
-          name: '21032 Potato Recipes', 
-          favorites: 0, 
-          views: 0
+          name: '21032 Potato Recipes',
+          favorites: 0,
+          views: 0,
         },
       ],
+      pagination: {
+        lastId: '5e5cc970fa637929e872dea3',
+        hasNext: false,
+        __typename: 'Pagination',
+      },
       __typename: 'User',
     },
   },

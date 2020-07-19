@@ -16,6 +16,7 @@ const mocks = [
       query: GET_USER,
       variables: {
         userId,
+        lastBook: null,
       },
     },
     result: {

@@ -11,7 +11,7 @@ export interface BookDocument extends Omit<Book, '_id' | 'owner' | 'recipes'> {
   owner: ObjectId;
   recipes: DbRecipe[];
 }
-export interface UserDocument extends Omit<User, '_id' | 'books'> {
+export interface UserDocument extends Omit<User, '_id' | 'books' | 'pagination'> {
   _id: ObjectId;
   books: ObjectId[];
 }

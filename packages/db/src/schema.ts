@@ -40,6 +40,27 @@ export const createBooks = (db: Db, collectionName: string) => {
                 directions: {
                   bsonType: 'string',
                 },
+                ingredients: {
+                  bsonType: 'array',
+                  items: {
+                    bsonType: 'object',
+                    description: 'must be an object',
+                    properties: {
+                      name: {
+                        bsonType: 'string',
+                        description: 'must be a string',
+                      },
+                      quantity: {
+                        bsonType: 'string',
+                        description: 'must be a string',
+                      },
+                      unit: {
+                        bsonType: 'string',
+                        description: 'must be a string',
+                      },
+                    },
+                  },
+                },
                 methods: {
                   bsonType: 'array',
                   items: {

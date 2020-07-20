@@ -1,41 +1,72 @@
-import mongo from 'mongodb';
+import mongo, { ObjectId } from 'mongodb';
 import { clone } from 'ramda';
+import faker from 'faker';
 
-import { SampleBook, SampleUser } from './sampleDocuments';
+import { DB_COLLECTION_BOOKS, DB_COLLECTION_USERS } from './config';
+import { SampleUser } from './sampleDocuments';
+import { BookDocument } from './types';
 
-const { ObjectId } = mongo;
+type insertBooksProps = {
+  db: mongo.Db;
+  quantity: number;
+  owner?: ObjectId;
+};
+export const insertBooks = ({ db, quantity, owner }: insertBooksProps): ObjectId[] => {
+  const collection = db.collection(DB_COLLECTION_BOOKS);
+  const generatedIds = [...Array(quantity)].map(() => new ObjectId());
 
-// TODO make full use of ramda
-// TODO use something like faker instead of index to improve data
-export const insertBooks = (db: mongo.Db, number: number) => {
-  const collection = db.collection('books');
-
-  const generatedBooks = [...Array(number)].map((_, index) => {
-    const newBook = clone(SampleBook);
-    newBook._id = new ObjectId();
-    newBook.name += index;
-    newBook.recipes = newBook.recipes?.map((recipe: any) => ({
-      ...recipe,
-      _id: new ObjectId(),
-      lastModified: new Date(),
-    }));
+  const generatedBooks = [...Array(quantity)].map((_, index) => {
+    const newBook: BookDocument = {
+      _id: generatedIds[index],
+      owner: owner ?? new ObjectId(),
+      favorites: faker.random.number(40000),
+      views: faker.random.number(99999999),
+      name: faker.random.words(),
+      recipes: [...Array(faker.random.number(35))].map((recipe) => ({
+        ...recipe,
+        name: faker.random.words(),
+        directions: faker.lorem.paragraphs(),
+        ingredients: [...Array(faker.random.number(30))].map(() => ({
+          name: faker.random.word(),
+          quantity: faker.random.number(30).toString(),
+          unit: faker.random.word(),
+        })),
+        previewImage: faker.image.imageUrl(),
+        activeTime: faker.random.number(),
+        waitingTime: faker.random.number(),
+        methods: [...Array(faker.random.number(20))].map(() => faker.random.word()),
+        categories: [...Array(faker.random.number(20))].map(() => faker.random.word()),
+        _id: new ObjectId(),
+        lastModified: faker.date.past(),
+      })),
+    };
     return newBook;
   });
 
-  return collection.insertMany(generatedBooks);
+  collection.insertMany(generatedBooks);
+  return generatedIds;
 };
 
-export const insertUser = (db: mongo.Db, number: number) => {
-  const collection = db.collection('users');
-  const generatedUsers = [...Array(number)].map((_, index) => {
-    const newUser = clone(SampleUser);
-    newUser._id = new ObjectId();
-    newUser.username += index;
+type insertUserProps = {
+  db: mongo.Db;
+  quantity: number;
+  bookIds?: ObjectId[];
+};
+export const insertUsers = ({ db, quantity, bookIds }: insertUserProps) => {
+  const collection = db.collection(DB_COLLECTION_USERS);
+  const generatedIds: ObjectId[] = [...Array(quantity)].map(() => new ObjectId());
 
-    newUser.books = [new ObjectId()];
+  const generatedUsers = [...Array(quantity)].map((_, index) => {
+    const newUser = clone(SampleUser);
+    newUser._id = generatedIds[index];
+    newUser.username = faker.hacker.noun();
+
+    newUser.books = bookIds ?? [new ObjectId()];
 
     return newUser;
   });
 
-  return collection.insertMany(generatedUsers);
+  collection.insertMany(generatedUsers);
+
+  return generatedIds;
 };

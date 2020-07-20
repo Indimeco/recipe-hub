@@ -26,9 +26,11 @@
 	"homepage": "https://github.com/Indimeco/recipe-hub#readme",
 	"devDependencies": {},
 	"dependencies": {
+		"@types/faker": "^4.1.12",
 		"@types/mongodb": "^3.5.20",
 		"@types/ramda": "^0.27.6",
 		"dotenv": "^8.2.0",
+		"faker": "^4.1.0",
 		"graphql": "^15.1.0",
 		"mongodb": "^3.2.7",
 		"ramda": "^0.27.0",

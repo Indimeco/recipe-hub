@@ -10,7 +10,8 @@ export const DropdownWrapper = styled.div`
   box-shadow: 0 0 4px 0 ${palette.bgAccent};
   background-color: ${palette.bg};
   position: absolute;
-  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 1;
 `;
 

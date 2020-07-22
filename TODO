@@ -1,7 +1,5 @@
 // SECTION MVP
-// FIXME Dropdown breaks page dimensions
 // TODO pagination on recipes
-// TODO pagination on books
 // TODO how will app build programatically receive lambda location when both are provisioned given lambda is created via serverless?
 // TODO mongodb provisioning via terraform
 // REVIEW js bundle analysis

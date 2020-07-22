@@ -20,6 +20,38 @@ describe('Book view', () => {
     cy.findByText(testBook).should('exist');
   });
 
+  it('Can load paginated books', () => {
+    /*
+     * ASSUMPTIONS
+     * Database is populated with more than 10 books
+     * Pagination shows load more on 10 books
+     * Pagination is sorted alphabetically
+     */
+    const timestamp = Date.now();
+    const firstBook = `AAA ${timestamp} cypress book`;
+    const lastBook = `ZZZ ${timestamp} cypress book`;
+    cy.createBook(firstBook);
+    cy.createBook(lastBook);
+
+    cy.findByText(firstBook).should('exist');
+    cy.findByText(lastBook).should('not.exist');
+    cy.findAllByTestId('BookArea__BookInformation').should('have.length', 10);
+
+    cy.findByText('Load more').click();
+
+    cy.findAllByTestId('BookArea__BookInformation').should('have.length.greaterThan', 10);
+    cy.findAllByTestId('BookArea__BookInformation').should('have.length.lessThan', 21);
+    cy.findByText(firstBook).should('exist');
+    cy.findByText(lastBook).should('exist');
+
+    cy.reload();
+    cy.findByText(firstBook).should('exist');
+    cy.findByText(lastBook).should('not.exist');
+
+    cy.findByText('Load more').click();
+    cy.findByText(lastBook).should('exist');
+  });
+
   it('Can rename a book', () => {
     const timestamp = Date.now();
     const testBook = `${timestamp} cypress book`;
@@ -42,41 +74,5 @@ describe('Book view', () => {
     /* Recipe Area View */
     cy.findByText(renamedBook).click();
     cy.findAllByText(renamedBook).should('have.length', 2); // Book name plus breadcrumb
-  });
-
-  it('Can edit recipes', () => {
-    const timestamp = Date.now();
-    const testBook = `${timestamp} cypress book`;
-
-    /* Book View */
-    cy.createBook(testBook);
-
-    /* Recipe Area View */
-    cy.findByText(testBook).click(); // Go to recipe area
-    cy.findByText('Add a recipe').click();
-    cy.findByText('New Recipe').should('exist');
-
-    /* Recipe Detail View */
-    cy.findByText('New Recipe').click(); // Go to recipe detail view
-    cy.findByText('Edit').click();
-
-    const testRecipe = `${timestamp} cypress recipe`;
-    cy.findByLabelText('Recipe name').clear().type(testRecipe);
-
-    const testDirections = 'Hello my baby, hello my honey';
-    cy.findByLabelText('Directions').clear().type(testDirections);
-
-    cy.findByText('Save').click();
-    cy.findAllByText(testRecipe).should('have.length', 2); // Recipe name on the recipe level plus updated breadcrumb
-    cy.findByText(testDirections).should('exist');
-
-    /* Recipe Area View */
-    cy.useNavigation(testBook); // Breadcrumb
-    cy.findAllByText(testRecipe).should('exist');
-
-    /* Recipe Detail View */
-    cy.findAllByText(testRecipe).click(); // Recipe entry in on the book level
-    cy.findAllByText(testRecipe).should('have.length', 2); // Recipe name on the recipe level plus updated breadcrumb
-    cy.findByText(testDirections).should('exist');
   });
 });

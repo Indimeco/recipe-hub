@@ -9,6 +9,7 @@ export default gql`
     name: String!
     views: Int!
     favorites: Int!
+    lastModified: Date!
     recipes: [Recipe!]!
   }
 
@@ -53,7 +54,7 @@ export default gql`
   }
 
   type Pagination {
-    lastId: String!
+    last: String!
     hasNext: Boolean!
   }
 

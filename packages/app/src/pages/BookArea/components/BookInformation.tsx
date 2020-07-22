@@ -24,7 +24,7 @@ export const BookInformation: React.FC<BookInformationProps> = ({ id, name, view
   const [changeModalIsOpen, setChangeModalIsOpen] = useState(false);
 
   return (
-    <BookInformationWrapper>
+    <BookInformationWrapper data-testid="BookArea__BookInformation">
       <div>
         <BookSubText>
           <FontAwesomeIcon icon={faEye} />

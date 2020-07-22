@@ -10,6 +10,7 @@ export const CREATE_BOOK = gql`
         name
         favorites
         views
+        lastModified
       }
     }
   }

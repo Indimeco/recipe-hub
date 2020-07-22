@@ -20,6 +20,7 @@ export default {
           { _id: oId(bookId) },
           {
             $addToSet: { recipes: blankRecipe },
+            $set: { lastModified: new Date() },
           },
         );
 
@@ -44,6 +45,7 @@ export default {
           {
             $currentDate: {
               'recipes.$.lastModified': true,
+              lastModified: true,
             },
             $set: updatePayload,
           },
@@ -63,6 +65,7 @@ export default {
           views: 0,
           recipes: [],
           owner: oId(userId),
+          lastModified: new Date(),
         };
 
         const generatedId = await new Promise((resolve, reject) => {
@@ -90,7 +93,9 @@ export default {
 
     editBookName: async (_source, { bookId, newBookName }, { db }): Promise<Book> => {
       try {
-        await db.collection(booksCollection).updateOne({ _id: oId(bookId) }, { $set: { name: newBookName } });
+        await db
+          .collection(booksCollection)
+          .updateOne({ _id: oId(bookId) }, { $set: { name: newBookName, lastModified: new Date() } });
 
         return db.collection(booksCollection).findOne({ _id: oId(bookId) });
       } catch (err) {

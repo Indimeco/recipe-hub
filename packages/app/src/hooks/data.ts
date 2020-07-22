@@ -36,7 +36,7 @@ export const GET_USER = gql`
         views
       }
       pagination {
-        lastId
+        last
         hasNext
       }
     }

@@ -21,6 +21,7 @@ export const insertBooks = ({ db, quantity, owner }: insertBooksProps): ObjectId
       owner: owner ?? new ObjectId(),
       favorites: faker.random.number(40000),
       views: faker.random.number(99999999),
+      lastModified: faker.date.past(),
       name: faker.random.words(),
       recipes: [...Array(faker.random.number(35))].map((recipe) => ({
         ...recipe,

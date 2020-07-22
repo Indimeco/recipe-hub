@@ -7,7 +7,7 @@ import { createBooks, createUsers } from './schema';
 import { insertBooks, insertUsers } from './utils';
 import { SampleBook, SampleUser } from './sampleDocuments';
 
-const NUM_BOOKS = 15;
+const NUM_BOOKS = 11;
 const NUM_USERS = 3;
 
 const resetDb = (db: MongoClient.Db) => {

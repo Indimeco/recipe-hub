@@ -28,6 +28,7 @@ export type Book = {
   name: Scalars['String'],
   views: Scalars['Int'],
   favorites: Scalars['Int'],
+  lastModified: Scalars['Date'],
   recipes: Array<Recipe>,
 };
 
@@ -74,7 +75,7 @@ export type MutationEditBookNameArgs = {
 };
 
 export type Pagination = {
-  lastId: Scalars['String'],
+  last: Scalars['String'],
   hasNext: Scalars['Boolean'],
 };
 
@@ -225,6 +226,7 @@ export type BookResolvers<Context = any, ParentType = Book> = {
   name?: Resolver<Scalars['String'], ParentType, Context>,
   views?: Resolver<Scalars['Int'], ParentType, Context>,
   favorites?: Resolver<Scalars['Int'], ParentType, Context>,
+  lastModified?: Resolver<Scalars['Date'], ParentType, Context>,
   recipes?: Resolver<ArrayOrIterable<Recipe>, ParentType, Context>,
 };
 
@@ -246,7 +248,7 @@ export type MutationResolvers<Context = any, ParentType = Mutation> = {
 };
 
 export type PaginationResolvers<Context = any, ParentType = Pagination> = {
-  lastId?: Resolver<Scalars['String'], ParentType, Context>,
+  last?: Resolver<Scalars['String'], ParentType, Context>,
   hasNext?: Resolver<Scalars['Boolean'], ParentType, Context>,
 };
 

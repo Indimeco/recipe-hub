@@ -28,6 +28,7 @@ export const EDIT_RECIPE = gql`
         recipeSource
         lastModified
       }
+      lastModified
     }
   }
 `;

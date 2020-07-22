@@ -8,6 +8,7 @@ export const SampleBook: BookDocument = {
   owner: new ObjectId('746573747573657269644030'),
   favorites: 99999,
   views: 74982579,
+  lastModified: new Date('01/01/1970'),
   recipes: [
     {
       _id: new ObjectId(),

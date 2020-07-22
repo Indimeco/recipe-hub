@@ -85,8 +85,8 @@ const BookArea: React.FunctionComponent<PropTypes> = ({ userId, setNavLinks }) =
         {user.books?.map(
           (book) =>
             book && (
-              <UnstyledLi key={book._id}>
-                <BookTile key={`book-${book._id}`}>
+              <UnstyledLi key={`book-${book._id}`}>
+                <BookTile>
                   <Link to={`/book/${book._id}`}>
                     <BookText>
                       <FontAwesomeIcon icon={faBook} />
@@ -113,19 +113,17 @@ const BookArea: React.FunctionComponent<PropTypes> = ({ userId, setNavLinks }) =
             onClick={() =>
               fetchMore({
                 query: GET_USER,
-                variables: { userId, lastBook: userData.user.pagination.lastId },
-                updateQuery: (prev, { fetchMoreResult }) => {
-                  return {
-                    user: {
-                      ...fetchMoreResult.user,
-                      books: [...prev.user.books, ...fetchMoreResult.user.books],
-                    },
-                  };
-                },
+                variables: { userId, lastBook: userData.user.pagination.last },
+                updateQuery: (prev, { fetchMoreResult }) => ({
+                  user: {
+                    ...fetchMoreResult.user,
+                    books: [...prev.user.books, ...fetchMoreResult.user.books],
+                  },
+                }),
               })
             }
           >
-            Load More
+            Load more
           </Button>
         </LoadMoreWrapper>
       )}

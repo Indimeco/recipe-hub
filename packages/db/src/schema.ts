@@ -7,7 +7,7 @@ export const createBooks = (db: Db, collectionName: string) => {
     validator: {
       $jsonSchema: {
         bsonType: 'object',
-        required: ['name', 'owner', 'recipes', 'favorites', 'views'],
+        required: ['name', 'owner', 'recipes', 'favorites', 'views', 'lastModified'],
         properties: {
           name: {
             bsonType: 'string',
@@ -17,8 +17,23 @@ export const createBooks = (db: Db, collectionName: string) => {
             bsonType: 'objectId',
             description: 'must be an objectId and is required',
           },
+          favorites: {
+            bsonType: 'int', // this will probably be an array of user ids when the feature is implemented
+            description: 'must be an int and is required',
+          },
+          views: {
+            bsonType: 'int',
+            description: 'must be an int and is required',
+          },
+          lastModified: {
+            bsonType: 'date',
+            description: 'must be a date and is required',
+          },
           recipes: {
             bsonType: 'array',
+            additionalItems: false,
+            uniqueItems: true,
+            description: 'must be an array and is required',
             items: {
               bsonType: 'object',
               description: 'must be an object',
@@ -85,17 +100,6 @@ export const createBooks = (db: Db, collectionName: string) => {
                 },
               },
             },
-            additionalItems: false,
-            uniqueItems: true,
-            description: 'must be an array and is required',
-          },
-          favorites: {
-            bsonType: 'int', // this will probably be an array of user ids when the feature is implemented
-            description: 'must be an int and is required',
-          },
-          views: {
-            bsonType: 'int',
-            description: 'must be an int and is required',
           },
         },
       },

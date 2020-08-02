@@ -37,9 +37,9 @@ describe('users', () => {
     const { mutate } = await createTestServer(db);
 
     const user = await mutate(GRAPHQL_CREATE_USER({ userName: 'Fuusen' }));
-    const id = user?.data?.createUser._id;
+    const userId = user?.data?.createUser._id;
 
-    const withBook = await mutate(GRAPHQL_CREATE_BOOK({ userId: id, bookName: 'Efishinet Cookery' }));
+    const withBook = await mutate(GRAPHQL_CREATE_BOOK({ userId, bookName: 'Efishinet Cookery' }));
 
     expect(withBook?.data?.createBook.username).toStrictEqual('Fuusen');
     expect(withBook?.data?.createBook.books).toHaveLength(1);

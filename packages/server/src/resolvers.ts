@@ -1,4 +1,5 @@
 import { GraphQLDate } from 'graphql-iso-date';
+import { ObjectId } from 'mongodb';
 
 import { Book, Recipe, User } from './types/generated/graphql';
 import { booksCollection } from './config';
@@ -21,7 +22,7 @@ export default {
       try {
         const blankRecipe = {
           name: 'New Recipe',
-          _id: oId(),
+          _id: new ObjectId(),
           lastModified: new Date(),
         };
 

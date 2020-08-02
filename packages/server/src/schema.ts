@@ -71,6 +71,7 @@ export default gql`
   }
 
   type Mutation {
+    createUser(userName: String!): User
     createRecipe(bookId: String!): Book
     editRecipe(recipeFragment: UpdateRecipe): Book
     createBook(userId: String!, bookName: String!): User

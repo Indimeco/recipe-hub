@@ -3,11 +3,20 @@ import { GraphQLDate } from 'graphql-iso-date';
 import { Book, Recipe, User } from './types/generated/graphql';
 import { booksCollection, usersCollection } from './config';
 import { oId } from './utils/oId';
-import { resolveUser } from './queries/user';
+import { getUser } from './queries/getUser';
+import { createUser } from './mutations/createUser';
 
 export default {
   Date: GraphQLDate,
   Mutation: {
+    createUser: async (_source, { userName }, { db }): Promise<User> => {
+      try {
+        const userId = await createUser({ userName, db });
+        return getUser({ userId, db });
+      } catch (err) {
+        throw new Error(err);
+      }
+    },
     createRecipe: async (_source, { bookId }, { db }): Promise<Recipe> => {
       try {
         const blankRecipe = {
@@ -85,7 +94,7 @@ export default {
           },
         );
 
-        return resolveUser({ db, userId });
+        return getUser({ db, userId });
       } catch (err) {
         throw new Error(err);
       }
@@ -109,7 +118,7 @@ export default {
       return db.collection(booksCollection).findOne({ _id: oId(bookId) });
     },
     user: async (_source, { userId, lastBook }, { db }): Promise<User> => {
-      return resolveUser({ db, userId, lastBook });
+      return getUser({ db, userId: oId(userId), lastBook });
     },
   },
 };

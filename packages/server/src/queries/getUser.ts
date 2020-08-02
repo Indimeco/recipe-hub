@@ -1,16 +1,16 @@
-import { Db } from 'mongodb';
+import { Db, ObjectId } from 'mongodb';
 
 import { User } from '../types/generated/graphql';
 import { booksCollection, usersCollection } from '../config';
 import { oId } from '../utils/oId';
 
-export const resolveUser = async ({
+export const getUser = async ({
   db,
   userId,
   lastBook,
 }: {
   db: Db;
-  userId: string;
+  userId: ObjectId;
   lastBook?: string;
 }): Promise<User> => {
   // TODO abstract pagination to utility component
@@ -18,7 +18,7 @@ export const resolveUser = async ({
 
   const user = await db
     .collection(usersCollection)
-    .findOne({ _id: oId(userId) }, { projection: { _id: true, username: true, books: true } });
+    .findOne({ _id: userId }, { projection: { _id: true, username: true, books: true } });
 
   const query = lastBook
     ? { _id: { $in: user.books.map((id) => oId(id)) }, name: { $gt: lastBook } }
@@ -35,7 +35,7 @@ export const resolveUser = async ({
   const books = await userBooks.toArray();
 
   const pagination = {
-    last: books[books.length - 1].name,
+    last: books[books.length - 1]?.name,
     hasNext: count > pageSize,
   };
 

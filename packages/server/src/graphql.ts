@@ -1,5 +1,5 @@
 import { ApolloServer } from 'apollo-server-lambda';
-import { MongoClient } from 'mongodb';
+import { MongoClient, Db } from 'mongodb';
 
 import typeDefs from './schema';
 import resolvers from './resolvers';
@@ -24,7 +24,7 @@ export const graphqlHandler = (event, context, callback) => {
   // eslint-disable-next-line
   context.callbackWaitsForEmptyEventLoop = false;
 
-  connectToDatabase().then((connection) =>
+  connectToDatabase().then((database: Db) =>
     new ApolloServer({
       resolvers,
       context: ({ event: e }) => {
@@ -33,7 +33,7 @@ export const graphqlHandler = (event, context, callback) => {
           functionName: context.functionName,
           event: e,
           context,
-          db: connection,
+          db: database,
         };
       },
       typeDefs,

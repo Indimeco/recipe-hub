@@ -1,10 +1,10 @@
 import { GraphQLDate } from 'graphql-iso-date';
 
 import { Book, Recipe, User } from './types/generated/graphql';
-import { booksCollection, usersCollection } from './config';
+import { booksCollection } from './config';
 import { oId } from './utils/oId';
 import { getUser } from './queries/getUser';
-import { createUser } from './mutations/createUser';
+import { createUser, createBook } from './mutations';
 
 export default {
   Date: GraphQLDate,
@@ -77,24 +77,8 @@ export default {
           lastModified: new Date(),
         };
 
-        const generatedId = await new Promise((resolve, reject) => {
-          db.collection(booksCollection).insertOne({ ...newBook }, (err, res) => {
-            if (err) {
-              reject(err);
-              throw new Error(err);
-            }
-            resolve(res.ops[0]._id);
-          });
-        });
-
-        await db.collection(usersCollection).updateOne(
-          { _id: oId(userId) },
-          {
-            $push: { books: generatedId },
-          },
-        );
-
-        return getUser({ db, userId });
+        await createBook({ db, newBook, userId: oId(userId) });
+        return getUser({ db, userId: oId(userId) });
       } catch (err) {
         throw new Error(err);
       }

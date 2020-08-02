@@ -2,13 +2,13 @@ import { Db, ObjectId } from 'mongodb';
 
 import { usersCollection } from '../config';
 
-type PcreateUser = {
+type props = {
   userName: string;
   db: Db;
 };
-type TcreateUser = ({ userName, db }: PcreateUser) => Promise<ObjectId>;
+type createUserSignature = ({ userName, db }: props) => Promise<ObjectId>;
 
-export const createUser: TcreateUser = async ({ userName, db }) => {
+export const createUser: createUserSignature = async ({ userName, db }) => {
   try {
     const resp = await db.collection(usersCollection).insertOne({ username: userName, books: [] });
     return resp.insertedId as ObjectId;

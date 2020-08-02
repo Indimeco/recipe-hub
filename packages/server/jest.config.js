@@ -5,4 +5,5 @@ module.exports = {
   ...tsPreset,
   ...mongoPreset,
   testEnvironment: null,
+  testMatch: ['**/__tests__/**/*.test.ts'],
 };

@@ -10,7 +10,6 @@
 // FIXME investigate extraneous db connections (gql cleanup?)
 // REVIEW Graphql implementation of resolvers and schema
 // TODO handle Apollo Errors via ErrorPage
-// TODO Research how to test graphql resolvers
 // TODO Auto semantic versioning with lerna
 // TODO delete recipe
 // TODO deleting a book
@@ -19,6 +18,7 @@
 // TODO Protect user operations based on book ownership
 
 // SECTION FUTURE
+// TODO move responsibility of oId into mongo functions for gql
 // TODO number of servings
 // TODO keywords, tags
 // REVIEW Breadcrumbs design to be like book tabs

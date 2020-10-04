@@ -1,6 +1,6 @@
 // SECTION MVP
+// TODO Rebuild all flows with Books as tag instead of as container
 // TODO pagination on recipes
-// TODO how will app build programatically receive lambda location when both are provisioned given lambda is created via serverless?
 // TODO mongodb provisioning via terraform
 // REVIEW js bundle analysis
 // REVIEW IngredientsList could just be two columns of Name|Amount and data separation would be behind the scenes

@@ -1,2 +1,4 @@
 .terraform
 recipehub-graphql.zip
+*.tfstate
+*.tfstate.*
